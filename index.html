@@ -1,0 +1,1504 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperDental | Metodologia de Crescimento para Cl�nicas Odontol�gicas</title>
+  <meta name="description" content="A SuperDental n�o entrega apenas an�ncios ou posts. Aplica uma metodologia que transforma investimento em agenda, atendimento e crescimento previs�vel para cl�nicas e consult�rios odontol�gicos.">
+  <meta name="keywords" content="marketing odontol�gico, cl�nicas odontol�gicas, crescimento dentista, metodologia dental, tr�fego qualificado odontologia">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       RESET & TOKENS
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0B1F3A;
+      --navy-mid:    #112949;
+      --navy-light:  #1A3556;
+      --teal:        #00B4A6;
+      --teal-dark:   #009189;
+      --teal-light:  #E5F7F6;
+      --orange:      #F47A20;
+      --orange-dark: #D9670F;
+      --orange-pale: #FEF3E9;
+      --white:       #FFFFFF;
+      --gray-50:     #F4F7FA;
+      --gray-100:    #E8EEF5;
+      --gray-200:    #D2DCE8;
+      --gray-400:    #8A9BB0;
+      --gray-600:    #5A6F8A;
+      --gray-800:    #2C3E52;
+      --gray-900:    #1A2B3C;
+      --font-disp:   'Fraunces', Georgia, serif;
+      --font-body:   'DM Sans', -apple-system, system-ui, sans-serif;
+      --shadow-sm:   0 2px 8px rgba(11,31,58,.08);
+      --shadow-md:   0 8px 32px rgba(11,31,58,.12);
+      --shadow-lg:   0 20px 60px rgba(11,31,58,.18);
+      --radius:      12px;
+      --radius-lg:   20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: var(--font-disp); line-height: 1.12; }
+    a { text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container       { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label   {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: .85rem;
+    }
+
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--orange); color: var(--white);
+      padding: .85rem 1.75rem; border-radius: 8px;
+      font-family: var(--font-body); font-weight: 600; font-size: .95rem;
+      border: none; cursor: pointer; transition: all .2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(244,122,32,.38);
+    }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: transparent; color: var(--white);
+      padding: .85rem 1.75rem; border-radius: 8px;
+      font-family: var(--font-body); font-weight: 500; font-size: .95rem;
+      border: 1.5px solid rgba(255,255,255,.28); cursor: pointer;
+      transition: all .2s ease; white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+    .btn-outline-dark {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: transparent; color: var(--gray-800);
+      padding: .75rem 1.5rem; border-radius: 8px;
+      font-family: var(--font-body); font-weight: 500; font-size: .9rem;
+      border: 1.5px solid var(--gray-200); cursor: pointer;
+      transition: all .2s ease;
+    }
+    .btn-outline-dark:hover { border-color: var(--teal); color: var(--teal); }
+
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    .header.scrolled {
+      background: rgba(11,31,58,.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(0,180,166,.15), 0 4px 20px rgba(0,0,0,.2);
+    }
+    .header-inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo img { height: 36px; width: auto; }
+
+    .nav {
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .nav a {
+      color: rgba(255,255,255,.75); font-size: .88rem; font-weight: 500;
+      transition: color .2s; letter-spacing: .01em;
+    }
+    .nav a:hover { color: var(--teal); }
+    .nav .btn-nav {
+      background: var(--teal); color: var(--white) !important;
+      padding: .5rem 1.2rem; border-radius: 6px;
+      font-weight: 600 !important; transition: background .2s !important;
+    }
+    .nav .btn-nav:hover { background: var(--teal-dark) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px; transition: all .3s;
+    }
+
+    /* mobile nav */
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .nav.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: var(--navy);
+        border-top: 1px solid rgba(255,255,255,.07);
+        padding: 1.5rem; gap: 1.25rem; z-index: 999;
+      }
+      .nav.open .btn-nav { align-self: flex-start; }
+    }
+
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 72px;
+    }
+
+    /* Atmospheric background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 65% at 72% 38%, rgba(0,180,166,.11) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 45% at 18% 72%, rgba(244,122,32,.07) 0%, transparent 60%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,180,166,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,180,166,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+      padding: 5rem 0;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(0,180,166,.1);
+      border: 1px solid rgba(0,180,166,.28);
+      border-radius: 100px; padding: .32rem 1rem;
+      margin-bottom: 1.75rem;
+      font-size: .78rem; font-weight: 500;
+      color: var(--teal); letter-spacing: .02em;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--teal); border-radius: 50%;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.5; transform:scale(.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3.8vw, 3.3rem);
+      font-weight: 700; color: var(--white);
+      margin-bottom: 1.5rem; line-height: 1.1;
+    }
+    .hero h1 em { font-style: italic; color: var(--teal); }
+
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,.65);
+      line-height: 1.75; margin-bottom: 2rem; max-width: 510px;
+    }
+
+    .hero-proof {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2.5rem; padding: 1rem 1.25rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px; max-width: 430px;
+    }
+    .hero-proof-item { text-align: center; }
+    .hp-num {
+      display: block; font-family: var(--font-disp);
+      font-size: 1.45rem; font-weight: 700;
+      color: var(--teal); line-height: 1; margin-bottom: .2rem;
+    }
+    .hp-lbl { font-size: .72rem; color: rgba(255,255,255,.45); line-height: 1.3; }
+    .hero-proof-div { width: 1px; height: 34px; background: rgba(255,255,255,.1); }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Hero right: abstract dashboard */
+    .hero-visual { position: relative; }
+
+    .hero-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg); padding: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+    }
+
+    .dash-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .dash-label {
+      font-size: .72rem; font-weight: 600;
+      color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .1em;
+    }
+    .dash-live {
+      font-size: .68rem; background: rgba(0,180,166,.14);
+      color: var(--teal); padding: .2rem .65rem;
+      border-radius: 100px; border: 1px solid rgba(0,180,166,.22);
+    }
+
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .m-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.055);
+      border-radius: 10px; padding: 1rem;
+    }
+    .m-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .75rem;
+    }
+    .m-icon.t { background: rgba(0,180,166,.14); }
+    .m-icon.o { background: rgba(244,122,32,.14); }
+    .m-icon.p { background: rgba(123,63,158,.14); }
+    .m-val {
+      font-family: var(--font-disp); font-size: 1.55rem; font-weight: 700;
+      color: var(--white); line-height: 1; margin-bottom: .2rem;
+    }
+    .m-lbl { font-size: .68rem; color: rgba(255,255,255,.38); line-height: 1.3; }
+    .m-trend {
+      margin-top: .4rem; display: flex; align-items: center; gap: .2rem;
+      font-size: .68rem; font-weight: 600; color: #4ade80;
+    }
+
+    .chart-wrap {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.045);
+      border-radius: 10px; padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .chart-head {
+      display: flex; justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .chart-ttl { font-size: .72rem; color: rgba(255,255,255,.55); font-weight:500; }
+    .chart-period { font-size: .65rem; color: rgba(255,255,255,.28); }
+    .bars {
+      display: flex; align-items: flex-end; gap: 6px; height: 56px;
+    }
+    .bar {
+      flex: 1; border-radius: 3px 3px 0 0;
+      animation: grow 1.4s ease-out forwards;
+      transform-origin: bottom;
+    }
+    @keyframes grow { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+    .bar.t { background: var(--teal); opacity: .65; }
+    .bar.t.hi { opacity: 1; }
+    .bar.o { background: var(--orange); opacity: .85; }
+
+    .agenda { display: flex; flex-direction: column; gap: .5rem; }
+    .ag-item {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .55rem .75rem;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.04);
+      border-radius: 8px;
+    }
+    .ag-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink:0; }
+    .ag-text { font-size: .7rem; color: rgba(255,255,255,.55); flex:1; }
+    .ag-time { font-size: .64rem; color: rgba(255,255,255,.3); }
+
+
+    /* ============================================================
+       AUTHORITY
+    ============================================================ */
+    .authority { background: var(--white); padding: 5.5rem 0; }
+
+    .authority-hd { text-align: center; margin-bottom: 3rem; }
+    .authority-hd h2 {
+      font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700;
+      color: var(--navy); margin-bottom: .75rem;
+    }
+    .authority-hd p {
+      font-size: .98rem; color: var(--gray-600);
+      max-width: 600px; margin: 0 auto; line-height: 1.75;
+    }
+
+    .auth-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1.5rem; margin-bottom: 2.5rem;
+    }
+    .auth-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      text-align: center; transition: all .3s; position: relative; overflow:hidden;
+    }
+    .auth-card::after {
+      content: ''; position: absolute;
+      bottom:0; left:0; right:0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s;
+    }
+    .auth-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .auth-card:hover::after { transform: scaleX(1); }
+    .auth-icon {
+      width: 48px; height: 48px; background: var(--teal-light);
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 1rem;
+    }
+    .auth-num {
+      font-family: var(--font-disp); font-size: 2.4rem; font-weight: 700;
+      color: var(--navy); line-height: 1; margin-bottom: .35rem;
+    }
+    .auth-num span { color: var(--teal); }
+    .auth-lbl { font-size: .83rem; color: var(--gray-600); line-height: 1.45; }
+
+    .auth-quote {
+      background: var(--navy); border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .auth-quote::before {
+      content: '"';
+      font-family: var(--font-disp); font-size: 9rem;
+      color: rgba(0,180,166,.08);
+      position: absolute; top: -2.5rem; left: .75rem; line-height: 1;
+    }
+    .auth-quote-text {
+      font-family: var(--font-disp); font-size: 1.02rem; font-style: italic;
+      color: rgba(255,255,255,.85); flex: 1; position: relative; z-index:1;
+    }
+    .auth-quote-div { width:1px; height:38px; background:rgba(255,255,255,.1); }
+    .auth-quote-attr { text-align: right; white-space: nowrap; }
+    .aq-name { display:block; font-size:.85rem; font-weight:600; color:var(--white); }
+    .aq-role { font-size:.75rem; color:var(--teal); }
+
+
+    /* ============================================================
+       PAIN
+    ============================================================ */
+    .pain {
+      background: var(--navy); padding: 6rem 0;
+      position: relative; overflow: hidden;
+    }
+    .pain::before {
+      content:''; position:absolute; top:0; right:0; width:50%; height:100%;
+      background: radial-gradient(ellipse at right center, rgba(244,122,32,.06) 0%, transparent 68%);
+    }
+
+    .pain-hd { text-align: center; margin-bottom: 3.5rem; position: relative; z-index:1; }
+    .pain-hd h2 {
+      font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight:700; color:var(--white);
+      margin-bottom: .75rem;
+    }
+    .pain-hd h2 em { color: var(--orange); font-style: italic; }
+    .pain-hd p { font-size: 1rem; color: rgba(255,255,255,.55); max-width: 580px; margin:0 auto; }
+
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1.25rem; margin-bottom: 2.5rem; position:relative; z-index:1;
+    }
+    .pain-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius); padding: 1.75rem 1.5rem;
+      transition: all .3s;
+    }
+    .pain-card:hover {
+      background: rgba(244,122,32,.06);
+      border-color: rgba(244,122,32,.2);
+    }
+    .pain-n {
+      font-family: var(--font-disp); font-size: 2.8rem; font-weight:700;
+      color: rgba(244,122,32,.18); line-height:1; margin-bottom:.5rem;
+    }
+    .pain-ttl {
+      font-size: .95rem; font-weight:600; color:var(--white);
+      margin-bottom:.5rem; line-height:1.3;
+    }
+    .pain-desc { font-size:.83rem; color:rgba(255,255,255,.48); line-height:1.65; }
+
+    .pain-synth {
+      background: rgba(0,180,166,.08);
+      border: 1px solid rgba(0,180,166,.2);
+      border-radius: var(--radius); padding: 1.5rem 2rem;
+      text-align: center; position: relative; z-index:1;
+    }
+    .pain-synth p {
+      font-family: var(--font-disp); font-size: 1.08rem; font-style:italic;
+      color: rgba(255,255,255,.85);
+    }
+    .pain-synth strong { color: var(--teal); font-style:normal; }
+
+
+    /* ============================================================
+       METHODOLOGY
+    ============================================================ */
+    .methodology { background: var(--gray-50); padding: 7rem 0; overflow:hidden; }
+
+    .method-hd { text-align:center; margin-bottom:4rem; }
+    .method-hd h2 {
+      font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight:700;
+      color: var(--navy); margin-bottom:1rem;
+      max-width:680px; margin-left:auto; margin-right:auto;
+    }
+    .method-hd p {
+      font-size:.98rem; color:var(--gray-600);
+      max-width:580px; margin:0 auto; line-height:1.75;
+    }
+
+    /* 5-step flow */
+    .method-flow {
+      display: flex; align-items: flex-start;
+      position: relative; margin-bottom: 3.5rem;
+    }
+    /* connecting line */
+    .method-flow::before {
+      content:''; position:absolute;
+      top: 37px; left: calc(10% + 38px); right: calc(10% + 38px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), rgba(0,180,166,.25), var(--teal));
+    }
+
+    .m-step {
+      flex:1; padding: 0 .75rem; text-align:center; position:relative;
+    }
+    .step-ring {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: var(--white); border: 2px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      position: relative; z-index:1;
+      box-shadow: var(--shadow-sm);
+      transition: all .3s ease;
+    }
+    .m-step:hover .step-ring {
+      border-color: var(--teal);
+      background: var(--teal);
+      transform: scale(1.07);
+      box-shadow: 0 0 0 10px rgba(0,180,166,.09);
+    }
+    .m-step:hover .step-ring svg { stroke: white; }
+    .step-badge {
+      position: absolute; top:-8px; right:-8px;
+      width:24px; height:24px; background:var(--teal);
+      border-radius:50%; border:2px solid var(--gray-50);
+      font-size:.68rem; font-weight:700; color:white;
+      display:flex; align-items:center; justify-content:center;
+      transition: background .3s;
+    }
+    .m-step:hover .step-badge { background: var(--orange); }
+    .step-ttl {
+      font-size:.88rem; font-weight:700; color:var(--navy);
+      margin-bottom:.45rem; line-height:1.3;
+    }
+    .step-desc { font-size:.78rem; color:var(--gray-600); line-height:1.55; }
+
+    .method-cta-wrap { text-align:center; }
+
+
+    /* ============================================================
+       DELIVERABLES
+    ============================================================ */
+    .deliverables { background: var(--white); padding: 6rem 0; }
+
+    .deliv-hd { text-align:center; margin-bottom:3.5rem; }
+    .deliv-hd h2 {
+      font-size: clamp(1.8rem,3vw,2.4rem); font-weight:700;
+      color:var(--navy); margin-bottom:.75rem;
+    }
+    .deliv-hd p { font-size:.98rem; color:var(--gray-600); max-width:540px; margin:0 auto; }
+
+    .deliv-grid {
+      display: grid; grid-template-columns: repeat(5,1fr); gap:1.25rem;
+    }
+    .deliv-card {
+      background: var(--gray-50); border: 1px solid var(--gray-100);
+      border-radius: var(--radius); padding: 1.75rem 1.25rem;
+      transition: all .3s; position:relative; overflow:hidden;
+    }
+    .deliv-card::before {
+      content:''; position:absolute;
+      top:0; left:0; width:100%; height:4px;
+      background: var(--teal);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .deliv-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); border-color:rgba(0,180,166,.28); }
+    .deliv-card:hover::before { transform:scaleX(1); }
+    .deliv-icon {
+      width:50px; height:50px; background:var(--teal-light);
+      border-radius:12px; display:flex; align-items:center;
+      justify-content:center; margin-bottom:1.25rem;
+    }
+    .deliv-ttl { font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:.5rem; line-height:1.3; }
+    .deliv-desc { font-size:.78rem; color:var(--gray-600); line-height:1.6; }
+
+
+    /* ============================================================
+       FOR WHO
+    ============================================================ */
+    .for-who { background: var(--navy); padding: 6rem 0; position:relative; overflow:hidden; }
+    .for-who::after {
+      content:''; position:absolute;
+      bottom:-100px; right:-100px; width:500px; height:500px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(0,180,166,.07) 0%, transparent 70%);
+    }
+
+    .for-who-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center; position:relative; z-index:1;
+    }
+
+    .for-who-content h2 {
+      font-size: clamp(1.8rem,3vw,2.4rem); font-weight:700;
+      color:var(--white); margin-bottom:2rem; line-height:1.2;
+    }
+    .for-who-content h2 em { color:var(--teal); font-style:italic; }
+
+    .checklist { display:flex; flex-direction:column; gap:.9rem; margin-bottom:2rem; }
+    .ck-item { display:flex; align-items:flex-start; gap:.85rem; }
+    .ck-icon {
+      width:24px; height:24px; background:rgba(0,180,166,.14);
+      border-radius:6px; display:flex; align-items:center;
+      justify-content:center; flex-shrink:0; margin-top:1px;
+    }
+    .ck-text { font-size:.95rem; color:rgba(255,255,255,.78); line-height:1.5; }
+
+    .partner-note {
+      padding:1rem 1.25rem;
+      background: rgba(0,180,166,.07);
+      border-left:3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      font-size:.85rem; color:rgba(255,255,255,.55); font-style:italic;
+    }
+
+    .for-who-tiles {
+      display:grid; grid-template-columns:1fr 1fr; gap:1rem;
+    }
+    .fw-tile {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius); padding:1.5rem;
+      transition: all .3s;
+    }
+    .fw-tile:first-child {
+      grid-column: 1 / -1;
+      background: rgba(0,180,166,.08); border-color: rgba(0,180,166,.2);
+    }
+    .fw-tile:hover { background:rgba(255,255,255,.06); }
+    .fw-tile-ttl {
+      font-family:var(--font-disp); font-size:1.75rem; font-weight:700;
+      color:var(--teal); line-height:1; margin-bottom:.4rem;
+    }
+    .fw-tile-desc { font-size:.8rem; color:rgba(255,255,255,.45); line-height:1.45; }
+
+
+    /* ============================================================
+       CASES
+    ============================================================ */
+    .cases { background: var(--gray-50); padding: 6rem 0; }
+
+    .cases-hd { text-align:center; margin-bottom:3.5rem; }
+    .cases-hd h2 {
+      font-size:clamp(1.8rem,3vw,2.4rem); font-weight:700;
+      color:var(--navy); margin-bottom:.75rem;
+    }
+    .cases-hd p { font-size:.98rem; color:var(--gray-600); max-width:560px; margin:0 auto; }
+
+    .test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+
+    .test-card {
+      background:var(--white); border:1px solid var(--gray-100);
+      border-radius:var(--radius-lg); padding:2rem;
+      position:relative; overflow:hidden; transition:all .3s;
+    }
+    .test-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+    .test-card::before {
+      content:'"'; font-family:var(--font-disp); font-size:6rem;
+      color:rgba(0,180,166,.07);
+      position:absolute; top:-.75rem; right:1.25rem; line-height:1;
+    }
+    .test-tag-pill {
+      display:inline-block; font-size:.7rem; font-weight:600;
+      letter-spacing:.05em; text-transform:uppercase;
+      color:var(--teal); background:var(--teal-light);
+      padding:.25rem .75rem; border-radius:100px; margin-bottom:1rem;
+    }
+    .test-quote {
+      font-family:var(--font-disp); font-size:.98rem; font-style:italic;
+      color:var(--gray-800); line-height:1.68; margin-bottom:1.5rem;
+      position:relative; z-index:1;
+    }
+    .test-hr { height:1px; background:var(--gray-100); margin-bottom:1.25rem; }
+    .test-author { display:flex; align-items:center; gap:.75rem; }
+    .test-av {
+      width:44px; height:44px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:.88rem; color:white; flex-shrink:0;
+    }
+    .test-name { font-weight:600; font-size:.88rem; color:var(--navy); }
+    .test-meta { font-size:.76rem; color:var(--gray-600); }
+
+    .cases-ft { text-align:center; margin-top:3rem; }
+
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    .cta-final {
+      background: var(--navy); padding: 7rem 0;
+      position:relative; overflow:hidden;
+    }
+    .cta-final::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 55% 80% at 18% 50%, rgba(0,180,166,.12) 0%, transparent 62%),
+        radial-gradient(ellipse 40% 60% at 82% 50%, rgba(244,122,32,.08) 0%, transparent 60%);
+    }
+    /* decorative lines */
+    .cta-lines { position:absolute; inset:0; overflow:hidden; }
+    .cta-line {
+      position:absolute; width:100%; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(0,180,166,.1), transparent);
+    }
+
+    .cta-inner {
+      position:relative; z-index:1;
+      text-align:center; max-width:680px; margin:0 auto;
+    }
+    .cta-inner h2 {
+      font-size:clamp(1.8rem,3.5vw,3rem); font-weight:700;
+      color:var(--white); margin-bottom:1.25rem; line-height:1.15;
+    }
+    .cta-inner h2 em { color:var(--teal); font-style:italic; }
+    .cta-inner p {
+      font-size:1.02rem; color:rgba(255,255,255,.62);
+      margin-bottom:2.5rem; line-height:1.75;
+    }
+
+    .btn-cta {
+      display:inline-flex; align-items:center; gap:.55rem;
+      background:var(--orange); color:var(--white);
+      padding:1rem 2.5rem; border-radius:8px;
+      font-family:var(--font-body); font-weight:700; font-size:1.05rem;
+      border:none; cursor:pointer; transition:all .2s;
+    }
+    .btn-cta:hover {
+      background:var(--orange-dark);
+      transform:translateY(-2px);
+      box-shadow:0 14px 36px rgba(244,122,32,.42);
+    }
+
+    .cta-trust {
+      margin-top:1.5rem; display:flex; align-items:center;
+      justify-content:center; gap:1.75rem; flex-wrap:wrap;
+    }
+    .cta-trust-item {
+      display:flex; align-items:center; gap:.45rem;
+      font-size:.78rem; color:rgba(255,255,255,.38);
+    }
+
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background:#060F1E; padding:4rem 0 2rem; }
+
+    .footer-grid {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:3rem; margin-bottom:3rem;
+    }
+    .footer-brand img {
+      height:34px; opacity:1; margin-bottom:1rem;
+    }
+    .footer-tagline {
+      font-size:.83rem; color:rgba(255,255,255,.32);
+      line-height:1.65; margin-bottom:1.25rem; max-width:230px;
+    }
+    .footer-socials { display:flex; gap:.65rem; }
+    .soc-link {
+      width:36px; height:36px; border-radius:8px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:center;
+      transition:all .2s;
+    }
+    .soc-link:hover { background:var(--teal); border-color:var(--teal); }
+
+    .footer-col h4 {
+      font-size:.76rem; font-weight:600; letter-spacing:.09em;
+      text-transform:uppercase; color:rgba(255,255,255,.4);
+      margin-bottom:1.2rem;
+    }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.55rem; }
+    .footer-links a {
+      font-size:.83rem; color:rgba(255,255,255,.38); transition:color .2s;
+    }
+    .footer-links a:hover { color:var(--teal); }
+
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.06);
+      padding-top:1.5rem;
+      display:flex; align-items:center;
+      justify-content:space-between; flex-wrap:wrap; gap:.75rem;
+    }
+    .footer-copy { font-size:.76rem; color:rgba(255,255,255,.2); }
+    .footer-legal { display:flex; gap:1.5rem; }
+    .footer-legal a { font-size:.76rem; color:rgba(255,255,255,.2); transition:color .2s; }
+    .footer-legal a:hover { color:var(--teal); }
+
+
+    /* ============================================================
+       REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity:0; transform:translateY(22px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    .reveal.d1 { transition-delay:.1s; }
+    .reveal.d2 { transition-delay:.2s; }
+    .reveal.d3 { transition-delay:.3s; }
+    .reveal.d4 { transition-delay:.4s; }
+
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media(max-width:1100px){
+      .deliv-grid { grid-template-columns:repeat(3,1fr); }
+    }
+    @media(max-width:900px){
+      .auth-grid { grid-template-columns:repeat(2,1fr); }
+      .pain-grid { grid-template-columns:repeat(2,1fr); }
+      .method-flow { flex-wrap:wrap; }
+      .method-flow::before { display:none; }
+      .m-step { flex:0 0 calc(50% - 1rem); margin-bottom:2rem; }
+      .for-who-grid { grid-template-columns:1fr; gap:3rem; }
+      .test-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:768px){
+      .hero-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .hero-visual { order:-1; }
+      .hero { min-height:auto; padding:5rem 0 3rem; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .for-who-tiles { grid-template-columns:1fr; }
+      .fw-tile:first-child { grid-column:1; }
+      .auth-quote { flex-direction:column; text-align:center; }
+      .auth-quote-div { width:40px; height:1px; }
+      .auth-quote-attr { text-align:center; }
+    }
+    @media(max-width:560px){
+      .hero h1 { font-size:1.85rem; }
+      .hero-ctas { flex-direction:column; }
+      .hero-proof { flex-direction:column; gap:.6rem; }
+      .hero-proof-div { width:40px; height:1px; }
+      .auth-grid { grid-template-columns:1fr 1fr; }
+      .pain-grid { grid-template-columns:1fr; }
+      .deliv-grid { grid-template-columns:1fr 1fr; }
+      .test-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .m-step { flex:0 0 100%; }
+    }
+    @media(max-width:380px){
+      .deliv-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="Logo-SuperDental.png" alt="SuperDental - Metodologia de crescimento para cl�nicas odontol�gicas">
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#metodologia">Metodologia</a>
+        <a href="#solucoes">Solu��es</a>
+        <a href="#cases">Cases</a>
+        <a href="#">Blog</a>
+        <a href="#contato" class="btn-nav">Falar com um especialista</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div class="hero-content">
+        <div class="hero-badge">Especialistas em crescimento odontol�gico</div>
+
+        <h1>Marketing odontol�gico que transforma investimento em <em>agenda, atendimento e crescimento.</em></h1>
+
+        <p class="hero-sub">
+          Na SuperDental, sua cl�nica n�o recebe apenas an�ncios ou posts. Recebe uma metodologia completa para atrair os pacientes certos, melhorar a convers�o da equipe e crescer com mais previsibilidade.
+        </p>
+
+        <div class="hero-proof">
+          <div class="hero-proof-item">
+            <span class="hp-num">+11</span>
+            <span class="hp-lbl">anos de<br>mercado</span>
+          </div>
+          <div class="hero-proof-div"></div>
+          <div class="hero-proof-item">
+            <span class="hp-num">+2.000</span>
+            <span class="hp-lbl">cl�nicas e consult�rios<br>atendidos</span>
+          </div>
+          <div class="hero-proof-div"></div>
+          <div class="hero-proof-item">
+            <span class="hp-num">100%</span>
+            <span class="hp-lbl">foco em<br>odontologia</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#metodologia" class="btn-primary">
+            Quero entender a metodologia
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contato" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Falar com um especialista
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: abstract dashboard visual -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="dash-top">
+            <span class="dash-label">Painel da Cl�nica</span>
+            <span class="dash-live">? Tempo real</span>
+          </div>
+
+          <div class="metrics-row">
+            <div class="m-card">
+              <div class="m-icon t">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div class="m-val">147</div>
+              <div class="m-lbl">Novos leads</div>
+              <div class="m-trend">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>+38%
+              </div>
+            </div>
+            <div class="m-card">
+              <div class="m-icon o">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F47A20" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="m-val">89</div>
+              <div class="m-lbl">Agendamentos</div>
+              <div class="m-trend">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>+24%
+              </div>
+            </div>
+            <div class="m-card">
+              <div class="m-icon p">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7B3F9E" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div class="m-val">61<span style="font-size:.95rem;color:rgba(255,255,255,.35)">%</span></div>
+              <div class="m-lbl">Convers�o</div>
+              <div class="m-trend">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>+12pt
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="chart-head">
+              <span class="chart-ttl">Evolu��o mensal de pacientes</span>
+              <span class="chart-period">7 meses</span>
+            </div>
+            <div class="bars">
+              <div class="bar t" style="height:32%"></div>
+              <div class="bar t" style="height:40%"></div>
+              <div class="bar t" style="height:37%"></div>
+              <div class="bar t" style="height:52%"></div>
+              <div class="bar t hi" style="height:60%"></div>
+              <div class="bar t hi" style="height:75%"></div>
+              <div class="bar o" style="height:92%"></div>
+            </div>
+          </div>
+
+          <div class="agenda">
+            <div class="ag-item">
+              <div class="ag-dot" style="background:#00B4A6"></div>
+              <span class="ag-text">Lead qualificado - Implantodontia</span>
+              <span class="ag-time">Agora</span>
+            </div>
+            <div class="ag-item">
+              <div class="ag-dot" style="background:#F47A20"></div>
+              <span class="ag-text">Avalia��o agendada - Ortodontia</span>
+              <span class="ag-time">14h30</span>
+            </div>
+            <div class="ag-item">
+              <div class="ag-dot" style="background:#7B3F9E"></div>
+              <span class="ag-text">Relat�rio semanal dispon�vel</span>
+              <span class="ag-time">16h00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 2 - AUTORIDADE E PROVA
+================================================================ -->
+<section class="authority" id="autoridade">
+  <div class="container">
+    <div class="authority-hd reveal">
+      <span class="section-label">Credibilidade</span>
+      <h2>A experi�ncia de quem vive a odontologia todos os dias</h2>
+      <p>A SuperDental nasceu focada no mercado odontol�gico e construiu sua atua��o entendendo as particularidades do setor, das especialidades, da jornada de decis�o do paciente e da opera��o comercial da cl�nica.</p>
+    </div>
+
+    <div class="auth-grid">
+      <div class="auth-card reveal d1">
+        <div class="auth-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <div class="auth-num"><span>+11</span></div>
+        <div class="auth-lbl">anos de mercado com atua��o exclusiva em odontologia</div>
+      </div>
+      <div class="auth-card reveal d2">
+        <div class="auth-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="auth-num"><span>+2.000</span></div>
+        <div class="auth-lbl">cl�nicas e consult�rios atendidos em todo o Brasil</div>
+      </div>
+      <div class="auth-card reveal d3">
+        <div class="auth-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        </div>
+        <div class="auth-num"><span>100%</span></div>
+        <div class="auth-lbl">atua��o especializada em odontologia</div>
+      </div>
+      <div class="auth-card reveal d4">
+        <div class="auth-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        </div>
+        <div class="auth-num" style="font-size:1.6rem"><span>Acomp.</span></div>
+        <div class="auth-lbl">pr�ximo com foco em performance</div>
+      </div>
+    </div>
+
+    <div class="auth-quote reveal">
+      <p class="auth-quote-text">Marketing n�o � sobre likes. � sobre ter pacientes na cadeira.</p>
+      <div class="auth-quote-div"></div>
+      <div class="auth-quote-attr">
+        <span class="aq-name">Filosofia SuperDental</span>
+        <span class="aq-role">Desde 2013</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 3 - DOR DO MERCADO
+================================================================ -->
+<section class="pain">
+  <div class="container">
+    <div class="pain-hd reveal">
+      <span class="section-label" style="color:var(--orange)">O diagn�stico do mercado</span>
+      <h2>O maior desafio das cl�nicas <em>n�o � anunciar.</em></h2>
+      <p>Cl�nicas jogam dinheiro fora porque acham que s� criando um an�ncio v�o conquistar mais pacientes.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal d1">
+        <div class="pain-n">01</div>
+        <div class="pain-ttl">Recebe leads, mas poucos agendam</div>
+        <div class="pain-desc">O tr�fego chega, mas a estrutura de atendimento n�o est� preparada para transformar interesse em consulta marcada.</div>
+      </div>
+      <div class="pain-card reveal d2">
+        <div class="pain-n">02</div>
+        <div class="pain-ttl">Agenda avalia��es, mas fecha pouco</div>
+        <div class="pain-desc">Pacientes chegam � avalia��o, mas a equipe n�o tem processo e acompanhamento para fechar o tratamento.</div>
+      </div>
+      <div class="pain-card reveal d3">
+        <div class="pain-n">03</div>
+        <div class="pain-ttl">Investe e n�o sabe o que funciona</div>
+        <div class="pain-desc">Sem rastreio e m�tricas claras, a cl�nica continua investindo no escuro, sem saber qual a��o gera resultado real.</div>
+      </div>
+      <div class="pain-card reveal d4">
+        <div class="pain-n">04</div>
+        <div class="pain-ttl">Atua com a��es soltas, sem previsibilidade</div>
+        <div class="pain-desc">Estrat�gia, p�ginas, campanhas, atendimento e acompanhamento precisam trabalhar juntos. Desconectados, o resultado n�o aparece.</div>
+      </div>
+    </div>
+
+    <div class="pain-synth reveal">
+      <p>O problema de muitas cl�nicas n�o � falta de tr�fego. � <strong>falta de m�todo.</strong><br>A SuperDental une estrat�gia, convers�o, tr�fego, atendimento e otimiza��o.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 4 - METODOLOGIA SUPERDENTAL
+================================================================ -->
+<section class="methodology" id="metodologia">
+  <div class="container">
+    <div class="method-hd reveal">
+      <span class="section-label">Nossa metodologia</span>
+      <h2>A Metodologia SuperDental foi desenhada para transformar marketing em resultado comercial.</h2>
+      <p>Ela combina tr�fego qualificado, p�ginas de convers�o, comunica��o estrat�gica, acompanhamento de performance e organiza��o comercial da cl�nica.</p>
+    </div>
+
+    <div class="method-flow reveal">
+
+      <div class="m-step">
+        <div class="step-ring">
+          <span class="step-badge">1</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="step-ttl">Diagn�stico e dire��o estrat�gica</div>
+        <div class="step-desc">Entendemos a fundo a cl�nica, o mercado e os objetivos para definir a dire��o certa desde o in�cio.</div>
+      </div>
+
+      <div class="m-step">
+        <div class="step-ring">
+          <span class="step-badge">2</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="step-ttl">Estrutura de convers�o</div>
+        <div class="step-desc">P�ginas e fluxos otimizados para transformar visitante em lead qualificado com real inten��o de tratamento.</div>
+      </div>
+
+      <div class="m-step">
+        <div class="step-ring">
+          <span class="step-badge">3</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="step-ttl">Tr�fego qualificado</div>
+        <div class="step-desc">Campanhas segmentadas que atraem pacientes com real inten��o de tratamento, n�o apenas impress�es.</div>
+      </div>
+
+      <div class="m-step">
+        <div class="step-ring">
+          <span class="step-badge">4</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="1.8"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        </div>
+        <div class="step-ttl">Convers�o e acompanhamento</div>
+        <div class="step-desc">Suporte ao time de atendimento e relat�rios de performance para maximizar o fechamento de tratamentos.</div>
+      </div>
+
+      <div class="m-step">
+        <div class="step-ring">
+          <span class="step-badge">5</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="1.8"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg>
+        </div>
+        <div class="step-ttl">Otimiza��o cont�nua</div>
+        <div class="step-desc">An�lise constante dos dados para melhorar cada etapa e garantir crescimento previs�vel ao longo do tempo.</div>
+      </div>
+
+    </div>
+
+    <div class="method-cta-wrap reveal">
+      <a href="#contato" class="btn-primary">
+        Quero entender como a metodologia se aplica � minha cl�nica
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 5 - ENTREG�VEIS DA METODOLOGIA
+================================================================ -->
+<section class="deliverables" id="solucoes">
+  <div class="container">
+    <div class="deliv-hd reveal">
+      <span class="section-label">O que entregamos</span>
+      <h2>O que entregamos dentro da metodologia</h2>
+      <p>Em vez de vender servi�os soltos, a SuperDental organiza cada frente para apoiar o crescimento da cl�nica de ponta a ponta.</p>
+    </div>
+
+    <div class="deliv-grid">
+
+      <div class="deliv-card reveal d1">
+        <div class="deliv-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="deliv-ttl">Aquisi��o de pacientes</div>
+        <div class="deliv-desc">Campanhas de tr�fego pago, SEO e estrat�gias multicanal focadas em atrair os pacientes certos para cada especialidade.</div>
+      </div>
+
+      <div class="deliv-card reveal d2">
+        <div class="deliv-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="deliv-ttl">Estrutura digital</div>
+        <div class="deliv-desc">Sites, landing pages e funis de convers�o projetados para transformar visitantes em leads e leads em consultas agendadas.</div>
+      </div>
+
+      <div class="deliv-card reveal d3">
+        <div class="deliv-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="deliv-ttl">Conte�do e posicionamento</div>
+        <div class="deliv-desc">Comunica��o estrat�gica para construir autoridade, confian�a e reconhecimento de marca no mercado odontol�gico.</div>
+      </div>
+
+      <div class="deliv-card reveal d4">
+        <div class="deliv-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        </div>
+        <div class="deliv-ttl">Gest�o comercial e acompanhamento</div>
+        <div class="deliv-desc">Relat�rios de performance, apoio ao time de atendimento e acompanhamento pr�ximo para maximizar a convers�o.</div>
+      </div>
+
+      <div class="deliv-card reveal">
+        <div class="deliv-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg>
+        </div>
+        <div class="deliv-ttl">Evolu��o cont�nua</div>
+        <div class="deliv-desc">An�lise de dados, testes e otimiza��es peri�dicas em todas as frentes para garantir crescimento consistente e previs�vel.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 6 - PARA QUEM �
+================================================================ -->
+<section class="for-who">
+  <div class="container">
+    <div class="for-who-grid">
+
+      <div class="for-who-content reveal">
+        <span class="section-label">Para quem �</span>
+        <h2>A SuperDental � para cl�nicas e consult�rios que querem crescer com <em>mais m�todo e menos achismo.</em></h2>
+
+        <div class="checklist">
+          <div class="ck-item">
+            <div class="ck-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <span class="ck-text">Querem aumentar a entrada de pacientes qualificados</span>
+          </div>
+          <div class="ck-item">
+            <div class="ck-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <span class="ck-text">Desejam melhorar a convers�o de leads em agendamentos</span>
+          </div>
+          <div class="ck-item">
+            <div class="ck-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <span class="ck-text">Precisam fortalecer posicionamento</span>
+          </div>
+          <div class="ck-item">
+            <div class="ck-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <span class="ck-text">Querem investir com mais clareza e acompanhamento</span>
+          </div>
+        </div>
+
+        <div class="partner-note">
+          Buscamos cl�nicas que entendam que crescimento com previsibilidade exige m�todo, compromisso e parceria de longo prazo.
+        </div>
+      </div>
+
+      <div class="for-who-tiles reveal">
+        <div class="fw-tile">
+          <div class="fw-tile-ttl">+11 anos</div>
+          <div class="fw-tile-desc">de atua��o exclusiva entendendo a fundo como cl�nicas odontol�gicas crescem com m�todo e consist�ncia</div>
+        </div>
+        <div class="fw-tile">
+          <div class="fw-tile-ttl">+2.000</div>
+          <div class="fw-tile-desc">cl�nicas e consult�rios atendidos em todo o Brasil</div>
+        </div>
+        <div class="fw-tile">
+          <div class="fw-tile-ttl">M�todo</div>
+          <div class="fw-tile-desc">Mais do que divulgar, ajudamos cl�nicas a estruturar crescimento</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 7 - CASES E DEPOIMENTOS
+================================================================ -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="cases-hd reveal">
+      <span class="section-label">Resultados reais</span>
+      <h2>Resultados reais para cl�nicas que decidiram fazer marketing do jeito certo.</h2>
+      <p>Mais do que divulgar, ajudamos cl�nicas a estruturar crescimento. Os cases mostram contexto, estrat�gia aplicada e melhora percebida.</p>
+    </div>
+
+    <div class="test-grid">
+
+      <div class="test-card reveal d1">
+        <span class="test-tag-pill">Implantodontia � S�o Paulo, SP</span>
+        <p class="test-quote">"Antes da SuperDental, eu tinha tr�fego mas n�o tinha pacientes fechando. Com a metodologia deles, entendemos onde estava quebrando e em tr�s meses a convers�o dobrou."</p>
+        <div class="test-hr"></div>
+        <div class="test-author">
+          <div class="test-av" style="background:linear-gradient(135deg,#00B4A6,#009189)">DR</div>
+          <div>
+            <div class="test-name">Dr. Rafael Costa</div>
+            <div class="test-meta">Cl�nica de Implantodontia � S�o Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal d2">
+        <span class="test-tag-pill">Ortodontia � Curitiba, PR</span>
+        <p class="test-quote">"O que me impressionou foi o acompanhamento. N�o � uma ag�ncia que some ap�s a entrega. Eles est�o junto, analisam os dados e ajustam o que precisa para o resultado aparecer."</p>
+        <div class="test-hr"></div>
+        <div class="test-author">
+          <div class="test-av" style="background:linear-gradient(135deg,#F47A20,#D9670F)">DM</div>
+          <div>
+            <div class="test-name">Dra. Mariana Luz</div>
+            <div class="test-meta">Cl�nica de Ortodontia � Curitiba</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card reveal d3">
+        <span class="test-tag-pill">Cl�nica Geral � Belo Horizonte, MG</span>
+        <p class="test-quote">"Finalmente entendi o que estava errado. N�o era o an�ncio - era o processo todo. A SuperDental estruturou cada etapa e os resultados vieram com mais consist�ncia."</p>
+        <div class="test-hr"></div>
+        <div class="test-author">
+          <div class="test-av" style="background:linear-gradient(135deg,#7B3F9E,#5A2B7A)">DA</div>
+          <div>
+            <div class="test-name">Dr. Andr� Mendes</div>
+            <div class="test-meta">Cl�nica Odontol�gica � Belo Horizonte</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cases-ft reveal">
+      <a href="#" class="btn-outline-dark">
+        Ver todos os cases
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     BLOCO 8 - CTA FINAL
+================================================================ -->
+<section class="cta-final" id="contato">
+  <div class="cta-lines">
+    <div class="cta-line" style="top:18%"></div>
+    <div class="cta-line" style="top:50%"></div>
+    <div class="cta-line" style="top:82%"></div>
+  </div>
+
+  <div class="container">
+    <div class="cta-inner">
+      <span class="section-label">Pr�ximo passo</span>
+      <h2>Sua cl�nica n�o precisa de mais uma ag�ncia. Precisa de uma <em>metodologia que fa�a sentido para a odontologia.</em></h2>
+      <p>Se voc� quer atrair os pacientes certos, melhorar sua convers�o e crescer com mais previsibilidade, fale com a SuperDental.</p>
+
+      <a href="#" class="btn-cta">
+        Quero uma an�lise da minha cl�nica
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <div class="cta-trust">
+        <div class="cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          Sem compromisso inicial
+        </div>
+        <div class="cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          Diagn�stico personalizado
+        </div>
+        <div class="cta-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          +11 anos de especializa��o
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="Logo-SuperDental-rodape.png?v=2" alt="SuperDental">
+        <p class="footer-tagline">Metodologia de crescimento para cl�nicas e consult�rios odontol�gicos. Mais do que divulgar - estruturamos crescimento.</p>
+        <div class="footer-socials">
+          <a href="#" class="soc-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-1.95C18.88 4 12 4 12 4s-6.88 0-8.6.47a2.78 2.78 0 00-1.95 1.95A29 29 0 001 12a29 29 0 00.47 5.58A2.78 2.78 0 003.4 19.5C5.12 20 12 20 12 20s6.88 0 8.6-.47a2.78 2.78 0 001.94-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Metodologia</h4>
+        <ul class="footer-links">
+          <li><a href="#metodologia">Como funciona</a></li>
+          <li><a href="#metodologia">Diagn�stico estrat�gico</a></li>
+          <li><a href="#metodologia">Estrutura de convers�o</a></li>
+          <li><a href="#metodologia">Tr�fego qualificado</a></li>
+          <li><a href="#metodologia">Otimiza��o cont�nua</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solu��es</h4>
+        <ul class="footer-links">
+          <li><a href="#solucoes">Aquisi��o de pacientes</a></li>
+          <li><a href="#solucoes">Estrutura digital</a></li>
+          <li><a href="#solucoes">Conte�do e posicionamento</a></li>
+          <li><a href="#solucoes">Gest�o comercial</a></li>
+          <li><a href="#cases">Cases</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="#">Sobre a SuperDental</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">� 2025 SuperDental�. Todos os direitos reservados.</span>
+      <div class="footer-legal">
+        <a href="#">Pol�tica de privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ================================================================
+     SCRIPTS
+================================================================ -->
+<script>
+  /* ---- Header scroll ---- */
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Mobile menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  /* ---- Scroll reveal ---- */
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+
+  reveals.forEach(el => revealObs.observe(el));
+
+  /* ---- Smooth anchors ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ---- Hero elements immediate reveal ---- */
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 120 + i * 80);
+  });
+</script>
+
+</body>
+</html>
+
