@@ -69,7 +69,7 @@
        RESET & BASE
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: var(--font-body);
       background: var(--ink);
@@ -324,7 +324,7 @@
     }
     .btn-pill-arrow {
       width: 36px; height: 36px;
-      background: var(--ink);
+      background: var(--teal);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; color: var(--cream);
@@ -467,6 +467,12 @@
     .hero-h1-big:nth-child(2) { animation-delay: .65s; }
     .hero-h1-big.overflow { margin-right: 0; }
 
+    .hero-h1-white {
+      background: linear-gradient(170deg, #FFFFFF 0%, #d8f0ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero-h1-italic {
       display: block;
       font-family: var(--font-disp);
@@ -2183,86 +2189,107 @@
 
     @media (max-width: 600px) {
       /* ── Container ── */
-      .container, .container-wide { padding: 0 24px; }
+      .container, .container-wide {
+        padding: 0 20px;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
 
       /* ── Hero ── */
-      .hero { overflow-x: clip; }
+      .hero {
+        overflow: hidden;
+        width: 100vw;
+        max-width: 100vw;
+      }
 
       .hero-inner {
         padding: 2.5rem 0 2rem;
         width: 100%;
+        max-width: 100%;
+        justify-content: center;
       }
 
       .hero-copy {
-        width: 100%;
+        width: calc(100vw - 40px);
+        max-width: calc(100vw - 40px);
+        margin: 0 auto;
         text-align: center;
+        box-sizing: border-box;
       }
 
       .hero-eyebrow {
         font-size: .6rem;
         padding: .38rem .85rem .38rem .65rem;
-        max-width: calc(100vw - 48px);
+        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
-      /* Força quebra entre "Marketing" e "odontológico" */
       .hero-h1-big {
-        font-size: 8.5vw !important;
-        line-height: 1.1;
-        letter-spacing: -.03em;
-        overflow-wrap: break-word;
+        font-size: 7.8vw !important;
+        line-height: 1.12;
+        letter-spacing: -.02em;
+        white-space: normal;
         word-break: break-word;
       }
 
       .hero-h1-italic {
-        font-size: 8.5vw !important;
+        font-size: 7.8vw !important;
         line-height: 1.15;
-        letter-spacing: -.03em;
+        letter-spacing: -.02em;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         gap: .2rem;
+        white-space: normal;
       }
 
       .hero-h1-icons {
         display: inline-flex;
         margin-left: .1em;
         gap: .2em;
+        flex-shrink: 0;
       }
-      .hero-inline-icon       { width: 32px; height: 32px; font-size: .85rem; }
-      .hero-inline-icon-2     { width: 27px; height: 27px; font-size: .75rem; }
+      .hero-inline-icon   { width: 30px; height: 30px; font-size: .8rem; }
+      .hero-inline-icon-2 { width: 26px; height: 26px; font-size: .72rem; }
 
       .hero-h1-mid {
-        font-size: .9rem !important;
-        margin-top: .9rem;
+        font-size: .88rem !important;
+        margin-top: .85rem;
+        max-width: 100%;
         overflow-wrap: break-word;
       }
 
       .hero-sub {
-        font-size: .9rem;
-        margin: 1rem auto 1.5rem;
+        font-size: .88rem;
+        margin: .9rem auto 1.4rem;
+        max-width: 100%;
         overflow-wrap: break-word;
       }
 
       .hero-ctas {
         flex-direction: column;
         align-items: stretch;
-        gap: .75rem;
+        gap: .7rem;
         margin-bottom: 2rem;
       }
 
       .btn-pill {
         justify-content: space-between;
-        padding: .78rem .78rem .78rem 1.3rem;
-        font-size: .88rem;
+        padding: .78rem .78rem .78rem 1.25rem;
+        font-size: .87rem;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .btn.btn-ghost {
         justify-content: center;
-        font-size: .88rem;
+        font-size: .87rem;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .hero-deco-left, .hero-deco-right { display: none; }
@@ -2427,7 +2454,7 @@
 
         <h1 class="hero-h1">
           <span class="hero-h1-big">Marketing odontológico</span>
-          <span class="hero-h1-italic">com método
+          <span class="hero-h1-italic"><span class="hero-h1-white">com</span> método
             <span class="hero-h1-icons">
               <span class="hero-inline-icon">🎯</span>
               <span class="hero-inline-icon hero-inline-icon-2">📈</span>
