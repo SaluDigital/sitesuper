@@ -147,7 +147,7 @@
       display: inline-flex; align-items: center; gap: .55rem;
       font-family: var(--font-body); font-weight: 600; font-size: .9rem;
       border: none; cursor: pointer; transition: all .25s ease;
-      white-space: nowrap; padding: .85rem 1.8rem; border-radius: 6px;
+      white-space: nowrap; padding: .85rem 1.8rem; border-radius: 100px;
       letter-spacing: .01em;
     }
     .btn-gold {
@@ -155,7 +155,7 @@
     }
     .btn-gold:hover {
       background: var(--gold-hi); transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(212,149,42,0.35);
+      box-shadow: 0 12px 32px rgba(27,181,164,0.4);
     }
     .btn-ghost {
       background: transparent; color: var(--cream);
@@ -247,111 +247,276 @@
     }
     .hero-ambient::before {
       content: '';
-      position: absolute; top: -20%; right: -10%;
-      width: 70%; height: 90%;
+      position: absolute; top: -10%; left: 50%;
+      transform: translateX(-50%);
+      width: 90%; height: 80%;
       background: radial-gradient(ellipse at center,
-        rgba(27,181,164,0.06) 0%,
-        rgba(27,181,164,0.02) 40%,
-        transparent 70%);
-    }
-    .hero-ambient::before {
-      content: '';
-      position: absolute; top: -20%; right: -10%;
-      width: 70%; height: 90%;
-      background: radial-gradient(ellipse at center,
-        rgba(212,149,42,0.07) 0%,
-        rgba(212,149,42,0.03) 40%,
+        rgba(18,48,220,0.22) 0%,
+        rgba(27,181,164,0.10) 40%,
         transparent 70%);
     }
     .hero-ambient::after {
       content: '';
-      position: absolute; bottom: -10%; left: -10%;
-      width: 50%; height: 60%;
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%; height: 40%;
       background: radial-gradient(ellipse at center,
-        rgba(212,149,42,0.04) 0%, transparent 60%);
+        rgba(212,149,42,0.07) 0%, transparent 65%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background-image:
+        linear-gradient(rgba(27,181,164,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,181,164,0.035) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%);
     }
 
     .hero-inner {
       position: relative; z-index: 3;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem; align-items: center;
-      padding: 5rem 0 4rem;
+      display: flex; justify-content: center;
+      padding: 4rem 0 3.5rem;
       width: 100%;
     }
 
-    /* LEFT: Typography */
-    .hero-copy { position: relative; }
+    .hero-copy {
+      position: relative;
+      text-align: center;
+      max-width: 860px;
+      width: 100%;
+    }
 
+    @keyframes blink        { 0%,100%{ opacity:1; } 50%{ opacity:.3; } }
+    @keyframes fade-up-in   { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fade-in      { from { opacity:0; } to { opacity:1; } }
+    @keyframes glow-pulse   {
+      0%,100% { text-shadow: 0 0 40px rgba(27,181,164,0.4); }
+      50%     { text-shadow: 0 0 90px rgba(27,181,164,0.75), 0 0 160px rgba(27,181,164,0.25); }
+    }
+    @keyframes scan-sweep {
+      0%   { top: 74px; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    @keyframes spin-slow  { to { transform: rotate(360deg); } }
+    @keyframes float-icon {
+      0%,100% { transform: translateY(0) rotate(-4deg); }
+      50%     { transform: translateY(-14px) rotate(4deg); }
+    }
+
+    /* ============================================================
+       BTN PÍLULA — estilo referência (CTA principal hero)
+    ============================================================ */
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: rgba(255,255,255,0.94);
+      color: var(--ink);
+      border: none; border-radius: 100px;
+      padding: .62rem .62rem .62rem 1.45rem;
+      font-family: var(--font-body); font-weight: 700; font-size: .92rem;
+      cursor: pointer; letter-spacing: .01em;
+      transition: all .25s ease; white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 38px rgba(27,181,164,0.4);
+      background: #fff;
+    }
+    .btn-pill-arrow {
+      width: 36px; height: 36px;
+      background: var(--ink);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--cream);
+      transition: background .25s;
+    }
+    .btn-pill:hover .btn-pill-arrow { background: var(--teal); color: #fff; }
+
+    /* ============================================================
+       ÍCONES INLINE NO TÍTULO — estilo referência
+    ============================================================ */
+    .hero-h1-icons {
+      display: inline-flex; gap: .3em; align-items: center;
+      vertical-align: middle; margin-left: .3em;
+    }
+    .hero-inline-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px;
+      background: rgba(27,181,164,0.12);
+      border: 1px solid rgba(27,181,164,0.22);
+      border-radius: 50%; font-size: 1.35rem;
+      animation: float-icon 5s ease-in-out infinite;
+    }
+    .hero-inline-icon-2 {
+      animation-delay: -2.5s;
+      background: rgba(240,112,48,0.10);
+      border-color: rgba(240,112,48,0.18);
+      width: 44px; height: 44px; font-size: 1.1rem;
+    }
+
+    /* ============================================================
+       DECORAÇÕES FLUTUANTES — órbita esquerda + ícone direita
+    ============================================================ */
+    .hero-deco-left {
+      position: absolute; left: 5%; top: 50%;
+      transform: translateY(-50%);
+      width: 148px; height: 148px;
+      pointer-events: none; z-index: 2;
+      opacity: 0;
+      animation: fade-in 1s ease forwards 1.6s;
+    }
+    .hero-deco-left-ring {
+      position: absolute; inset: 0;
+      border: 1.5px dashed rgba(27,181,164,0.28);
+      border-radius: 50%;
+      animation: spin-slow 10s linear infinite;
+    }
+    .hero-deco-left-dot {
+      position: absolute;
+      width: 9px; height: 9px;
+      background: var(--teal);
+      border-radius: 50%;
+      top: -4.5px; left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 12px var(--teal), 0 0 24px rgba(27,181,164,0.4);
+    }
+    .hero-deco-left-inner {
+      position: absolute; inset: 16px;
+      border: 1px dashed rgba(27,181,164,0.14);
+      border-radius: 50%;
+      animation: spin-slow 7s linear infinite reverse;
+    }
+    .hero-deco-left-center {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-deco-right {
+      position: absolute; right: 5%; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; z-index: 3;
+      opacity: 0;
+      animation: fade-in .8s ease forwards 1.3s;
+    }
+    .hero-deco-right-wrap {
+      width: 130px; height: 130px;
+      animation: float-icon 5.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 28px rgba(27,181,164,0.45));
+    }
+
+    @media (max-width: 1100px) {
+      .hero-deco-left, .hero-deco-right { display: none; }
+    }
+
+    .hero-scan-line {
+      position: absolute; left: 0; right: 0; top: 74px;
+      height: 1px; z-index: 10; pointer-events: none;
+      background: linear-gradient(90deg, transparent 0%, rgba(27,181,164,0.7) 50%, transparent 100%);
+      animation: scan-sweep 1.8s cubic-bezier(.4,0,.6,1) forwards .2s;
+      opacity: 0;
+    }
+
+    /* Hero badge pílula — estilo referência */
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex; align-items: center; gap: .55rem;
       font-size: .72rem; font-weight: 600;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 2rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 100px;
+      padding: .45rem 1.1rem .45rem .7rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: fade-in .6s ease forwards .4s;
     }
+    .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
     .hero-eyebrow-dot {
-      width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+      width: 7px; height: 7px;
+      background: var(--teal); border-radius: 50%;
+      box-shadow: 0 0 8px var(--teal), 0 0 16px rgba(27,181,164,0.5);
       animation: blink 2s ease-in-out infinite;
+      flex-shrink: 0;
     }
-    @keyframes blink {
-      0%,100%{ opacity:1; } 50%{ opacity:.3; }
+    .hero-eyebrow-brand {
+      color: var(--teal-hi); font-weight: 700;
     }
 
-    /* The oversized headline �?" the defining visual moment */
+    /* The oversized headline */
     .hero-h1 {
-      margin-bottom: 1.8rem;
+      margin-bottom: 0;
       overflow: visible;
     }
     .hero-h1-big {
       display: block;
       font-family: var(--font-disp);
       font-weight: 800;
-      font-size: clamp(2.6rem, 6vw, 5.2rem);
-      line-height: 1.1;
-      padding-bottom: 0.1em;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      padding-bottom: 0.05em;
       letter-spacing: -.04em;
-      color: var(--cream);
-      background: linear-gradient(160deg, #FFFFFF 0%, #EDF6F5 50%, rgba(237,246,245,0.8) 100%);
+      background: linear-gradient(170deg, #FFFFFF 0%, #d8f0ee 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      opacity: 0;
+      animation: fade-up-in .8s cubic-bezier(.22,1,.36,1) forwards .5s;
     }
-    .hero-h1-big.overflow {
-      margin-right: -2.5rem;
-    }
+    .hero-h1-big:nth-child(2) { animation-delay: .65s; }
+    .hero-h1-big.overflow { margin-right: 0; }
+
     .hero-h1-italic {
       display: block;
-      font-family: var(--font-ital);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.15rem, 2vw, 1.65rem);
-      color: rgba(27,181,164,0.9);
-      letter-spacing: .01em;
-      line-height: 1.4;
-      margin-top: .4rem;
-      margin-bottom: .4rem;
+      font-family: var(--font-disp);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      color: #1bb5a4;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      opacity: 0;
+      animation:
+        fade-up-in .8s cubic-bezier(.22,1,.36,1) forwards .8s,
+        glow-pulse 3.5s ease-in-out infinite 2s;
     }
     .hero-h1-mid {
       display: block;
       font-family: var(--font-disp);
-      font-weight: 600;
-      font-size: clamp(1.05rem, 1.8vw, 1.45rem);
-      letter-spacing: -.02em;
-      color: rgba(237,246,245,0.75);
-      line-height: 1.3;
+      font-weight: 400;
+      font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+      letter-spacing: .02em;
+      color: rgba(237,246,245,0.6);
+      line-height: 1.65;
+      margin: 1.4rem auto 0;
+      max-width: 52ch;
+      opacity: 0;
+      animation: fade-up-in .7s ease forwards 1s;
     }
 
     .hero-divider {
-      width: 60px; height: 1px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      margin: 1.75rem 0;
+      width: 1px; height: 28px;
+      background: linear-gradient(180deg, transparent, var(--teal), transparent);
+      margin: 1.2rem auto;
+      opacity: 0;
+      animation: fade-in .6s ease forwards 1.15s;
     }
 
     .hero-sub {
-      font-size: .98rem; color: rgba(240,234,224,0.55);
-      line-height: 1.75; max-width: 460px; margin-bottom: 2.5rem;
+      font-size: 1.05rem; color: rgba(240,234,224,0.65);
+      line-height: 1.75; max-width: 520px;
+      margin: 2rem auto 2.2rem;
+      opacity: 0;
+      animation: fade-up-in .7s ease forwards 1.25s;
     }
 
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: nowrap;
+      align-items: center; justify-content: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fade-up-in .7s ease forwards 1.4s;
+    }
 
     .hero-proof-row {
       display: flex; gap: 2rem;
@@ -523,8 +688,8 @@
       gap: 4rem; align-items: end;
     }
     .auth-stmt-left {
-      font-family: var(--font-ital); font-style: italic;
-      font-size: clamp(1.3rem, 2.8vw, 2.2rem); font-weight: 300;
+      font-family: var(--font-disp);
+      font-size: clamp(1.3rem, 2.8vw, 2.2rem); font-weight: 400;
       color: var(--cream); line-height: 1.3;
     }
     .auth-stmt-left em { color: var(--gold); font-style: normal; }
@@ -570,7 +735,8 @@
       color: var(--ink); line-height: 1.05; margin-bottom: 1.5rem;
     }
     .pain-left h2 em {
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-family: var(--font-disp);
+      font-style: normal; font-weight: 800;
       color: var(--gold-lo);
     }
     .pain-left p {
@@ -610,23 +776,61 @@
     }
     .pain-desc { font-size: .85rem; color: var(--cream-3); line-height: 1.65; }
 
+    @keyframes synth-glow {
+      0%, 100% { box-shadow: 0 0 32px rgba(27,181,164,0.1), 0 8px 40px rgba(9,9,15,0.35); border-color: rgba(27,181,164,0.35); }
+      50%       { box-shadow: 0 0 52px rgba(27,181,164,0.28), 0 8px 40px rgba(9,9,15,0.35); border-color: rgba(27,181,164,0.65); }
+    }
+    @keyframes accent-flow {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 0% 200%; }
+    }
+    /* Wrapper com borda giratória */
+    .pain-synth-wrap {
+      grid-column: 1 / -1; margin-top: 2rem;
+      position: relative;
+      border-radius: calc(var(--radius-lg) + 2px);
+      padding: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(27,181,164,0.12), 0 8px 40px rgba(9,9,15,0.35);
+    }
+    .pain-synth-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -120%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        var(--teal) 12%,
+        rgba(27,181,164,0.4) 20%,
+        transparent 32%,
+        transparent 52%,
+        var(--orange) 62%,
+        rgba(240,112,48,0.3) 70%,
+        transparent 82%
+      );
+      animation: spin-slow 4s linear infinite;
+    }
     .pain-synth {
-      grid-column: 1 / -1; margin-top: 1rem;
-      padding: 1.5rem 2rem;
+      position: relative;
+      padding: 2rem 2.5rem;
       background: var(--ink);
+      border: none;
       border-radius: var(--radius-lg);
-      display: flex; align-items: center; gap: 1.5rem;
+      display: flex; align-items: stretch; gap: 1.75rem;
+      animation: synth-glow 3s ease-in-out infinite;
     }
     .ps-accent {
-      flex-shrink: 0; width: 3px; height: 50px;
-      background: linear-gradient(180deg, var(--gold), transparent);
+      flex-shrink: 0; width: 5px; align-self: stretch;
+      background: linear-gradient(180deg, var(--teal), var(--gold), var(--teal));
+      background-size: 100% 200%;
       border-radius: 4px;
+      animation: accent-flow 2.5s linear infinite;
     }
     .pain-synth p {
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
-      font-size: 1.05rem; color: rgba(240,234,224,0.85); line-height: 1.6;
+      font-family: var(--font-disp); font-weight: 500;
+      font-size: 1.2rem; color: rgba(240,234,224,0.92); line-height: 1.65;
     }
-    .pain-synth strong { color: var(--gold); font-style: normal; font-family: var(--font-disp); font-weight: 700; }
+    .pain-synth strong { color: var(--teal); font-style: normal; font-family: var(--font-disp); font-weight: 800; }
 
     /* ============================================================
        METHODOLOGY �?" Dark centerpiece, orbital SVG visualization
@@ -648,7 +852,8 @@
       color: var(--cream); line-height: 1.1; margin-bottom: 1rem;
     }
     .method-header h2 em {
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-family: var(--font-disp);
+      font-style: normal; font-weight: 800;
       color: var(--gold);
     }
     .method-header p {
@@ -979,7 +1184,7 @@
       color: var(--gold); letter-spacing: .12em;
     }
     .deliv-tab-title {
-      font-size: .75rem; font-weight: 600;
+      font-size: 1.08rem; font-weight: 600;
       color: rgba(240,234,224,.45); letter-spacing: .04em;
     }
 
@@ -1014,12 +1219,12 @@
     }
 
     .deliv-c-title {
-      font-family: var(--font-disp); font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+      font-family: var(--font-disp); font-size: clamp(1.55rem, 2.6vw, 2.2rem);
       font-weight: 800; letter-spacing: -.03em;
       color: var(--cream); line-height: 1.15; margin-bottom: .85rem;
     }
     .deliv-c-desc {
-      font-size: .88rem; color: rgba(240,234,224,.55);
+      font-size: 1.12rem; color: rgba(240,234,224,.65);
       line-height: 1.75; max-width: 420px; margin-bottom: 1.75rem;
     }
 
@@ -1425,7 +1630,8 @@
       color: var(--cream); line-height: 1.1; margin-bottom: 2.5rem;
     }
     .target-content h2 em {
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-family: var(--font-disp);
+      font-style: normal; font-weight: 800;
       color: var(--gold);
     }
 
@@ -1457,7 +1663,6 @@
       border-left: 2px solid var(--gold);
       border-radius: 0 var(--radius) var(--radius) 0;
       font-size: .85rem; color: var(--cream-2);
-      font-style: italic;
     }
 
     /* Visual zone �?" right side */
@@ -1537,7 +1742,8 @@
       color: var(--ink); line-height: 1.05; max-width: 20ch;
     }
     .cases-head h2 em {
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-family: var(--font-disp);
+      font-style: normal; font-weight: 800;
       color: var(--teal-lo);
     }
     .cases-score {
@@ -1582,7 +1788,7 @@
     .test-progress.running {
       transition: width 5s linear;
     }
-    .test-slides { position: relative; min-height: 380px; }
+    .test-slides { position: relative; min-height: 480px; }
 
     .test-slide {
       display: grid;
@@ -1614,7 +1820,7 @@
 
     .test-q {
       position: relative;
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-family: var(--font-disp); font-weight: 400;
       font-size: clamp(1.12rem, 2vw, 1.6rem);
       line-height: 1.7; color: var(--ink-3);
       padding-left: 1.4rem; margin-bottom: 2.5rem;
@@ -1838,8 +2044,8 @@
     }
     .cta-inner h2 .cta-italic {
       display: block;
-      font-family: var(--font-ital); font-style: italic; font-weight: 300;
-      font-size: clamp(1.6rem, 3.5vw, 3.2rem);
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.9rem, 4.5vw, 4rem);
       color: var(--teal); margin-top: .2rem;
     }
     .cta-inner p {
@@ -1852,7 +2058,7 @@
     }
     .btn-cta-main {
       background: var(--gold); color: #fff;
-      padding: 1.1rem 2.5rem; border-radius: 8px;
+      padding: 1.1rem 2.5rem; border-radius: 100px;
       font-family: var(--font-disp); font-weight: 700; font-size: 1rem;
       letter-spacing: -.01em; border: none; cursor: pointer;
       transition: all .25s;
@@ -1860,7 +2066,7 @@
     }
     .btn-cta-main:hover {
       background: var(--gold-hi); transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(212,149,42,0.4);
+      box-shadow: 0 16px 40px rgba(27,181,164,0.45);
     }
 
     .cta-trust-row {
@@ -1937,7 +2143,7 @@
        RESPONSIVE
     ============================================================ */
     @media (max-width: 1100px) {
-      .hero-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .hero-inner { padding: 5rem 0 4rem; }
       .authority-grid { grid-template-columns: 1fr 1fr; }
       .auth-divider { display: none; }
       .auth-stat { padding: 1.5rem; }
@@ -1962,7 +2168,7 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.1);
       }
       .header-nav.open a { color: #3A5A58; }
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; }
+      .hero-inner { padding: 4rem 0 3rem; }
       .hero-visual { order: -1; }
       .hero .fc-1, .hero .fc-2, .hero .fc-3 { display: none; }
       .authority-statement { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1976,12 +2182,115 @@
     }
 
     @media (max-width: 600px) {
-      .hero-h1-big { font-size: clamp(1.8rem, 9.5vw, 2.7rem) !important; line-height: 1.1; }
-      .hero-h1-mid { font-size: clamp(.85rem, 3.2vw, 1rem); }
+      /* ── Container ── */
+      .container, .container-wide { padding: 0 24px; }
+
+      /* ── Hero ── */
+      .hero { overflow-x: clip; }
+
+      .hero-inner {
+        padding: 2.5rem 0 2rem;
+        width: 100%;
+      }
+
+      .hero-copy {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-eyebrow {
+        font-size: .6rem;
+        padding: .38rem .85rem .38rem .65rem;
+        max-width: calc(100vw - 48px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* Força quebra entre "Marketing" e "odontológico" */
+      .hero-h1-big {
+        font-size: 8.5vw !important;
+        line-height: 1.1;
+        letter-spacing: -.03em;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .hero-h1-italic {
+        font-size: 8.5vw !important;
+        line-height: 1.15;
+        letter-spacing: -.03em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: .2rem;
+      }
+
+      .hero-h1-icons {
+        display: inline-flex;
+        margin-left: .1em;
+        gap: .2em;
+      }
+      .hero-inline-icon       { width: 32px; height: 32px; font-size: .85rem; }
+      .hero-inline-icon-2     { width: 27px; height: 27px; font-size: .75rem; }
+
+      .hero-h1-mid {
+        font-size: .9rem !important;
+        margin-top: .9rem;
+        overflow-wrap: break-word;
+      }
+
+      .hero-sub {
+        font-size: .9rem;
+        margin: 1rem auto 1.5rem;
+        overflow-wrap: break-word;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .75rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn-pill {
+        justify-content: space-between;
+        padding: .78rem .78rem .78rem 1.3rem;
+        font-size: .88rem;
+      }
+
+      .btn.btn-ghost {
+        justify-content: center;
+        font-size: .88rem;
+      }
+
+      .hero-deco-left, .hero-deco-right { display: none; }
       .deliv-grid { grid-template-columns: 1fr; }
       .authority-grid { grid-template-columns: 1fr; }
-      .test-slide { padding: 2rem; }
-      .test-q { font-size: clamp(1rem, 5vw, 1.35rem); }
+      /* ── Testimonials mobile ── */
+      .test-slides {
+        min-height: unset !important;
+        height: auto !important;
+      }
+      .test-slide {
+        position: relative !important;
+        inset: unset !important;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+        transform: none !important;
+      }
+      .test-slide.active {
+        display: grid;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .test-slide.exiting {
+        display: none !important;
+      }
+      .test-q { font-size: clamp(.95rem, 4.2vw, 1.15rem); }
       .test-nav { padding: 1.1rem 2rem; }
       .orbit-stage { display: none; }
       .method-steps-mobile { display: flex !important; }
@@ -2058,6 +2367,10 @@
      HERO
 ================================================================ -->
 <section class="hero">
+  <!-- Scan line -->
+  <div class="hero-scan-line"></div>
+  <!-- Grid overlay -->
+  <div class="hero-grid"></div>
   <!-- Video background -->
   <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
     <source src="bg_hero.mp4" type="video/mp4">
@@ -2067,39 +2380,77 @@
 
   <div class="hero-ambient"></div>
 
+  <!-- Órbita decorativa — esquerda -->
+  <div class="hero-deco-left">
+    <div class="hero-deco-left-ring">
+      <div class="hero-deco-left-dot"></div>
+    </div>
+    <div class="hero-deco-left-inner"></div>
+    <div class="hero-deco-left-center">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(27,181,164,0.35)" stroke-width="1.5">
+        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Ícone flutuante — direita -->
+  <div class="hero-deco-right">
+    <div class="hero-deco-right-wrap">
+      <svg viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Fundo circular duplo -->
+        <circle cx="65" cy="65" r="62" fill="rgba(18,48,220,0.18)" stroke="rgba(27,181,164,0.3)" stroke-width="1.5"/>
+        <circle cx="65" cy="65" r="48" fill="rgba(27,181,164,0.08)" stroke="rgba(27,181,164,0.15)" stroke-width="1"/>
+        <!-- Gráfico de barras crescente -->
+        <rect x="30" y="72" width="13" height="22" rx="3" fill="rgba(27,181,164,0.55)" stroke="rgba(27,181,164,0.8)" stroke-width="1"/>
+        <rect x="50" y="58" width="13" height="36" rx="3" fill="rgba(27,181,164,0.7)" stroke="rgba(27,181,164,0.9)" stroke-width="1"/>
+        <rect x="70" y="44" width="13" height="50" rx="3" fill="rgba(27,181,164,0.85)" stroke="rgba(27,181,164,1)" stroke-width="1"/>
+        <rect x="90" y="32" width="13" height="62" rx="3" fill="rgba(27,181,164,1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <!-- Linha de tendência -->
+        <polyline points="36,70 56,56 76,42 96,30" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Ponto no topo da linha -->
+        <circle cx="96" cy="30" r="3.5" fill="rgba(255,255,255,0.9)"/>
+        <!-- Brilho sutil -->
+        <ellipse cx="70" cy="50" rx="28" ry="8" fill="rgba(255,255,255,0.04)"/>
+      </svg>
+    </div>
+  </div>
+
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Typography column -->
       <div class="hero-copy">
+        <!-- Badge pílula — estilo referência -->
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          Metodologia SuperDental
+          Marketing para clínicas · <span class="hero-eyebrow-brand">SuperDental</span>
         </div>
 
         <h1 class="hero-h1">
-          <span class="hero-h1-big">Marketing</span>
-          <span class="hero-h1-big overflow">Odontológico</span>
-          <span class="hero-h1-italic">que transforma investimento</span>
-          <span class="hero-h1-mid">em agenda, atendimento e crescimento.</span>
+          <span class="hero-h1-big">Marketing odontológico</span>
+          <span class="hero-h1-italic">com método
+            <span class="hero-h1-icons">
+              <span class="hero-inline-icon">🎯</span>
+              <span class="hero-inline-icon hero-inline-icon-2">📈</span>
+            </span>
+          </span>
+          <span class="hero-h1-mid">para gerar pacientes, melhorar a conversão da clínica e crescer com mais previsibilidade.</span>
         </h1>
 
-        <div class="hero-divider"></div>
-
         <p class="hero-sub">
-          Na SuperDental, sua clínica não recebe apenas anúncios ou posts. Recebe uma metodologia completa para atrair os pacientes certos, melhorar a conversão da equipe e crescer com mais previsibilidade.
+          A SuperDental integra tráfego, páginas, conteúdo, atendimento e acompanhamento comercial para transformar investimento em agenda e faturamento.
         </p>
 
         <div class="hero-ctas">
-          <a href="#metodologia" class="btn btn-gold" style="color:#ffffff">
-            Quero entender a metodologia
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="#metodologia" class="btn-pill">
+            Quero um diagnóstico da minha clínica
+            <span class="btn-pill-arrow">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
           </a>
-          <a href="#contato" class="btn btn-ghost">Falar com um especialista</a>
+          <a href="#contato" class="btn btn-ghost">Ver como a metodologia funciona</a>
         </div>
 
       </div>
-
 
     </div>
   </div>
@@ -2163,7 +2514,7 @@
 
       <div class="pain-left reveal from-left">
         <span class="section-tag" style="color:var(--gold-lo)">O diagnóstico</span>
-        <h2>O maior desafio das clínicas<br><em>não é anunciar.</em></h2>
+        <h2>O maior desafio das clínicas <em>não é anunciar.</em></h2>
         <p>
           Clínicas jogam dinheiro fora porque acham que só criando um anúncio vão conquistar mais pacientes.
         </p>
@@ -2171,9 +2522,11 @@
           Muitas clínicas já tentaram de tudo: investimento em tráfego, redes sociais ou site - e continuam frustradas porque o resultado só vem quando estratégia, páginas, campanhas, atendimento e acompanhamento trabalham juntos.
         </p>
         <!-- Card síntese -->
-        <div class="pain-synth" style="margin-top:2rem;">
-          <div class="ps-accent"></div>
-          <p>O problema de muitas clínicas não é falta de tráfego. É <strong>falta de método.</strong> A SuperDental une estratégia, conversão, tráfego, atendimento e otimização.</p>
+        <div class="pain-synth-wrap">
+          <div class="pain-synth">
+            <div class="ps-accent"></div>
+            <p>O problema de muitas clínicas não é falta de tráfego. É <strong>falta de método.</strong> A SuperDental une estratégia, conversão, tráfego, atendimento e otimização.</p>
+          </div>
         </div>
       </div>
 
@@ -2424,16 +2777,15 @@
           <div class="deliv-content-top">
             <span class="deliv-c-num">01</span>
             <div class="deliv-c-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B4A6" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
             </div>
           </div>
           <div class="deliv-c-title">Aquisição<br>de pacientes</div>
-          <div class="deliv-c-desc">Campanhas de tráfego pago, SEO e estratégias multicanal focadas em atrair os pacientes certos para cada especialidade.</div>
+          <div class="deliv-c-desc">Google Ads, Meta Ads e estratégias locais para atrair pacientes com intenção real.</div>
           <div class="deliv-tags">
             <span class="deliv-tag">Google Ads</span>
             <span class="deliv-tag">Meta Ads</span>
-            <span class="deliv-tag">SEO Local</span>
-            <span class="deliv-tag">Tráfego pago</span>
+            <span class="deliv-tag">Estratégias locais</span>
           </div>
           <div class="deliv-content-bar"></div>
         </div>
@@ -2453,12 +2805,11 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F47B35" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
           </div>
-          <div class="deliv-c-title">Estrutura<br>digital</div>
-          <div class="deliv-c-desc">Sites, landing pages e funis de conversão para transformar visitantes em leads e leads em consultas agendadas.</div>
+          <div class="deliv-c-title">Estrutura digital<br>de conversão</div>
+          <div class="deliv-c-desc">Sites, landing pages, CRO e jornadas pensadas para gerar agendamento.</div>
           <div class="deliv-tags">
             <span class="deliv-tag">Landing pages</span>
             <span class="deliv-tag">Sites</span>
-            <span class="deliv-tag">Funis</span>
             <span class="deliv-tag">CRO</span>
           </div>
           <div class="deliv-content-bar"></div>
@@ -2470,22 +2821,21 @@
         <div class="deliv-panel-bg"></div>
         <div class="deliv-tab">
           <span class="deliv-tab-num">03</span>
-          <span class="deliv-tab-title">Conteúdo</span>
+          <span class="deliv-tab-title">Autoridade</span>
         </div>
         <div class="deliv-content">
           <div class="deliv-content-top">
             <span class="deliv-c-num">03</span>
             <div class="deliv-c-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B3FA8" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B3FA8" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2"/></svg>
             </div>
           </div>
-          <div class="deliv-c-title">Conteúdo e<br>posicionamento</div>
-          <div class="deliv-c-desc">Comunicação estratégica para construir autoridade, confiança e reconhecimento de marca no nicho odontológico.</div>
+          <div class="deliv-c-title">Autoridade e<br>presença digital</div>
+          <div class="deliv-c-desc">Conteúdo estratégico, SEO local e estrutura preparada para Google e buscas por IA.</div>
           <div class="deliv-tags">
-            <span class="deliv-tag">Redes sociais</span>
-            <span class="deliv-tag">Branding</span>
-            <span class="deliv-tag">Autoridade</span>
-            <span class="deliv-tag">Copywriting</span>
+            <span class="deliv-tag">SEO local</span>
+            <span class="deliv-tag">Conteúdo</span>
+            <span class="deliv-tag">IA Search</span>
           </div>
           <div class="deliv-content-bar"></div>
         </div>
@@ -2506,12 +2856,11 @@
             </div>
           </div>
           <div class="deliv-c-title">Gestão comercial<br>e acompanhamento</div>
-          <div class="deliv-c-desc">Relatórios de performance, apoio ao time de atendimento e acompanhamento próximo para maximizar a conversão.</div>
+          <div class="deliv-c-desc">Análise de leads, gargalos de atendimento, indicadores e evolução da conversão.</div>
           <div class="deliv-tags">
-            <span class="deliv-tag">Relatórios</span>
-            <span class="deliv-tag">Performance</span>
+            <span class="deliv-tag">Leads</span>
+            <span class="deliv-tag">Indicadores</span>
             <span class="deliv-tag">Conversão</span>
-            <span class="deliv-tag">Consultoria</span>
           </div>
           <div class="deliv-content-bar"></div>
         </div>
@@ -2532,12 +2881,11 @@
             </div>
           </div>
           <div class="deliv-c-title">Evolução<br>contínua</div>
-          <div class="deliv-c-desc">Análise de dados, testes e otimizações periódicas em todas as frentes para garantir crescimento consistente e previsível.</div>
+          <div class="deliv-c-desc">Testes, otimizações e tomada de decisão baseada em números.</div>
           <div class="deliv-tags">
-            <span class="deliv-tag">A/B Tests</span>
-            <span class="deliv-tag">Analytics</span>
+            <span class="deliv-tag">Testes</span>
             <span class="deliv-tag">Otimização</span>
-            <span class="deliv-tag">Crescimento</span>
+            <span class="deliv-tag">Dados</span>
           </div>
           <div class="deliv-content-bar"></div>
         </div>
@@ -2597,7 +2945,7 @@
         </div>
 
         <div class="target-note">
-          Buscamos clínicas que entendam que crescimento com previsibilidade exige método, compromisso e parceria de longo prazo.
+          A SuperDental faz mais sentido para clínicas que já entenderam que crescimento não vem de ação isolada. Vem de processo, acompanhamento e melhoria contínua.
         </div>
       </div>
 
@@ -2790,12 +3138,12 @@
         <div class="test-slide active" data-index="0">
           <div class="test-left">
             <div class="test-count">01 <span style="opacity:.45;font-weight:400">/ 04</span></div>
-            <blockquote class="test-q">&ldquo;Minha experi&ecirc;ncia com a Super Dental est&aacute; sendo super positiva, meu faturamento subiu de uma maneira muito legal, e eles se empenham em nos ajudar com bastante frequ&ecirc;ncia.&rdquo;</blockquote>
+            <blockquote class="test-q">&ldquo;Tenho consultório há 4 anos e há 3 eu vinha tentando encaixar um mkt. Desde janeiro desse ano estou trabalhando com o pessoal da Super Dental e tenho ctz que encontrei o melhor que vinha procurando. Uma equipe que tem olhar de dono, especializados em mkt odontológico e atentos a todos os detalhes. Estou mto feliz.&rdquo;</blockquote>
             <div class="test-author-row">
-              <div class="test-av rose">Y</div>
+              <div class="test-av rose">E</div>
               <div>
-                <div class="test-name">Yasmin Micene</div>
-                <div class="test-role">Cl&iacute;nica Odontol&oacute;gica &middot; 5 avalia&ccedil;&otilde;es</div>
+                <div class="test-name">Elis Rocha</div>
+                <div class="test-role">Cl&iacute;nica Odontol&oacute;gica &middot; 11 avalia&ccedil;&otilde;es</div>
                 <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               </div>
             </div>
@@ -2804,9 +3152,9 @@
             <div class="test-metric-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             </div>
-            <div class="test-metric-val">+Faturamento</div>
-            <div class="test-metric-label">Resultado relatado<br>pela pr&oacute;pria cliente</div>
-            <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:82%"></div></div>
+            <div class="test-metric-val">Melhor parceiro</div>
+            <div class="test-metric-label">Olhar de dono e<br>atenção aos detalhes</div>
+            <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:95%"></div></div>
           </div>
         </div>
 
@@ -2938,7 +3286,7 @@
         <article class="rev-mini">
           <div class="rev-mini-head">
             <div class="rev-mini-av" style="background:linear-gradient(135deg,#b36c79,#e2a5b1)">Y</div>
-            <div class="rev-mini-info"><div class="rev-mini-name">Yasmin Micene</div><div class="rev-mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+            <div class="rev-mini-info"><div class="rev-mini-name">Elis Rocha</div><div class="rev-mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
           </div>
           <p class="rev-mini-body">&ldquo;Meu faturamento subiu de uma maneira muito legal, e eles se empenham em nos ajudar com bastante frequ&ecirc;ncia.&rdquo;</p>
           <div class="rev-mini-source"><div class="rev-mini-g">G</div>Avalia&ccedil;&atilde;o no Google</div>
@@ -2993,7 +3341,7 @@
         <article class="rev-mini" aria-hidden="true">
           <div class="rev-mini-head">
             <div class="rev-mini-av" style="background:linear-gradient(135deg,#b36c79,#e2a5b1)">Y</div>
-            <div class="rev-mini-info"><div class="rev-mini-name">Yasmin Micene</div><div class="rev-mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+            <div class="rev-mini-info"><div class="rev-mini-name">Elis Rocha</div><div class="rev-mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
           </div>
           <p class="rev-mini-body">&ldquo;Meu faturamento subiu de uma maneira muito legal, e eles se empenham em nos ajudar com bastante frequ&ecirc;ncia.&rdquo;</p>
           <div class="rev-mini-source"><div class="rev-mini-g">G</div>Avalia&ccedil;&atilde;o no Google</div>
