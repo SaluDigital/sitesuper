@@ -177,12 +177,14 @@
 
     /* ─── Hero ─── */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 600px;
       background: var(--ink);
       display: flex; align-items: center;
       position: relative; overflow: hidden;
-      padding-top: 68px;
+      padding-top: 60px;
     }
+    @media (max-width: 768px) { .hero { height: auto; } }
     .hero-bg-glow {
       position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
       width: 900px; height: 700px; border-radius: 50%;
@@ -197,16 +199,17 @@
     }
     .hero-inner {
       position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-      padding: 6rem 0 5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      padding: 1rem 0 1.5rem;
     }
+    @media (max-height: 800px) { .hero-inner { padding: 0; } }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: .55rem;
       font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
       color: rgba(255,255,255,0.82);
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem;
-      backdrop-filter: blur(12px); margin-bottom: 1.8rem;
+      border-radius: 100px; padding: .4rem 1rem .4rem .65rem;
+      backdrop-filter: blur(12px); margin-bottom: .85rem;
       opacity: 0; animation: fade-in .6s ease forwards .3s;
     }
     .hero-eyebrow-dot {
@@ -216,26 +219,26 @@
     .hero-h1 {
       font-family: var(--font-disp); font-weight: 800;
       line-height: 1.08; letter-spacing: -.03em;
-      margin-bottom: 1.5rem;
+      margin-bottom: .8rem;
       opacity: 0; animation: fade-up-in .7s ease forwards .45s;
     }
     .hero-h1-big {
-      display: block; font-size: clamp(2.4rem, 4vw, 3.4rem);
+      display: block; font-size: clamp(2.2rem, 3.8vw, 3.2rem);
       color: var(--white);
     }
     .hero-h1-teal {
-      display: block; font-size: clamp(2.4rem, 4vw, 3.4rem);
+      display: block; font-size: clamp(2.2rem, 3.8vw, 3.2rem);
       color: var(--teal);
     }
     .hero-h1-italic {
       display: block;
       font-family: var(--font-disp); font-style: normal;
-      font-size: clamp(2.6rem, 4.2vw, 3.7rem); font-weight: 800;
+      font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 800;
       color: rgba(237,246,245,0.75);
     }
     .hero-sub {
-      font-size: 1.08rem; color: var(--cream-2); line-height: 1.7;
-      margin-bottom: 2.5rem; max-width: 480px;
+      font-size: 1.05rem; color: var(--cream-2); line-height: 1.6;
+      margin-bottom: 1.4rem; max-width: 460px;
       opacity: 0; animation: fade-up-in .7s ease forwards .6s;
     }
     .hero-cta-row {
@@ -243,7 +246,7 @@
       opacity: 0; animation: fade-up-in .7s ease forwards .75s;
     }
     .hero-trust {
-      font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem;
+      font-size: .75rem; color: var(--white); margin-top: 1rem;
       display: flex; align-items: center; gap: .5rem;
       opacity: 0; animation: fade-in .7s ease forwards .9s;
     }
@@ -262,7 +265,7 @@
       background: rgba(255,255,255,.03);
       border: 1px solid rgba(27,181,164,.2);
       border-radius: var(--radius-lg);
-      padding: 1.4rem;
+      padding: 1.1rem;
       position: relative; overflow: hidden;
     }
     .metrics-panel::before {
@@ -294,7 +297,7 @@
     .metric-card {
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border: 1px solid rgba(255,255,255,.06);
-      border-radius: var(--radius); padding: 1rem 1.1rem;
+      border-radius: var(--radius); padding: .85rem 1rem;
       transition: border-color .4s; position: relative; overflow: hidden;
     }
     .metric-card::after {
@@ -418,11 +421,11 @@
     }
     .dor-title {
       font-family: var(--font-disp); font-weight: 700;
-      font-size: .98rem; color: var(--dc);
+      font-size: 1.15rem; color: var(--dc);
       margin-bottom: .65rem; line-height: 1.35;
     }
     .dor-text {
-      font-size: .86rem; color: var(--cream-2);
+      font-size: 0.95rem; color: var(--cream-2);
       line-height: 1.7; flex: 1;
     }
     .dor-footer {
@@ -536,12 +539,12 @@
     .resolve-card:hover .rc-ghost { color: rgba(var(--rc-rgb),.1); }
 
     .rc-title {
-      font-family: var(--font-disp); font-weight: 700; font-size: 1.12rem;
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.15rem;
       color: var(--white); margin-bottom: .65rem; line-height: 1.3;
       position: relative; z-index: 1;
     }
     .rc-text {
-      font-size: .88rem; color: var(--cream-2);
+      font-size: 0.95rem; color: var(--cream-2);
       line-height: 1.7; flex: 1; position: relative; z-index: 1;
     }
 
@@ -632,7 +635,7 @@
       font-size: .95rem;
     }
     .incluso-item-text {
-      font-size: .84rem; color: var(--cream); line-height: 1.45;
+      font-size: 0.95rem; color: var(--cream); line-height: 1.45;
       padding-top: .15rem;
     }
     .incluso-card {
@@ -809,12 +812,12 @@
     }
     .oc-title {
       font-family: var(--font-disp); font-weight: 700;
-      font-size: 1rem; color: var(--oc);
+      font-size: 1.15rem; color: var(--oc);
       margin-bottom: .4rem; line-height: 1.3;
       position: relative; z-index: 1;
     }
     .oc-text {
-      font-size: .86rem; color: rgba(237,246,245,.58);
+      font-size: 0.95rem; color: rgba(237,246,245,.58);
       line-height: 1.55; position: relative; z-index: 1;
     }
 
@@ -1079,49 +1082,104 @@
 
     /* ─── FAQ ─── */
     .section-faq {
-      padding: 6rem 0;
+      padding: 8rem 0;
       background: var(--ink);
+      position: relative;
+      overflow: hidden;
     }
-    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .section-faq::before {
+      content: '';
+      position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4.5rem; position: relative; z-index: 10; }
     .faq-h2 {
       font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white);
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem;
     }
-    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 10; }
+    
     .faq-item {
-      border: 1px solid rgba(237,246,245,0.08);
-      border-radius: var(--radius-lg); overflow: hidden;
-      transition: border-color .3s;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
-    .faq-item.open { border-color: rgba(27,181,164,0.25); }
+    .faq-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: var(--faq-color, var(--teal));
+      opacity: 0.3; transition: opacity .4s;
+    }
+    .faq-item:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .faq-item.open {
+      background: rgba(var(--faq-color-rgb, 27,181,164), 0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.35);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .faq-item.open::before { opacity: 1; }
+
+    /* Accent Colors */
+    .faq-teal   { --faq-color: var(--teal);   --faq-color-rgb: 27,181,164; }
+    .faq-orange { --faq-color: var(--orange); --faq-color-rgb: 240,112,48; }
+    .faq-purple { --faq-color: var(--purple); --faq-color-rgb: 139,79,160; }
+
     .faq-q {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.4rem 1.8rem; cursor: pointer;
-      font-size: .95rem; font-weight: 600; color: var(--white);
-      user-select: none; gap: 1rem;
-      background: rgba(255,255,255,0.02);
-      transition: background .2s;
+      padding: 1.6rem 2rem; cursor: pointer;
+      font-family: var(--font-disp);
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      user-select: none; gap: 1.5rem;
+      transition: color .3s;
     }
-    .faq-q:hover { background: rgba(255,255,255,0.04); }
-    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
-    .faq-icon {
-      width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1);
+    .faq-item.open .faq-q { color: var(--faq-color); }
+    
+    .faq-icon-box {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: all .3s; font-size: .9rem;
+      flex-shrink: 0; transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height .4s ease, padding .4s ease;
-      padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7;
+    .faq-icon-box svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .faq-item.open .faq-icon-box {
+      background: var(--faq-color); color: var(--ink);
+      border-color: var(--faq-color);
+      transform: rotate(135deg);
     }
-    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
 
-    /* ─── CTA Final ─── */
+    /* Modern expansion using grid-template-rows */
+    .faq-a-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.open .faq-a-wrapper { grid-template-rows: 1fr; }
+    
+    .faq-a {
+      overflow: hidden;
+      font-size: .95rem; color: var(--cream-2); line-height: 1.7;
+    }
+    .faq-a-inner {
+      padding: 0 2rem 1.8rem;
+      opacity: 0; transform: translateY(-10px);
+      transition: opacity .3s, transform .3s;
+    }
+    .faq-item.open .faq-a-inner { opacity: 1; transform: translateY(0); transition-delay: .1s; }
+
+    /* CTA Final */
     .section-cta {
-      padding: 7rem 0;
+      padding: 8rem 0;
       background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%);
       position: relative; overflow: hidden;
     }
@@ -1205,9 +1263,9 @@
 
     /* ─── Footer ─── */
     .lp-footer {
-      padding: 2.5rem 0;
-      background: var(--ink);
-      border-top: 1px solid rgba(237,246,245,0.06);
+      padding: 4rem 0;
+      background: #050e11;
+      border-top: 1px solid rgba(27,181,164,0.1);
       text-align: center;
     }
     .lp-footer-text { font-size: .8rem; color: var(--cream-3); }
@@ -1240,16 +1298,16 @@
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
+      .section-cta { padding: 4rem 0 6rem; }
       .hero-cta-row { justify-content: center; }
       .hero-trust { justify-content: center; }
-      .hero-visual { display: none; }
+      .hero-visual { display: block; margin-top: 3.5rem; width: 100%; max-width: 440px; margin-inline: auto; }
       .resolve-grid { grid-template-columns: 1fr; }
       .resolve-card:last-child { flex-direction: column; }
       .resolve-card:last-child .rc-side { min-width: unset; }
-      .dor-cards { grid-template-columns: 1fr 1fr; }
+      .dor-cards { grid-template-columns: 1fr; }
       .dor-card { border-right: none; border-bottom: 1px solid rgba(237,246,245,.07); }
-      .dor-card:nth-child(odd) { border-right: 1px solid rgba(237,246,245,.07); }
-      .dor-card:nth-last-child(-n+2) { border-bottom: none; }
+      .dor-card:last-child { border-bottom: none; }
       .incluso-inner { grid-template-columns: 1fr; gap: 3rem; }
       .incluso-items { grid-template-columns: 1fr; }
       .dif-orbit { width: 340px; height: 340px; }
@@ -1266,6 +1324,11 @@
       .prova-grid { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
       .metric-card-row { flex-direction: column; }
+      .faq-q { padding: 1.25rem 1.5rem; font-size: 1rem; }
+      .faq-icon-box { width: 30px; height: 30px; }
+      .faq-a-inner { padding: 0 1.5rem 1.4rem; }
+      .btn-header { display: none; }
+      .lp-logo img { height: 32px; image-rendering: -webkit-optimize-contrast; }
     }
 
     @media (max-width: 480px) {
@@ -1282,7 +1345,7 @@
     <div class="container">
       <div class="lp-header-inner">
         <a href="../index2.html" class="lp-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></a>
-        <a href="#form" class="btn btn-teal" style="font-size:.85rem; padding:.65rem 1.5rem;">
+        <a href="#form" class="btn btn-teal btn-header" style="font-size:.85rem; padding:.65rem 1.5rem;">
           Quero uma análise grátis
         </a>
       </div>
@@ -1933,43 +1996,92 @@
     <div class="container">
       <div class="faq-header reveal">
         <div class="section-tag">Perguntas frequentes</div>
-        <h2 class="faq-h2">Dúvidas antes de começar</h2>
+        <h2 class="faq-h2">Dúvidas comuns resolvidas</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal">
+        <!-- Item 1: Teal -->
+        <div class="faq-item faq-teal reveal">
           <div class="faq-q" onclick="toggleFaq(this)">
             Quanto preciso investir em mídia para começar?
-            <span class="faq-icon">+</span>
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
           </div>
-          <div class="faq-a">Recomendamos um investimento mínimo de R$ 1.500/mês em verba de mídia para o Google. Abaixo disso os dados são insuficientes para otimização. O valor ideal depende do seu mercado e dos tratamentos que quer priorizar — definimos juntos na análise.</div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Recomendamos um investimento mínimo de R$ 1.500/mês em verba de mídia para o Google. Abaixo disso os dados são insuficientes para otimização. O valor ideal depende do seu mercado e dos tratamentos que quer priorizar — definimos juntos na análise.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-1">
+
+        <!-- Item 2: Orange -->
+        <div class="faq-item faq-orange reveal reveal-delay-1">
           <div class="faq-q" onclick="toggleFaq(this)">
             Quanto tempo para ver resultados?
-            <span class="faq-icon">+</span>
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
           </div>
-          <div class="faq-a">As campanhas entram no ar em até 7 dias úteis após aprovação. Os primeiros leads costumam aparecer na primeira semana. O pico de performance acontece entre 60 e 90 dias, quando temos dados suficientes para otimização profunda.</div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                As campanhas entram no ar em até 7 dias úteis após aprovação. Os primeiros leads costumam aparecer na primeira semana. O pico de performance acontece entre 60 e 90 dias, quando temos dados suficientes para otimização profunda.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-2">
+
+        <!-- Item 3: Purple -->
+        <div class="faq-item faq-purple reveal reveal-delay-2">
           <div class="faq-q" onclick="toggleFaq(this)">
             A verba de mídia é separada da taxa de gestão?
-            <span class="faq-icon">+</span>
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
           </div>
-          <div class="faq-a">Sim. A taxa de gestão paga o trabalho estratégico e operacional da SuperDental. A verba de mídia vai direto para o Google Ads, na conta que pertence a você. Você tem acesso total à conta a qualquer momento.</div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Sim. A taxa de gestão paga o trabalho estratégico e operacional da SuperDental. A verba de mídia vai direto para o Google Ads, na conta que pertence a você. Você tem acesso total à conta a qualquer momento.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-3">
+
+        <!-- Item 4: Teal -->
+        <div class="faq-item faq-teal reveal reveal-delay-3">
           <div class="faq-q" onclick="toggleFaq(this)">
             Funciona para qualquer tipo de clínica?
-            <span class="faq-icon">+</span>
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
           </div>
-          <div class="faq-a">Nossa metodologia é mais eficiente para clínicas com ticket médio acima de R$ 800 por tratamento (implantes, ortodontia, facetas, clareamento, etc.) e que buscam crescimento previsível. Na análise gratuita, avaliamos se faz sentido para o seu caso.</div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Nossa metodologia é mais eficiente para clínicas com ticket médio acima de R$ 800 por tratamento (implantes, ortodontia, facetas, clareamento, etc.) e que buscam crescimento previsível. Na análise gratuita, avaliamos se faz sentido para o seu caso.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-4">
+
+        <!-- Item 5: Orange -->
+        <div class="faq-item faq-orange reveal reveal-delay-4">
           <div class="faq-q" onclick="toggleFaq(this)">
             Preciso de site para usar o Google Ads?
-            <span class="faq-icon">+</span>
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
           </div>
-          <div class="faq-a">Sim, você precisa de uma página de destino. Se você já tem site, auditamos e orientamos as melhorias necessárias. Se não tem, desenvolvemos uma landing page de conversão como parte do projeto.</div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Sim, você precisa de uma página de destino. Se você já tem site, auditamos e orientamos as melhorias necessárias. Se não tem, desenvolvemos uma landing page de conversão como parte do projeto.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1980,7 +2092,7 @@
     <div class="container">
       <div class="cta-inner">
         <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Análise gratuita</div>
-        <h2 class="cta-h2 reveal">Sua clínica merece uma agenda<br><em>cheia de pacientes certos</em></h2>
+        <h2 class="cta-h2 reveal">Sua clínica merece uma <em>agenda</em><br><em>cheia de pacientes</em> certos</h2>
         <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e receba uma análise personalizada do seu potencial com Google Ads. Sem compromisso.</p>
         <div class="form-wrap reveal reveal-delay-2">
           <div class="form-title">Quero uma análise da minha clínica</div>

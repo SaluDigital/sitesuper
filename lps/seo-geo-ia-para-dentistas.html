@@ -103,13 +103,13 @@
                         linear-gradient(90deg, rgba(237,246,245,1) 1px, transparent 1px);
       background-size: 80px 80px;
     }
-    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 6rem 0 5rem; }
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 4rem 0 3rem; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.82); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13); border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem; backdrop-filter: blur(12px); margin-bottom: 1.8rem; opacity: 0; animation: fade-in .6s ease forwards .3s; }
     .hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); display: inline-block; flex-shrink: 0; }
     .hero-h1 { font-family: var(--font-disp); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; margin-bottom: 1.5rem; opacity: 0; animation: fade-up-in .7s ease forwards .45s; }
-    .hero-h1-big { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--white); }
-    .hero-h1-purple { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: #B06ACE; }
-    .hero-h1-italic { display: block; font-family: var(--font-disp); font-style: normal; font-size: clamp(2.6rem, 4vw, 3.5rem); font-weight: 800; color: rgba(237,246,245,0.7); }
+    .hero-h1-big { display: block; font-size: clamp(2.1rem, 3.3vw, 2.9rem); color: var(--white); }
+    .hero-h1-teal { display: block; font-size: clamp(2.1rem, 3.3vw, 2.9rem); color: var(--teal); white-space: nowrap; }
+    .hero-h1-italic { display: block; font-family: var(--font-disp); font-style: normal; font-size: clamp(2.1rem, 3.3vw, 2.9rem); font-weight: 800; color: var(--white); }
     .hero-sub { font-size: 1.08rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px; opacity: 0; animation: fade-up-in .7s ease forwards .6s; }
     .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; opacity: 0; animation: fade-up-in .7s ease forwards .75s; }
     .hero-trust { font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem; display: flex; align-items: center; gap: .5rem; opacity: 0; animation: fade-in .7s ease forwards .9s; }
@@ -165,138 +165,580 @@
       border-radius: 100px; color: var(--teal);
     }
 
-    /* Mudança cenário */
+    /* ══ A VIRADA — redesign premium ══ */
     .section-mudanca {
-      padding: 6rem 0;
-      background: var(--ink-2);
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 60%, rgba(139,79,160,.1), transparent 55%),
+        radial-gradient(ellipse 60% 45% at 85% 25%, rgba(27,181,164,.08), transparent 50%),
+        var(--ink-2);
       position: relative; overflow: hidden;
     }
-    .section-mudanca::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--purple), transparent); opacity: .25; }
-    .mudanca-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .mudanca-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.2rem; }
-    .mudanca-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
-    .mudanca-highlight {
-      background: rgba(139,79,160,0.07);
-      border: 1px solid rgba(139,79,160,0.18);
-      border-radius: var(--radius-lg); padding: 1.5rem;
-      margin-top: 1.5rem;
+    /* ghost text */
+    .section-mudanca::before {
+      content: 'VIRADA';
+      position: absolute; left: -1rem; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-disp); font-size: 24vw; font-weight: 800;
+      color: rgba(237,246,245,.025); line-height: 1; letter-spacing: -.05em;
+      pointer-events: none; user-select: none;
     }
-    .mudanca-highlight-text { font-size: .9rem; color: var(--cream); line-height: 1.7; }
-    .mudanca-highlight-text strong { color: #B06ACE; }
-    .timeline { display: flex; flex-direction: column; gap: 1.2rem; }
-    .tl-item {
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      padding: 1.4rem;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(237,246,245,0.07);
+    /* top line */
+    .section-mudanca::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--purple), var(--teal), transparent);
+      opacity: .35;
+    }
+
+    /* Layout */
+    .mudanca-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4.5rem; align-items: start;
+      position: relative; z-index: 1;
+    }
+
+    /* Left column */
+    .mudanca-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+      color: rgba(237,246,245,.95); letter-spacing: -.04em;
+      line-height: 1.08; margin-bottom: 1.4rem;
+    }
+    .mudanca-text {
+      font-size: 1rem; color: rgba(237,246,245,.58);
+      line-height: 1.8; margin-bottom: 1.2rem;
+    }
+
+    /* GEO callout */
+    .mudanca-geo {
+      margin-top: 2rem; padding: 1.6rem 1.8rem;
+      background: linear-gradient(135deg, rgba(139,79,160,.1), rgba(27,181,164,.06));
+      border: 1px solid rgba(139,79,160,.25);
       border-radius: var(--radius-lg);
-      transition: border-color .3s;
-    }
-    .tl-item:hover { border-color: rgba(27,181,164,0.2); }
-    .tl-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .tl-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .4rem; }
-    .tl-text { font-size: .85rem; color: var(--cream-2); line-height: 1.6; }
-    .tl-badge {
-      margin-left: auto; flex-shrink: 0;
-      font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      padding: .25rem .7rem; border-radius: 100px;
-    }
-    .tl-badge.old { background: rgba(240,112,48,0.12); color: var(--orange); }
-    .tl-badge.new { background: rgba(27,181,164,0.12); color: var(--teal); }
-
-    /* Pilares */
-    .section-pilares {
-      padding: 6rem 0;
-      background: var(--ink);
-    }
-    .pilares-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
-    .pilares-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
-    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .pilar-card {
-      border-radius: var(--radius-xl); padding: 2.2rem;
       position: relative; overflow: hidden;
-      transition: transform .3s;
     }
-    .pilar-card:hover { transform: translateY(-5px); }
-    .pilar-card.seo { background: rgba(27,181,164,0.06); border: 1px solid rgba(27,181,164,0.18); }
-    .pilar-card.geo { background: rgba(139,79,160,0.07); border: 1px solid rgba(139,79,160,0.2); }
-    .pilar-card.ia  { background: rgba(240,112,48,0.05); border: 1px solid rgba(240,112,48,0.15); }
-    .pilar-tag {
-      font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      padding: .3rem .9rem; border-radius: 100px; display: inline-block; margin-bottom: 1.2rem;
+    .mudanca-geo::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--purple), var(--teal));
     }
-    .pilar-card.seo .pilar-tag { background: rgba(27,181,164,0.15); color: var(--teal); }
-    .pilar-card.geo .pilar-tag { background: rgba(139,79,160,0.18); color: #B06ACE; }
-    .pilar-card.ia  .pilar-tag { background: rgba(240,112,48,0.14); color: var(--orange); }
-    .pilar-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .pilar-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .8rem; }
-    .pilar-text { font-size: .88rem; color: var(--cream-2); line-height: 1.65; }
-    .pilar-list { margin-top: 1.2rem; list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-    .pilar-list li { font-size: .82rem; color: var(--cream); display: flex; align-items: flex-start; gap: .5rem; }
-    .pilar-list li::before { font-weight: 700; flex-shrink: 0; }
-    .pilar-card.seo .pilar-list li::before { content: '→'; color: var(--teal); }
-    .pilar-card.geo .pilar-list li::before { content: '→'; color: #B06ACE; }
-    .pilar-card.ia  .pilar-list li::before { content: '→'; color: var(--orange); }
+    .mudanca-geo::after {
+      content: '';
+      position: absolute; bottom: -40%; right: -15%;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,79,160,.12), transparent 70%);
+      pointer-events: none;
+    }
+    .mudanca-geo-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: #B06ACE; margin-bottom: .75rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .mudanca-geo-label::before {
+      content: ''; width: 18px; height: 1px; background: #B06ACE;
+    }
+    .mudanca-geo-text {
+      font-size: .95rem; color: rgba(237,246,245,.8); line-height: 1.75;
+      position: relative; z-index: 1;
+    }
+    .mudanca-geo-text strong { color: #cf90e8; font-weight: 700; }
 
-    /* O que entregamos */
+    /* ── Timeline cards (right col) ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+
+    /* Connector line */
+    .tl-item-wrap {
+      position: relative;
+      padding-left: 2.2rem;
+    }
+    .tl-item-wrap::before {
+      content: '';
+      position: absolute; left: .85rem; top: 3.2rem; bottom: -1.2rem;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(237,246,245,.12), transparent);
+    }
+    .tl-item-wrap:last-child::before { display: none; }
+
+    /* Dot on timeline */
+    .tl-dot {
+      position: absolute; left: 0; top: 1.75rem;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid;
+      flex-shrink: 0;
+    }
+    .tl-dot::after {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: currentColor;
+    }
+    .tl-dot.era-old   { color: var(--orange); border-color: rgba(240,112,48,.5); background: rgba(240,112,48,.08); }
+    .tl-dot.era-valid { color: #e2b24f;       border-color: rgba(226,178,79,.5); background: rgba(226,178,79,.08); }
+    .tl-dot.era-now   { color: var(--teal);   border-color: rgba(27,181,164,.6); background: rgba(27,181,164,.1); }
+    .tl-dot.era-next  { color: #af6cff;       border-color: rgba(175,108,255,.5); background: rgba(175,108,255,.08); }
+
+    .tl-item {
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      padding: 1.3rem 1.4rem 1.3rem .2rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius-lg);
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateX(24px);
+      transition: border-color .3s, background .3s, box-shadow .3s,
+                  opacity .55s ease, transform .55s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: translateX(0); }
+
+    /* Active-era glow */
+    .tl-item.era-old   { --tl-c: 240,112,48; }
+    .tl-item.era-valid { --tl-c: 226,178,79; }
+    .tl-item.era-now   { --tl-c: 27,181,164; }
+    .tl-item.era-next  { --tl-c: 175,108,255; }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: rgba(var(--tl-c), .7);
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    }
+    .tl-item:hover {
+      background: rgba(var(--tl-c), .06);
+      border-color: rgba(var(--tl-c), .28);
+      box-shadow: 0 6px 28px rgba(var(--tl-c), .1);
+    }
+
+    .tl-icon-wrap {
+      width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(var(--tl-c), .1); border: 1px solid rgba(var(--tl-c), .22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-top: .05rem;
+    }
+    .tl-body { flex: 1; min-width: 0; }
+    .tl-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1rem;
+      color: rgba(237,246,245,.92); margin-bottom: .3rem;
+    }
+    .tl-text { font-size: .86rem; color: rgba(237,246,245,.52); line-height: 1.6; }
+    .tl-badge {
+      flex-shrink: 0; align-self: flex-start;
+      font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .22rem .75rem; border-radius: 100px;
+      background: rgba(var(--tl-c), .12);
+      color: rgb(var(--tl-c));
+      border: 1px solid rgba(var(--tl-c), .25);
+      white-space: nowrap;
+    }
+
+    /* "Hoje" item highlighted */
+    .tl-item.era-now {
+      background: rgba(27,181,164,.06);
+      border-color: rgba(27,181,164,.2);
+    }
+
+    @media (max-width: 768px) {
+      .mudanca-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .tl-item-wrap { padding-left: 0; }
+      .tl-dot { display: none; }
+      .tl-item-wrap::before { display: none; }
+    }
+
+    /* ══ Pilares — redesign premium ══ */
+    .section-pilares {
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 65% 55% at 5%  40%, rgba(27,181,164,.07), transparent 55%),
+        radial-gradient(ellipse 55% 50% at 95% 70%, rgba(139,79,160,.08), transparent 50%),
+        var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .section-pilares::before {
+      content: 'PILARES';
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-disp); font-size: 22vw; font-weight: 800;
+      color: rgba(237,246,245,.022); letter-spacing: -.04em; line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .section-pilares::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), var(--purple), transparent);
+    }
+
+    .pilares-header {
+      text-align: center; max-width: 680px; margin: 0 auto 5rem;
+      position: relative; z-index: 1;
+    }
+    .pilares-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      color: var(--white); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1rem;
+    }
+    .pilares-sub {
+      font-size: .95rem; color: rgba(237,246,245,.55); line-height: 1.7; max-width: 520px; margin: 0 auto;
+    }
+
+    .pilares-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem; position: relative; z-index: 1;
+    }
+
+    .pilar-card {
+      border-radius: var(--radius-xl);
+      background: rgba(237,246,245,.032);
+      border: 1px solid rgba(237,246,245,.08);
+      padding: 2.6rem 2.2rem 2.4rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; gap: 0;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease,
+                  border-color .3s, box-shadow .3s, background .3s;
+    }
+    .pilar-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* Gradient top line per card */
+    .pilar-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--pilar-grad);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      opacity: .85;
+    }
+    /* Corner glow */
+    .pilar-card::after {
+      content: '';
+      position: absolute; top: -30%; right: -20%;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, var(--pilar-glow), transparent 70%);
+      pointer-events: none; transition: opacity .4s;
+      opacity: 0;
+    }
+    .pilar-card:hover::after { opacity: 1; }
+
+    .pilar-card.seo {
+      --pilar-grad: linear-gradient(90deg, var(--teal), rgba(27,181,164,.2));
+      --pilar-glow: rgba(27,181,164,.1);
+      --pilar-c: 27,181,164;
+    }
+    .pilar-card.geo {
+      --pilar-grad: linear-gradient(90deg, #b06ace, rgba(139,79,160,.2));
+      --pilar-glow: rgba(139,79,160,.12);
+      --pilar-c: 139,79,160;
+    }
+    .pilar-card.ia {
+      --pilar-grad: linear-gradient(90deg, var(--orange), rgba(240,112,48,.2));
+      --pilar-glow: rgba(240,112,48,.1);
+      --pilar-c: 240,112,48;
+    }
+
+    .pilar-card:hover {
+      background: rgba(var(--pilar-c), .055);
+      border-color: rgba(var(--pilar-c), .3);
+      box-shadow: 0 12px 48px rgba(var(--pilar-c), .12), 0 2px 8px rgba(0,0,0,.3);
+      transform: translateY(-5px);
+    }
+    .pilar-card.visible:hover { transform: translateY(-5px); }
+
+    /* Icon area */
+    .pilar-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(var(--pilar-c), .1);
+      border: 1px solid rgba(var(--pilar-c), .22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.6rem;
+      transition: background .3s, border-color .3s;
+    }
+    .pilar-card:hover .pilar-icon-wrap {
+      background: rgba(var(--pilar-c), .16);
+      border-color: rgba(var(--pilar-c), .38);
+    }
+
+    .pilar-tag {
+      font-size: .62rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      padding: .24rem .85rem; border-radius: 100px; display: inline-block; margin-bottom: 1rem;
+      background: rgba(var(--pilar-c), .14);
+      color: rgb(var(--pilar-c));
+      border: 1px solid rgba(var(--pilar-c), .25);
+    }
+    .pilar-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.15rem;
+      color: rgba(237,246,245,.95); margin-bottom: .7rem; line-height: 1.25;
+    }
+    .pilar-text { font-size: .87rem; color: rgba(237,246,245,.5); line-height: 1.7; }
+    .pilar-divider {
+      height: 1px; background: rgba(237,246,245,.07);
+      margin: 1.4rem 0;
+    }
+    .pilar-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .pilar-list li {
+      font-size: .83rem; color: rgba(237,246,245,.7);
+      display: flex; align-items: flex-start; gap: .6rem; line-height: 1.5;
+    }
+    .pilar-list li::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: .45rem;
+      background: rgb(var(--pilar-c));
+      box-shadow: 0 0 6px rgba(var(--pilar-c), .6);
+    }
+
+    /* ─── O que entregamos ─── */
     .section-entrega {
-      padding: 6rem 0;
+      padding: 7rem 0;
       background: var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-entrega::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: .18;
     }
     .entrega-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
-    .entrega-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
-    .entrega-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; max-width: 900px; margin: 0 auto; }
+    .entrega-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .entrega-sub { font-size: .95rem; color: var(--cream-2); }
+
+    .entrega-items {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
     .entrega-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(237,246,245,0.07);
-      border-radius: var(--radius-lg); padding: 1.4rem;
-      transition: border-color .3s, transform .3s;
+      --ic: var(--teal); --ic-rgb: 27,181,164;
+      position: relative; overflow: hidden;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(var(--ic-rgb),.15);
+      border-radius: var(--radius-lg); padding: 1.4rem 1.4rem 1.8rem;
+      display: flex; flex-direction: column; gap: .6rem;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
     }
-    .entrega-item:hover { border-color: rgba(27,181,164,0.2); transform: translateY(-2px); }
-    .entrega-num {
-      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(27,181,164,0.1); border: 1px solid rgba(27,181,164,0.25);
+    .entrega-item:nth-child(4n+2) { --ic: var(--orange);  --ic-rgb: 240,112,48; }
+    .entrega-item:nth-child(4n+3) { --ic: var(--purple);  --ic-rgb: 139,79,160; }
+    .entrega-item:nth-child(4n+4) { --ic: var(--teal);    --ic-rgb: 27,181,164; }
+    .entrega-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(var(--ic-rgb),.4);
+      box-shadow: 0 12px 32px rgba(0,0,0,.25), 0 0 16px rgba(var(--ic-rgb),.08);
+    }
+    /* bottom accent line */
+    .entrega-item::after {
+      content: '';
+      position: absolute; bottom: 0; left: 1.4rem;
+      width: 40%; height: 2px;
+      background: var(--ic); opacity: .6;
+      border-radius: 2px;
+      transition: width .3s ease;
+    }
+    .entrega-item:hover::after { width: 60%; opacity: 1; }
+    /* ghost watermark number */
+    .entrega-item-watermark {
+      position: absolute; top: .4rem; right: .8rem;
+      font-family: var(--font-disp); font-weight: 800; font-size: 3.8rem;
+      color: rgba(var(--ic-rgb),.07); line-height: 1;
+      pointer-events: none; user-select: none; letter-spacing: -.04em;
+    }
+    /* top row: badge + category */
+    .entrega-item-top {
+      display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem;
+    }
+    .entrega-item-num {
+      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(var(--ic-rgb),.18);
+      border: 1px solid rgba(var(--ic-rgb),.3);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-disp); font-weight: 800; font-size: .8rem; color: var(--teal);
+      font-family: var(--font-disp); font-weight: 800; font-size: .72rem;
+      color: var(--ic);
     }
-    .entrega-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .3rem; }
-    .entrega-text { font-size: .82rem; color: var(--cream-2); line-height: 1.6; }
+    .entrega-item-tag {
+      font-size: .6rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .2rem .65rem; border-radius: 100px;
+      background: rgba(var(--ic-rgb),.12);
+      border: 1px solid rgba(var(--ic-rgb),.22);
+      color: var(--ic);
+    }
+    .entrega-item-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: .98rem;
+      color: var(--white); line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .entrega-item-text {
+      font-size: .82rem; color: var(--cream-2); line-height: 1.6;
+      position: relative; z-index: 1;
+    }
+
+    /* metrics panel (right col) */
+    .entrega-panel {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      position: sticky; top: 100px;
+    }
+    .entrega-panel::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, var(--orange) 52%, var(--purple) 100%);
+    }
+    .entrega-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.1rem;
+    }
+    .entrega-panel-title-wrap { display: flex; align-items: center; gap: .5rem; }
+    .entrega-panel-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(27,181,164,.75);
+      animation: cp-pulse 2s ease-in-out infinite;
+    }
+    .entrega-panel-title {
+      font-size: .68rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .1em; color: rgba(237,246,245,.85);
+    }
+    .entrega-panel-period { font-size: .62rem; color: rgba(237,246,245,.6); }
+
+    @media (max-width: 1024px) {
+      .entrega-items { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 550px) {
+      .entrega-items { grid-template-columns: 1fr; }
+    }
 
     /* Quando faz sentido */
+    /* ─── Quando faz sentido — premium redesign ─── */
     .section-quando {
-      padding: 6rem 0;
-      background: var(--ink);
+      padding: 8rem 0;
+      background:
+        radial-gradient(circle at 10% 50%, rgba(27,181,164,.06), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(139,79,160,.05), transparent 30%),
+        var(--ink);
+      position: relative; overflow: hidden;
     }
-    .quando-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .quando-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.5rem; }
-    .quando-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .quando-top {
+      text-align: center; max-width: 720px; margin: 0 auto 4.5rem;
+    }
+    .quando-top-tag { margin-bottom: .8rem; }
+    .quando-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3rem); color: var(--white);
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .quando-sub { font-size: 1rem; color: var(--cream-2); max-width: 540px; margin: 0 auto; }
+
+    /* 2x2 card grid */
+    .quando-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
     .quando-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(237,246,245,0.08);
-      border-radius: var(--radius-lg); padding: 1.4rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-      transition: border-color .3s;
+      --wc: var(--teal); --wc-rgb: 27,181,164;
+      position: relative; overflow: hidden;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(var(--wc-rgb),.15);
+      border-radius: var(--radius-xl); padding: 2rem 2rem 2.2rem;
+      display: flex; flex-direction: column; gap: .7rem;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
     }
-    .quando-card.highlight {
-      background: rgba(27,181,164,0.05);
-      border-color: rgba(27,181,164,0.2);
+    .quando-card:nth-child(2) { --wc: var(--orange); --wc-rgb: 240,112,48; }
+    .quando-card:nth-child(3) { --wc: var(--purple); --wc-rgb: 139,79,160; }
+    .quando-card:nth-child(4) { --wc: var(--teal);   --wc-rgb: 27,181,164; }
+    /* top gradient bar */
+    .quando-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--wc), rgba(var(--wc-rgb),0));
     }
-    .quando-card:hover { border-color: rgba(27,181,164,0.2); }
-    .quando-card-icon { font-size: 1.3rem; flex-shrink: 0; }
-    .quando-card-title { font-weight: 700; font-size: .92rem; color: var(--white); margin-bottom: .3rem; }
-    .quando-card-text { font-size: .84rem; color: var(--cream-2); line-height: 1.6; }
-    .urgency-box {
-      background: linear-gradient(135deg, rgba(27,181,164,0.08), rgba(139,79,160,0.06));
-      border: 1px solid rgba(27,181,164,0.2);
-      border-radius: var(--radius-xl); padding: 2.5rem;
+    /* inner radial glow on hover */
+    .quando-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(var(--wc-rgb),.09), transparent 65%);
+      opacity: 0; transition: opacity .4s ease;
+      pointer-events: none;
     }
-    .urgency-title { font-family: var(--font-disp); font-weight: 800; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; line-height: 1.3; }
-    .urgency-text { font-size: .92rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
-    .urgency-stat { display: flex; flex-direction: column; gap: 1rem; }
-    .urgency-stat-item { display: flex; align-items: center; gap: 1rem; }
-    .urgency-stat-val { font-family: var(--font-disp); font-weight: 800; font-size: 1.6rem; color: var(--teal); min-width: 60px; }
-    .urgency-stat-label { font-size: .85rem; color: var(--cream-2); }
+    .quando-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(var(--wc-rgb),.38);
+      box-shadow: 0 20px 40px rgba(0,0,0,.25), 0 0 20px rgba(var(--wc-rgb),.08);
+    }
+    .quando-card:hover::after { opacity: 1; }
+    /* large ghost emoji watermark */
+    .quando-card-bg-icon {
+      position: absolute; bottom: -1rem; right: .5rem;
+      font-size: 5.5rem; opacity: .06;
+      pointer-events: none; user-select: none;
+      transform: rotate(-10deg);
+      transition: transform .4s ease, opacity .4s ease;
+    }
+    .quando-card:hover .quando-card-bg-icon { transform: rotate(0deg) scale(1.05); opacity: .1; }
+    /* check badge */
+    .quando-card-check {
+      width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(var(--wc-rgb),.15);
+      border: 1px solid rgba(var(--wc-rgb),.3);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .2rem;
+    }
+    .quando-card-check svg { width: 16px; height: 16px; stroke: var(--wc); stroke-width: 2.5; fill: none; }
+    .quando-card-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem;
+      color: var(--white); line-height: 1.3; position: relative; z-index: 1;
+    }
+    .quando-card-text {
+      font-size: .88rem; color: var(--cream-2); line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+
+    /* urgency stat banner */
+    .quando-urgency {
+      background: linear-gradient(135deg, rgba(27,181,164,.08) 0%, rgba(139,79,160,.06) 50%, rgba(240,112,48,.06) 100%);
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: var(--radius-xl); padding: 2.5rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .quando-urgency::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--purple), var(--orange));
+    }
+    .quando-urgency-content {
+      display: grid; grid-template-columns: 1.2fr 2fr; gap: 3rem; align-items: center;
+    }
+    .quando-urgency-title {
+      font-family: var(--font-disp); font-weight: 800; font-size: 1.4rem;
+      color: var(--white); line-height: 1.3; margin-bottom: .8rem;
+    }
+    .quando-urgency-text { font-size: .88rem; color: var(--cream-2); line-height: 1.7; }
+    .quando-stats {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .quando-stat-row {
+      display: flex; flex-direction: column; gap: .4rem;
+    }
+    .quando-stat-top { display: flex; justify-content: space-between; align-items: baseline; }
+    .quando-stat-val {
+      font-family: var(--font-disp); font-weight: 800; font-size: 1.6rem;
+      color: var(--teal); line-height: 1;
+    }
+    .quando-stat-row:nth-child(2) .quando-stat-val { color: #c287e0; }
+    .quando-stat-row:nth-child(3) .quando-stat-val { color: #ff9c63; }
+    .quando-stat-label { font-size: .78rem; color: var(--cream-2); }
+    .quando-stat-bar {
+      height: 4px; background: rgba(237,246,245,.08); border-radius: 4px; overflow: hidden;
+    }
+    .quando-stat-fill {
+      height: 100%; border-radius: 4px;
+      background: var(--teal);
+      width: 0%; transition: width 1.2s cubic-bezier(.16,1,.3,1);
+    }
+    .quando-stat-row:nth-child(2) .quando-stat-fill { background: #c287e0; }
+    .quando-stat-row:nth-child(3) .quando-stat-fill { background: #ff9c63; }
+
+    @media (max-width: 900px) {
+      .quando-grid { grid-template-columns: 1fr; }
+      .quando-urgency-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
 
     /* Prova */
     .section-prova { padding: 6rem 0; background: var(--ink-2); }
@@ -313,19 +755,76 @@
     .test-role { font-size: .78rem; color: var(--cream-3); }
 
     /* FAQ */
-    .section-faq { padding: 6rem 0; background: var(--ink); }
+    .section-faq { padding: 7rem 0; background: var(--ink); }
     .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .faq-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
-    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
-    .faq-item { border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .3s; }
-    .faq-item.open { border-color: rgba(27,181,164,0.25); }
-    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--white); user-select: none; gap: 1rem; background: rgba(255,255,255,0.02); transition: background .2s; }
-    .faq-q:hover { background: rgba(255,255,255,0.04); }
-    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
-    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; font-size: .9rem; }
-    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7; }
-    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+    .faq-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white);
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 10; }
+    .faq-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .faq-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: var(--faq-color, var(--teal));
+      opacity: 0.3; transition: opacity .4s;
+    }
+    .faq-item:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .faq-item.open {
+      background: rgba(var(--faq-color-rgb, 27,181,164), 0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.35);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .faq-item.open::before { opacity: 1; }
+    .faq-teal   { --faq-color: var(--teal);   --faq-color-rgb: 27,181,164; }
+    .faq-orange { --faq-color: var(--orange); --faq-color-rgb: 240,112,48; }
+    .faq-purple { --faq-color: var(--purple); --faq-color-rgb: 139,79,160; }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem 2rem; cursor: pointer;
+      font-family: var(--font-disp);
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      user-select: none; gap: 1.5rem;
+      transition: color .3s;
+    }
+    .faq-item.open .faq-q { color: var(--faq-color); }
+    .faq-icon-box {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .faq-icon-box svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .faq-item.open .faq-icon-box {
+      background: var(--faq-color); color: var(--ink);
+      border-color: var(--faq-color);
+      transform: rotate(135deg);
+    }
+    .faq-a-wrapper {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.open .faq-a-wrapper { grid-template-rows: 1fr; }
+    .faq-a { overflow: hidden; font-size: .95rem; color: var(--cream-2); line-height: 1.7; }
+    .faq-a-inner {
+      padding: 0 2rem 1.8rem;
+      opacity: 0; transform: translateY(-10px);
+      transition: opacity .3s, transform .3s;
+    }
+    .faq-item.open .faq-a-inner { opacity: 1; transform: translateY(0); transition-delay: .1s; }
 
     /* CTA + Form */
     .section-cta { padding: 7rem 0; background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%); position: relative; overflow: hidden; }
@@ -362,21 +861,65 @@
 
     /* Mobile */
     @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
-      .hero-cta-row { justify-content: center; }
-      .hero-trust { justify-content: center; }
+      .container { padding: 0 24px; width: 100%; box-sizing: border-box; }
+      .lp-header-inner { justify-content: center; }
+      .lp-header-inner .btn { display: none; }
+      .lp-logo img { height: 30px; }
+
+      .hero { min-height: unset; padding-bottom: 3.5rem; padding-top: 80px; }
+      .hero-inner { 
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 1.5rem; padding: 2rem 0; text-align: center; 
+        width: 100%; max-width: 100%; box-sizing: border-box;
+      }
+      .hero-eyebrow { 
+        white-space: normal; text-align: center; width: auto; 
+        margin-left: auto; margin-right: auto;
+        box-sizing: border-box; justify-content: center; 
+        font-size: .65rem; padding: .4rem .9rem;
+      }
+      .hero-h1 { 
+        max-width: 92%; width: 100%; box-sizing: border-box; 
+        text-align: center; margin: 0 auto 1.5rem; 
+      }
+      .hero-h1-big, .hero-h1-teal, .hero-h1-italic { 
+        font-size: clamp(1.6rem, 7.5vw, 2.2rem) !important;
+        line-height: 1.2; white-space: normal !important; 
+        display: block; width: 100%; margin: 0 auto;
+        overflow-wrap: break-word; word-break: keep-all;
+      }
+      .hero-sub { text-align: center; margin: 0 auto 2.2rem; max-width: 90%; width: 100%; padding: 0; box-sizing: border-box; font-size: 1rem; line-height: 1.5; }
+      .hero-cta-row { justify-content: center; width: 100%; flex-direction: column; gap: 1rem; }
+      .hero-cta-row .btn, .hero-cta-row .btn-pill { 
+        width: 100%; justify-content: space-between; 
+        white-space: normal; height: auto; padding: .8rem 1rem .8rem 1.5rem;
+        text-align: left;
+      }
+      .hero-cta-row .btn-pill-arrow { margin-left: auto; }
+      
+      .hero-trust { 
+        justify-content: center; width: 100%; margin-top: 1.5rem; 
+        flex-wrap: wrap; text-align: center; gap: .75rem; 
+        font-size: .72rem;
+      }
       .hero-visual { display: none; }
+      .hero-bg-glow { display: none; }
       .mudanca-inner { grid-template-columns: 1fr; gap: 3rem; }
       .pilares-grid { grid-template-columns: 1fr; }
+      .section-pilares::before { font-size: 40vw; }
       .entrega-grid { grid-template-columns: 1fr; }
       .quando-inner { grid-template-columns: 1fr; gap: 3rem; }
       .prova-grid { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid { display: block; width: 100%; }
+      .form-field { width: 100%; margin-bottom: 1.2rem; }
+      .form-field label { text-align: center; display: block; width: 100%; }
+      .form-field input, .form-field select { width: 100%; box-sizing: border-box; }
+      .form-wrap { padding: 1.5rem 1.1rem; width: 100%; box-sizing: border-box; border-radius: 20px; }
+      .section-cta { padding: 4rem 0 6rem; }
+      .lp-footer { padding: 3.5rem 0; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 10; }
     }
     @media (max-width: 480px) {
-      .hero-h1-big, .hero-h1-purple { font-size: 8vw !important; }
-      .hero-h1-italic { font-size: 8.5vw !important; }
+      .hero-h1-big, .hero-h1-teal, .hero-h1-italic { font-size: clamp(1.5rem, 8vw, 1.9rem) !important; }
     }
     /* Resultados Reais Slider */
     .cases {
@@ -544,7 +1087,7 @@
           </div>
           <h1 class="hero-h1">
             <span class="hero-h1-big">Pacientes te encontram</span>
-            <span class="hero-h1-purple">pelo Google — e agora pela IA</span>
+            <span class="hero-h1-teal">pelo Google — e agora pela IA</span>
             <span class="hero-h1-italic">você está preparado?</span>
           </h1>
           <p class="hero-sub">
@@ -597,48 +1140,61 @@
       <div class="mudanca-inner">
         <div class="reveal">
           <div class="section-tag">A virada</div>
-          <h2 class="mudanca-h2">O jeito como pacientes procuram dentistas mudou — e a maioria das clínicas não percebeu</h2>
+          <h2 class="mudanca-h2"><span style="color:var(--teal)">O jeito como pacientes procuram dentistas mudou</span> — e a maioria das clínicas não percebeu</h2>
           <p class="mudanca-text">Por anos, aparecer no Google significava ter um bom site e algumas palavras-chave. Isso ainda importa — mas não é suficiente.</p>
           <p class="mudanca-text">Hoje, os motores de IA generativa sintetizam resultados. Em vez de 10 links azuis, o usuário recebe uma resposta direta — e um ou dois nomes são citados. Se o seu não está entre eles, você não existe para aquele paciente.</p>
-          <div class="mudanca-highlight">
-            <p class="mudanca-highlight-text">
-              <strong>GEO (Generative Engine Optimization)</strong> é a nova disciplina: otimizar sua presença para que sistemas de IA — Google AI Mode, ChatGPT, Perplexity, Gemini — citem sua clínica como referência. A janela para liderar está aberta agora.
+          <div class="mudanca-geo">
+            <div class="mudanca-geo-label">Nova disciplina</div>
+            <p class="mudanca-geo-text">
+              <strong>GEO (Generative Engine Optimization)</strong> é a prática de otimizar sua presença para que sistemas de IA — Google AI Mode, ChatGPT, Perplexity, Gemini — citem sua clínica como referência. <strong>A janela para liderar está aberta agora.</strong>
             </p>
           </div>
         </div>
         <div class="reveal reveal-delay-2">
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-icon">🔍</div>
-              <div>
-                <div class="tl-title">SEO tradicional</div>
-                <p class="tl-text">10 links azuis. Ranqueamento por palavras-chave. O usuário escolhe qual clicar.</p>
+          <div class="timeline" id="viradaTimeline">
+            <div class="tl-item-wrap">
+              <div class="tl-dot era-old">🔍</div>
+              <div class="tl-item era-old">
+                <div class="tl-icon-wrap">🔍</div>
+                <div class="tl-body">
+                  <div class="tl-title">SEO tradicional</div>
+                  <p class="tl-text">10 links azuis. Ranqueamento por palavras-chave. O usuário escolhe qual clicar.</p>
+                </div>
+                <span class="tl-badge">Ontem</span>
               </div>
-              <span class="tl-badge old">Ontem</span>
             </div>
-            <div class="tl-item">
-              <div class="tl-icon">📍</div>
-              <div>
-                <div class="tl-title">Google Maps + Reviews</div>
-                <p class="tl-text">Posicionamento local. Avaliações como fator de ranqueamento e conversão.</p>
+            <div class="tl-item-wrap">
+              <div class="tl-dot era-valid">📍</div>
+              <div class="tl-item era-valid">
+                <div class="tl-icon-wrap">📍</div>
+                <div class="tl-body">
+                  <div class="tl-title">Google Maps + Reviews</div>
+                  <p class="tl-text">Posicionamento local. Avaliações como fator de ranqueamento e conversão.</p>
+                </div>
+                <span class="tl-badge">Ainda válido</span>
               </div>
-              <span class="tl-badge old">Ainda válido</span>
             </div>
-            <div class="tl-item">
-              <div class="tl-icon">🤖</div>
-              <div>
-                <div class="tl-title">Busca com IA generativa</div>
-                <p class="tl-text">A IA responde diretamente. Cita 1-2 fontes de autoridade. Quem aparece, ganha.</p>
+            <div class="tl-item-wrap">
+              <div class="tl-dot era-now">🤖</div>
+              <div class="tl-item era-now">
+                <div class="tl-icon-wrap">🤖</div>
+                <div class="tl-body">
+                  <div class="tl-title">Busca com IA generativa</div>
+                  <p class="tl-text">A IA responde diretamente. Cita 1-2 fontes de autoridade. Quem aparece, ganha.</p>
+                </div>
+                <span class="tl-badge">Hoje</span>
               </div>
-              <span class="tl-badge new">Hoje</span>
             </div>
-            <div class="tl-item">
-              <div class="tl-icon">🎙️</div>
-              <div>
-                <div class="tl-title">Busca por voz e agentes IA</div>
-                <p class="tl-text">Assistentes de IA fazendo agendamentos. Clínicas sem autoridade digital = invisíveis.</p>
+            <div class="tl-item-wrap">
+              <div class="tl-dot era-next">🎙️</div>
+              <div class="tl-item era-next">
+                <div class="tl-icon-wrap">🎙️</div>
+                <div class="tl-body">
+                  <div class="tl-title">Busca por voz e agentes IA</div>
+                  <p class="tl-text">Assistentes de IA fazendo agendamentos. Clínicas sem autoridade digital = invisíveis.</p>
+                </div>
+                <span class="tl-badge">Chegando</span>
               </div>
-              <span class="tl-badge new">Chegando</span>
             </div>
           </div>
         </div>
@@ -651,14 +1207,16 @@
     <div class="container">
       <div class="pilares-header reveal">
         <div class="section-tag">Nossa abordagem</div>
-        <h2 class="pilares-h2">Três pilares para dominar o posicionamento digital odontológico</h2>
+        <h2 class="pilares-h2">Três pilares para <span style="color:var(--teal)">dominar o posicionamento digital odontológico</span></h2>
+        <p class="pilares-sub">Uma estratégia integrada que combina SEO clássico, visibilidade em IA generativa e presença local dominante.</p>
       </div>
-      <div class="pilares-grid">
-        <div class="pilar-card seo reveal reveal-delay-1">
+      <div class="pilares-grid" id="pilaresGrid">
+        <div class="pilar-card seo">
+          <div class="pilar-icon-wrap">🔍</div>
           <span class="pilar-tag">SEO</span>
-          <div class="pilar-icon">🔍</div>
           <div class="pilar-title">Search Engine Optimization</div>
           <p class="pilar-text">Ranqueamento orgânico sustentável. Apareça no topo do Google para os tratamentos que você oferece na sua cidade — sem pagar por clique.</p>
+          <div class="pilar-divider"></div>
           <ul class="pilar-list">
             <li>Otimização técnica (Core Web Vitals)</li>
             <li>Páginas por tratamento otimizadas</li>
@@ -666,11 +1224,12 @@
             <li>Conteúdo de especialidade</li>
           </ul>
         </div>
-        <div class="pilar-card geo reveal reveal-delay-2">
+        <div class="pilar-card geo">
+          <div class="pilar-icon-wrap">🤖</div>
           <span class="pilar-tag">GEO</span>
-          <div class="pilar-icon">🤖</div>
           <div class="pilar-title">Generative Engine Optimization</div>
           <p class="pilar-text">A nova fronteira. Estruturar sua presença digital para que sistemas de IA — ChatGPT, Gemini, Perplexity, Google AI Mode — citem sua clínica como referência.</p>
+          <div class="pilar-divider"></div>
           <ul class="pilar-list">
             <li>Estruturação de dados semânticos</li>
             <li>Conteúdo otimizado para IA</li>
@@ -678,11 +1237,12 @@
             <li>Schema markup avançado</li>
           </ul>
         </div>
-        <div class="pilar-card ia reveal reveal-delay-3">
+        <div class="pilar-card ia">
+          <div class="pilar-icon-wrap">📍</div>
           <span class="pilar-tag">IA Local</span>
-          <div class="pilar-icon">📍</div>
           <div class="pilar-title">Presença local aumentada por IA</div>
           <p class="pilar-text">Google Maps, Google AI Overviews e busca local integrada com IA. Sua clínica como a resposta padrão para buscas odontológicas na sua região.</p>
+          <div class="pilar-divider"></div>
           <ul class="pilar-list">
             <li>Google Business Profile avançado</li>
             <li>Gestão de avaliações e reputação</li>
@@ -699,51 +1259,91 @@
     <div class="container">
       <div class="entrega-header reveal">
         <div class="section-tag">O que entregamos</div>
-        <h2 class="entrega-h2">Tudo para sua clínica ser a referência no digital</h2>
+        <h2 class="entrega-h2">Tudo que sua clínica precisa para <span style="color:var(--teal)">dominar o posicionamento digital</span></h2>
+        <p class="entrega-sub">Sem taxa de setup. Um único serviço completo que cobre SEO, GEO e presença local.</p>
       </div>
-      <div class="entrega-grid">
+      <div class="entrega-items">
+
         <div class="entrega-item reveal reveal-delay-1">
-          <div class="entrega-num">01</div>
-          <div>
-            <div class="entrega-title">Auditoria de visibilidade completa</div>
-            <p class="entrega-text">Diagnóstico do posicionamento atual no Google, Google Maps e sistemas de IA. Identificamos gaps e oportunidades específicas para sua clínica.</p>
+          <div class="entrega-item-watermark">01</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">01</div>
+            <span class="entrega-item-tag">Auditoria</span>
           </div>
+          <div class="entrega-item-title">Auditoria de visibilidade completa</div>
+          <p class="entrega-item-text">Diagnóstico do posicionamento atual no Google, Google Maps e sistemas de IA.</p>
         </div>
+
         <div class="entrega-item reveal reveal-delay-2">
-          <div class="entrega-num">02</div>
-          <div>
-            <div class="entrega-title">Otimização técnica SEO</div>
-            <p class="entrega-text">Core Web Vitals, estrutura de URLs, meta dados, site map, schema markup para clínicas — tudo o que o Google avalia para ranquear.</p>
+          <div class="entrega-item-watermark">02</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">02</div>
+            <span class="entrega-item-tag">SEO Técnico</span>
           </div>
+          <div class="entrega-item-title">Otimização técnica SEO (Core Web Vitals)</div>
+          <p class="entrega-item-text">Estrutura de URLs, meta dados, site map e schema markup para clínicas.</p>
         </div>
+
+        <div class="entrega-item reveal reveal-delay-3">
+          <div class="entrega-item-watermark">03</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">03</div>
+            <span class="entrega-item-tag">GEO</span>
+          </div>
+          <div class="entrega-item-title">Estratégia de conteúdo GEO para IA</div>
+          <p class="entrega-item-text">Conteúdo estruturado para ser citado por ChatGPT, Gemini e Perplexity.</p>
+        </div>
+
+        <div class="entrega-item reveal reveal-delay-4">
+          <div class="entrega-item-watermark">04</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">04</div>
+            <span class="entrega-item-tag">Local</span>
+          </div>
+          <div class="entrega-item-title">Google Business Profile avançado</div>
+          <p class="entrega-item-text">Perfil local otimizado para maximizar visibilidade no Maps e AI Overviews.</p>
+        </div>
+
         <div class="entrega-item reveal reveal-delay-1">
-          <div class="entrega-num">03</div>
-          <div>
-            <div class="entrega-title">Estratégia de conteúdo GEO</div>
-            <p class="entrega-text">Criação de conteúdo estruturado para ser citado por sistemas de IA. Perguntas e respostas, artigos de autoridade, dados estruturados semânticos.</p>
+          <div class="entrega-item-watermark">05</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">05</div>
+            <span class="entrega-item-tag">Reputação</span>
           </div>
+          <div class="entrega-item-title">Gestão e geração de avaliações</div>
+          <p class="entrega-item-text">Processo sistemático de captação de avaliações reais e reputação digital.</p>
         </div>
+
         <div class="entrega-item reveal reveal-delay-2">
-          <div class="entrega-num">04</div>
-          <div>
-            <div class="entrega-title">Google Business Profile avançado</div>
-            <p class="entrega-text">Otimização completa do perfil local, gestão de posts, fotos, Q&A e estratégia para maximizar visibilidade no Maps e AI Overviews.</p>
+          <div class="entrega-item-watermark">06</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">06</div>
+            <span class="entrega-item-tag">Relatório</span>
           </div>
+          <div class="entrega-item-title">Relatório de posicionamento mensal</div>
+          <p class="entrega-item-text">Monitoramento de ranqueamentos, tráfego orgânico e menções por IA.</p>
         </div>
-        <div class="entrega-item reveal reveal-delay-1">
-          <div class="entrega-num">05</div>
-          <div>
-            <div class="entrega-title">Gestão e geração de avaliações</div>
-            <p class="entrega-text">Processo sistemático de captação de avaliações reais. Nota alta no Google é fator de ranqueamento tanto no Maps quanto nas respostas de IA.</p>
+
+        <div class="entrega-item reveal reveal-delay-3">
+          <div class="entrega-item-watermark">07</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">07</div>
+            <span class="entrega-item-tag">Autoridade</span>
           </div>
+          <div class="entrega-item-title">Link building e citações de autoridade</div>
+          <p class="entrega-item-text">Constrúda a autoridade do domínio com links qualificados e citações externas.</p>
         </div>
-        <div class="entrega-item reveal reveal-delay-2">
-          <div class="entrega-num">06</div>
-          <div>
-            <div class="entrega-title">Relatório de posicionamento mensal</div>
-            <p class="entrega-text">Monitoramento de ranqueamentos, tráfego orgânico, aparições em AI Overviews, menções por IA e evolução mês a mês.</p>
+
+        <div class="entrega-item reveal reveal-delay-4">
+          <div class="entrega-item-watermark">08</div>
+          <div class="entrega-item-top">
+            <div class="entrega-item-num">08</div>
+            <span class="entrega-item-tag">Dados</span>
           </div>
+          <div class="entrega-item-title">Schema markup e dados estruturados</div>
+          <p class="entrega-item-text">Semântica avançada para que a IA entenda e cite sua clínica como referência.</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -751,62 +1351,85 @@
   <!-- Quando faz sentido -->
   <section class="section-quando">
     <div class="container">
-      <div class="quando-inner">
-        <div class="reveal">
-          <div class="section-tag">Para quem é</div>
-          <h2 class="quando-h2">Quando faz sentido investir em SEO + GEO + IA?</h2>
-          <div class="quando-cards">
-            <div class="quando-card highlight reveal reveal-delay-1">
-              <div class="quando-card-icon">🏆</div>
-              <div>
-                <div class="quando-card-title">Você quer ser referência na sua cidade</div>
-                <p class="quando-card-text">SEO e GEO geram resultado composto — quanto mais cedo começa, maior a vantagem competitiva.</p>
-              </div>
-            </div>
-            <div class="quando-card reveal reveal-delay-2">
-              <div class="quando-card-icon">📉</div>
-              <div>
-                <div class="quando-card-title">Você depende demais de anúncios pagos</div>
-                <p class="quando-card-text">Orgânico é o canal que cresce sem pagar por clique. SEO complementa o Google Ads e reduz o custo de aquisição ao longo do tempo.</p>
-              </div>
-            </div>
-            <div class="quando-card reveal reveal-delay-3">
-              <div class="quando-card-icon">🤖</div>
-              <div>
-                <div class="quando-card-title">Você quer estar à frente da concorrência</div>
-                <p class="quando-card-text">GEO é uma disciplina nova. A maioria das clínicas ainda não investe. Quem começa agora ocupa o espaço antes dos outros.</p>
-              </div>
-            </div>
-            <div class="quando-card reveal reveal-delay-4">
-              <div class="quando-card-icon">🔄</div>
-              <div>
-                <div class="quando-card-title">Você quer crescimento sustentável</div>
-                <p class="quando-card-text">Resultados de SEO acumulam — um artigo publicado hoje pode gerar pacientes por anos, sem custo adicional.</p>
-              </div>
-            </div>
+
+      <div class="quando-top reveal">
+        <div class="section-tag quando-top-tag">Para quem é</div>
+        <h2 class="quando-h2">Quando faz sentido investir em <span style="color:var(--teal)">SEO + GEO + IA?</span></h2>
+        <p class="quando-sub">Quatro sinais de que sua clínica está pronta para crescer pelo canal orgânico.</p>
+      </div>
+
+      <div class="quando-grid">
+
+        <div class="quando-card reveal reveal-delay-1">
+          <div class="quando-card-bg-icon">🏆</div>
+          <div class="quando-card-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
+          <div class="quando-card-title">Você quer ser referência na sua cidade</div>
+          <p class="quando-card-text">SEO e GEO geram resultado composto — quanto mais cedo começa, maior a vantagem competitiva sobre os concorrentes locais.</p>
         </div>
-        <div class="reveal reveal-delay-2">
-          <div class="urgency-box">
-            <div class="urgency-title">A janela de oportunidade está aberta — por quanto tempo?</div>
-            <p class="urgency-text">O GEO está no início. As clínicas que construírem autoridade agora vão dominar o posicionamento em IA quando o canal amadurecer. Depois será tarde para recuperar o terreno perdido.</p>
-            <div class="urgency-stat">
-              <div class="urgency-stat-item">
-                <div class="urgency-stat-val">40%</div>
-                <div class="urgency-stat-label">das buscas de saúde já usam IA generativa</div>
+
+        <div class="quando-card reveal reveal-delay-2">
+          <div class="quando-card-bg-icon">📉</div>
+          <div class="quando-card-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="quando-card-title">Você depende demais de anúncios pagos</div>
+          <p class="quando-card-text">Orgânico é o canal que cresce sem pagar por clique. SEO complementa o Google Ads e reduz o custo de aquisição ao longo do tempo.</p>
+        </div>
+
+        <div class="quando-card reveal reveal-delay-3">
+          <div class="quando-card-bg-icon">🤖</div>
+          <div class="quando-card-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="quando-card-title">Você quer estar à frente da concorrência</div>
+          <p class="quando-card-text">GEO é uma disciplina nova. A maioria das clínicas ainda não investe. Quem começa agora ocupa o espaço antes dos outros.</p>
+        </div>
+
+        <div class="quando-card reveal reveal-delay-4">
+          <div class="quando-card-bg-icon">🔄</div>
+          <div class="quando-card-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="quando-card-title">Você quer crescimento sustentável</div>
+          <p class="quando-card-text">Resultados de SEO acumulam — um artigo publicado hoje pode gerar pacientes por anos, sem custo adicional por clique.</p>
+        </div>
+
+      </div>
+
+      <div class="quando-urgency reveal" id="quandoUrgency">
+        <div class="quando-urgency-content">
+          <div>
+            <div class="quando-urgency-title">A janela de oportunidade está aberta — por quanto tempo?</div>
+            <p class="quando-urgency-text">O GEO está no início. As clínicas que construírem autoridade agora vão dominar o posicionamento em IA quando o canal amadurecer. Depois será tarde para recuperar o terreno perdido.</p>
+          </div>
+          <div class="quando-stats">
+            <div class="quando-stat-row">
+              <div class="quando-stat-top">
+                <span class="quando-stat-val">40%</span>
+                <span class="quando-stat-label">das buscas de saúde já usam IA generativa</span>
               </div>
-              <div class="urgency-stat-item">
-                <div class="urgency-stat-val">6 meses</div>
-                <div class="urgency-stat-label">tempo médio para colher resultados sólidos de SEO</div>
+              <div class="quando-stat-bar"><div class="quando-stat-fill" data-w="40"></div></div>
+            </div>
+            <div class="quando-stat-row">
+              <div class="quando-stat-top">
+                <span class="quando-stat-val">6 meses</span>
+                <span class="quando-stat-label">tempo médio para colher resultados sólidos</span>
               </div>
-              <div class="urgency-stat-item">
-                <div class="urgency-stat-val">3×</div>
-                <div class="urgency-stat-label">mais leads do canal orgânico vs. canal pago — no longo prazo</div>
+              <div class="quando-stat-bar"><div class="quando-stat-fill" data-w="60"></div></div>
+            </div>
+            <div class="quando-stat-row">
+              <div class="quando-stat-top">
+                <span class="quando-stat-val">3×</span>
+                <span class="quando-stat-label">mais leads do canal orgânico vs. canal pago no longo prazo</span>
               </div>
+              <div class="quando-stat-bar"><div class="quando-stat-fill" data-w="75"></div></div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1013,7 +1636,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1025,26 +1647,77 @@
         <h2 class="faq-h2">Dúvidas sobre SEO, GEO e IA</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal">
-          <div class="faq-q" onclick="toggleFaq(this)">O que é GEO e por que é diferente de SEO?<span class="faq-icon">+</span></div>
-          <div class="faq-a">SEO (Search Engine Optimization) otimiza para algoritmos de busca tradicional — Google orgânico com lista de links. GEO (Generative Engine Optimization) otimiza para sistemas de IA generativa — ChatGPT, Gemini, Perplexity, Google AI Mode — que sintetizam respostas diretas e citam fontes específicas. São complementares, mas exigem técnicas diferentes.</div>
+
+        <div class="faq-item faq-teal reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            O que é GEO e por que é diferente de SEO?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">SEO (Search Engine Optimization) otimiza para algoritmos de busca tradicional — Google orgânico com lista de links. GEO (Generative Engine Optimization) otimiza para sistemas de IA generativa — ChatGPT, Gemini, Perplexity, Google AI Mode — que sintetizam respostas diretas e citam fontes específicas. São complementares, mas exigem técnicas diferentes.</div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-1">
-          <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para ver resultado com SEO?<span class="faq-icon">+</span></div>
-          <div class="faq-a">SEO é um canal de médio-longo prazo. Os primeiros movimentos significativos acontecem entre 3-6 meses. Resultados consistentes e escaláveis surgem a partir de 6-12 meses. Ao contrário de anúncios, os resultados acumulam e não param quando o investimento para.</div>
+
+        <div class="faq-item faq-orange reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Quanto tempo leva para ver resultado com SEO?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">SEO é um canal de médio-longo prazo. Os primeiros movimentos significativos acontecem entre 3–6 meses. Resultados consistentes e escaláveis surgem a partir de 6–12 meses. Ao contrário de anúncios, os resultados acumulam e não param quando o investimento para.</div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-2">
-          <div class="faq-q" onclick="toggleFaq(this)">É possível aparecer nas respostas de IA como o ChatGPT?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Sim. Os sistemas de IA generativa são treinados com conteúdo da web e usam fontes para gerar respostas em tempo real. Clínicas com conteúdo de autoridade, dados estruturados bem configurados e alta reputação online têm muito mais chance de ser citadas como referência nas respostas de IA.</div>
+
+        <div class="faq-item faq-purple reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            É possível aparecer nas respostas de IA como o ChatGPT?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">Sim. Os sistemas de IA generativa são treinados com conteúdo da web e usam fontes para gerar respostas em tempo real. Clínicas com conteúdo de autoridade, dados estruturados bem configurados e alta reputação online têm muito mais chance de ser citadas como referência nas respostas de IA.</div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-3">
-          <div class="faq-q" onclick="toggleFaq(this)">Google Ads e SEO se complementam ou são substitutos?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Se complementam. Google Ads entrega resultado imediato — é perfeito para tratamentos específicos e resultados rápidos. SEO constrói o canal orgânico sustentável que reduz o custo de aquisição ao longo do tempo. O ideal é ter os dois funcionando em paralelo.</div>
+
+        <div class="faq-item faq-teal reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Google Ads e SEO se complementam ou são substitutos?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">Se complementam. Google Ads entrega resultado imediato — perfeito para tratamentos específicos e resultados rápidos. SEO constrói o canal orgânico sustentável que reduz o custo de aquisição ao longo do tempo. O ideal é ter os dois funcionando em paralelo.</div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-4">
-          <div class="faq-q" onclick="toggleFaq(this)">Como é feita a avaliação do meu posicionamento atual?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Em uma reunião de até 45 minutos, analisamos o posicionamento atual do seu site no Google, visibilidade no Maps, performance técnica, presença em sistemas de IA e comparação com concorrentes locais. Você recebe um relatório com os principais gaps e oportunidades identificadas.</div>
+
+        <div class="faq-item faq-orange reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Como é feita a avaliação do meu posicionamento atual?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">Em uma reunião de até 45 minutos, analisamos o posicionamento atual do seu site no Google, visibilidade no Maps, performance técnica, presença em sistemas de IA e comparação com concorrentes locais. Você recebe um relatório com os principais gaps e oportunidades identificadas.</div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1202,6 +1875,102 @@
         });
       }, { threshold: 0.25 });
       obs.observe(stage);
+    })();
+
+    /* ── Pilares — stagger card animation ── */
+    (function initPilares() {
+      const grid = document.getElementById('pilaresGrid');
+      if (!grid) return;
+      const cards = grid.querySelectorAll('.pilar-card');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            cards.forEach((card, i) => {
+              setTimeout(() => card.classList.add('visible'), i * 150);
+            });
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      io.observe(grid);
+    })();
+
+    /* ── A Virada — stagger timeline animation ── */
+    (function initVirada() {
+      const items = document.querySelectorAll('#viradaTimeline .tl-item');
+      if (!items.length) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const allItems = e.target.querySelectorAll('.tl-item');
+            allItems.forEach((item, i) => {
+              setTimeout(() => item.classList.add('visible'), i * 120);
+            });
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      const timeline = document.getElementById('viradaTimeline');
+      if (timeline) io.observe(timeline);
+    })();
+    /* Entrega Panel counter animation */
+    (function initEntregaPanel() {
+      const panel = document.getElementById('entregaPanel');
+      if (!panel) return;
+      let fired = false;
+      function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+      function animateValue(el, duration, delay) {
+        const target   = parseFloat(el.dataset.target);
+        const prefix   = el.dataset.prefix || '';
+        const suffix   = el.dataset.suffix || '';
+        const isDecimal = el.dataset.decimal === '1';
+        setTimeout(() => {
+          const start = performance.now();
+          const raf = (now) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = easeOutExpo(t);
+            let val = isDecimal ? (target * eased / 10).toFixed(1) : Math.round(target * eased);
+            el.textContent = prefix + val + suffix;
+            if (t < 1) requestAnimationFrame(raf);
+          };
+          requestAnimationFrame(raf);
+        }, delay);
+      }
+      function run() {
+        if (fired) return;
+        fired = true;
+        ['ep0','ep1','ep2','ep3'].forEach((id, i) => {
+          const card = document.getElementById(id);
+          if (!card) return;
+          const valEl = card.querySelector('.metric-card-value');
+          const delay = 150 + i * 160;
+          setTimeout(() => card.classList.add('is-active'), delay);
+          if (valEl) animateValue(valEl, 1200, delay);
+        });
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { run(); obs.disconnect(); } });
+      }, { threshold: 0.3 });
+      obs.observe(panel);
+    })();
+
+    /* Quando urgency — progress bars */
+    (function initQuandoBars() {
+      const box = document.getElementById('quandoUrgency');
+      if (!box) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const fills = box.querySelectorAll('.quando-stat-fill');
+          fills.forEach((fill, i) => {
+            setTimeout(() => {
+              fill.style.width = (fill.dataset.w || 50) + '%';
+            }, 200 + i * 180);
+          });
+          obs.unobserve(box);
+        });
+      }, { threshold: 0.3 });
+      obs.observe(box);
     })();
   </script>
 </body>

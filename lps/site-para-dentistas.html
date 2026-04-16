@@ -142,11 +142,20 @@
     /* Hero */
     .hero {
       min-height: 100vh;
-      background: var(--ink);
+      background: url('web.jpg') center center / cover no-repeat;
       display: flex; align-items: center;
       position: relative; overflow: hidden;
       padding-top: 68px;
     }
+    /* overlay escuro sobre a imagem para manter legibilidade */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(to right, rgba(6,14,17,.88) 50%, rgba(6,14,17,.55) 100%),
+        linear-gradient(to bottom, rgba(6,14,17,.3), rgba(6,14,17,.6));
+    }
+    .hero > * { position: relative; z-index: 2; }
     .hero-bg-glow {
       position: absolute; top: -5%; right: -10%;
       width: 700px; height: 700px; border-radius: 50%;
@@ -186,14 +195,9 @@
       margin-bottom: 1.5rem;
       opacity: 0; animation: fade-up-in .7s ease forwards .45s;
     }
-    .hero-h1-big { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--white); }
-    .hero-h1-teal { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--teal); }
-    .hero-h1-italic {
-      display: block;
-      font-family: var(--font-disp); font-style: normal;
-      font-size: clamp(2.6rem, 4vw, 3.5rem); font-weight: 800;
-      color: rgba(237,246,245,0.7);
-    }
+    .hero-h1-big { display: inline; font-size: clamp(2.4rem, 4.2vw, 3.6rem); color: var(--white); }
+    .hero-h1-white { display: inline; font-size: clamp(2.4rem, 4.2vw, 3.6rem); color: var(--white); }
+    .hero-h1-teal { display: inline; font-size: clamp(2.4rem, 4.2vw, 3.6rem); color: var(--teal); white-space: nowrap; }
     .hero-sub {
       font-size: 1.08rem; color: var(--cream-2); line-height: 1.7;
       margin-bottom: 2.5rem; max-width: 480px;
@@ -204,269 +208,1041 @@
       opacity: 0; animation: fade-up-in .7s ease forwards .75s;
     }
     .hero-trust {
-      font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem;
+      font-size: .78rem; color: var(--white); margin-top: 1.5rem;
       display: flex; align-items: center; gap: .5rem;
       opacity: 0; animation: fade-in .7s ease forwards .9s;
     }
-    .hero-trust::before { content: ''; width: 16px; height: 1px; background: var(--cream-3); }
+    .hero-trust::before { content: ''; width: 16px; height: 1px; background: rgba(255,255,255,0.4); }
 
-    /* Hero visual — mockup "browser" */
+    /* ── Hero visual — mockup browser premium ── */
     .hero-visual {
       opacity: 0; animation: fade-in .9s ease forwards .5s;
+      position: relative;
     }
+    /* outer glow behind the mockup */
+    .hero-visual::before {
+      content: '';
+      position: absolute; inset: -20px;
+      background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(27,181,164,.18), transparent 70%);
+      pointer-events: none; z-index: 0; border-radius: 40px;
+      animation: mock-pulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes mock-pulse {
+      from { opacity: .6; transform: scale(.97); }
+      to   { opacity: 1;  transform: scale(1.02); }
+    }
+
     .browser-mock {
-      background: var(--ink-3);
-      border: 1px solid rgba(27,181,164,0.15);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      background: #121820;
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: 20px; overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.05) inset,
+        0 50px 100px rgba(0,0,0,.6),
+        0 20px 40px rgba(0,0,0,.4);
+      position: relative; z-index: 1;
     }
+
+    /* browser chrome bar */
     .browser-bar {
-      display: flex; align-items: center; gap: .6rem;
-      padding: .75rem 1rem;
-      background: rgba(255,255,255,0.03);
-      border-bottom: 1px solid rgba(237,246,245,0.06);
+      display: flex; align-items: center; gap: .55rem;
+      padding: .85rem 1.1rem;
+      background: rgba(255,255,255,.025);
+      border-bottom: 1px solid rgba(237,246,245,.06);
     }
-    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      transition: filter .2s;
+    }
+    .browser-mock:hover .browser-dot { filter: brightness(1.25); }
     .browser-url {
-      flex: 1; margin-left: .5rem;
-      background: rgba(255,255,255,0.04); border-radius: 100px;
-      padding: .3rem .8rem; font-size: .72rem; color: var(--cream-3);
+      flex: 1; margin: 0 .5rem;
+      background: rgba(255,255,255,.05); border-radius: 100px;
+      padding: .32rem .9rem; font-size: .7rem;
+      color: rgba(237,246,245,.4); letter-spacing: .02em;
+      border: 1px solid rgba(237,246,245,.06);
+      display: flex; align-items: center; gap: .4rem;
     }
-    .browser-content { padding: 1.5rem; }
+    .browser-url::before {
+      content: '🔒'; font-size: .6rem; opacity: .6;
+    }
+
+    .browser-content { padding: 1.2rem; }
+
+    /* site hero preview */
     .site-preview-hero {
-      background: linear-gradient(135deg, var(--ink-4), var(--ink-3));
-      border-radius: var(--radius-lg); padding: 1.8rem;
+      background:
+        radial-gradient(ellipse 90% 70% at 85% 10%, rgba(27,181,164,.18), transparent 60%),
+        linear-gradient(160deg, #1a2430 0%, #111820 100%);
+      border-radius: 12px; padding: 1.6rem 1.5rem;
       margin-bottom: 1rem; position: relative; overflow: hidden;
     }
+    .site-preview-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(27,181,164,.3), transparent);
+    }
+
+    /* decorative grid lines inside preview */
     .site-preview-hero::before {
       content: '';
-      position: absolute; top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(ellipse, rgba(27,181,164,0.15) 0%, transparent 70%);
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(27,181,164,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,181,164,.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 80% 20%, black 10%, transparent 65%);
+      pointer-events: none;
     }
-    .site-preview-tag {
-      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--teal); margin-bottom: .6rem;
-    }
-    .site-preview-h1 { font-family: var(--font-disp); font-weight: 800; font-size: 1rem; color: var(--white); line-height: 1.2; margin-bottom: .8rem; }
-    .site-preview-btn {
-      display: inline-block; background: var(--teal); color: var(--ink);
-      font-size: .65rem; font-weight: 700; padding: .4rem 1rem; border-radius: 100px;
-    }
-    .site-preview-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; }
-    .site-preview-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(237,246,245,0.07);
-      border-radius: var(--radius); padding: .8rem; text-align: center;
-    }
-    .site-preview-card-icon { font-size: 1rem; margin-bottom: .3rem; }
-    .site-preview-card-label { font-size: .55rem; color: var(--cream-3); }
-    .site-preview-score {
-      display: flex; gap: .6rem; margin-top: 1rem;
-    }
-    .score-item {
-      flex: 1; background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(237,246,245,0.07);
-      border-radius: var(--radius); padding: .6rem;
-      text-align: center;
-    }
-    .score-val { font-family: var(--font-disp); font-weight: 800; font-size: .9rem; color: var(--teal); }
-    .score-label { font-size: .55rem; color: var(--cream-3); margin-top: .2rem; }
 
-    /* Problema mercado */
-    .section-problema {
-      padding: 6rem 0;
-      background: var(--ink-2);
-      position: relative; overflow: hidden;
+    .site-preview-tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .58rem; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: .75rem;
+      position: relative; z-index: 1;
     }
-    .section-problema::before {
+    .site-preview-tag::before {
+      content: ''; width: 12px; height: 1px; background: var(--teal); opacity: .7;
+    }
+    .site-preview-h1 {
+      font-family: var(--font-disp); font-weight: 800; font-size: 1.05rem;
+      color: rgba(237,246,245,.96); line-height: 1.22; margin-bottom: .9rem;
+      position: relative; z-index: 1;
+    }
+    .site-preview-btn {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: var(--teal); color: var(--ink);
+      font-size: .62rem; font-weight: 800; padding: .42rem 1.1rem;
+      border-radius: 100px; position: relative; z-index: 1;
+      box-shadow: 0 4px 14px rgba(27,181,164,.4);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .browser-mock:hover .site-preview-btn {
+      box-shadow: 0 6px 20px rgba(27,181,164,.55);
+      transform: translateY(-1px);
+    }
+
+    /* treatment cards */
+    .site-preview-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; }
+    .site-preview-card {
+      background: rgba(237,246,245,.03);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: 10px; padding: .8rem .6rem; text-align: center;
+      position: relative; overflow: hidden;
+      transition: border-color .25s, background .25s, transform .25s;
+    }
+    .site-preview-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--teal), transparent);
-      opacity: .25;
+      background: linear-gradient(90deg, transparent, rgba(27,181,164,.3), transparent);
+      opacity: 0; transition: opacity .25s;
     }
-    .problema-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    .browser-mock:hover .site-preview-card:nth-child(1) { transition-delay: 0s; }
+    .browser-mock:hover .site-preview-card:nth-child(2) { transition-delay: .05s; }
+    .browser-mock:hover .site-preview-card:nth-child(3) { transition-delay: .1s; }
+    .browser-mock:hover .site-preview-card {
+      background: rgba(27,181,164,.04);
+      border-color: rgba(27,181,164,.18);
+      transform: translateY(-2px);
     }
-    .problema-h2 {
-      font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.2rem;
-    }
-    .problema-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
-    .problema-stat {
-      display: flex; gap: 2rem; margin-top: 1.5rem;
-    }
-    .stat-item {}
-    .stat-val { font-family: var(--font-disp); font-weight: 800; font-size: 2rem; color: var(--teal); }
-    .stat-label { font-size: .82rem; color: var(--cream-2); }
-    .problema-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
-    .problema-list li {
-      display: flex; align-items: flex-start; gap: .75rem;
-      font-size: .92rem; color: var(--cream);
-      padding: .9rem 1.2rem;
-      background: rgba(240,112,48,0.06);
-      border: 1px solid rgba(240,112,48,0.12);
-      border-radius: var(--radius);
-    }
-    .problema-list li::before { content: '✗'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .browser-mock:hover .site-preview-card::before { opacity: 1; }
+    .site-preview-card-icon { font-size: 1.05rem; margin-bottom: .35rem; }
+    .site-preview-card-label { font-size: .56rem; color: rgba(237,246,245,.45); letter-spacing: .04em; }
 
-    /* Critérios */
-    .section-criterios {
-      padding: 6rem 0;
-      background: var(--ink);
+    /* PageSpeed scores */
+    .site-preview-score { display: flex; gap: .6rem; margin-top: .7rem; }
+    .score-item {
+      flex: 1; border-radius: 10px; padding: .65rem .4rem;
+      text-align: center; position: relative; overflow: hidden;
+      background: rgba(237,246,245,.028);
+      border: 1px solid rgba(237,246,245,.07);
+      transition: border-color .25s, background .25s;
     }
-    .criterios-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
-    .criterios-h2 {
-      font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    .score-item::before {
+      content: '';
+      position: absolute; bottom: 0; left: 10%; right: 10%; height: 2px;
+      border-radius: 2px; background: var(--teal); opacity: .5;
     }
-    .criterios-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    .browser-mock:hover .score-item {
+      background: rgba(27,181,164,.05); border-color: rgba(27,181,164,.2);
     }
-    .criterio-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(237,246,245,0.07);
-      border-radius: var(--radius-lg); padding: 2rem;
-      transition: border-color .3s, transform .3s;
+    .score-val {
+      font-family: var(--font-disp); font-weight: 900; font-size: .95rem;
+      color: var(--teal); line-height: 1; letter-spacing: -.02em;
+    }
+    .score-label { font-size: .5rem; color: rgba(237,246,245,.38); margin-top: .25rem; letter-spacing: .06em; text-transform: uppercase; }
+
+    /* ══ Problema mercado — redesign premium ══ */
+    .section-problema {
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 70% 60% at 100% 80%, rgba(240,112,48,.09), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 0%   20%, rgba(240,112,48,.05), transparent 50%),
+        var(--ink-2);
       position: relative; overflow: hidden;
     }
+    /* ghost text */
+    .section-problema::before {
+      content: 'FALHAS';
+      position: absolute; left: -1rem; bottom: -2rem;
+      font-family: var(--font-disp); font-size: 22vw; font-weight: 800;
+      color: rgba(237,246,245,.018); letter-spacing: -.05em; line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    /* top gradient line */
+    .section-problema::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,112,48,.6), var(--teal), transparent);
+    }
+
+    .problema-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+      position: relative; z-index: 1;
+    }
+
+    /* Left col header */
+    .problema-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2.1rem, 4vw, 3rem); color: var(--white);
+      letter-spacing: -.035em; line-height: 1.08; margin-bottom: 1.4rem;
+    }
+    .problema-text {
+      font-size: 1rem; color: rgba(237,246,245,.55); line-height: 1.75;
+      margin-bottom: 2.8rem; max-width: 500px;
+    }
+
+    /* Stat metrics */
+    .problema-stats-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.2rem;
+    }
+    .stat-card {
+      background: rgba(237,246,245,.03);
+      border: 1px solid rgba(237,246,245,.08);
+      border-radius: var(--radius-lg); padding: 1.8rem 1.6rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease,
+                  border-color .3s, background .3s, box-shadow .3s;
+    }
+    .stat-card.visible { opacity: 1; transform: translateY(0); }
+    .stat-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), rgba(27,181,164,.1));
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute; top: -40%; right: -20%;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,.08), transparent 70%);
+      pointer-events: none;
+    }
+    .stat-card:hover {
+      background: rgba(27,181,164,.05);
+      border-color: rgba(27,181,164,.25);
+      box-shadow: 0 8px 32px rgba(27,181,164,.08);
+    }
+    .stat-val {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: 2.8rem; color: var(--teal); line-height: 1;
+      margin-bottom: .6rem; display: block; letter-spacing: -.02em;
+    }
+    .stat-label {
+      font-size: .96rem; color: rgba(237,246,245,.62); font-weight: 500; line-height: 1.6;
+    }
+
+    /* Right col: problem cards */
+    .problema-cards-grid {
+      display: grid; grid-template-columns: 1fr; gap: .9rem;
+    }
+    .p-card {
+      background: rgba(237,246,245,.025);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius-lg); padding: 1.3rem 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateX(24px);
+      transition: opacity .5s ease, transform .5s ease,
+                  background .3s, border-color .3s, box-shadow .3s;
+    }
+    .p-card.visible { opacity: 1; transform: translateX(0); }
+    /* per-card color via --pc (r,g,b) */
+    .p-card { --pc: 240,112,48; }
+    /* left color stripe */
+    .p-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: rgba(var(--pc),.65);
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+      transition: background .3s;
+    }
+    .p-card:hover {
+      background: rgba(var(--pc),.05);
+      border-color: rgba(var(--pc),.28);
+      box-shadow: 0 6px 28px rgba(var(--pc),.1);
+    }
+    .p-card:hover::before { background: rgb(var(--pc)); }
+    .p-card-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(var(--pc),.08);
+      border: 1px solid rgba(var(--pc),.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+    .p-card:hover .p-card-icon {
+      background: rgba(var(--pc),.16);
+      border-color: rgba(var(--pc),.4);
+      transform: scale(1.08);
+    }
+    .p-card-num { color: rgba(var(--pc),.65); }
+    .p-card-content { flex: 1; min-width: 0; }
+    .p-card-title {
+      font-family: var(--font-disp); font-weight: 700;
+      font-size: .95rem; color: rgba(237,246,245,.92);
+      margin-bottom: .25rem;
+    }
+    .p-card-text { font-size: .83rem; color: rgba(237,246,245,.48); line-height: 1.55; }
+    .p-card-num {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: .62rem; letter-spacing: .1em;
+      color: rgba(240,112,48,.6); align-self: center;
+      margin-left: auto; flex-shrink: 0; padding-left: .5rem;
+    }
+
+    /* ══ Critérios — redesign premium ══ */
+    .section-criterios {
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 60% 55% at 8%  15%, rgba(27,181,164,.07), transparent 55%),
+        radial-gradient(ellipse 50% 45% at 92% 85%, rgba(175,108,255,.07), transparent 50%),
+        var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .section-criterios::before {
+      content: 'CRITÉRIOS';
+      position: absolute; right: -3rem; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-disp); font-size: 16vw; font-weight: 800;
+      color: rgba(237,246,245,.018); letter-spacing: -.05em; line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .section-criterios::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), rgba(175,108,255,.6), transparent);
+    }
+
+    .criterios-header {
+      text-align: center; max-width: 680px; margin: 0 auto 5rem;
+      position: relative; z-index: 1;
+    }
+    .criterios-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2rem, 3.8vw, 3rem); color: var(--white);
+      letter-spacing: -.035em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .criterios-sub {
+      font-size: .97rem; color: rgba(237,246,245,.52); line-height: 1.7;
+    }
+
+    .criterios-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem; position: relative; z-index: 1;
+    }
+
+    /* Per-card color via --cc (r,g,b) */
+    .criterio-card {
+      --cc: 27,181,164;
+      background: rgba(237,246,245,.028);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius-xl); padding: 2.4rem 2rem 2.2rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .6s ease, transform .6s ease,
+                  background .3s, border-color .3s, box-shadow .3s;
+    }
+    .criterio-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* Gradient top line */
     .criterio-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-lo));
-      opacity: 0; transition: opacity .3s;
+      background: linear-gradient(90deg, rgb(var(--cc)), rgba(var(--cc),.15));
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      opacity: .7; transition: opacity .3s;
     }
-    .criterio-card:hover { border-color: rgba(27,181,164,0.25); transform: translateY(-4px); }
+    /* Corner glow */
+    .criterio-card::after {
+      content: '';
+      position: absolute; top: -30%; right: -20%;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(var(--cc),.1), transparent 70%);
+      pointer-events: none; opacity: 0; transition: opacity .4s;
+    }
+    .criterio-card:hover {
+      background: rgba(var(--cc),.05);
+      border-color: rgba(var(--cc),.28);
+      box-shadow: 0 16px 48px rgba(var(--cc),.12), 0 2px 8px rgba(0,0,0,.3);
+      transform: translateY(-6px);
+    }
+    .criterio-card.visible:hover { transform: translateY(-6px); }
     .criterio-card:hover::before { opacity: 1; }
-    .criterio-num {
-      font-family: var(--font-disp); font-weight: 800; font-size: 2.5rem;
-      color: rgba(27,181,164,0.2); line-height: 1; margin-bottom: 1rem;
-    }
-    .criterio-title {
-      font-family: var(--font-disp); font-weight: 700; font-size: 1.05rem;
-      color: var(--white); margin-bottom: .6rem;
-    }
-    .criterio-text { font-size: .88rem; color: var(--cream-2); line-height: 1.65; }
+    .criterio-card:hover::after { opacity: 1; }
 
-    /* Incluso */
-    .section-incluso {
-      padding: 6rem 0;
-      background: var(--ink-2);
+    /* Ghost number — large, top-right */
+    .criterio-num {
+      position: absolute; top: .8rem; right: 1.2rem;
+      font-family: var(--font-disp); font-weight: 900; font-size: 5rem;
+      color: rgba(var(--cc),.09); line-height: 1; letter-spacing: -.04em;
+      user-select: none; pointer-events: none;
+      transition: color .3s;
     }
-    .incluso-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .criterio-card:hover .criterio-num { color: rgba(var(--cc),.16); }
+
+    /* Icon box */
+    .criterio-icon {
+      width: 50px; height: 50px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(var(--cc),.1);
+      border: 1px solid rgba(var(--cc),.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 1.5rem;
+      transition: background .3s, border-color .3s, transform .3s;
+      position: relative; z-index: 1;
+    }
+    .criterio-card:hover .criterio-icon {
+      background: rgba(var(--cc),.16);
+      border-color: rgba(var(--cc),.4);
+      transform: scale(1.08);
+    }
+
+    .criterio-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem;
+      color: rgba(237,246,245,.95); margin-bottom: .7rem;
+      position: relative; z-index: 1;
+    }
+    .criterio-text {
+      font-size: .875rem; color: rgba(237,246,245,.5); line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+
+    /* ══ Incluso — redesign premium ══ */
+    .section-incluso {
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 55% 50% at 50%  0%,  rgba(27,181,164,.07), transparent 55%),
+        radial-gradient(ellipse 40% 40% at 90% 100%, rgba(175,108,255,.06), transparent 50%),
+        var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-incluso::before {
+      content: 'INCLUSO';
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      font-family: var(--font-disp); font-size: 20vw; font-weight: 800;
+      color: rgba(237,246,245,.015); letter-spacing: -.05em; line-height: 1;
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .section-incluso::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(175,108,255,.5), var(--teal), transparent);
+    }
+
+    .incluso-header {
+      text-align: center; max-width: 720px; margin: 0 auto 5.5rem;
+      position: relative; z-index: 1;
+    }
     .incluso-h2 {
       font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+      font-size: clamp(2rem, 3.8vw, 3rem); color: var(--white);
+      letter-spacing: -.035em; line-height: 1.1; margin-bottom: 1rem;
     }
-    .incluso-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    .incluso-sub {
+      font-size: .97rem; color: rgba(237,246,245,.52); line-height: 1.7;
     }
-    .incluso-item {
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(237,246,245,0.07);
-      border-radius: var(--radius-lg); padding: 1.6rem;
-      transition: border-color .3s;
-    }
-    .incluso-item:hover { border-color: rgba(27,181,164,0.2); }
-    .incluso-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: rgba(27,181,164,0.1); border: 1px solid rgba(27,181,164,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
-    }
-    .incluso-item-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .4rem; }
-    .incluso-item-text { font-size: .85rem; color: var(--cream-2); line-height: 1.6; }
 
-    /* Antes/Depois */
-    .section-antes {
-      padding: 6rem 0;
-      background: var(--ink);
+    .incluso-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem; position: relative; z-index: 1;
     }
-    .antes-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+
+    /* per-card color */
+    .incluso-item { --ic: 27,181,164; }
+
+    .incluso-item {
+      background: rgba(237,246,245,.028);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius-xl);
+      display: flex; gap: 0; flex-direction: column;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease,
+                  background .3s, border-color .3s, box-shadow .3s;
+    }
+    .incluso-item.visible { opacity: 1; transform: translateY(0); }
+
+    /* gradient top line */
+    .incluso-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, rgb(var(--ic)), rgba(var(--ic),.1));
+      opacity: .7; transition: opacity .3s;
+    }
+    /* corner glow */
+    .incluso-item::after {
+      content: '';
+      position: absolute; bottom: -30%; right: -15%;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(var(--ic),.08), transparent 70%);
+      pointer-events: none; opacity: 0; transition: opacity .4s;
+    }
+    .incluso-item:hover {
+      background: rgba(var(--ic),.045);
+      border-color: rgba(var(--ic),.28);
+      box-shadow: 0 14px 44px rgba(var(--ic),.11), 0 2px 8px rgba(0,0,0,.25);
+      transform: translateY(-5px);
+    }
+    .incluso-item.visible:hover { transform: translateY(-5px); }
+    .incluso-item:hover::before { opacity: 1; }
+    .incluso-item:hover::after  { opacity: 1; }
+
+    /* inner layout */
+    .incluso-item-inner {
+      display: flex; gap: 1.4rem; align-items: flex-start;
+      padding: 1.8rem 1.8rem 1.6rem;
+      flex: 1;
+    }
+
+    .incluso-icon {
+      width: 54px; height: 54px; border-radius: 15px; flex-shrink: 0;
+      background: rgba(var(--ic),.1);
+      border: 1px solid rgba(var(--ic),.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      position: relative; z-index: 1;
+      transition: background .3s, border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .incluso-item:hover .incluso-icon {
+      background: rgba(var(--ic),.18);
+      border-color: rgba(var(--ic),.45);
+      transform: scale(1.1);
+      box-shadow: 0 4px 20px rgba(var(--ic),.2);
+    }
+
+    .incluso-item-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
+    .incluso-item-num {
+      font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(var(--ic),.7); margin-bottom: .45rem; display: block;
+    }
+    .incluso-item-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.05rem;
+      color: rgba(237,246,245,.95); margin-bottom: .45rem; line-height: 1.25;
+    }
+    .incluso-item-text {
+      font-size: .84rem; color: rgba(237,246,245,.5); line-height: 1.65;
+    }
+
+    /* bottom bar with badge */
+    .incluso-item-foot {
+      border-top: 1px solid rgba(237,246,245,.05);
+      padding: .75rem 1.8rem;
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+    .incluso-badge {
+      font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .22rem .8rem; border-radius: 100px;
+      background: rgba(var(--ic),.12); color: rgb(var(--ic));
+      border: 1px solid rgba(var(--ic),.22);
+    }
+
+    /* ══ Antes/Depois — refinado ══ */
+    .section-antes {
+      padding: 9rem 0 8rem;
+      background:
+        radial-gradient(ellipse 70% 55% at 20% 50%, rgba(240,112,48,.055), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(27,181,164,.07), transparent 55%),
+        var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .section-antes::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,112,48,.4), rgba(27,181,164,.5), transparent);
+    }
+
+    .antes-header {
+      text-align: center; max-width: 680px; margin: 0 auto 5rem;
+      position: relative; z-index: 1;
+    }
     .antes-h2 {
       font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+      font-size: clamp(2rem, 3.8vw, 3rem); color: var(--white);
+      letter-spacing: -.035em; line-height: 1.1; margin-bottom: 1rem;
     }
+    .antes-sub { font-size: .97rem; color: rgba(237,246,245,.5); line-height: 1.7; }
+
+    /* Two equal cols */
     .antes-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.8rem; align-items: start;
+      position: relative; z-index: 1;
     }
+
     .antes-col {
-      border-radius: var(--radius-xl); padding: 2.5rem; overflow: hidden;
+      border-radius: var(--radius-xl);
+      padding: 2.8rem 2.6rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
     }
+    .antes-col.visible { opacity: 1; transform: translateY(0); }
+
+    /* SEM — muted, dimmed */
     .antes-col.sem {
-      background: rgba(240,112,48,0.05);
-      border: 1px solid rgba(240,112,48,0.15);
+      background: rgba(237,246,245,.022);
+      border: 1px solid rgba(237,246,245,.07);
     }
+    .antes-col.sem::before {
+      content: '';
+      position: absolute; top: 0; left: 2rem; right: 2rem; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,112,48,.35), transparent);
+    }
+
+    /* COM — elevated, glowing */
     .antes-col.com {
-      background: rgba(27,181,164,0.05);
-      border: 1px solid rgba(27,181,164,0.2);
+      background: rgba(27,181,164,.04);
+      border: 1px solid rgba(27,181,164,.2);
+      box-shadow: 0 20px 60px rgba(27,181,164,.1), 0 1px 0 rgba(27,181,164,.3) inset;
     }
-    .antes-col-header {
-      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.8rem;
+    .antes-col.com::before {
+      content: '';
+      position: absolute; top: 0; left: 2rem; right: 2rem; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(27,181,164,.6), transparent);
     }
-    .antes-col-badge {
-      font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      padding: .3rem .9rem; border-radius: 100px;
+    .antes-col.com::after {
+      content: '';
+      position: absolute; bottom: -25%; right: -10%;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,.08), transparent 70%);
+      pointer-events: none;
     }
-    .sem .antes-col-badge { background: rgba(240,112,48,0.15); color: var(--orange); }
-    .com .antes-col-badge { background: rgba(27,181,164,0.15); color: var(--teal); }
-    .antes-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
-    .antes-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .9rem; color: var(--cream); }
-    .antes-list li::before { font-weight: 700; flex-shrink: 0; font-size: .9rem; }
-    .sem .antes-list li::before { content: '✗'; color: var(--orange); }
-    .com .antes-list li::before { content: '✓'; color: var(--teal); }
 
-    /* Portfólio / prova */
-    .section-prova {
-      padding: 6rem 0;
-      background: var(--ink-2);
+    /* Column heading area */
+    .antes-col-head {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2.2rem; padding-bottom: 1.6rem;
+      border-bottom: 1px solid rgba(237,246,245,.06);
+      position: relative; z-index: 1;
     }
-    .prova-header { text-align: center; margin-bottom: 4rem; }
-    .prova-h2 {
-      font-family: var(--font-disp); font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
-      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    .antes-col-icon {
+      width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
     }
-    .prova-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .test-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(237,246,245,0.08);
-      border-radius: var(--radius-lg); padding: 2rem;
-      transition: transform .3s, border-color .3s;
+    .sem .antes-col-icon { background: rgba(240,112,48,.08); border: 1px solid rgba(240,112,48,.18); }
+    .com .antes-col-icon {
+      background: rgba(27,181,164,.1); border: 1px solid rgba(27,181,164,.28);
+      box-shadow: 0 4px 14px rgba(27,181,164,.15);
     }
-    .test-card:hover { transform: translateY(-3px); border-color: rgba(27,181,164,0.2); }
-    .test-stars { color: #FFB800; font-size: .9rem; margin-bottom: 1rem; }
-    .test-text { font-size: .9rem; color: var(--cream); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
-    .test-author { display: flex; align-items: center; gap: .75rem; }
-    .test-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal-lo), var(--purple));
+    .antes-col-label {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1rem;
+      line-height: 1.2;
+    }
+    .sem .antes-col-label { color: rgba(237,246,245,.65); }
+    .com .antes-col-label { color: rgba(237,246,245,.95); }
+    .antes-col-caption {
+      font-size: .75rem; font-weight: 500; margin-top: .2rem;
+      letter-spacing: .02em;
+    }
+    .sem .antes-col-caption { color: rgba(240,112,48,.7); }
+    .com .antes-col-caption { color: rgba(27,181,164,.8); }
+
+    /* List */
+    .antes-list { list-style: none; display: flex; flex-direction: column; gap: 0; position: relative; z-index: 1; }
+    .antes-list li {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(237,246,245,.05);
+      font-size: 1.02rem; line-height: 1.5; font-weight: 500;
+      opacity: 0; transform: translateX(-16px);
+      transition: opacity .45s ease, transform .45s ease, color .3s;
+    }
+    .antes-list li:last-child { border-bottom: none; }
+    .antes-col.visible .antes-list li { opacity: 1; transform: translateX(0); }
+    .sem .antes-list li { color: rgba(237,246,245,.45); }
+    .com .antes-list li { color: rgba(237,246,245,.88); }
+    /* hover highlight */
+    .com .antes-list li:hover { color: rgba(237,246,245,1); }
+    .sem .antes-list li:hover { color: rgba(237,246,245,.6); }
+
+    .antes-icon {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-disp); font-weight: 700; font-size: .9rem; color: white; flex-shrink: 0;
+      font-size: .68rem; font-weight: 900; line-height: 1;
+      transition: transform .25s ease, box-shadow .25s;
     }
-    .test-name { font-size: .88rem; font-weight: 600; color: var(--white); }
-    .test-role { font-size: .78rem; color: var(--cream-3); }
+    .antes-list li:hover .antes-icon { transform: scale(1.15); }
+    .sem .antes-icon {
+      background: rgba(240,112,48,.1); color: rgba(240,112,48,.7);
+      border: 1px solid rgba(240,112,48,.22);
+    }
+    .com .antes-icon {
+      background: rgba(27,181,164,.13); color: var(--teal);
+      border: 1px solid rgba(27,181,164,.3);
+      box-shadow: 0 0 8px rgba(27,181,164,.18);
+    }
+    .com .antes-list li:hover .antes-icon {
+      box-shadow: 0 0 14px rgba(27,181,164,.35);
+    }
 
-    /* FAQ */
-    .section-faq { padding: 6rem 0; background: var(--ink); }
-    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .faq-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
-    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
-    .faq-item { border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .3s; }
-    .faq-item.open { border-color: rgba(27,181,164,0.25); }
-    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--white); user-select: none; gap: 1rem; background: rgba(255,255,255,0.02); transition: background .2s; }
-    .faq-q:hover { background: rgba(255,255,255,0.04); }
-    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
-    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; font-size: .9rem; }
-    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7; }
-    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+    /* ─── Prova — dark cinema ─── */
+    .section-prova {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(27,181,164,0.09), transparent 32%),
+        radial-gradient(circle at 84% 22%, rgba(240,112,48,0.07), transparent 30%),
+        var(--ink-2);
+      padding: 8rem 0 6rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Header */
+    .cases-head {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 2rem; margin-bottom: 3.5rem;
+    }
+    .cases-head h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(1.75rem, 3.5vw, 3.2rem);
+      font-weight: 800; letter-spacing: -.05em;
+      color: rgba(237,246,245,.92); line-height: 1.05; max-width: 20ch;
+    }
+    .cases-head h2 em {
+      font-family: var(--font-disp); font-style: normal; font-weight: 800;
+      color: var(--teal);
+    }
+    .cases-score {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.5rem; border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(27,181,164,.2);
+      flex-shrink: 0;
+    }
+    .cases-score-g {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      color: #4285F4; font-family: Georgia, serif;
+      font-size: 1.5rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3); flex-shrink: 0;
+    }
+    .cases-score-num {
+      font-family: var(--font-disp); font-size: 1.75rem; font-weight: 800;
+      letter-spacing: -.06em; color: rgba(237,246,245,.92); line-height: 1;
+    }
+    .cases-score-stars { color: #ffbf34; font-size: .85rem; letter-spacing: .06em; margin: .2rem 0; }
+    .cases-score-label { font-size: .68rem; color: rgba(237,246,245,.45); letter-spacing: .1em; text-transform: uppercase; }
+
+    /* Testimonial stage */
+    .test-stage {
+      position: relative; z-index: 1;
+      border-radius: 28px; overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(237,246,245,.08);
+      box-shadow: 0 8px 40px rgba(9,9,15,.35);
+      margin-bottom: 2rem;
+    }
+    .test-stage-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
+      background: linear-gradient(90deg, var(--teal), var(--orange), var(--purple));
+    }
+    .test-progress {
+      position: absolute; top: 0; left: 0; height: 3px; z-index: 4;
+      background: rgba(255,255,255,.18); width: 0;
+    }
+    .test-progress.running { transition: width 5s linear; }
+    .test-slides { position: relative; min-height: 400px; }
+
+    .test-slide {
+      display: grid; grid-template-columns: 1fr 260px;
+      gap: 3rem; padding: 3rem 3.5rem;
+      position: absolute; inset: 0;
+      opacity: 0; transform: translateY(18px) scale(.99);
+      transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                  transform .55s cubic-bezier(.16,1,.3,1);
+      pointer-events: none; align-items: start;
+    }
+    .test-slide.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .test-slide.exiting { opacity: 0; transform: translateY(-14px) scale(.98); }
+
+    .test-count {
+      font-family: var(--font-disp); font-size: .65rem; font-weight: 700;
+      letter-spacing: .2em; color: var(--teal); margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .test-count::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(27,181,164,.35), transparent);
+    }
+    .test-q {
+      position: relative; font-family: var(--font-disp); font-weight: 400;
+      font-size: clamp(1rem, 1.8vw, 1.45rem);
+      line-height: 1.7; color: rgba(237,246,245,.78);
+      padding-left: 1.4rem; margin-bottom: 2.5rem;
+    }
+    .test-q::before {
+      content: '';
+      position: absolute; top: .35rem; left: 0;
+      width: 3px; height: calc(100% - .7rem);
+      background: linear-gradient(180deg, var(--teal), rgba(27,181,164,.18));
+      border-radius: 2px;
+    }
+    .test-author-row { display: flex; align-items: center; gap: .9rem; }
+    .test-av {
+      width: 50px; height: 50px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 1.1rem; font-weight: 800;
+      color: #fff; flex-shrink: 0;
+    }
+    .test-av.rose   { background: linear-gradient(135deg, #b36c79, #e2a5b1); }
+    .test-av.teal   { background: linear-gradient(135deg, var(--teal-lo), var(--teal)); }
+    .test-av.orange { background: linear-gradient(135deg, #d46a17, #f08f31); }
+    .test-av.gold   { background: linear-gradient(135deg, #aa7a1d, #e2b24f); }
+    .test-av.slate  { background: linear-gradient(135deg, #7d909f, #a8b6c2); }
+    .test-av.purple { background: linear-gradient(135deg, #7b33d0, #af6cff); }
+    .test-name  { font-size: .95rem; font-weight: 700; color: rgba(237,246,245,.92); }
+    .test-role  { font-size: .72rem; color: rgba(237,246,245,.48); letter-spacing: .04em; margin-top: .12rem; }
+    .test-stars { color: #ffbf34; font-size: .82rem; letter-spacing: .06em; margin-top: .35rem; }
+
+    /* Metric card (right column) */
+    .test-metric {
+      background: rgba(27,181,164,.08);
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: 22px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .test-metric::before {
+      content: '';
+      position: absolute; top: -40%; right: -20%;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,.12), transparent 70%);
+      pointer-events: none;
+    }
+    .test-metric-icon {
+      width: 44px; height: 44px; border-radius: 13px;
+      background: rgba(27,181,164,.12);
+      border: 1px solid rgba(27,181,164,.22);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; position: relative; z-index: 1;
+    }
+    .test-metric-val {
+      font-family: var(--font-disp);
+      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      font-weight: 800; letter-spacing: -.05em;
+      line-height: 1.05; margin-bottom: .5rem;
+      color: var(--teal); position: relative; z-index: 1;
+      overflow-wrap: break-word; word-break: break-word;
+    }
+    .test-metric-label {
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(237,246,245,.48); margin-bottom: 1.5rem;
+      position: relative; z-index: 1; line-height: 1.5;
+    }
+    .test-metric-bar {
+      height: 5px; border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      overflow: hidden; position: relative; z-index: 1;
+    }
+    .test-metric-fill {
+      height: 100%; border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--teal-hi));
+      width: 0;
+      transition: width 1.4s cubic-bezier(.16,1,.3,1) .5s;
+    }
+    .test-slide.active .test-metric-fill { width: var(--fill, 85%); }
+
+    /* Navigation bar */
+    .test-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3.5rem;
+      border-top: 1px solid rgba(237,246,245,.07);
+      position: relative; z-index: 2;
+    }
+    .test-nav-dots { display: flex; gap: .55rem; align-items: center; }
+    .test-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(237,246,245,.2);
+      border: none; cursor: pointer; padding: 0;
+      transition: all .3s;
+    }
+    .test-dot.active {
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(27,181,164,.5);
+      width: 24px; border-radius: 3px;
+    }
+    .test-nav-arrows { display: flex; gap: .5rem; }
+    .test-arrow {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(237,246,245,.06);
+      border: 1px solid rgba(237,246,245,.12);
+      color: rgba(237,246,245,.5);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .22s;
+    }
+    .test-arrow:hover {
+      background: rgba(27,181,164,.15);
+      border-color: rgba(27,181,164,.3);
+      color: var(--teal);
+    }
+
+    /* Marquee */
+    .rev-strip {
+      position: relative; z-index: 1; overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+      margin-top: 1rem;
+    }
+    .rev-track {
+      display: flex; gap: 1.1rem;
+      width: max-content;
+      animation: revScroll 32s linear infinite;
+    }
+    .rev-strip:hover .rev-track { animation-play-state: paused; }
+    @keyframes revScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .rev-mini {
+      width: 300px; flex-shrink: 0;
+      padding: 1.3rem 1.5rem; border-radius: 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(237,246,245,.08);
+      box-shadow: 0 4px 20px rgba(9,9,15,.2);
+      display: flex; flex-direction: column; gap: .75rem;
+      transition: border-color .3s, background .3s;
+    }
+    .rev-mini:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(27,181,164,.35);
+    }
+    .rev-mini-head { display: flex; align-items: center; gap: .65rem; }
+    .rev-mini-av {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .rev-mini-info { min-width: 0; }
+    .rev-mini-name { font-size: .88rem; font-weight: 600; color: rgba(237,246,245,.88); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rev-mini-stars { color: #ffbf34; font-size: .8rem; letter-spacing: .06em; margin-top: .18rem; }
+    .rev-mini-body { font-size: .85rem; color: rgba(237,246,245,.55); line-height: 1.65; }
+    .rev-mini-source {
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .7rem; letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(237,246,245,.38);
+    }
+    .rev-mini-g {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(66,133,244,.18); color: #4285F4;
+      font-size: .72rem; font-weight: 700; font-family: Georgia, serif;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* ─── FAQ ─── */
+    .section-faq {
+      padding: 8rem 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .section-faq::before {
+      content: '';
+      position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4.5rem; position: relative; z-index: 10; }
+    .faq-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white);
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 10; }
+    
+    .faq-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      transition: all .4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: var(--faq-color, var(--teal));
+      opacity: 0.3; transition: opacity .4s;
+    }
+    .faq-item:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .faq-item.open {
+      background: rgba(var(--faq-color-rgb, 27,181,164), 0.04);
+      border-color: rgba(var(--faq-color-rgb, 27,181,164), 0.35);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .faq-item.open::before { opacity: 1; }
+
+    /* Accent Colors */
+    .faq-teal   { --faq-color: var(--teal);   --faq-color-rgb: 27,181,164; }
+    .faq-orange { --faq-color: var(--orange); --faq-color-rgb: 240,112,48; }
+    .faq-purple { --faq-color: var(--purple); --faq-color-rgb: 139,79,160; }
+
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.6rem 2rem; cursor: pointer;
+      font-family: var(--font-disp);
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      user-select: none; gap: 1.5rem;
+      transition: color .3s;
+    }
+    .faq-item.open .faq-q { color: var(--faq-color); }
+    
+    .faq-icon-box {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .faq-icon-box svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .faq-item.open .faq-icon-box {
+      background: var(--faq-color); color: var(--ink);
+      border-color: var(--faq-color);
+      transform: rotate(135deg);
+    }
+
+    /* Modern expansion using grid-template-rows */
+    .faq-a-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.open .faq-a-wrapper { grid-template-rows: 1fr; }
+    
+    .faq-a {
+      overflow: hidden;
+      font-size: .95rem; color: var(--cream-2); line-height: 1.7;
+    }
+    .faq-a-inner {
+      padding: 0 2rem 1.8rem;
+      opacity: 0; transform: translateY(-10px);
+      transition: opacity .3s, transform .3s;
+    }
+    .faq-item.open .faq-a-inner { opacity: 1; transform: translateY(0); transition-delay: .1s; }
 
     /* CTA + Form */
     .section-cta {
@@ -511,22 +1287,101 @@
 
     /* Mobile */
     @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
-      .hero-cta-row { justify-content: center; }
-      .hero-trust { justify-content: center; }
-      .hero-visual { display: none; }
+      /* ── global overflow lock ── */
+      html, body { max-width: 100vw; overflow-x: hidden; }
+      * { min-width: 0; }
+      .container { padding: 0 18px; width: 100%; box-sizing: border-box; }
+
+      /* ── header: logo centrada, CTA oculto ── */
+      .lp-header-inner { justify-content: center; position: relative; }
+      .lp-header-inner .btn { display: none; }
+      .lp-logo img { height: 28px; }
+
+      /* ── hero ── */
+      .hero { overflow: hidden; }
+      .hero-bg-glow, .hero-bg-glow-2, .hero-grid-lines { display: none; }
+      .hero-inner {
+        grid-template-columns: 1fr; gap: 0;
+        padding: 4rem 0 3.5rem; text-align: center;
+      }
+      .hero-copy {
+        width: 100%; max-width: 100%; box-sizing: border-box;
+        overflow: hidden;
+      }
+      .hero-eyebrow {
+        justify-content: center;
+        white-space: normal !important; flex-wrap: wrap;
+        font-size: .65rem; max-width: 100%;
+      }
+      /* H1 — força quebra e tamanho seguro */
+      .hero-h1 {
+        font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+        white-space: normal !important; word-break: break-word;
+        overflow-wrap: break-word; max-width: 100%;
+      }
+      .hero-h1-white,
+      .hero-h1-big,
+      .hero-h1-teal,
+      .hero-h1-italic {
+        display: block !important;
+        font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+        white-space: normal !important; word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      /* subtitle */
+      .hero-sub {
+        font-size: .93rem; max-width: 100%;
+        margin-left: auto; margin-right: auto;
+      }
+      /* CTA button */
+      .hero-cta-row { justify-content: center; flex-wrap: wrap; width: 100%; }
+      .btn-pill {
+        white-space: normal !important;
+        width: 100%; max-width: 100%; box-sizing: border-box;
+        justify-content: center; text-align: center;
+        font-size: .85rem; padding: .85rem 1.2rem;
+      }
+      /* trust bar */
+      .hero-trust {
+        justify-content: center; flex-wrap: wrap;
+        white-space: normal !important; text-align: center;
+        line-height: 1.8; font-size: .75rem;
+      }
+      .hero-trust::before { display: none; }
+      .hero-visual {
+        display: block;
+        max-width: 360px; margin: 0 auto; width: 100%;
+      }
+      .browser-mock { font-size: 90%; }
+
+      /* ── sections ── */
       .problema-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .problema-stat { gap: 1.5rem; }
+      .problema-stats-grid { grid-template-columns: 1fr; }
+      .section-problema::before { font-size: 45vw; bottom: -1rem; }
       .criterios-grid { grid-template-columns: 1fr; }
+      .section-criterios::before { font-size: 35vw; }
       .incluso-grid { grid-template-columns: 1fr; }
-      .antes-grid { grid-template-columns: 1fr; }
-      .prova-grid { grid-template-columns: 1fr; }
+      .section-incluso::before { font-size: 40vw; }
+      .antes-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .antes-col.com { box-shadow: none; }
+      .cases-head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .test-slide { grid-template-columns: 1fr; padding: 1.75rem; }
+      .test-metric { display: none; }
+      .test-nav { padding: 1rem 1.75rem; }
+      .faq-q { padding: 1.25rem 1.5rem; font-size: 1rem; }
+      .faq-icon-box { width: 30px; height: 30px; }
+      .faq-a-inner { padding: 0 1.5rem 1.4rem; }
+
+      /* ── form ── */
+      .section-cta { padding: 5rem 0; }
+      .cta-h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+      .cta-sub { font-size: .9rem; }
       .form-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      .hero-h1-big, .hero-h1-teal { font-size: 8vw !important; }
-      .hero-h1-italic { font-size: 8.5vw !important; }
+      .form-wrap { padding: 1.8rem 1.2rem; width: 100%; box-sizing: border-box; }
+      .form-field input, .form-field select {
+        font-size: 16px; box-sizing: border-box; width: 100%;
+      }
+      .form-submit { font-size: .95rem; padding: .9rem; }
     }
   </style>
 </head>
@@ -557,9 +1412,8 @@
             Sites para Clínicas · Design + Conversão
           </div>
           <h1 class="hero-h1">
-            <span class="hero-h1-big">Um site que não é</span>
-            <span class="hero-h1-teal">só bonito</span>
-            <span class="hero-h1-italic">é uma máquina de pacientes</span>
+            <span class="hero-h1-white">Um site que não é só bonito é uma</span>
+            <span class="hero-h1-teal">máquina de pacientes</span>
           </h1>
           <p class="hero-sub">
             Sua clínica merece um site que transmita credibilidade, apareça no Google e converta visitantes em pacientes agendados — não apenas um cartão de visitas digital desatualizado.
@@ -609,30 +1463,69 @@
   <section class="section-problema">
     <div class="container">
       <div class="problema-inner">
+        <!-- Left: heading + metrics -->
         <div class="reveal">
-          <div class="section-tag">O problema</div>
-          <h2 class="problema-h2">A maioria dos sites de clínicas não funciona</h2>
-          <p class="problema-text">Foram feitos para parecer bonitos, não para converter. O resultado: você investe em anúncios e tráfego, mas a agenda não enche porque as pessoas chegam ao site e vão embora.</p>
-          <div class="problema-stat">
-            <div class="stat-item">
-              <div class="stat-val">73%</div>
-              <div class="stat-label">dos pacientes pesquisam online antes de agendar</div>
+          <div class="section-tag">O cenário atual</div>
+          <h2 class="problema-h2">A maioria dos sites de clínicas <span style="color:var(--teal)">não funciona</span></h2>
+          <p class="problema-text">
+            Foram feitos para parecer bonitos, não para converter. O resultado: você investe em anúncios e tráfego, mas a agenda não enche porque as pessoas chegam ao site e vão embora frustradas.
+          </p>
+          <div class="problema-stats-grid" id="problemaStats">
+            <div class="stat-card">
+              <span class="stat-val" data-count="73" data-suffix="%">0%</span>
+              <span class="stat-label">dos pacientes pesquisam online antes de decidir onde agendar</span>
             </div>
-            <div class="stat-item">
-              <div class="stat-val">3 seg</div>
-              <div class="stat-label">é o tempo médio antes de abandonar um site lento</div>
+            <div class="stat-card">
+              <span class="stat-val" data-count="3" data-suffix=" seg">0 seg</span>
+              <span class="stat-label">é o tempo máximo que um paciente espera antes de abandonar um site</span>
             </div>
           </div>
         </div>
-        <div class="reveal reveal-delay-2">
-          <ul class="problema-list">
-            <li>Site criado há anos, não responsivo no celular</li>
-            <li>Demora para carregar — o paciente desiste antes de ver o conteúdo</li>
-            <li>Sem página por tratamento — invisível no Google para buscas específicas</li>
-            <li>Botão de agendamento escondido ou inexistente</li>
-            <li>Nenhuma prova social visível (depoimentos, avaliações)</li>
-            <li>Sem integração com WhatsApp ou sistema de agendamento</li>
-          </ul>
+
+        <!-- Right: problem cards -->
+        <div class="reveal reveal-delay-1">
+          <div class="problema-cards-grid" id="problemaCards">
+            <div class="p-card" style="--pc:240,112,48">
+              <div class="p-card-icon">📱</div>
+              <div class="p-card-content">
+                <div class="p-card-title">Site Obsoleto</div>
+                <div class="p-card-text">Design antigo que não funciona bem no celular, afastando 80% do seu público.</div>
+              </div>
+              <span class="p-card-num">01</span>
+            </div>
+            <div class="p-card" style="--pc:27,181,164">
+              <div class="p-card-icon">🐌</div>
+              <div class="p-card-content">
+                <div class="p-card-title">Velocidade de Lesma</div>
+                <div class="p-card-text">Sites lentos perdem pacientes antes mesmo das fotos serem carregadas.</div>
+              </div>
+              <span class="p-card-num">02</span>
+            </div>
+            <div class="p-card" style="--pc:175,108,255">
+              <div class="p-card-icon">🔍</div>
+              <div class="p-card-content">
+                <div class="p-card-title">Invisível no Google</div>
+                <div class="p-card-text">Sem páginas específicas por tratamento, sua clínica nunca aparece nas buscas.</div>
+              </div>
+              <span class="p-card-num">03</span>
+            </div>
+            <div class="p-card" style="--pc:226,178,79">
+              <div class="p-card-icon">🚧</div>
+              <div class="p-card-content">
+                <div class="p-card-title">Barreiras de Agendamento</div>
+                <div class="p-card-text">Botão de WhatsApp escondido ou formulários longos que ninguém preenche.</div>
+              </div>
+              <span class="p-card-num">04</span>
+            </div>
+            <div class="p-card" style="--pc:240,112,48">
+              <div class="p-card-icon">🤔</div>
+              <div class="p-card-content">
+                <div class="p-card-title">Falta de Confiança</div>
+                <div class="p-card-text">Sem depoimentos ou fotos reais, o paciente desconfia da qualidade do serviço.</div>
+              </div>
+              <span class="p-card-num">05</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -643,39 +1536,45 @@
     <div class="container">
       <div class="criterios-header reveal">
         <div class="section-tag">Nossa abordagem</div>
-        <h2 class="criterios-h2">Os 6 critérios de um site que gera pacientes</h2>
-        <p style="color:var(--cream-2); font-size:.95rem;">Todo site que entregamos é avaliado por estes seis pilares antes de ir ao ar.</p>
+        <h2 class="criterios-h2">Os 6 critérios de um <span style="color:var(--teal)">site que gera pacientes</span></h2>
+        <p class="criterios-sub">Todo site que entregamos é avaliado por estes seis pilares antes de ir ao ar.</p>
       </div>
-      <div class="criterios-grid">
-        <div class="criterio-card reveal reveal-delay-1">
+      <div class="criterios-grid" id="criteriosGrid">
+        <div class="criterio-card" style="--cc:27,181,164">
           <div class="criterio-num">01</div>
-          <div class="criterio-title">Velocidade</div>
-          <p class="criterio-text">Carregamento abaixo de 2 segundos em mobile. Pontuação 90+ no PageSpeed. Paciente que espera, paciente que vai embora.</p>
+          <div class="criterio-icon">⚡</div>
+          <div class="criterio-title">Velocidade Extrema</div>
+          <p class="criterio-text">Carregamento abaixo de 2 segundos em mobile. Pontuação 90+ no PageSpeed. Paciente que espera, paciente que vai embora e agenda com o concorrente.</p>
         </div>
-        <div class="criterio-card reveal reveal-delay-2">
+        <div class="criterio-card" style="--cc:175,108,255">
           <div class="criterio-num">02</div>
-          <div class="criterio-title">Credibilidade visual</div>
-          <p class="criterio-text">Design que transmite profissionalismo e confiança. Fotos reais da equipe e estrutura. Nada de banco de imagens genérico.</p>
+          <div class="criterio-icon">💎</div>
+          <div class="criterio-title">Credibilidade Visual</div>
+          <p class="criterio-text">Design que transmite profissionalismo e confiança. Fotos reais da equipe e estrutura. Nada de templates genéricos ou amadores.</p>
         </div>
-        <div class="criterio-card reveal reveal-delay-3">
+        <div class="criterio-card" style="--cc:240,112,48">
           <div class="criterio-num">03</div>
-          <div class="criterio-title">SEO estrutural</div>
-          <p class="criterio-text">Páginas dedicadas por tratamento, schema markup para clínicas, otimização para buscas locais no Google Maps e Google Search.</p>
+          <div class="criterio-icon">🔍</div>
+          <div class="criterio-title">SEO Estrutural Local</div>
+          <p class="criterio-text">Páginas dedicadas por tratamento e schema markup avançado. Apareça para quem busca por sua especialidade na sua região.</p>
         </div>
-        <div class="criterio-card reveal reveal-delay-1">
+        <div class="criterio-card" style="--cc:226,178,79">
           <div class="criterio-num">04</div>
-          <div class="criterio-title">Conversão</div>
-          <p class="criterio-text">CTA claro em todas as páginas, integração com WhatsApp, formulário simples, botão de ligação para mobile. O caminho até o agendamento é óbvio.</p>
+          <div class="criterio-icon">🎯</div>
+          <div class="criterio-title">Máxima Conversão</div>
+          <p class="criterio-text">CTAs claros, integração inteligente com WhatsApp e formulários otimizados. O caminho do visitante até o agendamento é direto e óbvio.</p>
         </div>
-        <div class="criterio-card reveal reveal-delay-2">
+        <div class="criterio-card" style="--cc:27,181,164">
           <div class="criterio-num">05</div>
-          <div class="criterio-title">Prova social</div>
-          <p class="criterio-text">Seção de depoimentos com foto e nome real, integração com avaliações do Google, galeria de casos clínicos (com autorização).</p>
+          <div class="criterio-icon">🤝</div>
+          <div class="criterio-title">Prova Social</div>
+          <p class="criterio-text">Depoimentos reais integrados, avaliações do Google e galeria de casos clínicos (com autorização), gerando autoridade instantânea.</p>
         </div>
-        <div class="criterio-card reveal reveal-delay-3">
+        <div class="criterio-card" style="--cc:175,108,255">
           <div class="criterio-num">06</div>
-          <div class="criterio-title">Manutenção simples</div>
-          <p class="criterio-text">Você consegue atualizar fotos e textos sem precisar chamar um desenvolvedor. Painel administrativo intuitivo incluso.</p>
+          <div class="criterio-icon">⚙️</div>
+          <div class="criterio-title">Gestão Intuitiva</div>
+          <p class="criterio-text">Você tem total controle. Atualize fotos, textos e tratamentos sem depender de programadores. Painel administrativo simples incluso.</p>
         </div>
       </div>
     </div>
@@ -686,51 +1585,95 @@
     <div class="container">
       <div class="incluso-header reveal">
         <div class="section-tag">O que está incluso</div>
-        <h2 class="incluso-h2">Tudo para sua clínica ter presença digital de referência</h2>
+        <h2 class="incluso-h2">Tudo para sua clínica ter <span style="color:var(--teal)">presença digital</span> de referência</h2>
+        <p class="incluso-sub">Cada entrega foi pensada para gerar mais visibilidade, mais confiança e mais agendamentos.</p>
       </div>
-      <div class="incluso-grid">
-        <div class="incluso-item reveal reveal-delay-1">
-          <div class="incluso-icon">🎨</div>
-          <div>
-            <div class="incluso-item-title">Design exclusivo</div>
-            <p class="incluso-item-text">Layout criado especificamente para sua clínica. Nenhum template genérico. Cores, fontes e identidade visual alinhados à sua marca.</p>
+      <div class="incluso-grid" id="inclusoGrid">
+
+        <div class="incluso-item" style="--ic:175,108,255">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">🎨</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">01 — Design</span>
+              <div class="incluso-item-title">Design Exclusivo e Autoral</div>
+              <p class="incluso-item-text">Nada de templates prontos. Criamos um layout sob medida que reflete a alma e os valores da sua clínica.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
-        <div class="incluso-item reveal reveal-delay-2">
-          <div class="incluso-icon">📱</div>
-          <div>
-            <div class="incluso-item-title">100% responsivo</div>
-            <p class="incluso-item-text">Funciona perfeitamente em celular, tablet e desktop. Mais de 80% dos visitantes usam o mobile — seu site precisa ser perfeito nele.</p>
+
+        <div class="incluso-item" style="--ic:27,181,164">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">📱</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">02 — Performance</span>
+              <div class="incluso-item-title">Mobile-First High Performance</div>
+              <p class="incluso-item-text">Seu site será impecável na palma da mão, onde 85% do seu tráfego qualificado acontece.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
-        <div class="incluso-item reveal reveal-delay-1">
-          <div class="incluso-icon">🔍</div>
-          <div>
-            <div class="incluso-item-title">Otimização SEO local</div>
-            <p class="incluso-item-text">Páginas por tratamento, otimização para buscas na sua cidade, integração com Google Business Profile e schema markup de clínica.</p>
+
+        <div class="incluso-item" style="--ic:240,112,48">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">📍</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">03 — SEO</span>
+              <div class="incluso-item-title">SEO Local Avançado</div>
+              <p class="incluso-item-text">Colocamos sua clínica nas primeiras posições do Google Maps e buscas orgânicas da sua cidade.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
-        <div class="incluso-item reveal reveal-delay-2">
-          <div class="incluso-icon">💬</div>
-          <div>
-            <div class="incluso-item-title">Integração WhatsApp + agendamento</div>
-            <p class="incluso-item-text">Botão flutuante, CTAs integrados ao WhatsApp e formulários de contato direto. O paciente escolhe como quer entrar em contato.</p>
+
+        <div class="incluso-item" style="--ic:27,181,164">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">💬</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">04 — Conversão</span>
+              <div class="incluso-item-title">Ecossistema WhatsApp</div>
+              <p class="incluso-item-text">Botão flutuante, CTAs inteligentes e rastreamento de cliques para você saber exatamente o que gera pacientes.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
-        <div class="incluso-item reveal reveal-delay-1">
-          <div class="incluso-icon">📊</div>
-          <div>
-            <div class="incluso-item-title">Analytics e rastreamento</div>
-            <p class="incluso-item-text">Google Analytics 4 configurado, rastreamento de eventos (cliques em WhatsApp, formulários enviados), painel simples para acompanhar resultados.</p>
+
+        <div class="incluso-item" style="--ic:226,178,79">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">📈</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">05 — Analytics</span>
+              <div class="incluso-item-title">Analytics & BI Setup</div>
+              <p class="incluso-item-text">Configuração completa do GA4 e meta pixel. Monitore acessos, conversões e o ROI do seu investimento digital.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
-        <div class="incluso-item reveal reveal-delay-2">
-          <div class="incluso-icon">🔒</div>
-          <div>
-            <div class="incluso-item-title">SSL, hospedagem e domínio</div>
-            <p class="incluso-item-text">Certificado de segurança, hospedagem de alto desempenho e suporte técnico inclusos no primeiro ano. Sem surpresa na renovação.</p>
+
+        <div class="incluso-item" style="--ic:175,108,255">
+          <div class="incluso-item-inner">
+            <div class="incluso-icon">🛡️</div>
+            <div class="incluso-item-body">
+              <span class="incluso-item-num">06 — Infraestrutura</span>
+              <div class="incluso-item-title">Hospedagem & Blindagem</div>
+              <p class="incluso-item-text">Infraestrutura de ponta com certificado SSL premium, backups diários e proteção contra ataques inclusos.</p>
+            </div>
+          </div>
+          <div class="incluso-item-foot">
+            <span class="incluso-badge">Incluso ✓</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -740,85 +1683,246 @@
     <div class="container">
       <div class="antes-header reveal">
         <div class="section-tag">Antes e depois</div>
-        <h2 class="antes-h2">O que muda quando sua clínica tem o site certo</h2>
+        <h2 class="antes-h2">O que muda quando sua clínica tem o <span style="color:var(--teal)">site certo</span></h2>
+        <p class="antes-sub">A diferença entre uma agenda vazia e uma agenda cheia começa no digital.</p>
       </div>
-      <div class="antes-grid">
-        <div class="antes-col sem reveal reveal-delay-1">
-          <div class="antes-col-header">
-            <span class="antes-col-badge">Sem SuperDental</span>
+      <div class="antes-grid" id="antesGrid">
+
+        <div class="antes-col sem">
+          <div class="antes-col-head">
+            <div class="antes-col-icon">📉</div>
+            <div>
+              <div class="antes-col-label">Cenário Comum</div>
+              <div class="antes-col-caption">Sem o site certo</div>
+            </div>
           </div>
           <ul class="antes-list">
-            <li>Site lento que afasta visitantes</li>
-            <li>Invisível no Google para buscas locais</li>
-            <li>Design desatualizado passa insegurança</li>
-            <li>Sem páginas por tratamento</li>
-            <li>Botão de contato difícil de encontrar</li>
-            <li>Sem depoimentos ou provas sociais</li>
-            <li>Não integra com WhatsApp</li>
-            <li>Difícil de atualizar</li>
+            <li><span class="antes-icon">✕</span>Site lento que afasta visitantes</li>
+            <li><span class="antes-icon">✕</span>Invisível no Google para buscas locais</li>
+            <li><span class="antes-icon">✕</span>Design amador passa insegurança</li>
+            <li><span class="antes-icon">✕</span>Sem páginas dedicadas por tratamento</li>
+            <li><span class="antes-icon">✕</span>Contato difícil de encontrar</li>
+            <li><span class="antes-icon">✕</span>Zero prova social ou autoridade</li>
+            <li><span class="antes-icon">✕</span>Painel de gestão complexo</li>
           </ul>
         </div>
-        <div class="antes-col com reveal reveal-delay-2">
-          <div class="antes-col-header">
-            <span class="antes-col-badge">Com SuperDental</span>
+
+        <div class="antes-col com">
+          <div class="antes-col-head">
+            <div class="antes-col-icon">🚀</div>
+            <div>
+              <div class="antes-col-label">Com SuperDental</div>
+              <div class="antes-col-caption">Site que converte</div>
+            </div>
           </div>
           <ul class="antes-list">
-            <li>Carregamento abaixo de 2 segundos</li>
-            <li>Aparece no topo do Google para sua cidade</li>
-            <li>Design que transmite credibilidade e confiança</li>
-            <li>Uma página otimizada por tratamento</li>
-            <li>CTA claro em todos os dispositivos</li>
-            <li>Seção de depoimentos e cases reais</li>
-            <li>WhatsApp integrado em todo o site</li>
-            <li>Painel de gerenciamento simples</li>
+            <li><span class="antes-icon">✓</span>Carregamento instantâneo (&lt; 2s)</li>
+            <li><span class="antes-icon">✓</span>Topo do Google na sua região</li>
+            <li><span class="antes-icon">✓</span>Design Premium que gera autoridade</li>
+            <li><span class="antes-icon">✓</span>Funil de vendas por especialidade</li>
+            <li><span class="antes-icon">✓</span>Ecossistema WhatsApp integrado</li>
+            <li><span class="antes-icon">✓</span>Gatilhos mentais e prova social</li>
+            <li><span class="antes-icon">✓</span>Autonomia total para atualizações</li>
           </ul>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Prova / Depoimentos -->
-  <section class="section-prova">
+  <!-- Resultados reais -->
+  <section class="section-prova" id="cases">
     <div class="container">
-      <div class="prova-header reveal">
-        <div class="section-tag">Resultados reais</div>
-        <h2 class="prova-h2">Clínicas que transformaram sua presença online</h2>
-      </div>
-      <div class="prova-grid">
-        <div class="test-card reveal reveal-delay-1">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-text">"Em dois meses após o novo site, o volume de contatos pelo Google dobrou. O site antigo nem aparecia para buscas na minha cidade. Agora estou na primeira página para cinco tratamentos."</p>
-          <div class="test-author">
-            <div class="test-avatar">MS</div>
-            <div>
-              <div class="test-name">Dra. Marina Silva</div>
-              <div class="test-role">Odontologia estética · Florianópolis, SC</div>
-            </div>
-          </div>
+
+      <!-- Header -->
+      <div class="cases-head reveal">
+        <div>
+          <div class="section-tag">Resultados reais</div>
+          <h2 class="prova-h2">O que dizem as clínicas que já<br><em>dominam a região</em> com o <span style="color:var(--teal)">site certo</span>.</h2>
         </div>
-        <div class="test-card reveal reveal-delay-2">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-text">"A qualidade do design superou as minhas expectativas. Pacientes novos sempre comentam que escolheram minha clínica por causa do site — diz que passa confiança antes mesmo da consulta."</p>
-          <div class="test-author">
-            <div class="test-avatar">FO</div>
-            <div>
-              <div class="test-name">Dr. Felipe Oliveira</div>
-              <div class="test-role">Implantodontia · Porto Alegre, RS</div>
-            </div>
-          </div>
-        </div>
-        <div class="test-card reveal reveal-delay-3">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-text">"Antes eu dependia 100% de indicação. O novo site me trouxe independência — hoje tenho pacientes chegando pelo Google toda semana sem precisar pagar por anúncio."</p>
-          <div class="test-author">
-            <div class="test-avatar">PL</div>
-            <div>
-              <div class="test-name">Dra. Patrícia Lima</div>
-              <div class="test-role">Clínica geral · Recife, PE</div>
-            </div>
+        <div class="cases-score">
+          <div class="cases-score-g">G</div>
+          <div>
+            <div class="cases-score-num">5.0</div>
+            <div class="cases-score-stars">★★★★★</div>
+            <div class="cases-score-label">Google Reviews</div>
           </div>
         </div>
       </div>
+
+      <!-- Testimonial stage -->
+      <div class="test-stage reveal" id="testStage">
+        <div class="test-stage-bar"></div>
+        <div class="test-progress" id="testProgress"></div>
+
+        <div class="test-slides">
+          <!-- Slide 1 -->
+          <div class="test-slide active" id="ts1">
+            <div class="test-left">
+              <div class="test-count">01 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Em dois meses após o novo site, o volume de contatos pelo Google dobrou. O site antigo nem aparecia para buscas na minha cidade. Agora estou na primeira página para cinco tratamentos."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av teal">MS</div>
+                <div>
+                  <div class="test-name">Dra. Marina Silva</div>
+                  <div class="test-role">Odontologia est&eacute;tica &middot; Florian&oacute;polis, SC</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div class="test-metric-val">2x</div>
+              <div class="test-metric-label">Volume de<br>contatos mensais</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:85%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="test-slide" id="ts2">
+            <div class="test-left">
+              <div class="test-count">02 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"A qualidade do design superou as minhas expectativas. Pacientes novos sempre comentam que escolheram minha clínica por causa do site — diz que passa confiança antes mesmo da consulta."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av orange">FO</div>
+                <div>
+                  <div class="test-name">Dr. Felipe Oliveira</div>
+                  <div class="test-role">Implantodontia &middot; Porto Alegre, RS</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+              </div>
+              <div class="test-metric-val">+41%</div>
+              <div class="test-metric-label">Taxa de conversão<br>clique &rarr; contato</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:91%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="test-slide" id="ts3">
+            <div class="test-left">
+              <div class="test-count">03 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Antes eu dependia 100% de indicação. O novo site me trouxe independência — hoje tenho pacientes chegando pelo Google toda semana sem precisar pagar por anúncio."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av purple">PL</div>
+                <div>
+                  <div class="test-name">Dra. Patr&iacute;cia Lima</div>
+                  <div class="test-role">Cl&iacute;nica geral &middot; Recife, PE</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="test-metric-val">100%</div>
+              <div class="test-metric-label">Independ&ecirc;ncia<br>de indica&ccedil;&otilde;es</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:100%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation bar -->
+        <div class="test-nav">
+          <div class="test-nav-dots" id="testDots">
+            <button class="test-dot active" aria-label="Slide 1"></button>
+            <button class="test-dot" aria-label="Slide 2"></button>
+            <button class="test-dot" aria-label="Slide 3"></button>
+          </div>
+          <div class="test-nav-arrows">
+            <div class="test-arrow" id="testPrev">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            </div>
+            <div class="test-arrow" id="testNext">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee strip -->
+      <div class="rev-strip">
+        <div class="rev-track">
+          <!-- Item 1 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--teal)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimento nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Item 2 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--orange)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo d++."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Item 3 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--purple)">F</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grande evolução após a contratação. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Repeat for loop -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--teal)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimento nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--orange)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo d++."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--purple)">F</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grande evolução após a contratação. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -830,25 +1934,89 @@
         <h2 class="faq-h2">Dúvidas sobre o site</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item reveal">
-          <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para ficar pronto?<span class="faq-icon">+</span></div>
-          <div class="faq-a">O prazo padrão é de 21 dias úteis após aprovação do briefing e recebimento dos materiais (fotos, textos, logo). Projetos com escopo maior podem ter prazo estendido — definido em proposta.</div>
+        <!-- Item 1: Teal -->
+        <div class="faq-item faq-teal reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Quanto tempo leva para ficar pronto?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                O prazo padrão é de 21 dias úteis após aprovação do briefing e recebimento dos materiais (fotos, textos, logo). Projetos com escopo maior podem ter prazo estendido — definido em proposta.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-1">
-          <div class="faq-q" onclick="toggleFaq(this)">Preciso ter fotos profissionais da clínica?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Recomendamos muito. Fotos reais da clínica, equipe e sorrisos tratados geram muito mais confiança do que banco de imagens. Podemos orientar um ensaio fotográfico simples que você pode fazer com um celular moderno.</div>
+
+        <!-- Item 2: Orange -->
+        <div class="faq-item faq-orange reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Preciso ter fotos profissionais da clínica?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Recomendamos muito. Fotos reais da clínica, equipe e sorrisos tratados geram muito mais confiança do que banco de imagens. Podemos orientar um ensaio fotográfico simples que você pode fazer com um celular moderno.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-2">
-          <div class="faq-q" onclick="toggleFaq(this)">O site fica no meu nome ou da SuperDental?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Tudo fica no seu nome. Domínio, hospedagem e código-fonte pertencem a você. A SuperDental é responsável pelo desenvolvimento — ao final, você tem controle total.</div>
+
+        <!-- Item 3: Purple -->
+        <div class="faq-item faq-purple reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            O site fica no meu nome ou da SuperDental?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Tudo fica no seu nome. Domínio, hospedagem e código-fonte pertencem a você. A SuperDental é responsável pelo desenvolvimento — ao final, você tem controle total.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-3">
-          <div class="faq-q" onclick="toggleFaq(this)">Posso manter meu domínio atual?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Sim. Se você já tem um domínio registrado, usamos ele. Se ainda não tem, ajudamos a registrar o domínio ideal para sua clínica.</div>
+
+        <!-- Item 4: Teal -->
+        <div class="faq-item faq-teal reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Posso manter meu domínio atual?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Sim. Se você já tem um domínio registrado, usamos ele. Se ainda não tem, ajudamos a registrar o domínio ideal para sua clínica.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item reveal reveal-delay-4">
-          <div class="faq-q" onclick="toggleFaq(this)">O site funciona junto com Google Ads e redes sociais?<span class="faq-icon">+</span></div>
-          <div class="faq-a">Sim, e é justamente esse o ponto forte. O site é a base de toda a estratégia digital. Com rastreamento correto, cada campanha de anúncio alimenta dados reais de conversão — e os resultados são muito melhores.</div>
+
+        <!-- Item 5: Orange -->
+        <div class="faq-item faq-orange reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            O site funciona junto com Google Ads e redes sociais?
+            <div class="faq-icon-box">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+          </div>
+          <div class="faq-a-wrapper">
+            <div class="faq-a">
+              <div class="faq-a-inner">
+                Sim, e é justamente esse o ponto forte. O site é a base de toda a estratégia digital. Com rastreamento correto, cada campanha de anúncio alimenta dados reais de conversão — e os resultados são muito melhores.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -859,7 +2027,7 @@
     <div class="container">
       <div class="cta-inner">
         <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Orçamento gratuito</div>
-        <h2 class="cta-h2 reveal">Sua clínica merece um site<br><em>que trabalha por você</em></h2>
+        <h2 class="cta-h2 reveal">Sua clínica <span style="color:var(--teal)">merece um site</span><br>que trabalha por você</h2>
         <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e receba uma proposta personalizada para o site da sua clínica. Sem custo e sem compromisso.</p>
         <div class="form-wrap reveal reveal-delay-2">
           <div class="form-title">Quero um site profissional para minha clínica</div>
@@ -927,6 +2095,72 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
+    /* Testimonial Slider */
+    (function initTestimonials() {
+      const stage = document.getElementById('testStage');
+      const dotsWrap = document.getElementById('testDots');
+      const prevBtn = document.getElementById('testPrev');
+      const nextBtn = document.getElementById('testNext');
+      const progress = document.getElementById('testProgress');
+      if (!stage) return;
+
+      const slides = [...stage.querySelectorAll('.test-slide')];
+      const dots = dotsWrap ? [...dotsWrap.querySelectorAll('.test-dot')] : [];
+      const total = slides.length;
+      let current = 0;
+      let timer = null;
+
+      function activate(idx) {
+        const prev = current;
+        current = (idx + total) % total;
+        if (prev === current) return;
+
+        slides[prev].classList.add('exiting');
+        slides[prev].classList.remove('active');
+        setTimeout(() => slides[prev].classList.remove('exiting'), 600);
+
+        slides[current].classList.add('active');
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+
+      function next() { activate(current + 1); }
+
+      function startCycle() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+      function stopCycle() { clearInterval(timer); }
+
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => { activate(i); stopCycle(); startCycle(); });
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', () => { activate(current - 1); stopCycle(); startCycle(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { activate(current + 1); stopCycle(); startCycle(); });
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { startCycle(); obs.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      obs.observe(stage);
+    })();
+
     function toggleFaq(el) {
       const item = el.parentElement;
       const isOpen = item.classList.contains('open');
@@ -941,6 +2175,113 @@
       btn.style.background = '#12897C';
       btn.disabled = true;
     }
+
+    /* ── Antes/Depois animation ── */
+    (function initAntes() {
+      const grid = document.getElementById('antesGrid');
+      if (!grid) return;
+      const cols = grid.querySelectorAll('.antes-col');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            cols.forEach((col, ci) => {
+              setTimeout(() => {
+                col.classList.add('visible');
+                col.querySelectorAll('.antes-list li').forEach((li, i) => {
+                  li.style.transitionDelay = (120 + i * 75) + 'ms';
+                });
+              }, ci * 160);
+            });
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      io.observe(grid);
+    })();
+
+    /* ── Incluso stagger animation ── */
+    (function initIncluso() {
+      const grid = document.getElementById('inclusoGrid');
+      if (!grid) return;
+      const items = grid.querySelectorAll('.incluso-item');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            items.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 110));
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      io.observe(grid);
+    })();
+
+    /* ── Critérios stagger animation ── */
+    (function initCriterios() {
+      const grid = document.getElementById('criteriosGrid');
+      if (!grid) return;
+      const cards = grid.querySelectorAll('.criterio-card');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            cards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), i * 120));
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      io.observe(grid);
+    })();
+
+    /* ── Problema section stagger animations ── */
+    (function initProblema() {
+      const statsEl = document.getElementById('problemaStats');
+      const cardsEl = document.getElementById('problemaCards');
+
+      function staggerIn(container, selector, delay) {
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              items.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * delay));
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        io.observe(container);
+      }
+
+      staggerIn(statsEl, '.stat-card', 160);
+      staggerIn(cardsEl, '.p-card', 100);
+
+      /* counter animation */
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      if (statsEl) {
+        const counterObs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              statsEl.querySelectorAll('[data-count]').forEach((el, i) => {
+                setTimeout(() => animateCounter(el), i * 200);
+              });
+              counterObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.4 });
+        counterObs.observe(statsEl);
+      }
+    })();
   </script>
 </body>
 </html>
