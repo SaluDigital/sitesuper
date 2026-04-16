@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO, GEO e IA para Dentistas | SuperDental</title>
+  <meta name="description" content="O cenário de busca mudou radicalmente. Pacientes agora encontram clínicas via IA e Generative Engine Optimization. Posicione sua clínica no futuro da busca — antes dos seus concorrentes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal:      #1BB5A4;
+      --teal-hi:   #24CDB9;
+      --teal-lo:   #12897C;
+      --teal-pale: rgba(27,181,164,0.08);
+      --orange:    #F07030;
+      --orange-hi: #FF8A4A;
+      --purple:    #8B4FA0;
+      --ink:       #060E11;
+      --ink-2:     #0C1A1E;
+      --ink-3:     #122228;
+      --ink-4:     #1A2E34;
+      --cream:     #EDF6F5;
+      --cream-2:   #88A8A5;
+      --cream-3:   #4A6462;
+      --white:     #FFFFFF;
+      --paper:     #F0F8F7;
+      --radius:    10px;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --font-disp: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-ital: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font-body); background: var(--ink); color: var(--cream); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; opacity: 0.55; mix-blend-mode: overlay;
+    }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    .section-tag { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.25rem; }
+    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--teal); }
+
+    @keyframes fade-up-in { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(27,181,164,0.2); } 50% { box-shadow: 0 0 40px rgba(27,181,164,0.5); } }
+    @keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .9rem; border: none; cursor: pointer; transition: all .25s ease; white-space: nowrap; padding: .85rem 1.8rem; border-radius: 100px; }
+    .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-teal:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(27,181,164,0.4); }
+
+    .btn-pill { display: inline-flex; align-items: center; gap: .75rem; background: rgba(255,255,255,0.94); color: var(--ink); border: none; border-radius: 100px; padding: .62rem .62rem .62rem 1.45rem; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s ease; white-space: nowrap; }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+    .btn-pill-arrow { width: 34px; height: 34px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .btn-pill-arrow svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2.2; }
+
+    /* Header */
+    .lp-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(6,14,17,0.55); border-bottom: 1px solid rgba(255,255,255,0.07); backdrop-filter: blur(28px) saturate(160%); -webkit-backdrop-filter: blur(28px) saturate(160%); box-shadow: 0 1px 0 rgba(27,181,164,0.08), inset 0 1px 0 rgba(255,255,255,0.04); transition: all .3s ease; }
+    .lp-header.scrolled { background: rgba(6,14,17,0.78); border-bottom-color: rgba(27,181,164,0.15); box-shadow: 0 4px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03); }
+    .lp-header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .lp-logo img { height: 36px; width: auto; display: block; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 65% 35%, rgba(139,79,160,0.07) 0%, transparent 50%),
+                  radial-gradient(ellipse at 35% 65%, rgba(27,181,164,0.08) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none; opacity: .04;
+      background-image: linear-gradient(rgba(237,246,245,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(237,246,245,1) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 6rem 0 5rem; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.82); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13); border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem; backdrop-filter: blur(12px); margin-bottom: 1.8rem; opacity: 0; animation: fade-in .6s ease forwards .3s; }
+    .hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); display: inline-block; flex-shrink: 0; }
+    .hero-h1 { font-family: var(--font-disp); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; margin-bottom: 1.5rem; opacity: 0; animation: fade-up-in .7s ease forwards .45s; }
+    .hero-h1-big { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--white); }
+    .hero-h1-purple { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: #B06ACE; }
+    .hero-h1-italic { display: block; font-family: var(--font-disp); font-style: normal; font-size: clamp(2.6rem, 4vw, 3.5rem); font-weight: 800; color: rgba(237,246,245,0.7); }
+    .hero-sub { font-size: 1.08rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px; opacity: 0; animation: fade-up-in .7s ease forwards .6s; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; opacity: 0; animation: fade-up-in .7s ease forwards .75s; }
+    .hero-trust { font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem; display: flex; align-items: center; gap: .5rem; opacity: 0; animation: fade-in .7s ease forwards .9s; }
+    .hero-trust::before { content: ''; width: 16px; height: 1px; background: var(--cream-3); }
+
+    /* Hero AI Visual */
+    .hero-visual { opacity: 0; animation: fade-in .9s ease forwards .5s; }
+    .ai-terminal {
+      background: var(--ink-3);
+      border: 1px solid rgba(139,79,160,0.2);
+      border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .ai-terminal-bar {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .75rem 1rem;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(237,246,245,0.06);
+    }
+    .ai-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .ai-label { margin-left: auto; font-size: .68rem; color: var(--cream-3); letter-spacing: .08em; }
+    .ai-body { padding: 1.5rem; }
+    .ai-query {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .ai-query-label { font-size: .65rem; color: var(--cream-3); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem; }
+    .ai-query-text { font-size: .88rem; color: var(--white); }
+    .ai-response {
+      background: rgba(139,79,160,0.06);
+      border: 1px solid rgba(139,79,160,0.15);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+      margin-bottom: 1rem; position: relative;
+    }
+    .ai-response-label { font-size: .65rem; color: #B06ACE; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .6rem; }
+    .ai-response-text { font-size: .82rem; color: var(--cream); line-height: 1.6; }
+    .ai-response-text strong { color: var(--teal); }
+    .ai-scan {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      animation: scan 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .ai-sources {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+    }
+    .ai-source {
+      font-size: .68rem; padding: .25rem .7rem;
+      background: rgba(27,181,164,0.1); border: 1px solid rgba(27,181,164,0.2);
+      border-radius: 100px; color: var(--teal);
+    }
+
+    /* Mudança cenário */
+    .section-mudanca {
+      padding: 6rem 0;
+      background: var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-mudanca::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--purple), transparent); opacity: .25; }
+    .mudanca-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .mudanca-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.2rem; }
+    .mudanca-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
+    .mudanca-highlight {
+      background: rgba(139,79,160,0.07);
+      border: 1px solid rgba(139,79,160,0.18);
+      border-radius: var(--radius-lg); padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .mudanca-highlight-text { font-size: .9rem; color: var(--cream); line-height: 1.7; }
+    .mudanca-highlight-text strong { color: #B06ACE; }
+    .timeline { display: flex; flex-direction: column; gap: 1.2rem; }
+    .tl-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.4rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg);
+      transition: border-color .3s;
+    }
+    .tl-item:hover { border-color: rgba(27,181,164,0.2); }
+    .tl-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .tl-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .4rem; }
+    .tl-text { font-size: .85rem; color: var(--cream-2); line-height: 1.6; }
+    .tl-badge {
+      margin-left: auto; flex-shrink: 0;
+      font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .25rem .7rem; border-radius: 100px;
+    }
+    .tl-badge.old { background: rgba(240,112,48,0.12); color: var(--orange); }
+    .tl-badge.new { background: rgba(27,181,164,0.12); color: var(--teal); }
+
+    /* Pilares */
+    .section-pilares {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .pilares-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .pilares-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .pilar-card {
+      border-radius: var(--radius-xl); padding: 2.2rem;
+      position: relative; overflow: hidden;
+      transition: transform .3s;
+    }
+    .pilar-card:hover { transform: translateY(-5px); }
+    .pilar-card.seo { background: rgba(27,181,164,0.06); border: 1px solid rgba(27,181,164,0.18); }
+    .pilar-card.geo { background: rgba(139,79,160,0.07); border: 1px solid rgba(139,79,160,0.2); }
+    .pilar-card.ia  { background: rgba(240,112,48,0.05); border: 1px solid rgba(240,112,48,0.15); }
+    .pilar-tag {
+      font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: .3rem .9rem; border-radius: 100px; display: inline-block; margin-bottom: 1.2rem;
+    }
+    .pilar-card.seo .pilar-tag { background: rgba(27,181,164,0.15); color: var(--teal); }
+    .pilar-card.geo .pilar-tag { background: rgba(139,79,160,0.18); color: #B06ACE; }
+    .pilar-card.ia  .pilar-tag { background: rgba(240,112,48,0.14); color: var(--orange); }
+    .pilar-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .pilar-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .8rem; }
+    .pilar-text { font-size: .88rem; color: var(--cream-2); line-height: 1.65; }
+    .pilar-list { margin-top: 1.2rem; list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .pilar-list li { font-size: .82rem; color: var(--cream); display: flex; align-items: flex-start; gap: .5rem; }
+    .pilar-list li::before { font-weight: 700; flex-shrink: 0; }
+    .pilar-card.seo .pilar-list li::before { content: '→'; color: var(--teal); }
+    .pilar-card.geo .pilar-list li::before { content: '→'; color: #B06ACE; }
+    .pilar-card.ia  .pilar-list li::before { content: '→'; color: var(--orange); }
+
+    /* O que entregamos */
+    .section-entrega {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .entrega-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .entrega-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .entrega-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; max-width: 900px; margin: 0 auto; }
+    .entrega-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg); padding: 1.4rem;
+      transition: border-color .3s, transform .3s;
+    }
+    .entrega-item:hover { border-color: rgba(27,181,164,0.2); transform: translateY(-2px); }
+    .entrega-num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(27,181,164,0.1); border: 1px solid rgba(27,181,164,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-weight: 800; font-size: .8rem; color: var(--teal);
+    }
+    .entrega-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .3rem; }
+    .entrega-text { font-size: .82rem; color: var(--cream-2); line-height: 1.6; }
+
+    /* Quando faz sentido */
+    .section-quando {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .quando-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .quando-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.5rem; }
+    .quando-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .quando-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.08);
+      border-radius: var(--radius-lg); padding: 1.4rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color .3s;
+    }
+    .quando-card.highlight {
+      background: rgba(27,181,164,0.05);
+      border-color: rgba(27,181,164,0.2);
+    }
+    .quando-card:hover { border-color: rgba(27,181,164,0.2); }
+    .quando-card-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .quando-card-title { font-weight: 700; font-size: .92rem; color: var(--white); margin-bottom: .3rem; }
+    .quando-card-text { font-size: .84rem; color: var(--cream-2); line-height: 1.6; }
+    .urgency-box {
+      background: linear-gradient(135deg, rgba(27,181,164,0.08), rgba(139,79,160,0.06));
+      border: 1px solid rgba(27,181,164,0.2);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+    }
+    .urgency-title { font-family: var(--font-disp); font-weight: 800; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; line-height: 1.3; }
+    .urgency-text { font-size: .92rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
+    .urgency-stat { display: flex; flex-direction: column; gap: 1rem; }
+    .urgency-stat-item { display: flex; align-items: center; gap: 1rem; }
+    .urgency-stat-val { font-family: var(--font-disp); font-weight: 800; font-size: 1.6rem; color: var(--teal); min-width: 60px; }
+    .urgency-stat-label { font-size: .85rem; color: var(--cream-2); }
+
+    /* Prova */
+    .section-prova { padding: 6rem 0; background: var(--ink-2); }
+    .prova-header { text-align: center; margin-bottom: 4rem; }
+    .prova-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .prova-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .test-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); padding: 2rem; transition: transform .3s, border-color .3s; }
+    .test-card:hover { transform: translateY(-3px); border-color: rgba(27,181,164,0.2); }
+    .test-stars { color: #FFB800; font-size: .9rem; margin-bottom: 1rem; }
+    .test-text { font-size: .9rem; color: var(--cream); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: .75rem; }
+    .test-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--teal-lo), var(--purple)); display: flex; align-items: center; justify-content: center; font-family: var(--font-disp); font-weight: 700; font-size: .9rem; color: white; flex-shrink: 0; }
+    .test-name { font-size: .88rem; font-weight: 600; color: var(--white); }
+    .test-role { font-size: .78rem; color: var(--cream-3); }
+
+    /* FAQ */
+    .section-faq { padding: 6rem 0; background: var(--ink); }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .faq-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .3s; }
+    .faq-item.open { border-color: rgba(27,181,164,0.25); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--white); user-select: none; gap: 1rem; background: rgba(255,255,255,0.02); transition: background .2s; }
+    .faq-q:hover { background: rgba(255,255,255,0.04); }
+    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; font-size: .9rem; }
+    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+
+    /* CTA + Form */
+    .section-cta { padding: 7rem 0; background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%); position: relative; overflow: hidden; }
+    .section-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(27,181,164,0.08) 0%, transparent 70%); }
+    .cta-inner { position: relative; z-index: 2; text-align: center; }
+    .cta-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1rem; }
+    .cta-h2 em { font-family: var(--font-disp); font-style: normal; color: var(--teal); font-weight: 800; }
+    .cta-sub { font-size: 1.05rem; color: var(--cream-2); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .form-wrap { max-width: 560px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(27,181,164,0.15); border-radius: var(--radius-xl); padding: 2.5rem; }
+    .form-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .4rem; text-align: center; }
+    .form-sub { font-size: .82rem; color: var(--cream-3); text-align: center; margin-bottom: 1.8rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .78rem; font-weight: 600; color: var(--cream-2); letter-spacing: .04em; }
+    .form-field input, .form-field select { background: rgba(255,255,255,0.05); border: 1px solid rgba(237,246,245,0.12); border-radius: var(--radius); padding: .75rem 1rem; font-size: .9rem; color: var(--white); font-family: var(--font-body); transition: border-color .2s; -webkit-appearance: none; appearance: none; }
+    .form-field input::placeholder { color: var(--cream-3); }
+    .form-field input:focus, .form-field select:focus { outline: none; border-color: var(--teal); background: rgba(27,181,164,0.05); }
+    .form-field select option { background: var(--ink-3); color: var(--cream); }
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; border-radius: 100px; background: var(--teal); color: var(--white); font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: all .25s ease; }
+    .form-submit:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(27,181,164,0.4); }
+    .form-disclaimer { font-size: .74rem; color: var(--cream-3); text-align: center; margin-top: 1rem; }
+
+    /* WhatsApp */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 2000; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37,211,102,0.4); transition: transform .25s ease, box-shadow .25s ease; animation: float 3s ease-in-out infinite; }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* Footer */
+    .lp-footer { padding: 2.5rem 0; background: var(--ink); border-top: 1px solid rgba(237,246,245,0.06); text-align: center; }
+    .lp-footer-text { font-size: .8rem; color: var(--cream-3); }
+    .lp-footer-logo { margin-bottom: .75rem; }
+    .lp-footer-logo img { height: 32px; width: auto; display: block; margin: 0 auto; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
+      .hero-cta-row { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { display: none; }
+      .mudanca-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .pilares-grid { grid-template-columns: 1fr; }
+      .entrega-grid { grid-template-columns: 1fr; }
+      .quando-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .prova-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1-big, .hero-h1-purple { font-size: 8vw !important; }
+      .hero-h1-italic { font-size: 8.5vw !important; }
+    }
+    /* Resultados Reais Slider */
+    .cases {
+      padding: 8rem 0 6rem;
+      position: relative; overflow: hidden;
+      background: var(--ink);
+    }
+    .cases::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(circle at 10% 10%, rgba(27,181,164,0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(139,79,160,0.1) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .cases-head {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 2rem; margin-bottom: 3.5rem;
+    }
+    .cases-head h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -.05em;
+      color: var(--white); line-height: 1.1; max-width: 20ch;
+    }
+    .cases-head h2 em { font-style: normal; color: var(--teal); }
+    
+    .cases-score {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.5rem; border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(27,181,164,0.15);
+      flex-shrink: 0;
+    }
+    .cases-score-g {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: #fff; color: #4285F4;
+      font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .cases-score-num { font-family: var(--font-disp); font-size: 1.75rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .cases-score-stars { color: #FFB800; font-size: .85rem; margin: .2rem 0; }
+    .cases-score-label { font-size: .68rem; color: var(--cream-3); text-transform: uppercase; letter-spacing: .08em; }
+
+    .test-stage {
+      position: relative; z-index: 1;
+      border-radius: 28px; overflow: hidden;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+    }
+    .test-stage-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
+      background: linear-gradient(90deg, var(--teal), var(--orange), var(--purple));
+      opacity: 0.4;
+    }
+    .test-progress {
+      position: absolute; top: 0; left: 0; height: 3px; z-index: 4;
+      background: var(--teal); width: 0;
+      box-shadow: 0 0 10px var(--teal);
+    }
+    .test-progress.running { transition: width 5s linear; }
+    .test-slides { position: relative; min-height: 440px; }
+
+    .test-slide {
+      display: grid; grid-template-columns: 1fr 280px; gap: 3rem;
+      padding: 3.5rem; position: absolute; inset: 0;
+      opacity: 0; transform: translateY(18px) scale(0.99);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; align-items: start;
+    }
+    .test-slide.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .test-slide.exiting { opacity: 0; transform: translateY(-14px) scale(0.98); }
+
+    .test-count {
+      font-family: var(--font-disp); font-size: .65rem; font-weight: 700;
+      letter-spacing: .2em; color: var(--teal); margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .test-count::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(27,181,164,0.2), transparent); }
+
+    .test-q {
+      position: relative; font-family: var(--font-disp); font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.7; color: var(--cream); padding-left: 1.5rem; margin-bottom: 2.5rem;
+    }
+    .test-q::before {
+      content: ''; position: absolute; top: .3rem; left: 0; width: 3px; height: calc(100% - .6rem);
+      background: var(--teal); border-radius: 2px;
+    }
+
+    .test-author-row { display: flex; align-items: center; gap: .9rem; }
+    .test-av {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 1.1rem; font-weight: 800; color: #fff;
+    }
+    .test-name { font-size: .95rem; font-weight: 700; color: var(--white); }
+    .test-role { font-size: .72rem; color: var(--cream-3); margin-top: .1rem; }
+    .test-stars { color: #FFB800; font-size: .8rem; margin-top: .3rem; }
+
+    .test-metric {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px; padding: 1.75rem; position: relative; overflow: hidden;
+    }
+    .test-metric-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(27,181,164,0.1);
+      border: 1px solid rgba(27,181,164,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+    }
+    .test-metric-val { font-family: var(--font-disp); font-size: 1.6rem; font-weight: 800; color: var(--teal); line-height: 1.1; margin-bottom: .4rem; }
+    .test-metric-label { font-size: .7rem; text-transform: uppercase; color: var(--cream-3); letter-spacing: .08em; line-height: 1.4; margin-bottom: 1.25rem; }
+    .test-metric-bar { height: 4px; border-radius: 10px; background: rgba(255,255,255,0.05); overflow: hidden; }
+    .test-metric-fill { height: 100%; background: var(--teal); width: 0; transition: width 1.2s ease-out 0.4s; }
+    .test-slide.active .test-metric-fill { width: var(--fill, 90%); }
+
+    .test-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 3.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .test-dot { width: 7px; height: 7px; border-radius: 10px; background: rgba(255,255,255,0.15); border: none; cursor: pointer; transition: all 0.3s; }
+    .test-dot.active { background: var(--teal); width: 24px; box-shadow: 0 0 12px rgba(27,181,164,0.4); }
+    .test-arrow { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--cream-2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+    .test-arrow:hover { background: rgba(27,181,164,0.15); border-color: var(--teal); color: var(--teal); }
+
+    .rev-strip { margin-top: 1rem; overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+    .rev-track { display: flex; gap: 1rem; width: max-content; animation: revScroll 30s linear infinite; }
+    @keyframes revScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .rev-mini { width: 300px; padding: 1.25rem; border-radius: 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s; }
+    .rev-mini:hover { background: rgba(255,255,255,0.05); border-color: rgba(27,181,164,0.2); }
+    .rev-mini-name { font-size: .88rem; font-weight: 600; color: var(--white); }
+    .rev-mini-body { font-size: .84rem; color: var(--cream-2); line-height: 1.6; margin: .5rem 0; }
+    .rev-mini-source { font-size: .65rem; color: var(--cream-3); display: flex; align-items: center; gap: .4rem; text-transform: uppercase; }
+    .rev-mini-g { width: 16px; height: 16px; border-radius: 50%; background: #4285F4; color: #fff; font-size: .65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+    @media (max-width: 900px) {
+      .test-slide { grid-template-columns: 1fr; padding: 2.5rem; }
+      .test-metric { display: none; }
+      .test-nav { padding: 1.2rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header LP -->
+  <header class="lp-header" id="lpHeader">
+    <div class="container">
+      <div class="lp-header-inner">
+        <a href="../index2.html" class="lp-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></a>
+        <a href="#form" class="btn btn-teal" style="font-size:.85rem; padding:.65rem 1.5rem;">
+          Avaliar meu posicionamento
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            SEO · GEO · IA · O futuro da busca já chegou
+          </div>
+          <h1 class="hero-h1">
+            <span class="hero-h1-big">Pacientes te encontram</span>
+            <span class="hero-h1-purple">pelo Google — e agora pela IA</span>
+            <span class="hero-h1-italic">você está preparado?</span>
+          </h1>
+          <p class="hero-sub">
+            O comportamento de busca mudou radicalmente. ChatGPT, Gemini e Google AI Mode estão respondendo "qual o melhor dentista para implante perto de mim". Se sua clínica não está nessas respostas, alguém está no seu lugar.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#form" class="btn-pill">
+              Quero avaliar meu posicionamento digital
+              <span class="btn-pill-arrow">
+                <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+              </span>
+            </a>
+          </div>
+          <p class="hero-trust">Avaliação gratuita · Sem compromisso · Resultado em 24h</p>
+        </div>
+        <div class="hero-visual">
+          <div class="ai-terminal">
+            <div class="ai-terminal-bar">
+              <div class="ai-dot" style="background:#FF5F57"></div>
+              <div class="ai-dot" style="background:#FFBD2E"></div>
+              <div class="ai-dot" style="background:#28C840"></div>
+              <span class="ai-label">AI Search · Modo IA Generativa</span>
+            </div>
+            <div class="ai-body">
+              <div class="ai-query">
+                <div class="ai-query-label">Consulta do usuário</div>
+                <div class="ai-query-text">"melhor clínica de implante dentário em [sua cidade]"</div>
+              </div>
+              <div class="ai-response">
+                <div class="ai-scan"></div>
+                <div class="ai-response-label">Resposta da IA</div>
+                <p class="ai-response-text">Com base nas avaliações, autoridade digital e presença online, a <strong>Clínica [Sua Clínica]</strong> é uma das referências em implantodontia na região. Especialistas com mais de X anos de experiência, nota 4,9 no Google com 200+ avaliações...</p>
+              </div>
+              <div class="ai-sources">
+                <span class="ai-source">Google Business</span>
+                <span class="ai-source">Site oficial</span>
+                <span class="ai-source">Avaliações</span>
+                <span class="ai-source">Conteúdo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mudança no cenário -->
+  <section class="section-mudanca">
+    <div class="container">
+      <div class="mudanca-inner">
+        <div class="reveal">
+          <div class="section-tag">A virada</div>
+          <h2 class="mudanca-h2">O jeito como pacientes procuram dentistas mudou — e a maioria das clínicas não percebeu</h2>
+          <p class="mudanca-text">Por anos, aparecer no Google significava ter um bom site e algumas palavras-chave. Isso ainda importa — mas não é suficiente.</p>
+          <p class="mudanca-text">Hoje, os motores de IA generativa sintetizam resultados. Em vez de 10 links azuis, o usuário recebe uma resposta direta — e um ou dois nomes são citados. Se o seu não está entre eles, você não existe para aquele paciente.</p>
+          <div class="mudanca-highlight">
+            <p class="mudanca-highlight-text">
+              <strong>GEO (Generative Engine Optimization)</strong> é a nova disciplina: otimizar sua presença para que sistemas de IA — Google AI Mode, ChatGPT, Perplexity, Gemini — citem sua clínica como referência. A janela para liderar está aberta agora.
+            </p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-icon">🔍</div>
+              <div>
+                <div class="tl-title">SEO tradicional</div>
+                <p class="tl-text">10 links azuis. Ranqueamento por palavras-chave. O usuário escolhe qual clicar.</p>
+              </div>
+              <span class="tl-badge old">Ontem</span>
+            </div>
+            <div class="tl-item">
+              <div class="tl-icon">📍</div>
+              <div>
+                <div class="tl-title">Google Maps + Reviews</div>
+                <p class="tl-text">Posicionamento local. Avaliações como fator de ranqueamento e conversão.</p>
+              </div>
+              <span class="tl-badge old">Ainda válido</span>
+            </div>
+            <div class="tl-item">
+              <div class="tl-icon">🤖</div>
+              <div>
+                <div class="tl-title">Busca com IA generativa</div>
+                <p class="tl-text">A IA responde diretamente. Cita 1-2 fontes de autoridade. Quem aparece, ganha.</p>
+              </div>
+              <span class="tl-badge new">Hoje</span>
+            </div>
+            <div class="tl-item">
+              <div class="tl-icon">🎙️</div>
+              <div>
+                <div class="tl-title">Busca por voz e agentes IA</div>
+                <p class="tl-text">Assistentes de IA fazendo agendamentos. Clínicas sem autoridade digital = invisíveis.</p>
+              </div>
+              <span class="tl-badge new">Chegando</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilares -->
+  <section class="section-pilares">
+    <div class="container">
+      <div class="pilares-header reveal">
+        <div class="section-tag">Nossa abordagem</div>
+        <h2 class="pilares-h2">Três pilares para dominar o posicionamento digital odontológico</h2>
+      </div>
+      <div class="pilares-grid">
+        <div class="pilar-card seo reveal reveal-delay-1">
+          <span class="pilar-tag">SEO</span>
+          <div class="pilar-icon">🔍</div>
+          <div class="pilar-title">Search Engine Optimization</div>
+          <p class="pilar-text">Ranqueamento orgânico sustentável. Apareça no topo do Google para os tratamentos que você oferece na sua cidade — sem pagar por clique.</p>
+          <ul class="pilar-list">
+            <li>Otimização técnica (Core Web Vitals)</li>
+            <li>Páginas por tratamento otimizadas</li>
+            <li>Link building de autoridade</li>
+            <li>Conteúdo de especialidade</li>
+          </ul>
+        </div>
+        <div class="pilar-card geo reveal reveal-delay-2">
+          <span class="pilar-tag">GEO</span>
+          <div class="pilar-icon">🤖</div>
+          <div class="pilar-title">Generative Engine Optimization</div>
+          <p class="pilar-text">A nova fronteira. Estruturar sua presença digital para que sistemas de IA — ChatGPT, Gemini, Perplexity, Google AI Mode — citem sua clínica como referência.</p>
+          <ul class="pilar-list">
+            <li>Estruturação de dados semânticos</li>
+            <li>Conteúdo otimizado para IA</li>
+            <li>Autoridade de citação e menção</li>
+            <li>Schema markup avançado</li>
+          </ul>
+        </div>
+        <div class="pilar-card ia reveal reveal-delay-3">
+          <span class="pilar-tag">IA Local</span>
+          <div class="pilar-icon">📍</div>
+          <div class="pilar-title">Presença local aumentada por IA</div>
+          <p class="pilar-text">Google Maps, Google AI Overviews e busca local integrada com IA. Sua clínica como a resposta padrão para buscas odontológicas na sua região.</p>
+          <ul class="pilar-list">
+            <li>Google Business Profile avançado</li>
+            <li>Gestão de avaliações e reputação</li>
+            <li>Otimização para AI Overviews</li>
+            <li>Citações e diretórios locais</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que entregamos -->
+  <section class="section-entrega">
+    <div class="container">
+      <div class="entrega-header reveal">
+        <div class="section-tag">O que entregamos</div>
+        <h2 class="entrega-h2">Tudo para sua clínica ser a referência no digital</h2>
+      </div>
+      <div class="entrega-grid">
+        <div class="entrega-item reveal reveal-delay-1">
+          <div class="entrega-num">01</div>
+          <div>
+            <div class="entrega-title">Auditoria de visibilidade completa</div>
+            <p class="entrega-text">Diagnóstico do posicionamento atual no Google, Google Maps e sistemas de IA. Identificamos gaps e oportunidades específicas para sua clínica.</p>
+          </div>
+        </div>
+        <div class="entrega-item reveal reveal-delay-2">
+          <div class="entrega-num">02</div>
+          <div>
+            <div class="entrega-title">Otimização técnica SEO</div>
+            <p class="entrega-text">Core Web Vitals, estrutura de URLs, meta dados, site map, schema markup para clínicas — tudo o que o Google avalia para ranquear.</p>
+          </div>
+        </div>
+        <div class="entrega-item reveal reveal-delay-1">
+          <div class="entrega-num">03</div>
+          <div>
+            <div class="entrega-title">Estratégia de conteúdo GEO</div>
+            <p class="entrega-text">Criação de conteúdo estruturado para ser citado por sistemas de IA. Perguntas e respostas, artigos de autoridade, dados estruturados semânticos.</p>
+          </div>
+        </div>
+        <div class="entrega-item reveal reveal-delay-2">
+          <div class="entrega-num">04</div>
+          <div>
+            <div class="entrega-title">Google Business Profile avançado</div>
+            <p class="entrega-text">Otimização completa do perfil local, gestão de posts, fotos, Q&A e estratégia para maximizar visibilidade no Maps e AI Overviews.</p>
+          </div>
+        </div>
+        <div class="entrega-item reveal reveal-delay-1">
+          <div class="entrega-num">05</div>
+          <div>
+            <div class="entrega-title">Gestão e geração de avaliações</div>
+            <p class="entrega-text">Processo sistemático de captação de avaliações reais. Nota alta no Google é fator de ranqueamento tanto no Maps quanto nas respostas de IA.</p>
+          </div>
+        </div>
+        <div class="entrega-item reveal reveal-delay-2">
+          <div class="entrega-num">06</div>
+          <div>
+            <div class="entrega-title">Relatório de posicionamento mensal</div>
+            <p class="entrega-text">Monitoramento de ranqueamentos, tráfego orgânico, aparições em AI Overviews, menções por IA e evolução mês a mês.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quando faz sentido -->
+  <section class="section-quando">
+    <div class="container">
+      <div class="quando-inner">
+        <div class="reveal">
+          <div class="section-tag">Para quem é</div>
+          <h2 class="quando-h2">Quando faz sentido investir em SEO + GEO + IA?</h2>
+          <div class="quando-cards">
+            <div class="quando-card highlight reveal reveal-delay-1">
+              <div class="quando-card-icon">🏆</div>
+              <div>
+                <div class="quando-card-title">Você quer ser referência na sua cidade</div>
+                <p class="quando-card-text">SEO e GEO geram resultado composto — quanto mais cedo começa, maior a vantagem competitiva.</p>
+              </div>
+            </div>
+            <div class="quando-card reveal reveal-delay-2">
+              <div class="quando-card-icon">📉</div>
+              <div>
+                <div class="quando-card-title">Você depende demais de anúncios pagos</div>
+                <p class="quando-card-text">Orgânico é o canal que cresce sem pagar por clique. SEO complementa o Google Ads e reduz o custo de aquisição ao longo do tempo.</p>
+              </div>
+            </div>
+            <div class="quando-card reveal reveal-delay-3">
+              <div class="quando-card-icon">🤖</div>
+              <div>
+                <div class="quando-card-title">Você quer estar à frente da concorrência</div>
+                <p class="quando-card-text">GEO é uma disciplina nova. A maioria das clínicas ainda não investe. Quem começa agora ocupa o espaço antes dos outros.</p>
+              </div>
+            </div>
+            <div class="quando-card reveal reveal-delay-4">
+              <div class="quando-card-icon">🔄</div>
+              <div>
+                <div class="quando-card-title">Você quer crescimento sustentável</div>
+                <p class="quando-card-text">Resultados de SEO acumulam — um artigo publicado hoje pode gerar pacientes por anos, sem custo adicional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="urgency-box">
+            <div class="urgency-title">A janela de oportunidade está aberta — por quanto tempo?</div>
+            <p class="urgency-text">O GEO está no início. As clínicas que construírem autoridade agora vão dominar o posicionamento em IA quando o canal amadurecer. Depois será tarde para recuperar o terreno perdido.</p>
+            <div class="urgency-stat">
+              <div class="urgency-stat-item">
+                <div class="urgency-stat-val">40%</div>
+                <div class="urgency-stat-label">das buscas de saúde já usam IA generativa</div>
+              </div>
+              <div class="urgency-stat-item">
+                <div class="urgency-stat-val">6 meses</div>
+                <div class="urgency-stat-label">tempo médio para colher resultados sólidos de SEO</div>
+              </div>
+              <div class="urgency-stat-item">
+                <div class="urgency-stat-val">3×</div>
+                <div class="urgency-stat-label">mais leads do canal orgânico vs. canal pago — no longo prazo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultados reais -->
+  <section class="cases" id="cases">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="cases-head reveal">
+        <div>
+          <div class="section-tag">Resultados reais</div>
+          <h2>Atendimento que gera <em>autoridade</em><br>e resultados que falam por si.</h2>
+        </div>
+        <div class="cases-score">
+          <div class="cases-score-g">G</div>
+          <div>
+            <div class="cases-score-num">5.0</div>
+            <div class="cases-score-stars">★★★★★</div>
+            <div class="cases-score-label">Google Reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial stage -->
+      <div class="test-stage reveal" id="testStage">
+        <div class="test-stage-bar"></div>
+        <div class="test-progress" id="testProgress"></div>
+
+        <div class="test-slides">
+          <!-- Slide 1 -->
+          <div class="test-slide active" data-index="0">
+            <div class="test-left">
+              <div class="test-count">01 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Em 8 meses, saímos de invisíveis para aparecer na primeira posição do Google para 7 procedimentos. Agora aparecemos também nas respostas do ChatGPT quando alguém pergunta por clínica de implante na nossa cidade."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av" style="background:linear-gradient(135deg,#12897c,#1bb5a4)">VB</div>
+                <div>
+                  <div class="test-name">Dr. Victor Barbosa</div>
+                  <div class="test-role">Implantodontia &middot; S&atilde;o Paulo, SP</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div class="test-metric-val">+200%</div>
+              <div class="test-metric-label">Aumento em busca<br>org&acirc;nica por IA</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:95%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="test-slide" data-index="1">
+            <div class="test-left">
+              <div class="test-count">02 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"O trabalho de SEO que a SuperDental fez no meu site foi transformador. Hoje recebo 40 novos visitantes orgânicos por dia sem pagar nada por isso. O custo de aquisição caiu 60% em comparação com os anúncios."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av" style="background:linear-gradient(135deg,#7b33d0,#af6cff)">LC</div>
+                <div>
+                  <div class="test-name">Dra. Let&iacute;cia Costa</div>
+                  <div class="test-role">Ortodontia &middot; Belo Horizonte, MG</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg>
+              </div>
+              <div class="test-metric-val">-60%</div>
+              <div class="test-metric-label">Redu&ccedil;&atilde;o no custo<br>por paciente</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:90%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="test-slide" data-index="2">
+            <div class="test-left">
+              <div class="test-count">03 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Não sabia o que era GEO até a SuperDental me explicar. Depois que otimizamos o conteúdo do site para IA, minha clínica começou a aparecer nas respostas do Google AI Mode. Pacientes chegam citando informações."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av" style="background:linear-gradient(135deg,#aa7a1d,#e2b24f)">RM</div>
+                <div>
+                  <div class="test-name">Dr. Ricardo Moraes</div>
+                  <div class="test-role">Periodontia &middot; Curitiba, PR</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+              </div>
+              <div class="test-metric-val">L&iacute;der</div>
+              <div class="test-metric-label">Autoridade digital<br>em AI Overviews</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:100%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="test-nav">
+          <div class="test-nav-dots" id="testDots">
+            <button class="test-dot active" data-index="0" aria-label="Depoimento 1"></button>
+            <button class="test-dot" data-index="1" aria-label="Depoimento 2"></button>
+            <button class="test-dot" data-index="2" aria-label="Depoimento 3"></button>
+          </div>
+          <div class="test-nav-arrows">
+            <button class="test-arrow" id="testPrev" aria-label="Anterior">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            </button>
+            <button class="test-arrow" id="testNext" aria-label="Próximo">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee -->
+      <div class="rev-strip">
+        <div class="rev-track">
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimendo nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Elis Rocha</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Meu faturamento subiu muito após a otimização."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grandevolucao apos a contratacao. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Repeat for marquee loop -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimendo nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Elis Rocha</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Meu faturamento subiu muito após a otimização."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grandevolucao apos a contratacao. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-tag">Perguntas frequentes</div>
+        <h2 class="faq-h2">Dúvidas sobre SEO, GEO e IA</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">O que é GEO e por que é diferente de SEO?<span class="faq-icon">+</span></div>
+          <div class="faq-a">SEO (Search Engine Optimization) otimiza para algoritmos de busca tradicional — Google orgânico com lista de links. GEO (Generative Engine Optimization) otimiza para sistemas de IA generativa — ChatGPT, Gemini, Perplexity, Google AI Mode — que sintetizam respostas diretas e citam fontes específicas. São complementares, mas exigem técnicas diferentes.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para ver resultado com SEO?<span class="faq-icon">+</span></div>
+          <div class="faq-a">SEO é um canal de médio-longo prazo. Os primeiros movimentos significativos acontecem entre 3-6 meses. Resultados consistentes e escaláveis surgem a partir de 6-12 meses. Ao contrário de anúncios, os resultados acumulam e não param quando o investimento para.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">É possível aparecer nas respostas de IA como o ChatGPT?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Sim. Os sistemas de IA generativa são treinados com conteúdo da web e usam fontes para gerar respostas em tempo real. Clínicas com conteúdo de autoridade, dados estruturados bem configurados e alta reputação online têm muito mais chance de ser citadas como referência nas respostas de IA.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">Google Ads e SEO se complementam ou são substitutos?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Se complementam. Google Ads entrega resultado imediato — é perfeito para tratamentos específicos e resultados rápidos. SEO constrói o canal orgânico sustentável que reduz o custo de aquisição ao longo do tempo. O ideal é ter os dois funcionando em paralelo.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">Como é feita a avaliação do meu posicionamento atual?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Em uma reunião de até 45 minutos, analisamos o posicionamento atual do seu site no Google, visibilidade no Maps, performance técnica, presença em sistemas de IA e comparação com concorrentes locais. Você recebe um relatório com os principais gaps e oportunidades identificadas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Form -->
+  <section class="section-cta" id="form">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Avaliação gratuita</div>
+        <h2 class="cta-h2 reveal">Descubra como sua clínica está<br><em>posicionada no futuro da busca</em></h2>
+        <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e receba uma avaliação completa do seu posicionamento em SEO, Google Maps e sistemas de IA. Gratuita e sem compromisso.</p>
+        <div class="form-wrap reveal reveal-delay-2">
+          <div class="form-title">Quero avaliar meu posicionamento digital</div>
+          <div class="form-sub">Retornamos em até 24 horas úteis</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Seu nome</label>
+                <input type="text" placeholder="Dr(a). Nome Sobrenome" required>
+              </div>
+              <div class="form-field">
+                <label>WhatsApp</label>
+                <input type="tel" placeholder="(11) 99999-9999" required>
+              </div>
+              <div class="form-field">
+                <label>Nome da clínica</label>
+                <input type="text" placeholder="Clínica Odontológica..." required>
+              </div>
+              <div class="form-field">
+                <label>Cidade / UF</label>
+                <input type="text" placeholder="São Paulo, SP" required>
+              </div>
+              <div class="form-field full">
+                <label>Principal objetivo</label>
+                <select required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>Aparecer no topo do Google para minha cidade</option>
+                  <option>Ser citado por sistemas de IA como referência</option>
+                  <option>Reduzir dependência de Google Ads</option>
+                  <option>Crescer organicamente sem pagar por clique</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Quero minha avaliação gratuita →</button>
+            <p class="form-disclaimer">Seus dados estão protegidos. Não fazemos spam.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></div>
+      <p class="lp-footer-text">© 2026 SuperDental · Todos os direitos reservados · <a href="https://superdental.com.br" style="color:var(--teal)">superdental.com.br</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20SEO%20e%20GEO%20para%20minha%20clínica" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('lpHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Recebido! Entraremos em contato em breve.';
+      btn.style.background = '#12897C';
+      btn.disabled = true;
+    }
+
+    /* Testimonial Slider */
+    (function initTestimonials() {
+      const stage = document.getElementById('testStage');
+      const dotsWrap = document.getElementById('testDots');
+      const prevBtn = document.getElementById('testPrev');
+      const nextBtn = document.getElementById('testNext');
+      const progress = document.getElementById('testProgress');
+      if (!stage) return;
+
+      const slides = [...stage.querySelectorAll('.test-slide')];
+      const dots = dotsWrap ? [...dotsWrap.querySelectorAll('.test-dot')] : [];
+      const total = slides.length;
+      let current = 0;
+      let timer = null;
+      let paused = false;
+
+      function activate(idx) {
+        const prev = current;
+        current = (idx + total) % total;
+        if (prev === current) return;
+
+        slides[prev].classList.add('exiting');
+        slides[prev].classList.remove('active');
+        setTimeout(() => slides[prev].classList.remove('exiting'), 600);
+
+        slides[current].classList.add('active');
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+
+      function next() { if (!paused) activate(current + 1); }
+
+      function startCycle() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+      function stopCycle() { clearInterval(timer); }
+
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => { activate(i); stopCycle(); startCycle(); });
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', () => { activate(current - 1); stopCycle(); startCycle(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { activate(current + 1); stopCycle(); startCycle(); });
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { startCycle(); obs.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      obs.observe(stage);
+    })();
+  </script>
+</body>
+</html>

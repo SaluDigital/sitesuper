@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Ads para Dentistas | SuperDental</title>
+  <meta name="description" content="Pare de desperdiçar verba com campanhas que não convertem. A SuperDental aplica uma metodologia exclusiva de Google Ads para clínicas odontológicas que transforma cliques em pacientes reais.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal:      #1BB5A4;
+      --teal-hi:   #24CDB9;
+      --teal-lo:   #12897C;
+      --teal-pale: rgba(27,181,164,0.08);
+      --orange:    #F07030;
+      --orange-hi: #FF8A4A;
+      --purple:    #8B4FA0;
+      --ink:       #060E11;
+      --ink-2:     #0C1A1E;
+      --ink-3:     #122228;
+      --ink-4:     #1A2E34;
+      --cream:     #EDF6F5;
+      --cream-2:   #88A8A5;
+      --cream-3:   #4A6462;
+      --white:     #FFFFFF;
+      --paper:     #F0F8F7;
+      --paper-2:   #D8EEEC;
+      --radius:    10px;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --font-disp: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-ital: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.22);
+      --shadow-md: 0 8px 40px rgba(0,0,0,0.30);
+      --shadow-lg: 0 20px 80px rgba(0,0,0,0.45);
+      --glow-teal: 0 0 60px rgba(27,181,164,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; opacity: 0.55; mix-blend-mode: overlay;
+    }
+
+    /* ─── Layout ─── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1.25rem;
+    }
+    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--teal); }
+
+    /* ─── Animations ─── */
+    @keyframes fade-up-in {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-14px) rotate(3deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: .4; transform: scale(1); }
+      50%       { opacity: .7; transform: scale(1.08); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-weight: 600; font-size: .9rem;
+      border: none; cursor: pointer; transition: all .25s ease;
+      white-space: nowrap; padding: .85rem 1.8rem; border-radius: 100px;
+    }
+    .btn-teal {
+      background: var(--teal); color: var(--white);
+    }
+    .btn-teal:hover {
+      background: var(--teal-hi); transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(27,181,164,0.4);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--cream);
+      border: 1px solid rgba(237,246,245,0.2);
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: rgba(255,255,255,0.94); color: var(--ink);
+      border: none; border-radius: 100px;
+      padding: .62rem .62rem .62rem 1.45rem;
+      font-weight: 700; font-size: .92rem;
+      cursor: pointer; transition: all .25s ease; white-space: nowrap;
+    }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+    .btn-pill-arrow {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--teal); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .25s;
+    }
+    .btn-pill:hover .btn-pill-arrow { background: var(--teal-lo); }
+    .btn-pill-arrow svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2.2; }
+
+    .btn-cta-lg {
+      background: var(--teal); color: var(--ink);
+      border-radius: 100px; padding: 1rem 2.4rem;
+      font-size: 1rem; font-weight: 700; border: none; cursor: pointer;
+      transition: all .25s ease; display: inline-flex; align-items: center; gap: .6rem;
+    }
+    .btn-cta-lg:hover {
+      background: var(--teal-hi); transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(27,181,164,0.45);
+    }
+
+    /* ─── Header (minimal LP) ─── */
+    .lp-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+      transition: background .35s ease, border-color .35s ease,
+                  backdrop-filter .35s ease, box-shadow .35s ease;
+    }
+    .lp-header.scrolled {
+      background: rgba(12,26,30,0.55);
+      border-bottom-color: rgba(27,181,164,0.18);
+      backdrop-filter: blur(24px) saturate(180%) brightness(0.9);
+      -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(0.9);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .lp-header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .lp-logo img { height: 36px; width: auto; display: block; }
+
+    /* ─── Hero ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg-glow {
+      position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px; border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(27,181,164,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none; opacity: .045;
+      background-image: linear-gradient(rgba(237,246,245,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(237,246,245,1) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      padding: 6rem 0 5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem;
+      backdrop-filter: blur(12px); margin-bottom: 1.8rem;
+      opacity: 0; animation: fade-in .6s ease forwards .3s;
+    }
+    .hero-eyebrow-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); display: inline-block; flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-family: var(--font-disp); font-weight: 800;
+      line-height: 1.08; letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fade-up-in .7s ease forwards .45s;
+    }
+    .hero-h1-big {
+      display: block; font-size: clamp(2.4rem, 4vw, 3.4rem);
+      color: var(--white);
+    }
+    .hero-h1-teal {
+      display: block; font-size: clamp(2.4rem, 4vw, 3.4rem);
+      color: var(--teal);
+    }
+    .hero-h1-italic {
+      display: block;
+      font-family: var(--font-disp); font-style: normal;
+      font-size: clamp(2.6rem, 4.2vw, 3.7rem); font-weight: 800;
+      color: rgba(237,246,245,0.75);
+    }
+    .hero-sub {
+      font-size: 1.08rem; color: var(--cream-2); line-height: 1.7;
+      margin-bottom: 2.5rem; max-width: 480px;
+      opacity: 0; animation: fade-up-in .7s ease forwards .6s;
+    }
+    .hero-cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      opacity: 0; animation: fade-up-in .7s ease forwards .75s;
+    }
+    .hero-trust {
+      font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem;
+      display: flex; align-items: center; gap: .5rem;
+      opacity: 0; animation: fade-in .7s ease forwards .9s;
+    }
+    .hero-trust::before {
+      content: ''; width: 16px; height: 1px; background: var(--cream-3);
+    }
+    .hero-visual {
+      position: relative;
+      opacity: 0; animation: fade-in .9s ease forwards .5s;
+    }
+    .hero-card-stack {
+      position: relative; display: flex; flex-direction: column; gap: 1rem;
+    }
+    /* ─── Metrics Panel ─── */
+    .metrics-panel {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      position: relative; overflow: hidden;
+    }
+    .metrics-panel::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, var(--orange) 52%, var(--purple) 100%);
+    }
+    .metrics-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.1rem;
+    }
+    .metrics-panel-title-wrap { display: flex; align-items: center; gap: .5rem; }
+    .metrics-panel-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(27,181,164,.75);
+      animation: cp-pulse 2s ease-in-out infinite;
+    }
+    @keyframes cp-pulse {
+      0%,100% { transform:scale(1); box-shadow: 0 0 8px rgba(27,181,164,.75); }
+      50%      { transform:scale(.75); box-shadow: 0 0 16px rgba(27,181,164,1); }
+    }
+    .metrics-panel-title {
+      font-size: .68rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .1em; color: rgba(237,246,245,.85);
+    }
+    .metrics-panel-period { font-size: .62rem; color: rgba(237,246,245,.6); }
+
+    .metric-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius); padding: 1rem 1.1rem;
+      transition: border-color .4s; position: relative; overflow: hidden;
+    }
+    .metric-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .metric-card.mc-orange::after { background: linear-gradient(90deg, var(--orange), transparent); }
+    .metric-card.mc-purple::after { background: linear-gradient(90deg, var(--purple), transparent); }
+    .metric-card.is-active { border-color: rgba(27,181,164,.4); }
+    .metric-card.mc-orange.is-active { border-color: rgba(240,112,48,.4); }
+    .metric-card.mc-purple.is-active { border-color: rgba(139,79,160,.4); }
+    .metric-card.is-active::after { transform: scaleX(1); }
+
+    .metric-card-label {
+      font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(237,246,245,.82); margin-bottom: .4rem;
+    }
+    .metric-card-value {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: 2rem; color: #42d6c8; line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .metric-card.mc-orange .metric-card-value { color: #ff9c63; }
+    .metric-card.mc-purple .metric-card-value { color: #c287e0; }
+    .metric-card-sub {
+      font-size: .75rem; color: rgba(237,246,245,.78); margin-top: .25rem;
+    }
+    .metric-card-trend {
+      display: inline-flex; align-items: center; gap: .18rem;
+      font-size: .62rem; font-weight: 700; color: #5BDB8A;
+      margin-top: .3rem; opacity: 0; transition: opacity .5s .9s;
+    }
+    .metric-card.is-active .metric-card-trend { opacity: 1; }
+    .metric-spark { display: block; height: 16px; margin-top: .4rem; opacity: .45; width: 100%; }
+    .metric-spark polyline { stroke: var(--teal); stroke-width: 1.5; fill: none; }
+    .metric-card.mc-orange .metric-spark polyline { stroke: var(--orange); }
+    .metric-card.mc-purple .metric-spark polyline { stroke: var(--purple); }
+
+    .metric-card-row {
+      display: flex; gap: .7rem;
+    }
+    .metric-card-row .metric-card { flex: 1; }
+    .hero-deco-ring {
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 1px solid rgba(27,181,164,0.12);
+      animation: spin-slow 20s linear infinite;
+    }
+    .hero-deco-ring::after {
+      content: '';
+      position: absolute; top: 20px; left: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal); transform: translateX(-50%);
+    }
+
+    /* ─── Dor ─── */
+    .section-dor {
+      padding: 6rem 0;
+      background: var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-dor::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: .3;
+    }
+    .dor-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .dor-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .dor-sub { font-size: 1rem; color: var(--cream-2); }
+
+    /* ─── Cards horizontais estilo editorial ─── */
+    .dor-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    /* Accent por card */
+    .dor-card:nth-child(1) { --dc: var(--orange); --dc-rgb: 240,112,48; }
+    .dor-card:nth-child(2) { --dc: var(--teal);   --dc-rgb: 27,181,164; }
+    .dor-card:nth-child(3) { --dc: var(--purple);  --dc-rgb: 139,79,160; }
+    .dor-card:nth-child(4) { --dc: var(--teal);    --dc-rgb: 27,181,164; }
+
+    .dor-card {
+      background: rgba(var(--dc-rgb),.08);
+      border-right: 1px solid rgba(var(--dc-rgb),.18);
+      padding: 2.2rem 1.75rem 2rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      transition: background .35s ease;
+    }
+    .dor-card:last-child { border-right: none; }
+    .dor-card:hover { background: rgba(var(--dc-rgb),.14); }
+
+    /* Barra superior colorida — sempre visível */
+    .dor-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--dc);
+    }
+
+    /* Número fantasma de fundo */
+    .dor-num { display: none; }
+
+    .dor-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(var(--dc-rgb),.15);
+      border: 1px solid rgba(var(--dc-rgb),.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin: 0 auto 1.4rem; flex-shrink: 0;
+    }
+    .dor-title {
+      font-family: var(--font-disp); font-weight: 700;
+      font-size: .98rem; color: var(--dc);
+      margin-bottom: .65rem; line-height: 1.35;
+    }
+    .dor-text {
+      font-size: .86rem; color: var(--cream-2);
+      line-height: 1.7; flex: 1;
+    }
+    .dor-footer {
+      margin-top: 1.4rem; padding-top: 1rem;
+      border-top: 1px solid rgba(var(--dc-rgb),.2);
+      font-size: .72rem; font-weight: 600;
+      color: rgba(var(--dc-rgb),.7);
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+
+    /* ─── Como resolve ─── */
+    .section-resolve {
+      padding: 6rem 0;
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .section-resolve::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: .2;
+    }
+    .resolve-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .resolve-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+
+    /* ─── Grid de cards ─── */
+    .resolve-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .resolve-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(var(--rc-rgb),.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2rem 1.6rem;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .resolve-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(var(--rc-rgb),.5);
+      box-shadow: 0 16px 48px rgba(var(--rc-rgb),.15);
+    }
+
+    /* Acento por step */
+    .resolve-card:nth-child(1) { --rc: var(--teal);   --rc-rgb: 27,181,164; }
+    .resolve-card:nth-child(2) { --rc: var(--orange);  --rc-rgb: 240,112,48; }
+    .resolve-card:nth-child(3) { --rc: var(--purple);  --rc-rgb: 139,79,160; }
+    .resolve-card:nth-child(4) { --rc: var(--teal);    --rc-rgb: 27,181,164; }
+    .resolve-card:nth-child(5) { --rc: var(--orange);  --rc-rgb: 240,112,48; }
+
+    /* Último card span 2 colunas */
+    .resolve-card:last-child { grid-column: 1 / -1; }
+
+    /* Gradiente de fundo sutil */
+    .resolve-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(var(--rc-rgb),.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Barra colorida no topo */
+    .resolve-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--rc), rgba(var(--rc-rgb),0));
+    }
+
+    /* Número e label */
+    .rc-head {
+      display: flex; align-items: center; gap: .75rem;
+      margin-bottom: 1.4rem; position: relative; z-index: 1;
+    }
+    .rc-num {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: rgba(var(--rc-rgb),.15);
+      border: 1px solid rgba(var(--rc-rgb),.35);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-weight: 900; font-size: 1rem;
+      color: var(--rc);
+      transition: background .3s;
+    }
+    .resolve-card:hover .rc-num {
+      background: rgba(var(--rc-rgb),.25);
+    }
+    .rc-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--rc);
+      background: rgba(var(--rc-rgb),.1);
+      border: 1px solid rgba(var(--rc-rgb),.25);
+      border-radius: 100px; padding: .28rem .85rem;
+    }
+
+    /* Ghost number background */
+    .rc-ghost {
+      position: absolute; top: .8rem; right: 1.2rem;
+      font-family: var(--font-disp); font-weight: 900;
+      font-size: 7rem; line-height: 1; letter-spacing: -.06em;
+      color: rgba(var(--rc-rgb),.06);
+      pointer-events: none; user-select: none;
+      transition: color .3s;
+    }
+    .resolve-card:hover .rc-ghost { color: rgba(var(--rc-rgb),.1); }
+
+    .rc-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.12rem;
+      color: var(--white); margin-bottom: .65rem; line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .rc-text {
+      font-size: .88rem; color: var(--cream-2);
+      line-height: 1.7; flex: 1; position: relative; z-index: 1;
+    }
+
+    /* Barra de progresso animada no rodapé */
+    .rc-progress {
+      margin-top: 1.5rem; height: 3px;
+      background: rgba(var(--rc-rgb),.1);
+      border-radius: 100px; overflow: hidden;
+      position: relative; z-index: 1;
+    }
+    .rc-progress-fill {
+      height: 100%; border-radius: 100px; width: 0;
+      background: linear-gradient(90deg, var(--rc), rgba(var(--rc-rgb),.5));
+      transition: width 1.1s cubic-bezier(0.34, 1.1, 0.64, 1);
+    }
+    /* Último card (span 2) — layout horizontal */
+    .resolve-card:last-child {
+      flex-direction: row; align-items: center; gap: 3rem;
+    }
+    .resolve-card:last-child .rc-body { flex: 1; }
+    .resolve-card:last-child .rc-head { margin-bottom: 0; }
+    .resolve-card:last-child .rc-side {
+      flex-shrink: 0; display: flex; flex-direction: column; gap: .5rem;
+      min-width: 220px;
+    }
+    .rc-stat {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .65rem .9rem;
+      background: rgba(var(--rc-rgb),.08);
+      border: 1px solid rgba(var(--rc-rgb),.18);
+      border-radius: var(--radius);
+    }
+    .rc-stat-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--rc); flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(var(--rc-rgb),.7);
+    }
+    .rc-stat-text { font-size: .78rem; color: var(--cream-2); }
+
+    /* ─── O que incluso ─── */
+    .section-incluso {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .incluso-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .incluso-left {}
+    .incluso-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .incluso-sub { font-size: .95rem; color: var(--cream-2); margin-bottom: 2rem; }
+
+    /* ─── Incluso items grid ─── */
+    .incluso-items {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .65rem;
+    }
+    .incluso-item {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(237,246,245,.07);
+      border-radius: var(--radius); padding: .9rem 1rem;
+      display: flex; align-items: flex-start; gap: .75rem;
+      position: relative; overflow: hidden;
+      transition: background .25s, border-color .25s, transform .25s;
+      cursor: default;
+    }
+    .incluso-item:nth-child(3n+1) { --ic: var(--teal);   --ic-rgb: 27,181,164; }
+    .incluso-item:nth-child(3n+2) { --ic: var(--orange);  --ic-rgb: 240,112,48; }
+    .incluso-item:nth-child(3n)   { --ic: var(--purple);  --ic-rgb: 139,79,160; }
+    .incluso-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 2px;
+      background: var(--ic); opacity: 0; transition: opacity .25s;
+    }
+    .incluso-item:hover {
+      background: rgba(var(--ic-rgb),.07);
+      border-color: rgba(var(--ic-rgb),.28);
+      transform: translateX(3px);
+    }
+    .incluso-item:hover::before { opacity: 1; }
+    .incluso-item-icon {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(var(--ic-rgb),.12);
+      border: 1px solid rgba(var(--ic-rgb),.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem;
+    }
+    .incluso-item-text {
+      font-size: .84rem; color: var(--cream); line-height: 1.45;
+      padding-top: .15rem;
+    }
+    .incluso-card {
+      background: rgba(27,181,164,0.05);
+      border: 1px solid rgba(27,181,164,0.18);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+    }
+    .incluso-card-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    .incluso-stat {
+      display: flex; flex-direction: column; gap: .3rem;
+      padding: 1.2rem 0; border-top: 1px solid rgba(237,246,245,0.07);
+    }
+    .incluso-stat:first-of-type { border-top: none; padding-top: 0; }
+    .incluso-stat-val {
+      font-family: var(--font-disp); font-weight: 800; font-size: 1.8rem;
+      color: var(--teal);
+    }
+    .incluso-stat-label { font-size: .82rem; color: var(--cream-2); }
+
+    /* ─── Diferenciais ─── */
+    .section-dif {
+      padding: 6rem 0;
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    .dif-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .dif-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+
+    /* ─── Orbit layout ─── */
+    .dif-orbit-wrap {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .dif-orbit {
+      position: relative;
+      width: 820px; height: 820px;
+      flex-shrink: 0;
+    }
+
+    /* Anéis decorativos */
+    .dif-ring {
+      position: absolute; top: 50%; left: 50%;
+      border-radius: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .dif-ring-1 {
+      width: 660px; height: 660px;
+      border: 1px dashed rgba(27,181,164,.18);
+      animation: spin-slow 80s linear infinite;
+    }
+    .dif-ring-2 {
+      width: 440px; height: 440px;
+      border: 1px solid rgba(237,246,245,.06);
+    }
+    .dif-ring-1::before, .dif-ring-1::after {
+      content: '';
+      position: absolute; border-radius: 50%;
+    }
+    .dif-ring-1::before {
+      width: 9px; height: 9px; top: -5px; left: 50%; margin-left: -4px;
+      background: var(--teal); box-shadow: 0 0 10px rgba(27,181,164,1);
+    }
+    .dif-ring-1::after {
+      width: 7px; height: 7px; bottom: -4px; left: 50%; margin-left: -3px;
+      background: var(--orange); box-shadow: 0 0 10px rgba(240,112,48,1);
+    }
+
+    /* SVG connector lines */
+    .dif-connectors {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+
+    /* Centro */
+    .dif-orbit-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 210px; height: 210px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, rgba(27,181,164,.3) 0%, rgba(12,26,30,.97) 65%);
+      border: 2px solid rgba(27,181,164,.45);
+      box-shadow: 0 0 0 16px rgba(27,181,164,.05), 0 0 80px rgba(27,181,164,.22);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; gap: .4rem; z-index: 10;
+      opacity: 0; transform: translate(-50%, -50%) scale(.8);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .dif-orbit-center.visible {
+      opacity: 1; transform: translate(-50%, -50%) scale(1);
+    }
+    .doc-icon {
+      font-size: 2.6rem; line-height: 1;
+      filter: drop-shadow(0 0 16px rgba(27,181,164,.7));
+      animation: float 5s ease-in-out infinite;
+    }
+    .doc-num {
+      font-family: var(--font-disp); font-weight: 900;
+      font-size: 2rem; letter-spacing: -.04em; line-height: 1;
+      background: linear-gradient(135deg, #42d6c8, var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .doc-lbl {
+      font-size: .68rem; color: rgba(237,246,245,.55);
+      letter-spacing: .06em; text-transform: uppercase; line-height: 1.3;
+    }
+
+    /* Wrappers de órbita — pivô no centro, rotaciona */
+    @keyframes orb-fwd {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes orb-bwd {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(-360deg); }
+    }
+
+    .orb-wrapper {
+      position: absolute; top: 50%; left: 50%;
+      width: 0; height: 0; transform-origin: 0 0;
+      animation: orb-fwd 45s linear infinite;
+      animation-delay: var(--od, 0s);
+    }
+
+    /* Cards orbitais */
+    .orb-card {
+      position: absolute;
+      left: 270px; top: 0; /* raio = 270px */
+      width: 192px;
+      animation: orb-bwd 45s linear infinite;
+      animation-delay: var(--od, 0s);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(var(--oc-rgb),.28);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.2rem 1rem;
+      z-index: 5;
+      opacity: 0;
+      transition: border-color .3s, box-shadow .3s, background .3s, opacity .5s ease;
+    }
+    .orb-card.visible { opacity: 1; }
+    .orb-card:hover {
+      border-color: rgba(var(--oc-rgb),.65);
+      box-shadow: 0 10px 32px rgba(var(--oc-rgb),.25);
+      background: rgba(var(--oc-rgb),.09);
+      z-index: 20;
+    }
+    .oc-t { --oc: var(--teal);   --oc-rgb: 27,181,164; }
+    .oc-o { --oc: var(--orange); --oc-rgb: 240,112,48; }
+    .oc-p { --oc: var(--purple); --oc-rgb: 139,79,160; }
+
+    .orb-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      background: linear-gradient(90deg, var(--oc), rgba(var(--oc-rgb),0));
+    }
+    .orb-card::after {
+      content: '';
+      position: absolute; inset: 0; border-radius: var(--radius-lg);
+      background: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(var(--oc-rgb),.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .oc-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(var(--oc-rgb),.14);
+      border: 1px solid rgba(var(--oc-rgb),.28);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: .75rem;
+      position: relative; z-index: 1;
+    }
+    .oc-title {
+      font-family: var(--font-disp); font-weight: 700;
+      font-size: 1rem; color: var(--oc);
+      margin-bottom: .4rem; line-height: 1.3;
+      position: relative; z-index: 1;
+    }
+    .oc-text {
+      font-size: .86rem; color: rgba(237,246,245,.58);
+      line-height: 1.55; position: relative; z-index: 1;
+    }
+
+    /* ─── Prova — dark cinema ─── */
+    .section-prova {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(27,181,164,0.09), transparent 32%),
+        radial-gradient(circle at 84% 22%, rgba(240,112,48,0.07), transparent 30%),
+        var(--ink-2);
+      padding: 8rem 0 6rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Header */
+    .cases-head {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 2rem; margin-bottom: 3.5rem;
+    }
+    .cases-head h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(1.75rem, 3.5vw, 3.2rem);
+      font-weight: 800; letter-spacing: -.05em;
+      color: rgba(237,246,245,.92); line-height: 1.05; max-width: 20ch;
+    }
+    .cases-head h2 em {
+      font-family: var(--font-disp); font-style: normal; font-weight: 800;
+      color: var(--teal);
+    }
+    .cases-score {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.5rem; border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(27,181,164,.2);
+      flex-shrink: 0;
+    }
+    .cases-score-g {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      color: #4285F4; font-family: Georgia, serif;
+      font-size: 1.5rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3); flex-shrink: 0;
+    }
+    .cases-score-num {
+      font-family: var(--font-disp); font-size: 1.75rem; font-weight: 800;
+      letter-spacing: -.06em; color: rgba(237,246,245,.92); line-height: 1;
+    }
+    .cases-score-stars { color: #ffbf34; font-size: .85rem; letter-spacing: .06em; margin: .2rem 0; }
+    .cases-score-label { font-size: .68rem; color: rgba(237,246,245,.45); letter-spacing: .1em; text-transform: uppercase; }
+
+    /* Testimonial stage */
+    .test-stage {
+      position: relative; z-index: 1;
+      border-radius: 28px; overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(237,246,245,.08);
+      box-shadow: 0 8px 40px rgba(9,9,15,.35);
+      margin-bottom: 2rem;
+    }
+    .test-stage-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3;
+      background: linear-gradient(90deg, var(--teal), var(--orange), var(--purple));
+    }
+    .test-progress {
+      position: absolute; top: 0; left: 0; height: 3px; z-index: 4;
+      background: rgba(255,255,255,.18); width: 0;
+    }
+    .test-progress.running { transition: width 5s linear; }
+    .test-slides { position: relative; min-height: 400px; }
+
+    .test-slide {
+      display: grid; grid-template-columns: 1fr 260px;
+      gap: 3rem; padding: 3rem 3.5rem;
+      position: absolute; inset: 0;
+      opacity: 0; transform: translateY(18px) scale(.99);
+      transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                  transform .55s cubic-bezier(.16,1,.3,1);
+      pointer-events: none; align-items: start;
+    }
+    .test-slide.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .test-slide.exiting { opacity: 0; transform: translateY(-14px) scale(.98); }
+
+    .test-count {
+      font-family: var(--font-disp); font-size: .65rem; font-weight: 700;
+      letter-spacing: .2em; color: var(--teal); margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .test-count::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(27,181,164,.35), transparent);
+    }
+    .test-q {
+      position: relative; font-family: var(--font-disp); font-weight: 400;
+      font-size: clamp(1rem, 1.8vw, 1.45rem);
+      line-height: 1.7; color: rgba(237,246,245,.78);
+      padding-left: 1.4rem; margin-bottom: 2.5rem;
+    }
+    .test-q::before {
+      content: '';
+      position: absolute; top: .35rem; left: 0;
+      width: 3px; height: calc(100% - .7rem);
+      background: linear-gradient(180deg, var(--teal), rgba(27,181,164,.18));
+      border-radius: 2px;
+    }
+    .test-author-row { display: flex; align-items: center; gap: .9rem; }
+    .test-av {
+      width: 50px; height: 50px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 1.1rem; font-weight: 800;
+      color: #fff; flex-shrink: 0;
+    }
+    .test-av.rose   { background: linear-gradient(135deg, #b36c79, #e2a5b1); }
+    .test-av.teal   { background: linear-gradient(135deg, var(--teal-lo), var(--teal)); }
+    .test-av.orange { background: linear-gradient(135deg, #d46a17, #f08f31); }
+    .test-av.gold   { background: linear-gradient(135deg, #aa7a1d, #e2b24f); }
+    .test-av.slate  { background: linear-gradient(135deg, #7d909f, #a8b6c2); }
+    .test-av.purple { background: linear-gradient(135deg, #7b33d0, #af6cff); }
+    .test-name  { font-size: .95rem; font-weight: 700; color: rgba(237,246,245,.92); }
+    .test-role  { font-size: .72rem; color: rgba(237,246,245,.48); letter-spacing: .04em; margin-top: .12rem; }
+    .test-stars { color: #ffbf34; font-size: .82rem; letter-spacing: .06em; margin-top: .35rem; }
+
+    /* Metric card (right column) */
+    .test-metric {
+      background: rgba(27,181,164,.08);
+      border: 1px solid rgba(27,181,164,.2);
+      border-radius: 22px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .test-metric::before {
+      content: '';
+      position: absolute; top: -40%; right: -20%;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,181,164,.12), transparent 70%);
+      pointer-events: none;
+    }
+    .test-metric-icon {
+      width: 44px; height: 44px; border-radius: 13px;
+      background: rgba(27,181,164,.12);
+      border: 1px solid rgba(27,181,164,.22);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; position: relative; z-index: 1;
+    }
+    .test-metric-val {
+      font-family: var(--font-disp);
+      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      font-weight: 800; letter-spacing: -.05em;
+      line-height: 1.05; margin-bottom: .5rem;
+      color: var(--teal); position: relative; z-index: 1;
+      overflow-wrap: break-word; word-break: break-word;
+    }
+    .test-metric-label {
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(237,246,245,.48); margin-bottom: 1.5rem;
+      position: relative; z-index: 1; line-height: 1.5;
+    }
+    .test-metric-bar {
+      height: 5px; border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      overflow: hidden; position: relative; z-index: 1;
+    }
+    .test-metric-fill {
+      height: 100%; border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--teal-hi));
+      width: 0;
+      transition: width 1.4s cubic-bezier(.16,1,.3,1) .5s;
+    }
+    .test-slide.active .test-metric-fill { width: var(--fill, 85%); }
+
+    /* Navigation bar */
+    .test-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3.5rem;
+      border-top: 1px solid rgba(237,246,245,.07);
+      position: relative; z-index: 2;
+    }
+    .test-nav-dots { display: flex; gap: .55rem; align-items: center; }
+    .test-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(237,246,245,.2);
+      border: none; cursor: pointer; padding: 0;
+      transition: all .3s;
+    }
+    .test-dot.active {
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(27,181,164,.5);
+      width: 24px; border-radius: 3px;
+    }
+    .test-nav-arrows { display: flex; gap: .5rem; }
+    .test-arrow {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(237,246,245,.06);
+      border: 1px solid rgba(237,246,245,.12);
+      color: rgba(237,246,245,.5);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .22s;
+    }
+    .test-arrow:hover {
+      background: rgba(27,181,164,.15);
+      border-color: rgba(27,181,164,.3);
+      color: var(--teal);
+    }
+
+    /* Marquee */
+    .rev-strip {
+      position: relative; z-index: 1; overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+      margin-top: 1rem;
+    }
+    .rev-track {
+      display: flex; gap: 1.1rem;
+      width: max-content;
+      animation: revScroll 32s linear infinite;
+    }
+    .rev-strip:hover .rev-track { animation-play-state: paused; }
+    @keyframes revScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .rev-mini {
+      width: 300px; flex-shrink: 0;
+      padding: 1.3rem 1.5rem; border-radius: 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(237,246,245,.08);
+      box-shadow: 0 4px 20px rgba(9,9,15,.2);
+      display: flex; flex-direction: column; gap: .75rem;
+      transition: border-color .3s, background .3s;
+    }
+    .rev-mini:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(27,181,164,.35);
+    }
+    .rev-mini-head { display: flex; align-items: center; gap: .65rem; }
+    .rev-mini-av {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .rev-mini-info { min-width: 0; }
+    .rev-mini-name { font-size: .88rem; font-weight: 600; color: rgba(237,246,245,.88); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rev-mini-stars { color: #ffbf34; font-size: .8rem; letter-spacing: .06em; margin-top: .18rem; }
+    .rev-mini-body { font-size: .85rem; color: rgba(237,246,245,.55); line-height: 1.65; }
+    .rev-mini-source {
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .7rem; letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(237,246,245,.38);
+    }
+    .rev-mini-g {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(66,133,244,.18); color: #4285F4;
+      font-size: .72rem; font-weight: 700; font-family: Georgia, serif;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .cases-head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .test-slide { grid-template-columns: 1fr; padding: 1.75rem; }
+      .test-metric { display: none; }
+      .test-nav { padding: 1rem 1.75rem; }
+    }
+
+    /* ─── FAQ ─── */
+    .section-faq {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .faq-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item {
+      border: 1px solid rgba(237,246,245,0.08);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: border-color .3s;
+    }
+    .faq-item.open { border-color: rgba(27,181,164,0.25); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 1.8rem; cursor: pointer;
+      font-size: .95rem; font-weight: 600; color: var(--white);
+      user-select: none; gap: 1rem;
+      background: rgba(255,255,255,0.02);
+      transition: background .2s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.04); }
+    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .3s; font-size: .9rem;
+    }
+    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+      padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+
+    /* ─── CTA Final ─── */
+    .section-cta {
+      padding: 7rem 0;
+      background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%);
+      position: relative; overflow: hidden;
+    }
+    .section-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(27,181,164,0.08) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; z-index: 2; text-align: center; }
+    .cta-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem); color: var(--white);
+      letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1rem;
+    }
+    .cta-h2 em { font-family: var(--font-disp); font-style: normal; color: var(--teal); font-weight: 800; }
+    .cta-sub { font-size: 1.05rem; color: var(--cream-2); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* ─── Form ─── */
+    .form-wrap {
+      max-width: 560px; margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(27,181,164,0.15);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+    }
+    .form-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem;
+      color: var(--white); margin-bottom: .4rem; text-align: center;
+    }
+    .form-sub {
+      font-size: .82rem; color: var(--cream-3); text-align: center; margin-bottom: 1.8rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .78rem; font-weight: 600; color: var(--cream-2); letter-spacing: .04em; }
+    .form-field input,
+    .form-field select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(237,246,245,0.12);
+      border-radius: var(--radius);
+      padding: .75rem 1rem; font-size: .9rem;
+      color: var(--white); font-family: var(--font-body);
+      transition: border-color .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-field input::placeholder { color: var(--cream-3); }
+    .form-field input:focus,
+    .form-field select:focus {
+      outline: none; border-color: var(--teal);
+      background: rgba(27,181,164,0.05);
+    }
+    .form-field select option { background: var(--ink-3); color: var(--cream); }
+    .form-submit {
+      margin-top: 1.5rem;
+      width: 100%; padding: 1rem; border-radius: 100px;
+      background: var(--teal); color: var(--white);
+      font-size: 1rem; font-weight: 700; border: none; cursor: pointer;
+      transition: all .25s ease;
+    }
+    .form-submit:hover {
+      background: var(--teal-hi); transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(27,181,164,0.4);
+    }
+    .form-disclaimer { font-size: .74rem; color: var(--cream-3); text-align: center; margin-top: 1rem; }
+
+    /* ─── WhatsApp Float ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 2000;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+      transition: transform .25s ease, box-shadow .25s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.55);
+    }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ─── Footer ─── */
+    .lp-footer {
+      padding: 2.5rem 0;
+      background: var(--ink);
+      border-top: 1px solid rgba(237,246,245,0.06);
+      text-align: center;
+    }
+    .lp-footer-text { font-size: .8rem; color: var(--cream-3); }
+    .lp-footer-logo { margin-bottom: .75rem; }
+    .lp-footer-logo img { height: 32px; width: auto; display: block; margin: 0 auto; }
+
+    /* ─── Hero Video Background ─── */
+    .hero-video-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-video-overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(
+        160deg,
+        rgba(12,26,30,0.72) 0%,
+        rgba(12,26,30,0.60) 50%,
+        rgba(6,14,17,0.80) 100%
+      );
+    }
+    .hero-bg-glow,
+    .hero-grid-lines,
+    .hero-inner { z-index: 2; }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
+      .hero-cta-row { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { display: none; }
+      .resolve-grid { grid-template-columns: 1fr; }
+      .resolve-card:last-child { flex-direction: column; }
+      .resolve-card:last-child .rc-side { min-width: unset; }
+      .dor-cards { grid-template-columns: 1fr 1fr; }
+      .dor-card { border-right: none; border-bottom: 1px solid rgba(237,246,245,.07); }
+      .dor-card:nth-child(odd) { border-right: 1px solid rgba(237,246,245,.07); }
+      .dor-card:nth-last-child(-n+2) { border-bottom: none; }
+      .incluso-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .incluso-items { grid-template-columns: 1fr; }
+      .dif-orbit { width: 340px; height: 340px; }
+      .dif-ring-1 { width: 300px; height: 300px; }
+      .dif-ring-2 { width: 190px; height: 190px; }
+      .dif-orbit-center { width: 100px; height: 100px; }
+      .doc-icon { font-size: 1.3rem; }
+      .doc-num { font-size: 1rem; }
+      .doc-lbl { font-size: .5rem; }
+      .orb-card { width: 90px; padding: .6rem; left: 130px; }
+      .oc-icon { width: 22px; height: 22px; font-size: .65rem; margin-bottom: .35rem; }
+      .oc-title { font-size: .6rem; }
+      .oc-text { display: none; }
+      .prova-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .metric-card-row { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1-big, .hero-h1-teal { font-size: 8vw !important; }
+      .hero-h1-italic { font-size: 8.5vw !important; }
+      .lp-header-inner { height: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header LP -->
+  <header class="lp-header" id="lpHeader">
+    <div class="container">
+      <div class="lp-header-inner">
+        <a href="../index2.html" class="lp-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></a>
+        <a href="#form" class="btn btn-teal" style="font-size:.85rem; padding:.65rem 1.5rem;">
+          Quero uma análise grátis
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="ads.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            Google Ads &nbsp;·&nbsp; Especialistas em Odontologia
+          </div>
+          <h1 class="hero-h1">
+            <span class="hero-h1-big">Pacientes novos todo mês com <span style="color:var(--teal);display:inline">Google Ads</span></span>
+          </h1>
+          <p class="hero-sub">
+            Chega de verba desperdiçada em campanhas genéricas. A SuperDental aplica uma metodologia exclusiva para clínicas odontológicas que transforma cada real investido em agenda cheia.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#form" class="btn-pill">
+              Quero uma análise da minha clínica
+              <span class="btn-pill-arrow">
+                <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+              </span>
+            </a>
+          </div>
+          <p class="hero-trust">Análise gratuita · Sem compromisso · Resposta em até 24h</p>
+        </div>
+        <div class="hero-visual" id="metricsPanel">
+          <div class="hero-deco-ring"></div>
+          <div class="metrics-panel">
+
+            <div class="metrics-panel-header">
+              <div class="metrics-panel-title-wrap">
+                <div class="metrics-panel-dot"></div>
+                <span class="metrics-panel-title">Resultados em tempo real</span>
+              </div>
+              <span class="metrics-panel-period">Média das clínicas</span>
+            </div>
+
+            <div class="hero-card-stack">
+
+              <!-- Card 1: Custo por lead — TEAL -->
+              <div class="metric-card" id="mc0">
+                <div class="metric-card-label">Custo por lead · clientes SuperDental</div>
+                <div class="metric-card-value" data-prefix="R$ " data-target="18" data-suffix="">R$ 0</div>
+                <div class="metric-card-sub">vs. R$ 80+ no mercado geral</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                  77% mais barato
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,14 10,12 20,13 30,9 40,7 50,4 60,2"/>
+                </svg>
+              </div>
+
+              <!-- Card row: Conversão (PURPLE) + Retorno (ORANGE) -->
+              <div class="metric-card-row">
+                <div class="metric-card mc-purple" id="mc1">
+                  <div class="metric-card-label">Taxa de conversão</div>
+                  <div class="metric-card-value" data-prefix="" data-target="64" data-suffix="%" data-decimal="1">0%</div>
+                  <div class="metric-card-sub">clique → lead</div>
+                  <div class="metric-card-trend">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                    +12pt
+                  </div>
+                  <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                    <polyline points="0,15 10,13 20,12 30,9 40,7 50,5 60,2"/>
+                  </svg>
+                </div>
+                <div class="metric-card mc-orange" id="mc2">
+                  <div class="metric-card-label">Retorno médio</div>
+                  <div class="metric-card-value" data-prefix="" data-target="5" data-suffix="×">0×</div>
+                  <div class="metric-card-sub">sobre o investido</div>
+                  <div class="metric-card-trend">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                    +38%
+                  </div>
+                  <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                    <polyline points="0,14 10,11 20,13 30,9 40,7 50,4 60,2"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Card 3: Primeiros resultados — TEAL -->
+              <div class="metric-card" id="mc3">
+                <div class="metric-card-label">Primeiros resultados em até</div>
+                <div class="metric-card-value" data-prefix="" data-target="7" data-suffix=" dias">0 dias</div>
+                <div class="metric-card-sub">após ativação das campanhas</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                  agenda cheia rápido
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,13 10,11 20,10 30,8 40,5 50,3 60,1"/>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dor -->
+  <section class="section-dor">
+    <div class="container">
+      <div class="dor-header reveal">
+        <div class="section-tag">O problema</div>
+        <h2 class="dor-h2">Por que a maioria das clínicas <span style="color:var(--teal)">perde dinheiro</span> no Google Ads?</h2>
+        <p class="dor-sub">São quatro sintomas que se repetem em quase todas as clínicas que chegam até nós.</p>
+      </div>
+      <div class="dor-cards">
+
+        <div class="dor-card reveal reveal-delay-1">
+          <span class="dor-num">1</span>
+          <div class="dor-icon">💸</div>
+          <div class="dor-title">Verba indo embora sem retorno</div>
+          <p class="dor-text">Campanhas rodando, cliques acontecendo, mas a agenda não enche. O dinheiro some e fica difícil saber se o Google Ads funciona ou não para sua clínica.</p>
+          <div class="dor-footer">Causa: segmentação genérica</div>
+        </div>
+
+        <div class="dor-card reveal reveal-delay-2">
+          <span class="dor-num">2</span>
+          <div class="dor-icon">🎯</div>
+          <div class="dor-title">Palavras-chave erradas</div>
+          <p class="dor-text">Aparecer para "dentista perto de mim" em toda a cidade quando sua clínica atende só dois bairros. Ou pagar por cliques de quem busca o que você não oferece.</p>
+          <div class="dor-footer">Causa: estratégia sem foco</div>
+        </div>
+
+        <div class="dor-card reveal reveal-delay-3">
+          <span class="dor-num">3</span>
+          <div class="dor-icon">📞</div>
+          <div class="dor-title">Leads que não convertem</div>
+          <p class="dor-text">Muito volume, pouca qualidade. A recepção atende muita gente que some depois do orçamento. Tempo desperdiçado, agenda vazia.</p>
+          <div class="dor-footer">Causa: página sem conversão</div>
+        </div>
+
+        <div class="dor-card reveal reveal-delay-4">
+          <span class="dor-num">4</span>
+          <div class="dor-icon">📊</div>
+          <div class="dor-title">Zero visibilidade sobre o retorno</div>
+          <p class="dor-text">Relatórios cheios de cliques, mas sem resposta para o que importa: quantos pacientes vieram do Google esse mês?</p>
+          <div class="dor-footer">Causa: falta de rastreamento</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Como resolve -->
+  <section class="section-resolve">
+    <div class="container">
+      <div class="resolve-header reveal">
+        <div class="section-tag">Nossa metodologia</div>
+        <h2 class="resolve-h2">Como a SuperDental transforma Google Ads em <span style="color:var(--teal)">pacientes reais</span></h2>
+      </div>
+      <div class="resolve-grid">
+
+        <!-- 01 Diagnóstico -->
+        <div class="resolve-card reveal reveal-delay-1">
+          <span class="rc-ghost">01</span>
+          <div class="rc-head">
+            <div class="rc-num">01</div>
+            <span class="rc-label">Diagnóstico</span>
+          </div>
+          <div class="rc-title">Análise completa da sua clínica e mercado local</div>
+          <p class="rc-text">Antes de investir um real, mapeamos sua região, seus concorrentes, o volume de busca real para seus tratamentos e o perfil do paciente ideal que você quer atrair.</p>
+          <div class="rc-progress"><div class="rc-progress-fill" data-w="72"></div></div>
+        </div>
+
+        <!-- 02 Estrutura -->
+        <div class="resolve-card reveal reveal-delay-2">
+          <span class="rc-ghost">02</span>
+          <div class="rc-head">
+            <div class="rc-num">02</div>
+            <span class="rc-label">Estrutura</span>
+          </div>
+          <div class="rc-title">Campanhas construídas do zero para odontologia</div>
+          <p class="rc-text">Segmentação por tratamento, palavras-chave de alta intenção, correspondências corretas e extensões que aumentam a taxa de cliques direto na sua agenda.</p>
+          <div class="rc-progress"><div class="rc-progress-fill" data-w="85"></div></div>
+        </div>
+
+        <!-- 03 Página de destino -->
+        <div class="resolve-card reveal reveal-delay-3">
+          <span class="rc-ghost">03</span>
+          <div class="rc-head">
+            <div class="rc-num">03</div>
+            <span class="rc-label">Página de destino</span>
+          </div>
+          <div class="rc-title">Landing page otimizada para conversão</div>
+          <p class="rc-text">O clique precisa virar contato. Criamos ou otimizamos a página com headline certa, prova social, CTA claro e carregamento rápido.</p>
+          <div class="rc-progress"><div class="rc-progress-fill" data-w="68"></div></div>
+        </div>
+
+        <!-- 04 Acompanhamento -->
+        <div class="resolve-card reveal reveal-delay-4">
+          <span class="rc-ghost">04</span>
+          <div class="rc-head">
+            <div class="rc-num">04</div>
+            <span class="rc-label">Acompanhamento</span>
+          </div>
+          <div class="rc-title">Otimização contínua baseada em dados reais</div>
+          <p class="rc-text">Monitoramos diariamente. Pausamos o que não converte, escalamos o que funciona. Cada semana as campanhas ficam mais eficientes do que na anterior.</p>
+          <div class="rc-progress"><div class="rc-progress-fill" data-w="91"></div></div>
+        </div>
+
+        <!-- 05 Relatório — full width -->
+        <div class="resolve-card reveal">
+          <span class="rc-ghost">05</span>
+          <div class="rc-body">
+            <div class="rc-head">
+              <div class="rc-num">05</div>
+              <span class="rc-label">Relatório</span>
+            </div>
+            <div class="rc-title">Transparência total: você sabe exatamente o retorno</div>
+            <p class="rc-text">Relatório mensal com custo por lead, custo por paciente agendado, ROAS e recomendações para o próximo ciclo. Nada de número bonito sem significado.</p>
+            <div class="rc-progress" style="max-width:360px"><div class="rc-progress-fill" data-w="100"></div></div>
+          </div>
+          <div class="rc-side">
+            <div class="rc-stat">
+              <div class="rc-stat-dot"></div>
+              <span class="rc-stat-text">Custo por lead rastreado</span>
+            </div>
+            <div class="rc-stat">
+              <div class="rc-stat-dot"></div>
+              <span class="rc-stat-text">ROAS por tratamento</span>
+            </div>
+            <div class="rc-stat">
+              <div class="rc-stat-dot"></div>
+              <span class="rc-stat-text">Relatório mensal completo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O que incluso -->
+  <section class="section-incluso">
+    <div class="container">
+      <div class="incluso-inner">
+        <div class="incluso-left reveal">
+          <div class="section-tag">O que está incluso</div>
+          <h2 class="incluso-h2">Tudo que sua clínica precisa para <span style="color:var(--teal)">anunciar bem no Google</span></h2>
+          <p class="incluso-sub">Sem taxa de setup escondida. Sem surpresa na fatura. Um único serviço completo.</p>
+          <div class="incluso-items">
+            <div class="incluso-item">
+              <div class="incluso-item-icon">🔍</div>
+              <span class="incluso-item-text">Pesquisa e seleção de palavras-chave por tratamento</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">📢</div>
+              <span class="incluso-item-text">Criação de campanhas na Rede de Pesquisa e Display</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">✍️</div>
+              <span class="incluso-item-text">Redação dos anúncios com foco em conversão</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">📡</div>
+              <span class="incluso-item-text">Configuração de rastreamento de conversões</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">🖥️</div>
+              <span class="incluso-item-text">Landing page otimizada (ou auditoria da sua atual)</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">⚙️</div>
+              <span class="incluso-item-text">Gestão e otimização mensal das campanhas</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">📋</div>
+              <span class="incluso-item-text">Relatório mensal completo com métricas de negócio</span>
+            </div>
+            <div class="incluso-item">
+              <div class="incluso-item-icon">🤝</div>
+              <span class="incluso-item-text">Reunião quinzenal de alinhamento e estratégia</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2" id="inclusoPanel">
+          <div class="metrics-panel">
+
+            <div class="metrics-panel-header">
+              <div class="metrics-panel-title-wrap">
+                <div class="metrics-panel-dot"></div>
+                <span class="metrics-panel-title">Resultados após 90 dias</span>
+              </div>
+              <span class="metrics-panel-period">Média dos clientes</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:.7rem;">
+
+              <!-- -58% — ORANGE -->
+              <div class="metric-card mc-orange" id="ip0">
+                <div class="metric-card-label">Redução no custo por lead</div>
+                <div class="metric-card-value" data-prefix="-" data-target="58" data-suffix="%">-0%</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 9l-6 6-6-6"/></svg>
+                  queda consistente
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,2 10,5 20,4 30,8 40,10 50,13 60,15"/>
+                </svg>
+              </div>
+
+              <!-- +3,2× — TEAL -->
+              <div class="metric-card" id="ip1">
+                <div class="metric-card-label">Aumento no volume de agendamentos</div>
+                <div class="metric-card-value" data-prefix="+" data-target="32" data-suffix="×" data-decimal="1">+0×</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                  crescimento real
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,14 10,11 20,12 30,8 40,5 50,3 60,1"/>
+                </svg>
+              </div>
+
+              <!-- +41% — PURPLE -->
+              <div class="metric-card mc-purple" id="ip2">
+                <div class="metric-card-label">Melhora na taxa de conversão da landing page</div>
+                <div class="metric-card-value" data-prefix="+" data-target="41" data-suffix="%">+0%</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                  +41pt
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,15 10,13 20,11 30,8 40,6 50,4 60,1"/>
+                </svg>
+              </div>
+
+              <!-- 100% — TEAL -->
+              <div class="metric-card" id="ip3">
+                <div class="metric-card-label">Visibilidade sobre cada centavo investido</div>
+                <div class="metric-card-value" data-prefix="" data-target="100" data-suffix="%">0%</div>
+                <div class="metric-card-trend">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>
+                  controle total
+                </div>
+                <svg class="metric-spark" viewBox="0 0 60 16" preserveAspectRatio="none">
+                  <polyline points="0,14 10,10 20,9 30,6 40,4 50,2 60,1"/>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="section-dif">
+    <div class="container">
+      <div class="dif-header reveal">
+        <div class="section-tag">Por que a SuperDental</div>
+        <h2 class="dif-h2">Não somos mais uma <span style="color:var(--teal)">agência genérica</span> de tráfego pago</h2>
+      </div>
+      <div class="dif-orbit-wrap" id="difOrbit">
+        <div class="dif-orbit">
+
+          <!-- Anéis -->
+          <div class="dif-ring dif-ring-1"></div>
+          <div class="dif-ring dif-ring-2"></div>
+
+          <!-- Linhas conectoras SVG -->
+          <svg class="dif-connectors" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+            <line x1="350" y1="350" x2="350" y2="90"   stroke="rgba(27,181,164,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="350" y1="350" x2="592" y2="210"  stroke="rgba(240,112,48,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="350" y1="350" x2="592" y2="490"  stroke="rgba(139,79,160,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="350" y1="350" x2="350" y2="610"  stroke="rgba(27,181,164,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="350" y1="350" x2="108" y2="490"  stroke="rgba(240,112,48,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="350" y1="350" x2="108" y2="210"  stroke="rgba(139,79,160,.15)"  stroke-width="1" stroke-dasharray="4 4"/>
+          </svg>
+
+          <!-- Centro -->
+          <div class="dif-orbit-center" id="difCenter">
+            <div class="doc-icon">🦷</div>
+            <div class="doc-num">+200</div>
+            <div class="doc-lbl">clínicas<br>atendidas</div>
+          </div>
+
+          <!-- 6 cards orbitais com pivot wrapper (raio=330px, 60° de separação) -->
+          <div class="orb-wrapper" style="--od:0s">
+            <div class="orb-card oc-t">
+              <div class="oc-icon">🦷</div>
+              <div class="oc-title">Exclusivamente odontologia</div>
+              <p class="oc-text">Metodologia construída e refinada para clínicas odontológicas.</p>
+            </div>
+          </div>
+
+          <div class="orb-wrapper" style="--od:-7.5s">
+            <div class="orb-card oc-o">
+              <div class="oc-icon">📈</div>
+              <div class="oc-title">Foco em paciente</div>
+              <p class="oc-text">Nossa métrica é quantos pacientes chegaram à sua clínica.</p>
+            </div>
+          </div>
+
+          <div class="orb-wrapper" style="--od:-15s">
+            <div class="orb-card oc-p">
+              <div class="oc-icon">🔬</div>
+              <div class="oc-title">Metodologia documentada</div>
+              <p class="oc-text">Sem caixa preta. Cada decisão tem um processo claro.</p>
+            </div>
+          </div>
+
+          <div class="orb-wrapper" style="--od:-22.5s">
+            <div class="orb-card oc-t">
+              <div class="oc-icon">📡</div>
+              <div class="oc-title">Integração com o funil</div>
+              <p class="oc-text">Google Ads integrado com SEO, social e reputação.</p>
+            </div>
+          </div>
+
+          <div class="orb-wrapper" style="--od:-30s">
+            <div class="orb-card oc-o">
+              <div class="oc-icon">🤝</div>
+              <div class="oc-title">Parceiro, não fornecedor</div>
+              <p class="oc-text">Acesso direto ao estrategista da sua conta. Sempre.</p>
+            </div>
+          </div>
+
+          <div class="orb-wrapper" style="--od:-37.5s">
+            <div class="orb-card oc-p">
+              <div class="oc-icon">⚡</div>
+              <div class="oc-title">Resultados em 7 dias</div>
+              <p class="oc-text">Campanha no ar em uma semana. Primeiros leads no mês.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultados reais -->
+  <section class="section-prova" id="cases">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="cases-head reveal">
+        <div>
+          <div class="section-tag">Resultados reais</div>
+          <h2 class="prova-h2">O que dizem as clínicas que já<br><em>dominam o Google</em> com a gente.</h2>
+        </div>
+        <div class="cases-score">
+          <div class="cases-score-g">G</div>
+          <div>
+            <div class="cases-score-num">5.0</div>
+            <div class="cases-score-stars">★★★★★</div>
+            <div class="cases-score-label">Google Reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial stage -->
+      <div class="test-stage reveal" id="testStage">
+        <div class="test-stage-bar"></div>
+        <div class="test-progress" id="testProgress"></div>
+
+        <div class="test-slides">
+          <!-- Slide 1 -->
+          <div class="test-slide active" id="ts1">
+            <div class="test-left">
+              <div class="test-count">01 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Em três meses, o custo por paciente caiu de R$ 120 para R$ 32. A agenda ficou cheia pela primeira vez em dois anos e consegui reduzir o orçamento de mídia em 30% mantendo o mesmo volume de leads."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av teal">RS</div>
+                <div>
+                  <div class="test-name">Dr. Rafael Souza</div>
+                  <div class="test-role">Cl&iacute;nica odontol&oacute;gica &middot; S&atilde;o Paulo, SP</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div class="test-metric-val">-73%</div>
+              <div class="test-metric-label">Custo por lead<br>qualificado (CPL)</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:88%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="test-slide" id="ts2">
+            <div class="test-left">
+              <div class="test-count">02 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"Eu já tinha tentado Google Ads com duas agências antes. Nenhuma entendia de odontologia. A SuperDental chegou, reorganizou tudo em uma semana e em 45 dias eu já via diferença real na qualidade dos agendamentos."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av orange">ER</div>
+                <div>
+                  <div class="test-name">Elis Rocha</div>
+                  <div class="test-role">Cl&iacute;nica de implantes &middot; Belo Horizonte, MG</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+              </div>
+              <div class="test-metric-val">+4.5x</div>
+              <div class="test-metric-label">Retorno sobre investimento<br>em m&iacute;dia (ROAS)</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:92%"></div></div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="test-slide" id="ts3">
+            <div class="test-left">
+              <div class="test-count">03 <span style="opacity:.4;font-weight:400">/ 03</span></div>
+              <blockquote class="test-q">"O relatório mensal mudou minha visão de negócio. Pela primeira vez eu sei exatamente qual tratamento está gerando mais retorno e consigo tomar decisão estratégica baseada em dados reais de conversão do CRM."</blockquote>
+              <div class="test-author-row">
+                <div class="test-av purple">CM</div>
+                <div>
+                  <div class="test-name">Dra. Carolina Melo</div>
+                  <div class="test-role">Cl&iacute;nica multiespecialidade &middot; Curitiba, PR</div>
+                  <div class="test-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+            <div class="test-metric">
+              <div class="test-metric-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="test-metric-val">100%</div>
+              <div class="test-metric-label">Previsibilidade de faturamento<br>mensal (MRR)</div>
+              <div class="test-metric-bar"><div class="test-metric-fill" style="--fill:100%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation bar -->
+        <div class="test-nav">
+          <div class="test-nav-dots" id="testDots">
+            <button class="test-dot active" aria-label="Slide 1"></button>
+            <button class="test-dot" aria-label="Slide 2"></button>
+            <button class="test-dot" aria-label="Slide 3"></button>
+          </div>
+          <div class="test-nav-arrows">
+            <div class="test-arrow" id="testPrev">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            </div>
+            <div class="test-arrow" id="testNext">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee strip -->
+      <div class="rev-strip">
+        <div class="rev-track">
+          <!-- Item 1 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--teal)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimento nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Item 2 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--orange)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo d++."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Item 3 -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--purple)">F</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grande evolução após a contratação. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <!-- Repeat for loop -->
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--teal)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulo A.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"O site que fizeram ficou top! Atendimento nota 10."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--orange)">P</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Paulayne L.</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Atendimento excelente como sempre. Recomendo d++."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+          <div class="rev-mini">
+            <div class="rev-mini-head">
+              <div class="rev-mini-av" style="background:var(--purple)">F</div>
+              <div class="rev-mini-info">
+                <div class="rev-mini-name">Fabiana Assis</div>
+                <div class="rev-mini-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="rev-mini-body">"Grande evolução após a contratação. Profissionais."</p>
+            <div class="rev-mini-source"><div class="rev-mini-g">G</div>Google Reviews</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-tag">Perguntas frequentes</div>
+        <h2 class="faq-h2">Dúvidas antes de começar</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Quanto preciso investir em mídia para começar?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Recomendamos um investimento mínimo de R$ 1.500/mês em verba de mídia para o Google. Abaixo disso os dados são insuficientes para otimização. O valor ideal depende do seu mercado e dos tratamentos que quer priorizar — definimos juntos na análise.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Quanto tempo para ver resultados?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">As campanhas entram no ar em até 7 dias úteis após aprovação. Os primeiros leads costumam aparecer na primeira semana. O pico de performance acontece entre 60 e 90 dias, quando temos dados suficientes para otimização profunda.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            A verba de mídia é separada da taxa de gestão?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Sim. A taxa de gestão paga o trabalho estratégico e operacional da SuperDental. A verba de mídia vai direto para o Google Ads, na conta que pertence a você. Você tem acesso total à conta a qualquer momento.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Funciona para qualquer tipo de clínica?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Nossa metodologia é mais eficiente para clínicas com ticket médio acima de R$ 800 por tratamento (implantes, ortodontia, facetas, clareamento, etc.) e que buscam crescimento previsível. Na análise gratuita, avaliamos se faz sentido para o seu caso.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Preciso de site para usar o Google Ads?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Sim, você precisa de uma página de destino. Se você já tem site, auditamos e orientamos as melhorias necessárias. Se não tem, desenvolvemos uma landing page de conversão como parte do projeto.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final + Form -->
+  <section class="section-cta" id="form">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Análise gratuita</div>
+        <h2 class="cta-h2 reveal">Sua clínica merece uma agenda<br><em>cheia de pacientes certos</em></h2>
+        <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e receba uma análise personalizada do seu potencial com Google Ads. Sem compromisso.</p>
+        <div class="form-wrap reveal reveal-delay-2">
+          <div class="form-title">Quero uma análise da minha clínica</div>
+          <div class="form-sub">Resposta em até 24 horas úteis</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Seu nome</label>
+                <input type="text" placeholder="Dr(a). Nome Sobrenome" required>
+              </div>
+              <div class="form-field">
+                <label>WhatsApp</label>
+                <input type="tel" placeholder="(11) 99999-9999" required>
+              </div>
+              <div class="form-field">
+                <label>Nome da clínica</label>
+                <input type="text" placeholder="Clínica Odontológica..." required>
+              </div>
+              <div class="form-field">
+                <label>Cidade / UF</label>
+                <input type="text" placeholder="São Paulo, SP" required>
+              </div>
+              <div class="form-field full">
+                <label>Principal objetivo</label>
+                <select required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>Atrair mais pacientes para implante</option>
+                  <option>Aumentar volume de ortodontia</option>
+                  <option>Crescer em clareamento e estética</option>
+                  <option>Preencher agenda em geral</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Quero minha análise gratuita →</button>
+            <p class="form-disclaimer">Seus dados estão protegidos. Não fazemos spam.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></div>
+      <p class="lp-footer-text">© 2026 SuperDental · Todos os direitos reservados · <a href="https://superdental.com.br" style="color:var(--teal)">superdental.com.br</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20Google%20Ads%20para%20minha%20clínica" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Header scroll
+    const header = document.getElementById('lpHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Orbit section reveal
+    (function() {
+      const wrap = document.getElementById('difOrbit');
+      if (!wrap) return;
+      let fired = false;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting || fired) return;
+          fired = true;
+          // Centro aparece primeiro
+          const center = document.getElementById('difCenter');
+          if (center) center.classList.add('visible');
+          // Cards surgem em sequência
+          const cards = wrap.querySelectorAll('.orb-card');
+          cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), 300 + i * 120);
+          });
+          obs.disconnect();
+        });
+      }, { threshold: 0.15 });
+      obs.observe(wrap);
+    })();
+
+    // Incluso Panel Animation
+    (function initInclusoPanel() {
+      const panel = document.getElementById('inclusoPanel');
+      if (!panel) return;
+      let fired = false;
+
+      function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+      function animateValue(el, duration, delay) {
+        const target   = parseFloat(el.dataset.target);
+        const prefix   = el.dataset.prefix || '';
+        const suffix   = el.dataset.suffix || '';
+        const isDecimal = el.dataset.decimal === '1';
+        setTimeout(() => {
+          const start = performance.now();
+          const raf = (now) => {
+            const t = Math.min((now - start) / duration, 1);
+            let val = target * easeOutExpo(t);
+            val = isDecimal ? (val / 10).toFixed(1) : Math.round(val);
+            el.textContent = prefix + val + suffix;
+            if (t < 1) requestAnimationFrame(raf);
+          };
+          requestAnimationFrame(raf);
+        }, delay);
+      }
+
+      function run() {
+        if (fired) return;
+        fired = true;
+        ['ip0','ip1','ip2','ip3'].forEach((id, i) => {
+          const card = document.getElementById(id);
+          if (!card) return;
+          const valEl = card.querySelector('.metric-card-value');
+          const delay = 150 + i * 160;
+          setTimeout(() => card.classList.add('is-active'), delay);
+          if (valEl) animateValue(valEl, 1100, delay);
+        });
+      }
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { run(); obs.disconnect(); } });
+      }, { threshold: 0.3 });
+      obs.observe(panel);
+    })();
+
+    // Resolve cards — progress bar animation
+    (function initResolveCards() {
+      const cards = document.querySelectorAll('.resolve-card');
+      if (!cards.length) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const fill = e.target.querySelector('.rc-progress-fill');
+          if (fill) {
+            setTimeout(() => { fill.style.width = fill.dataset.w + '%'; }, 200);
+          }
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.3 });
+      cards.forEach(c => obs.observe(c));
+    })();
+
+    // Metrics Panel Animation
+    (function initMetricsPanel() {
+      const panel = document.getElementById('metricsPanel');
+      if (!panel) return;
+      let fired = false;
+
+      function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+      function animateValue(el, duration, delay) {
+        const target   = parseFloat(el.dataset.target);
+        const prefix   = el.dataset.prefix || '';
+        const suffix   = el.dataset.suffix || '';
+        const isDecimal = el.dataset.decimal === '1';
+
+        setTimeout(() => {
+          const start = performance.now();
+          const raf = (now) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = easeOutExpo(t);
+            let val = target * eased;
+            if (isDecimal) {
+              val = (val / 10).toFixed(1); // 64 → 6.4
+            } else {
+              val = Math.round(val);
+            }
+            el.textContent = prefix + val + suffix;
+            if (t < 1) requestAnimationFrame(raf);
+          };
+          requestAnimationFrame(raf);
+        }, delay);
+      }
+
+      function runAnimation() {
+        if (fired) return;
+        fired = true;
+        ['mc0', 'mc1', 'mc2', 'mc3'].forEach((id, i) => {
+          const card = document.getElementById(id);
+          if (!card) return;
+          const valEl = card.querySelector('.metric-card-value');
+          const delay = 200 + i * 180;
+          setTimeout(() => card.classList.add('is-active'), delay);
+          if (valEl) animateValue(valEl, 1100, delay);
+        });
+      }
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { runAnimation(); obs.disconnect(); } });
+      }, { threshold: 0.2 });
+      obs.observe(panel);
+    })();
+
+    /* Testimonial Slider */
+    (function initTestimonials() {
+      const stage = document.getElementById('testStage');
+      const dotsWrap = document.getElementById('testDots');
+      const prevBtn = document.getElementById('testPrev');
+      const nextBtn = document.getElementById('testNext');
+      const progress = document.getElementById('testProgress');
+      if (!stage) return;
+
+      const slides = [...stage.querySelectorAll('.test-slide')];
+      const dots = dotsWrap ? [...dotsWrap.querySelectorAll('.test-dot')] : [];
+      const total = slides.length;
+      let current = 0;
+      let timer = null;
+      let paused = false;
+
+      function activate(idx) {
+        const prev = current;
+        current = (idx + total) % total;
+        if (prev === current) return;
+
+        slides[prev].classList.add('exiting');
+        slides[prev].classList.remove('active');
+        setTimeout(() => slides[prev].classList.remove('exiting'), 600);
+
+        slides[current].classList.add('active');
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+
+      function next() { if (!paused) activate(current + 1); }
+
+      function startCycle() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+        if (progress) {
+          progress.classList.remove('running');
+          progress.style.width = '0';
+          void progress.offsetWidth;
+          progress.classList.add('running');
+          progress.style.width = '100%';
+        }
+      }
+      function stopCycle() { clearInterval(timer); }
+
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => { activate(i); stopCycle(); startCycle(); });
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', () => { activate(current - 1); stopCycle(); startCycle(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { activate(current + 1); stopCycle(); startCycle(); });
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { startCycle(); obs.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      obs.observe(stage);
+    })();
+
+    // Form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Recebido! Entraremos em contato em breve.';
+      btn.style.background = '#12897C';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>

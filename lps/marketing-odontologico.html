@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Odontológico | SuperDental</title>
+  <meta name="description" content="A SuperDental não entrega apenas posts e anúncios. Aplica uma metodologia completa de marketing odontológico que transforma sua clínica em uma máquina de crescimento previsível.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal:      #1BB5A4;
+      --teal-hi:   #24CDB9;
+      --teal-lo:   #12897C;
+      --teal-pale: rgba(27,181,164,0.08);
+      --orange:    #F07030;
+      --orange-hi: #FF8A4A;
+      --purple:    #8B4FA0;
+      --ink:       #060E11;
+      --ink-2:     #0C1A1E;
+      --ink-3:     #122228;
+      --ink-4:     #1A2E34;
+      --cream:     #EDF6F5;
+      --cream-2:   #88A8A5;
+      --cream-3:   #4A6462;
+      --white:     #FFFFFF;
+      --paper:     #F0F8F7;
+      --radius:    10px;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --font-disp: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-ital: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font-body); background: var(--ink); color: var(--cream); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; opacity: 0.55; mix-blend-mode: overlay;
+    }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    .section-tag { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.25rem; }
+    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--teal); }
+
+    @keyframes fade-up-in { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes orbit { from { transform: rotate(0deg) translateX(90px) rotate(0deg); } to { transform: rotate(360deg) translateX(90px) rotate(-360deg); } }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .9rem; border: none; cursor: pointer; transition: all .25s ease; white-space: nowrap; padding: .85rem 1.8rem; border-radius: 100px; }
+    .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-teal:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(27,181,164,0.4); }
+
+    .btn-pill { display: inline-flex; align-items: center; gap: .75rem; background: rgba(255,255,255,0.94); color: var(--ink); border: none; border-radius: 100px; padding: .62rem .62rem .62rem 1.45rem; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s ease; white-space: nowrap; }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+    .btn-pill-arrow { width: 34px; height: 34px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .btn-pill-arrow svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2.2; }
+
+    /* Header */
+    .lp-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(6,14,17,0.55); border-bottom: 1px solid rgba(255,255,255,0.07); backdrop-filter: blur(28px) saturate(160%); -webkit-backdrop-filter: blur(28px) saturate(160%); box-shadow: 0 1px 0 rgba(27,181,164,0.08), inset 0 1px 0 rgba(255,255,255,0.04); transition: all .3s ease; }
+    .lp-header.scrolled { background: rgba(6,14,17,0.78); border-bottom-color: rgba(27,181,164,0.15); box-shadow: 0 4px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03); }
+    .lp-header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .lp-logo img { height: 36px; width: auto; display: block; }
+
+    /* Hero */
+    .hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 68px; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(27,181,164,0.08) 0%, transparent 55%),
+                  radial-gradient(ellipse at 20% 80%, rgba(139,79,160,0.06) 0%, transparent 50%);
+    }
+    .hero-grid-lines { position: absolute; inset: 0; pointer-events: none; opacity: .04; background-image: linear-gradient(rgba(237,246,245,1) 1px, transparent 1px), linear-gradient(90deg, rgba(237,246,245,1) 1px, transparent 1px); background-size: 80px 80px; }
+    .hero-inner { position: relative; z-index: 2; padding: 6rem 0 5rem; max-width: 780px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.82); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13); border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem; backdrop-filter: blur(12px); margin-bottom: 1.8rem; opacity: 0; animation: fade-in .6s ease forwards .3s; }
+    .hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; flex-shrink: 0; }
+    .hero-h1 { font-family: var(--font-disp); font-weight: 800; line-height: 1.08; letter-spacing: -.03em; margin-bottom: 1.5rem; opacity: 0; animation: fade-up-in .7s ease forwards .45s; }
+    .hero-h1-big { display: block; font-size: clamp(2.8rem, 5vw, 4.2rem); color: var(--white); }
+    .hero-h1-teal { display: block; font-size: clamp(2.8rem, 5vw, 4.2rem); color: var(--teal); }
+    .hero-h1-italic { display: block; font-family: var(--font-disp); font-style: normal; font-size: clamp(3rem, 5.2vw, 4.5rem); font-weight: 800; color: rgba(237,246,245,0.7); }
+    .hero-sub { font-size: 1.1rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 2.5rem; max-width: 600px; opacity: 0; animation: fade-up-in .7s ease forwards .6s; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; opacity: 0; animation: fade-up-in .7s ease forwards .75s; }
+    .hero-trust { font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem; display: flex; align-items: center; gap: .5rem; opacity: 0; animation: fade-in .7s ease forwards .9s; }
+    .hero-trust::before { content: ''; width: 16px; height: 1px; background: var(--cream-3); }
+
+    /* Tese central */
+    .section-tese {
+      padding: 6rem 0;
+      background: var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-tese::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--teal), transparent); opacity: .25; }
+    .tese-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .tese-quote {
+      font-family: var(--font-ital); font-style: italic; font-weight: 300;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--white); line-height: 1.4; margin-bottom: 2rem;
+    }
+    .tese-quote strong { color: var(--teal); font-style: normal; font-family: var(--font-disp); font-weight: 800; }
+    .tese-text { font-size: 1rem; color: var(--cream-2); line-height: 1.75; max-width: 640px; margin: 0 auto 3rem; }
+    .tese-pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .tese-pillar {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg); padding: 1.6rem;
+      text-align: center;
+      transition: border-color .3s, background .3s;
+    }
+    .tese-pillar:hover { border-color: rgba(27,181,164,0.25); background: rgba(27,181,164,0.04); }
+    .tese-pillar-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+    .tese-pillar-label { font-size: .82rem; font-weight: 600; color: var(--cream-2); }
+
+    /* Metodologia */
+    .section-metodologia {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .metodologia-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .metodologia-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .metodologia-sub { font-size: .95rem; color: var(--cream-2); }
+    .metodologia-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .met-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg); padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .met-card:hover { border-color: rgba(27,181,164,0.2); transform: translateY(-3px); }
+    .met-card::after {
+      content: attr(data-num);
+      position: absolute; top: -10px; right: 16px;
+      font-family: var(--font-disp); font-weight: 800; font-size: 5rem;
+      color: rgba(27,181,164,0.06); line-height: 1;
+      pointer-events: none;
+    }
+    .met-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .met-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .6rem; }
+    .met-text { font-size: .88rem; color: var(--cream-2); line-height: 1.65; }
+
+    /* Frentes de entrega */
+    .section-frentes {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .frentes-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .frentes-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .frentes-tabs {
+      display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .frente-tab {
+      padding: .5rem 1.2rem; border-radius: 100px;
+      font-size: .82rem; font-weight: 600;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(237,246,245,0.1);
+      color: var(--cream-2); cursor: pointer;
+      transition: all .25s;
+    }
+    .frente-tab.active {
+      background: var(--teal); color: var(--ink); border-color: var(--teal);
+    }
+    .frentes-content { display: none; }
+    .frentes-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .frente-info {}
+    .frente-title { font-family: var(--font-disp); font-weight: 800; font-size: 1.6rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -.02em; }
+    .frente-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
+    .frente-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .frente-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .88rem; color: var(--cream); }
+    .frente-list li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .frente-visual {
+      background: rgba(27,181,164,0.04);
+      border: 1px solid rgba(27,181,164,0.15);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+      text-align: center;
+    }
+    .frente-visual-icon { font-size: 3rem; margin-bottom: 1.2rem; }
+    .frente-visual-stat-val { font-family: var(--font-disp); font-weight: 800; font-size: 2.5rem; color: var(--teal); }
+    .frente-visual-stat-label { font-size: .85rem; color: var(--cream-2); margin-top: .3rem; }
+
+    /* Para quem faz sentido */
+    .section-para-quem {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .para-quem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .para-quem-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.2rem; }
+    .para-quem-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 2rem; }
+    .pq-yes {
+      background: rgba(27,181,164,0.05);
+      border: 1px solid rgba(27,181,164,0.15);
+      border-radius: var(--radius-xl); padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .pq-no {
+      background: rgba(240,112,48,0.04);
+      border: 1px solid rgba(240,112,48,0.12);
+      border-radius: var(--radius-xl); padding: 2rem;
+    }
+    .pq-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 1rem; padding-bottom: .75rem;
+      border-bottom: 1px solid rgba(237,246,245,0.07);
+    }
+    .pq-yes .pq-label { color: var(--teal); }
+    .pq-no .pq-label { color: var(--orange); }
+    .pq-list { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .pq-list li { display: flex; align-items: flex-start; gap: .65rem; font-size: .9rem; color: var(--cream); }
+    .pq-yes .pq-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .pq-no .pq-list li::before { content: '✗'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .superdental-box {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(237,246,245,0.09);
+      border-radius: var(--radius-xl); padding: 2.5rem;
+    }
+    .superdental-box-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 1.2rem; }
+    .superdental-box-text { font-size: .92rem; color: var(--cream-2); line-height: 1.7; }
+    .superdental-box-quote {
+      margin-top: 1.5rem; padding: 1.2rem;
+      background: rgba(27,181,164,0.06);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: .9rem; color: var(--cream); font-style: italic; line-height: 1.65;
+    }
+
+    /* Resultados */
+    .section-resultados {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .resultados-header { text-align: center; margin-bottom: 4rem; }
+    .resultados-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .resultados-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .test-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); padding: 2rem; transition: transform .3s, border-color .3s; }
+    .test-card:hover { transform: translateY(-3px); border-color: rgba(27,181,164,0.2); }
+    .test-stars { color: #FFB800; font-size: .9rem; margin-bottom: 1rem; }
+    .test-text { font-size: .9rem; color: var(--cream); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: .75rem; }
+    .test-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--teal-lo), var(--purple)); display: flex; align-items: center; justify-content: center; font-family: var(--font-disp); font-weight: 700; font-size: .9rem; color: white; flex-shrink: 0; }
+    .test-name { font-size: .88rem; font-weight: 600; color: var(--white); }
+    .test-role { font-size: .78rem; color: var(--cream-3); }
+
+    /* FAQ */
+    .section-faq { padding: 6rem 0; background: var(--ink); }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .faq-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .3s; }
+    .faq-item.open { border-color: rgba(27,181,164,0.25); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--white); user-select: none; gap: 1rem; background: rgba(255,255,255,0.02); transition: background .2s; }
+    .faq-q:hover { background: rgba(255,255,255,0.04); }
+    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; font-size: .9rem; }
+    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+
+    /* CTA + Form */
+    .section-cta { padding: 7rem 0; background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%); position: relative; overflow: hidden; }
+    .section-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(27,181,164,0.08) 0%, transparent 70%); }
+    .cta-inner { position: relative; z-index: 2; text-align: center; }
+    .cta-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1rem; }
+    .cta-h2 em { font-family: var(--font-disp); font-style: normal; color: var(--teal); font-weight: 800; }
+    .cta-sub { font-size: 1.05rem; color: var(--cream-2); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .form-wrap { max-width: 560px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(27,181,164,0.15); border-radius: var(--radius-xl); padding: 2.5rem; }
+    .form-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .4rem; text-align: center; }
+    .form-sub { font-size: .82rem; color: var(--cream-3); text-align: center; margin-bottom: 1.8rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .78rem; font-weight: 600; color: var(--cream-2); letter-spacing: .04em; }
+    .form-field input, .form-field select { background: rgba(255,255,255,0.05); border: 1px solid rgba(237,246,245,0.12); border-radius: var(--radius); padding: .75rem 1rem; font-size: .9rem; color: var(--white); font-family: var(--font-body); transition: border-color .2s; -webkit-appearance: none; appearance: none; }
+    .form-field input::placeholder { color: var(--cream-3); }
+    .form-field input:focus, .form-field select:focus { outline: none; border-color: var(--teal); background: rgba(27,181,164,0.05); }
+    .form-field select option { background: var(--ink-3); color: var(--cream); }
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; border-radius: 100px; background: var(--teal); color: var(--white); font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: all .25s ease; }
+    .form-submit:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(27,181,164,0.4); }
+    .form-disclaimer { font-size: .74rem; color: var(--cream-3); text-align: center; margin-top: 1rem; }
+
+    /* WhatsApp */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 2000; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37,211,102,0.4); transition: transform .25s ease, box-shadow .25s ease; animation: float 3s ease-in-out infinite; }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* Footer */
+    .lp-footer { padding: 2.5rem 0; background: var(--ink); border-top: 1px solid rgba(237,246,245,0.06); text-align: center; }
+    .lp-footer-text { font-size: .8rem; color: var(--cream-3); }
+    .lp-footer-logo { margin-bottom: .75rem; }
+    .lp-footer-logo img { height: 32px; width: auto; display: block; margin: 0 auto; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .metodologia-grid { grid-template-columns: 1fr; }
+      .frentes-content.active { grid-template-columns: 1fr; gap: 2rem; }
+      .para-quem-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .resultados-grid { grid-template-columns: 1fr; }
+      .tese-pillars { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1-big, .hero-h1-teal { font-size: 9vw !important; }
+      .hero-h1-italic { font-size: 9.5vw !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header LP -->
+  <header class="lp-header" id="lpHeader">
+    <div class="container">
+      <div class="lp-header-inner">
+        <a href="../index2.html" class="lp-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></a>
+        <a href="#form" class="btn btn-teal" style="font-size:.85rem; padding:.65rem 1.5rem;">
+          Quero um diagnóstico
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Marketing Odontológico · Metodologia SuperDental
+        </div>
+        <h1 class="hero-h1">
+          <span class="hero-h1-big">Sua clínica não precisa</span>
+          <span class="hero-h1-teal">de mais uma agência</span>
+          <span class="hero-h1-italic">precisa de método</span>
+        </h1>
+        <p class="hero-sub">
+          A SuperDental não entrega posts, anúncios ou reports genéricos. Aplica uma metodologia estruturada que integra todas as frentes do marketing odontológico para gerar crescimento previsível e mensurável.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#form" class="btn-pill">
+            Quero um diagnóstico da minha clínica
+            <span class="btn-pill-arrow">
+              <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+            </span>
+          </a>
+        </div>
+        <p class="hero-trust">Diagnóstico gratuito · Sem pressão de venda · Resposta em 24h</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tese central -->
+  <section class="section-tese">
+    <div class="container">
+      <div class="tese-inner reveal">
+        <div class="section-tag" style="justify-content:center;">Nossa tese</div>
+        <blockquote class="tese-quote">
+          "A maioria das clínicas não tem problema de <strong>visibilidade</strong>. Tem problema de <strong>sistema</strong>."
+        </blockquote>
+        <p class="tese-text">
+          Fazer posts, rodar anúncio e ter site são ações. O que transforma ação em resultado é a integração entre elas — com estratégia, acompanhamento e métricas que fazem sentido para o negócio. É isso que a SuperDental entrega.
+        </p>
+        <div class="tese-pillars">
+          <div class="tese-pillar reveal reveal-delay-1">
+            <div class="tese-pillar-icon">🎯</div>
+            <div class="tese-pillar-label">Estratégia integrada</div>
+          </div>
+          <div class="tese-pillar reveal reveal-delay-2">
+            <div class="tese-pillar-icon">📊</div>
+            <div class="tese-pillar-label">Métricas de negócio</div>
+          </div>
+          <div class="tese-pillar reveal reveal-delay-3">
+            <div class="tese-pillar-icon">🔄</div>
+            <div class="tese-pillar-label">Otimização contínua</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodologia -->
+  <section class="section-metodologia">
+    <div class="container">
+      <div class="metodologia-header reveal">
+        <div class="section-tag">Como funcionamos</div>
+        <h2 class="metodologia-h2">A metodologia SuperDental em 4 pilares</h2>
+        <p class="metodologia-sub">Cada pilar resolve uma parte do problema. Os quatro juntos criam o ciclo de crescimento.</p>
+      </div>
+      <div class="metodologia-grid">
+        <div class="met-card reveal reveal-delay-1" data-num="01">
+          <div class="met-icon">🔬</div>
+          <div class="met-title">Diagnóstico e posicionamento</div>
+          <p class="met-text">Antes de qualquer ação, analisamos o mercado local, perfil de paciente ideal, tratamentos com maior potencial e como seus concorrentes se posicionam. O resultado define toda a estratégia.</p>
+        </div>
+        <div class="met-card reveal reveal-delay-2" data-num="02">
+          <div class="met-icon">🏗️</div>
+          <div class="met-title">Construção da presença digital</div>
+          <p class="met-text">Site de conversão, perfil do Google Business otimizado, presença nas redes sociais com identidade visual consistente. A base que sustenta todas as campanhas.</p>
+        </div>
+        <div class="met-card reveal reveal-delay-3" data-num="03">
+          <div class="met-icon">📡</div>
+          <div class="met-title">Atração e conversão</div>
+          <p class="met-text">Google Ads, SEO orgânico, conteúdo estratégico, gestão de reputação. Múltiplas frentes integradas para que pacientes qualificados cheguem até sua clínica continuamente.</p>
+        </div>
+        <div class="met-card reveal reveal-delay-4" data-num="04">
+          <div class="met-icon">📈</div>
+          <div class="met-title">Mensuração e crescimento</div>
+          <p class="met-text">Rastreamento de cada paciente gerado, relatório mensal com métricas reais, reunião estratégica e ciclo de melhoria contínua. Você sabe exatamente de onde vem cada resultado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frentes de entrega (Tabs) -->
+  <section class="section-frentes">
+    <div class="container">
+      <div class="frentes-header reveal">
+        <div class="section-tag">Frentes de entrega</div>
+        <h2 class="frentes-h2">O que a SuperDental entrega na prática</h2>
+      </div>
+      <div class="frentes-tabs">
+        <button class="frente-tab active" onclick="showFrente('ads')">Google Ads</button>
+        <button class="frente-tab" onclick="showFrente('seo')">SEO & Conteúdo</button>
+        <button class="frente-tab" onclick="showFrente('social')">Redes Sociais</button>
+        <button class="frente-tab" onclick="showFrente('reputacao')">Reputação</button>
+      </div>
+      <div class="frentes-content active reveal" id="frente-ads">
+        <div class="frente-info">
+          <div class="frente-title">Google Ads para odontologia</div>
+          <p class="frente-text">Campanhas de tráfego pago construídas especificamente para clínicas odontológicas. Segmentação precisa, anúncios otimizados e landing pages de alta conversão.</p>
+          <ul class="frente-list">
+            <li>Pesquisa de palavras-chave por tratamento</li>
+            <li>Campanhas na Rede de Pesquisa e Display</li>
+            <li>Otimização semanal baseada em dados</li>
+            <li>Relatório de custo por paciente agendado</li>
+          </ul>
+        </div>
+        <div class="frente-visual">
+          <div class="frente-visual-icon">📊</div>
+          <div class="frente-visual-stat-val">R$ 18</div>
+          <div class="frente-visual-stat-label">Custo médio por lead<br>nos primeiros 90 dias</div>
+        </div>
+      </div>
+      <div class="frentes-content reveal" id="frente-seo">
+        <div class="frente-info">
+          <div class="frente-title">SEO e conteúdo estratégico</div>
+          <p class="frente-text">Sua clínica aparecendo organicamente no Google para pacientes que pesquisam os seus tratamentos na sua cidade — sem pagar por clique.</p>
+          <ul class="frente-list">
+            <li>Otimização técnica do site (Core Web Vitals)</li>
+            <li>Páginas por tratamento otimizadas</li>
+            <li>Conteúdo de autoridade para o blog</li>
+            <li>Otimização do Google Business Profile</li>
+          </ul>
+        </div>
+        <div class="frente-visual">
+          <div class="frente-visual-icon">🔍</div>
+          <div class="frente-visual-stat-val">+180%</div>
+          <div class="frente-visual-stat-label">Aumento médio em visitas<br>orgânicas em 6 meses</div>
+        </div>
+      </div>
+      <div class="frentes-content reveal" id="frente-social">
+        <div class="frente-info">
+          <div class="frente-title">Gestão de redes sociais</div>
+          <p class="frente-text">Conteúdo que gera autoridade e confiança — não apenas likes. Estratégia de social media focada em posicionar você como referência em odontologia na sua região.</p>
+          <ul class="frente-list">
+            <li>Calendário editorial mensal</li>
+            <li>Criação de conteúdo (texto + arte)</li>
+            <li>Reels e stories estratégicos</li>
+            <li>Meta Ads para complementar o alcance</li>
+          </ul>
+        </div>
+        <div class="frente-visual">
+          <div class="frente-visual-icon">📱</div>
+          <div class="frente-visual-stat-val">3×</div>
+          <div class="frente-visual-stat-label">Aumento no alcance<br>orgânico médio</div>
+        </div>
+      </div>
+      <div class="frentes-content reveal" id="frente-reputacao">
+        <div class="frente-info">
+          <div class="frente-title">Gestão de reputação online</div>
+          <p class="frente-text">Avaliações no Google são o fator número 1 de decisão do paciente. Criamos um processo para gerar avaliações positivas e gerenciar a reputação da sua clínica online.</p>
+          <ul class="frente-list">
+            <li>Estratégia de captação de avaliações</li>
+            <li>Monitoramento de menções online</li>
+            <li>Respostas estratégicas a avaliações</li>
+            <li>Otimização do Google Business Profile</li>
+          </ul>
+        </div>
+        <div class="frente-visual">
+          <div class="frente-visual-icon">⭐</div>
+          <div class="frente-visual-stat-val">4,9★</div>
+          <div class="frente-visual-stat-label">Nota média das clínicas<br>gerenciadas pela SuperDental</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quem faz sentido -->
+  <section class="section-para-quem">
+    <div class="container">
+      <div class="para-quem-inner">
+        <div class="reveal">
+          <div class="section-tag">Para quem é</div>
+          <h2 class="para-quem-h2">A SuperDental faz mais sentido para clínicas que...</h2>
+          <p class="para-quem-text">Nossa metodologia funciona melhor em um perfil específico de clínica. Não atendemos todo mundo de propósito.</p>
+          <div class="pq-yes">
+            <div class="pq-label">Faz sentido para você</div>
+            <ul class="pq-list">
+              <li>Quer crescimento previsível, não dependente de indicação</li>
+              <li>Entende que marketing é investimento, não custo</li>
+              <li>Tem ticket médio relevante (implante, estética, ortodontia)</li>
+              <li>Busca uma parceria estratégica de longo prazo</li>
+              <li>Valoriza dados e transparência nos resultados</li>
+            </ul>
+          </div>
+          <div class="pq-no">
+            <div class="pq-label">Talvez não seja o momento</div>
+            <ul class="pq-list">
+              <li>Busca o fornecedor mais barato do mercado</li>
+              <li>Não quer ser ativo no processo (fotos, feedbacks, ajustes)</li>
+              <li>Espera resultado imediato sem investimento estrutural</li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="superdental-box">
+            <div class="superdental-box-title">Por que a SuperDental é diferente</div>
+            <p class="superdental-box-text">
+              Não somos uma agência de marketing genérica que também atende clínicas odontológicas. Somos especialistas em odontologia — cada processo, cada campanha e cada métrica foi construída para esse mercado específico.
+            </p>
+            <p class="superdental-box-text" style="margin-top:1rem;">
+              Isso significa que chegamos na sua clínica já sabendo quais tratamentos têm maior retorno, quais palavras-chave convertem mais na sua cidade e como posicionar sua comunicação para atrair o paciente ideal.
+            </p>
+            <div class="superdental-box-quote">
+              "A SuperDental não faz marketing para dentistas. Faz marketing <em>como</em> dentistas — com diagnóstico, precisão e método."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resultados / Prova -->
+  <section class="section-resultados">
+    <div class="container">
+      <div class="resultados-header reveal">
+        <div class="section-tag">Resultados reais</div>
+        <h2 class="resultados-h2">O que as clínicas dizem sobre a metodologia</h2>
+      </div>
+      <div class="resultados-grid">
+        <div class="test-card reveal reveal-delay-1">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Depois de 4 meses com a SuperDental, minha clínica teve o maior faturamento em 7 anos de existência. A diferença foi exatamente a integração de todas as frentes — antes eu fazia cada coisa separada e nada funcionava."</p>
+          <div class="test-author">
+            <div class="test-avatar">ER</div>
+            <div>
+              <div class="test-name">Elis Rocha</div>
+              <div class="test-role">Clínica de implantes · Belo Horizonte, MG</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-2">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Eu estava ceticista sobre marketing digital para dentista. A SuperDental me convenceu com dados. Em 60 dias, mostrou exatamente quantos pacientes vieram de cada canal. Nunca tive isso com nenhuma agência."</p>
+          <div class="test-author">
+            <div class="test-avatar">AT</div>
+            <div>
+              <div class="test-name">Dr. André Torres</div>
+              <div class="test-role">Odontopediatria · Campinas, SP</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-3">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"O diagnóstico inicial foi revelador. Eles mapearam oportunidades que eu nem sabia que existiam. Em 6 meses, estou ranqueando no Google para 12 procedimentos na minha cidade. Indicação continua vindo, mas agora não dependo dela."</p>
+          <div class="test-author">
+            <div class="test-avatar">JF</div>
+            <div>
+              <div class="test-name">Dra. Juliana Faria</div>
+              <div class="test-role">Clínica multiespecialidade · Goiânia, GO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-tag">Perguntas frequentes</div>
+        <h2 class="faq-h2">Dúvidas sobre a metodologia</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">Preciso contratar todas as frentes de uma vez?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Não necessariamente. Na maioria dos casos, começamos com as frentes que vão gerar resultado mais rápido para sua clínica e expandimos conforme os resultados chegam. O diagnóstico define qual é o caminho ideal para cada caso.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">Como funciona o acompanhamento mensal?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Todo mês você recebe um relatório completo com métricas de negócio (pacientes gerados por canal, custo por paciente, ROAS) e participamos de uma reunião de estratégia para definir os próximos passos. Transparência total.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">Qual é o prazo mínimo de contrato?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Trabalhamos com contratos de 6 meses, pois resultados de marketing exigem tempo de construção e otimização. Estratégias de curto prazo geram resultados de curto prazo. Clínicas que entendem marketing como investimento ficam com a gente por anos.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">A SuperDental atende fora de São Paulo?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Sim. Atendemos clínicas em todo o Brasil. Todo o trabalho é feito remotamente com reuniões por vídeo. Nossos resultados não dependem de proximidade geográfica.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">O que acontece no diagnóstico gratuito?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Em uma reunião de 45 minutos, analisamos o site atual, presença no Google, campanhas ativas (se houver) e redes sociais. Ao final, apresentamos os principais gaps e oportunidades identificados — independente de você fechar ou não.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Form -->
+  <section class="section-cta" id="form">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Diagnóstico gratuito</div>
+        <h2 class="cta-h2 reveal">Descubra o que está faltando<br>para <em>sua clínica crescer</em></h2>
+        <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e agende seu diagnóstico gratuito. Em 45 minutos você entende exatamente o que precisa mudar.</p>
+        <div class="form-wrap reveal reveal-delay-2">
+          <div class="form-title">Quero um diagnóstico da minha clínica</div>
+          <div class="form-sub">Retornamos em até 24 horas úteis</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Seu nome</label>
+                <input type="text" placeholder="Dr(a). Nome Sobrenome" required>
+              </div>
+              <div class="form-field">
+                <label>WhatsApp</label>
+                <input type="tel" placeholder="(11) 99999-9999" required>
+              </div>
+              <div class="form-field">
+                <label>Nome da clínica</label>
+                <input type="text" placeholder="Clínica Odontológica..." required>
+              </div>
+              <div class="form-field">
+                <label>Cidade / UF</label>
+                <input type="text" placeholder="São Paulo, SP" required>
+              </div>
+              <div class="form-field full">
+                <label>Principal objetivo</label>
+                <select required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>Crescer de forma previsível e consistente</option>
+                  <option>Reduzir dependência de indicação</option>
+                  <option>Otimizar campanhas atuais que não convertem</option>
+                  <option>Estruturar o marketing do zero</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Quero meu diagnóstico gratuito →</button>
+            <p class="form-disclaimer">Seus dados estão protegidos. Não fazemos spam.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></div>
+      <p class="lp-footer-text">© 2026 SuperDental · Todos os direitos reservados · <a href="https://superdental.com.br" style="color:var(--teal)">superdental.com.br</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20marketing%20odontológico" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('lpHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function showFrente(key) {
+      document.querySelectorAll('.frentes-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.frente-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('frente-' + key).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Recebido! Entraremos em contato em breve.';
+      btn.style.background = '#12897C';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site para Dentistas | SuperDental</title>
+  <meta name="description" content="Um site que não é só bonito — é uma máquina de converter visitantes em pacientes. A SuperDental cria sites exclusivos para clínicas odontológicas que geram resultado real.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal:      #1BB5A4;
+      --teal-hi:   #24CDB9;
+      --teal-lo:   #12897C;
+      --teal-pale: rgba(27,181,164,0.08);
+      --orange:    #F07030;
+      --orange-hi: #FF8A4A;
+      --purple:    #8B4FA0;
+      --ink:       #060E11;
+      --ink-2:     #0C1A1E;
+      --ink-3:     #122228;
+      --ink-4:     #1A2E34;
+      --cream:     #EDF6F5;
+      --cream-2:   #88A8A5;
+      --cream-3:   #4A6462;
+      --white:     #FFFFFF;
+      --paper:     #F0F8F7;
+      --radius:    10px;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --font-disp: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-ital: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --shadow-md: 0 8px 40px rgba(0,0,0,0.30);
+      --glow-teal: 0 0 60px rgba(27,181,164,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998; opacity: 0.55; mix-blend-mode: overlay;
+    }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1.25rem;
+    }
+    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--teal); }
+
+    @keyframes fade-up-in {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-12px); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: .55rem; font-weight: 600; font-size: .9rem; border: none; cursor: pointer; transition: all .25s ease; white-space: nowrap; padding: .85rem 1.8rem; border-radius: 100px; }
+    .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-teal:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(27,181,164,0.4); }
+    .btn-ghost { background: transparent; color: var(--cream); border: 1px solid rgba(237,246,245,0.2); }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: rgba(255,255,255,0.94); color: var(--ink);
+      border: none; border-radius: 100px;
+      padding: .62rem .62rem .62rem 1.45rem;
+      font-weight: 700; font-size: .92rem;
+      cursor: pointer; transition: all .25s ease; white-space: nowrap;
+    }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+    .btn-pill-arrow {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--teal); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .25s;
+    }
+    .btn-pill:hover .btn-pill-arrow { background: var(--teal-lo); }
+    .btn-pill-arrow svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2.2; }
+
+    /* Header */
+    .lp-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(6,14,17,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      box-shadow: 0 1px 0 rgba(27,181,164,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+      transition: all .3s ease;
+    }
+    .lp-header.scrolled {
+      background: rgba(6,14,17,0.78);
+      border-bottom-color: rgba(27,181,164,0.15);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+    .lp-header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .lp-logo img { height: 36px; width: auto; display: block; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg-glow {
+      position: absolute; top: -5%; right: -10%;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(27,181,164,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-bg-glow-2 {
+      position: absolute; bottom: -10%; left: -10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(139,79,160,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none; opacity: .04;
+      background-image: linear-gradient(rgba(237,246,245,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(237,246,245,1) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      padding: 6rem 0 5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 100px; padding: .45rem 1.1rem .45rem .7rem;
+      backdrop-filter: blur(12px); margin-bottom: 1.8rem;
+      opacity: 0; animation: fade-in .6s ease forwards .3s;
+    }
+    .hero-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; flex-shrink: 0; }
+    .hero-h1 {
+      font-family: var(--font-disp); font-weight: 800;
+      line-height: 1.08; letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fade-up-in .7s ease forwards .45s;
+    }
+    .hero-h1-big { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--white); }
+    .hero-h1-teal { display: block; font-size: clamp(2.4rem, 3.8vw, 3.2rem); color: var(--teal); }
+    .hero-h1-italic {
+      display: block;
+      font-family: var(--font-disp); font-style: normal;
+      font-size: clamp(2.6rem, 4vw, 3.5rem); font-weight: 800;
+      color: rgba(237,246,245,0.7);
+    }
+    .hero-sub {
+      font-size: 1.08rem; color: var(--cream-2); line-height: 1.7;
+      margin-bottom: 2.5rem; max-width: 480px;
+      opacity: 0; animation: fade-up-in .7s ease forwards .6s;
+    }
+    .hero-cta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      opacity: 0; animation: fade-up-in .7s ease forwards .75s;
+    }
+    .hero-trust {
+      font-size: .78rem; color: var(--cream-3); margin-top: 1.5rem;
+      display: flex; align-items: center; gap: .5rem;
+      opacity: 0; animation: fade-in .7s ease forwards .9s;
+    }
+    .hero-trust::before { content: ''; width: 16px; height: 1px; background: var(--cream-3); }
+
+    /* Hero visual — mockup "browser" */
+    .hero-visual {
+      opacity: 0; animation: fade-in .9s ease forwards .5s;
+    }
+    .browser-mock {
+      background: var(--ink-3);
+      border: 1px solid rgba(27,181,164,0.15);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .browser-bar {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .75rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(237,246,245,0.06);
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-url {
+      flex: 1; margin-left: .5rem;
+      background: rgba(255,255,255,0.04); border-radius: 100px;
+      padding: .3rem .8rem; font-size: .72rem; color: var(--cream-3);
+    }
+    .browser-content { padding: 1.5rem; }
+    .site-preview-hero {
+      background: linear-gradient(135deg, var(--ink-4), var(--ink-3));
+      border-radius: var(--radius-lg); padding: 1.8rem;
+      margin-bottom: 1rem; position: relative; overflow: hidden;
+    }
+    .site-preview-hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(ellipse, rgba(27,181,164,0.15) 0%, transparent 70%);
+    }
+    .site-preview-tag {
+      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: .6rem;
+    }
+    .site-preview-h1 { font-family: var(--font-disp); font-weight: 800; font-size: 1rem; color: var(--white); line-height: 1.2; margin-bottom: .8rem; }
+    .site-preview-btn {
+      display: inline-block; background: var(--teal); color: var(--ink);
+      font-size: .65rem; font-weight: 700; padding: .4rem 1rem; border-radius: 100px;
+    }
+    .site-preview-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; }
+    .site-preview-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius); padding: .8rem; text-align: center;
+    }
+    .site-preview-card-icon { font-size: 1rem; margin-bottom: .3rem; }
+    .site-preview-card-label { font-size: .55rem; color: var(--cream-3); }
+    .site-preview-score {
+      display: flex; gap: .6rem; margin-top: 1rem;
+    }
+    .score-item {
+      flex: 1; background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius); padding: .6rem;
+      text-align: center;
+    }
+    .score-val { font-family: var(--font-disp); font-weight: 800; font-size: .9rem; color: var(--teal); }
+    .score-label { font-size: .55rem; color: var(--cream-3); margin-top: .2rem; }
+
+    /* Problema mercado */
+    .section-problema {
+      padding: 6rem 0;
+      background: var(--ink-2);
+      position: relative; overflow: hidden;
+    }
+    .section-problema::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: .25;
+    }
+    .problema-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .problema-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1.2rem;
+    }
+    .problema-text { font-size: .95rem; color: var(--cream-2); line-height: 1.7; margin-bottom: 1.5rem; }
+    .problema-stat {
+      display: flex; gap: 2rem; margin-top: 1.5rem;
+    }
+    .stat-item {}
+    .stat-val { font-family: var(--font-disp); font-weight: 800; font-size: 2rem; color: var(--teal); }
+    .stat-label { font-size: .82rem; color: var(--cream-2); }
+    .problema-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .problema-list li {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-size: .92rem; color: var(--cream);
+      padding: .9rem 1.2rem;
+      background: rgba(240,112,48,0.06);
+      border: 1px solid rgba(240,112,48,0.12);
+      border-radius: var(--radius);
+    }
+    .problema-list li::before { content: '✗'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+
+    /* Critérios */
+    .section-criterios {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .criterios-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .criterios-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .criterios-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .criterio-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg); padding: 2rem;
+      transition: border-color .3s, transform .3s;
+      position: relative; overflow: hidden;
+    }
+    .criterio-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lo));
+      opacity: 0; transition: opacity .3s;
+    }
+    .criterio-card:hover { border-color: rgba(27,181,164,0.25); transform: translateY(-4px); }
+    .criterio-card:hover::before { opacity: 1; }
+    .criterio-num {
+      font-family: var(--font-disp); font-weight: 800; font-size: 2.5rem;
+      color: rgba(27,181,164,0.2); line-height: 1; margin-bottom: 1rem;
+    }
+    .criterio-title {
+      font-family: var(--font-disp); font-weight: 700; font-size: 1.05rem;
+      color: var(--white); margin-bottom: .6rem;
+    }
+    .criterio-text { font-size: .88rem; color: var(--cream-2); line-height: 1.65; }
+
+    /* Incluso */
+    .section-incluso {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .incluso-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .incluso-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .incluso-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .incluso-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(237,246,245,0.07);
+      border-radius: var(--radius-lg); padding: 1.6rem;
+      transition: border-color .3s;
+    }
+    .incluso-item:hover { border-color: rgba(27,181,164,0.2); }
+    .incluso-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(27,181,164,0.1); border: 1px solid rgba(27,181,164,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .incluso-item-title { font-family: var(--font-disp); font-weight: 700; font-size: .95rem; color: var(--white); margin-bottom: .4rem; }
+    .incluso-item-text { font-size: .85rem; color: var(--cream-2); line-height: 1.6; }
+
+    /* Antes/Depois */
+    .section-antes {
+      padding: 6rem 0;
+      background: var(--ink);
+    }
+    .antes-header { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
+    .antes-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .antes-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .antes-col {
+      border-radius: var(--radius-xl); padding: 2.5rem; overflow: hidden;
+    }
+    .antes-col.sem {
+      background: rgba(240,112,48,0.05);
+      border: 1px solid rgba(240,112,48,0.15);
+    }
+    .antes-col.com {
+      background: rgba(27,181,164,0.05);
+      border: 1px solid rgba(27,181,164,0.2);
+    }
+    .antes-col-header {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.8rem;
+    }
+    .antes-col-badge {
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .3rem .9rem; border-radius: 100px;
+    }
+    .sem .antes-col-badge { background: rgba(240,112,48,0.15); color: var(--orange); }
+    .com .antes-col-badge { background: rgba(27,181,164,0.15); color: var(--teal); }
+    .antes-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .antes-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .9rem; color: var(--cream); }
+    .antes-list li::before { font-weight: 700; flex-shrink: 0; font-size: .9rem; }
+    .sem .antes-list li::before { content: '✗'; color: var(--orange); }
+    .com .antes-list li::before { content: '✓'; color: var(--teal); }
+
+    /* Portfólio / prova */
+    .section-prova {
+      padding: 6rem 0;
+      background: var(--ink-2);
+    }
+    .prova-header { text-align: center; margin-bottom: 4rem; }
+    .prova-h2 {
+      font-family: var(--font-disp); font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--white);
+      letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .prova-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .test-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(237,246,245,0.08);
+      border-radius: var(--radius-lg); padding: 2rem;
+      transition: transform .3s, border-color .3s;
+    }
+    .test-card:hover { transform: translateY(-3px); border-color: rgba(27,181,164,0.2); }
+    .test-stars { color: #FFB800; font-size: .9rem; margin-bottom: 1rem; }
+    .test-text { font-size: .9rem; color: var(--cream); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: .75rem; }
+    .test-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal-lo), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-weight: 700; font-size: .9rem; color: white; flex-shrink: 0;
+    }
+    .test-name { font-size: .88rem; font-weight: 600; color: var(--white); }
+    .test-role { font-size: .78rem; color: var(--cream-3); }
+
+    /* FAQ */
+    .section-faq { padding: 6rem 0; background: var(--ink); }
+    .faq-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .faq-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); letter-spacing: -.025em; line-height: 1.15; margin-bottom: 1rem; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { border: 1px solid rgba(237,246,245,0.08); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .3s; }
+    .faq-item.open { border-color: rgba(27,181,164,0.25); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--white); user-select: none; gap: 1rem; background: rgba(255,255,255,0.02); transition: background .2s; }
+    .faq-q:hover { background: rgba(255,255,255,0.04); }
+    .faq-item.open .faq-q { background: rgba(27,181,164,0.05); color: var(--teal); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(237,246,245,0.06); border: 1px solid rgba(237,246,245,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; font-size: .9rem; }
+    .faq-item.open .faq-icon { background: var(--teal); border-color: var(--teal); color: var(--ink); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; padding: 0 1.8rem; font-size: .9rem; color: var(--cream-2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 1.8rem 1.4rem; }
+
+    /* CTA + Form */
+    .section-cta {
+      padding: 7rem 0;
+      background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink) 100%);
+      position: relative; overflow: hidden;
+    }
+    .section-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(27,181,164,0.08) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; z-index: 2; text-align: center; }
+    .cta-h2 { font-family: var(--font-disp); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); letter-spacing: -.03em; line-height: 1.12; margin-bottom: 1rem; }
+    .cta-h2 em { font-family: var(--font-disp); font-style: normal; color: var(--teal); font-weight: 800; }
+    .cta-sub { font-size: 1.05rem; color: var(--cream-2); margin-bottom: 3rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .form-wrap { max-width: 560px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(27,181,164,0.15); border-radius: var(--radius-xl); padding: 2.5rem; }
+    .form-title { font-family: var(--font-disp); font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: .4rem; text-align: center; }
+    .form-sub { font-size: .82rem; color: var(--cream-3); text-align: center; margin-bottom: 1.8rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .78rem; font-weight: 600; color: var(--cream-2); letter-spacing: .04em; }
+    .form-field input, .form-field select { background: rgba(255,255,255,0.05); border: 1px solid rgba(237,246,245,0.12); border-radius: var(--radius); padding: .75rem 1rem; font-size: .9rem; color: var(--white); font-family: var(--font-body); transition: border-color .2s; -webkit-appearance: none; appearance: none; }
+    .form-field input::placeholder { color: var(--cream-3); }
+    .form-field input:focus, .form-field select:focus { outline: none; border-color: var(--teal); background: rgba(27,181,164,0.05); }
+    .form-field select option { background: var(--ink-3); color: var(--cream); }
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; border-radius: 100px; background: var(--teal); color: var(--white); font-size: 1rem; font-weight: 700; border: none; cursor: pointer; transition: all .25s ease; }
+    .form-submit:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(27,181,164,0.4); }
+    .form-disclaimer { font-size: .74rem; color: var(--cream-3); text-align: center; margin-top: 1rem; }
+
+    /* WhatsApp */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 2000; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37,211,102,0.4); transition: transform .25s ease, box-shadow .25s ease; animation: float 3s ease-in-out infinite; }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* Footer */
+    .lp-footer { padding: 2.5rem 0; background: var(--ink); border-top: 1px solid rgba(237,246,245,0.06); text-align: center; }
+    .lp-footer-text { font-size: .8rem; color: var(--cream-3); }
+    .lp-footer-logo { margin-bottom: .75rem; }
+    .lp-footer-logo img { height: 32px; width: auto; display: block; margin: 0 auto; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0 3rem; text-align: center; }
+      .hero-cta-row { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { display: none; }
+      .problema-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .problema-stat { gap: 1.5rem; }
+      .criterios-grid { grid-template-columns: 1fr; }
+      .incluso-grid { grid-template-columns: 1fr; }
+      .antes-grid { grid-template-columns: 1fr; }
+      .prova-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1-big, .hero-h1-teal { font-size: 8vw !important; }
+      .hero-h1-italic { font-size: 8.5vw !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header LP -->
+  <header class="lp-header" id="lpHeader">
+    <div class="container">
+      <div class="lp-header-inner">
+        <a href="../index2.html" class="lp-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></a>
+        <a href="#form" class="btn btn-teal" style="font-size:.85rem; padding:.65rem 1.5rem;">
+          Quero um site profissional
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow-2"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            Sites para Clínicas · Design + Conversão
+          </div>
+          <h1 class="hero-h1">
+            <span class="hero-h1-big">Um site que não é</span>
+            <span class="hero-h1-teal">só bonito</span>
+            <span class="hero-h1-italic">é uma máquina de pacientes</span>
+          </h1>
+          <p class="hero-sub">
+            Sua clínica merece um site que transmita credibilidade, apareça no Google e converta visitantes em pacientes agendados — não apenas um cartão de visitas digital desatualizado.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#form" class="btn-pill">
+              Quero um site profissional para minha clínica
+              <span class="btn-pill-arrow">
+                <svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg>
+              </span>
+            </a>
+          </div>
+          <p class="hero-trust">Orçamento gratuito · Entrega em 21 dias · Sem mensalidade oculta</p>
+        </div>
+        <div class="hero-visual">
+          <div class="browser-mock">
+            <div class="browser-bar">
+              <div class="browser-dot" style="background:#FF5F57"></div>
+              <div class="browser-dot" style="background:#FFBD2E"></div>
+              <div class="browser-dot" style="background:#28C840"></div>
+              <div class="browser-url">clinicaodonto.com.br</div>
+            </div>
+            <div class="browser-content">
+              <div class="site-preview-hero">
+                <div class="site-preview-tag">Odontologia de excelência</div>
+                <div class="site-preview-h1">Sorrisos que transformam<br>vidas em São Paulo</div>
+                <span class="site-preview-btn">Agende sua consulta</span>
+              </div>
+              <div class="site-preview-cards">
+                <div class="site-preview-card"><div class="site-preview-card-icon">🦷</div><div class="site-preview-card-label">Implantes</div></div>
+                <div class="site-preview-card"><div class="site-preview-card-icon">✨</div><div class="site-preview-card-label">Facetas</div></div>
+                <div class="site-preview-card"><div class="site-preview-card-icon">😁</div><div class="site-preview-card-label">Ortodontia</div></div>
+              </div>
+              <div class="site-preview-score">
+                <div class="score-item"><div class="score-val">98</div><div class="score-label">Performance</div></div>
+                <div class="score-item"><div class="score-val">100</div><div class="score-label">SEO</div></div>
+                <div class="score-item"><div class="score-val">95</div><div class="score-label">Acessib.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problema de mercado -->
+  <section class="section-problema">
+    <div class="container">
+      <div class="problema-inner">
+        <div class="reveal">
+          <div class="section-tag">O problema</div>
+          <h2 class="problema-h2">A maioria dos sites de clínicas não funciona</h2>
+          <p class="problema-text">Foram feitos para parecer bonitos, não para converter. O resultado: você investe em anúncios e tráfego, mas a agenda não enche porque as pessoas chegam ao site e vão embora.</p>
+          <div class="problema-stat">
+            <div class="stat-item">
+              <div class="stat-val">73%</div>
+              <div class="stat-label">dos pacientes pesquisam online antes de agendar</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val">3 seg</div>
+              <div class="stat-label">é o tempo médio antes de abandonar um site lento</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <ul class="problema-list">
+            <li>Site criado há anos, não responsivo no celular</li>
+            <li>Demora para carregar — o paciente desiste antes de ver o conteúdo</li>
+            <li>Sem página por tratamento — invisível no Google para buscas específicas</li>
+            <li>Botão de agendamento escondido ou inexistente</li>
+            <li>Nenhuma prova social visível (depoimentos, avaliações)</li>
+            <li>Sem integração com WhatsApp ou sistema de agendamento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Critérios do site -->
+  <section class="section-criterios">
+    <div class="container">
+      <div class="criterios-header reveal">
+        <div class="section-tag">Nossa abordagem</div>
+        <h2 class="criterios-h2">Os 6 critérios de um site que gera pacientes</h2>
+        <p style="color:var(--cream-2); font-size:.95rem;">Todo site que entregamos é avaliado por estes seis pilares antes de ir ao ar.</p>
+      </div>
+      <div class="criterios-grid">
+        <div class="criterio-card reveal reveal-delay-1">
+          <div class="criterio-num">01</div>
+          <div class="criterio-title">Velocidade</div>
+          <p class="criterio-text">Carregamento abaixo de 2 segundos em mobile. Pontuação 90+ no PageSpeed. Paciente que espera, paciente que vai embora.</p>
+        </div>
+        <div class="criterio-card reveal reveal-delay-2">
+          <div class="criterio-num">02</div>
+          <div class="criterio-title">Credibilidade visual</div>
+          <p class="criterio-text">Design que transmite profissionalismo e confiança. Fotos reais da equipe e estrutura. Nada de banco de imagens genérico.</p>
+        </div>
+        <div class="criterio-card reveal reveal-delay-3">
+          <div class="criterio-num">03</div>
+          <div class="criterio-title">SEO estrutural</div>
+          <p class="criterio-text">Páginas dedicadas por tratamento, schema markup para clínicas, otimização para buscas locais no Google Maps e Google Search.</p>
+        </div>
+        <div class="criterio-card reveal reveal-delay-1">
+          <div class="criterio-num">04</div>
+          <div class="criterio-title">Conversão</div>
+          <p class="criterio-text">CTA claro em todas as páginas, integração com WhatsApp, formulário simples, botão de ligação para mobile. O caminho até o agendamento é óbvio.</p>
+        </div>
+        <div class="criterio-card reveal reveal-delay-2">
+          <div class="criterio-num">05</div>
+          <div class="criterio-title">Prova social</div>
+          <p class="criterio-text">Seção de depoimentos com foto e nome real, integração com avaliações do Google, galeria de casos clínicos (com autorização).</p>
+        </div>
+        <div class="criterio-card reveal reveal-delay-3">
+          <div class="criterio-num">06</div>
+          <div class="criterio-title">Manutenção simples</div>
+          <p class="criterio-text">Você consegue atualizar fotos e textos sem precisar chamar um desenvolvedor. Painel administrativo intuitivo incluso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que incluso -->
+  <section class="section-incluso">
+    <div class="container">
+      <div class="incluso-header reveal">
+        <div class="section-tag">O que está incluso</div>
+        <h2 class="incluso-h2">Tudo para sua clínica ter presença digital de referência</h2>
+      </div>
+      <div class="incluso-grid">
+        <div class="incluso-item reveal reveal-delay-1">
+          <div class="incluso-icon">🎨</div>
+          <div>
+            <div class="incluso-item-title">Design exclusivo</div>
+            <p class="incluso-item-text">Layout criado especificamente para sua clínica. Nenhum template genérico. Cores, fontes e identidade visual alinhados à sua marca.</p>
+          </div>
+        </div>
+        <div class="incluso-item reveal reveal-delay-2">
+          <div class="incluso-icon">📱</div>
+          <div>
+            <div class="incluso-item-title">100% responsivo</div>
+            <p class="incluso-item-text">Funciona perfeitamente em celular, tablet e desktop. Mais de 80% dos visitantes usam o mobile — seu site precisa ser perfeito nele.</p>
+          </div>
+        </div>
+        <div class="incluso-item reveal reveal-delay-1">
+          <div class="incluso-icon">🔍</div>
+          <div>
+            <div class="incluso-item-title">Otimização SEO local</div>
+            <p class="incluso-item-text">Páginas por tratamento, otimização para buscas na sua cidade, integração com Google Business Profile e schema markup de clínica.</p>
+          </div>
+        </div>
+        <div class="incluso-item reveal reveal-delay-2">
+          <div class="incluso-icon">💬</div>
+          <div>
+            <div class="incluso-item-title">Integração WhatsApp + agendamento</div>
+            <p class="incluso-item-text">Botão flutuante, CTAs integrados ao WhatsApp e formulários de contato direto. O paciente escolhe como quer entrar em contato.</p>
+          </div>
+        </div>
+        <div class="incluso-item reveal reveal-delay-1">
+          <div class="incluso-icon">📊</div>
+          <div>
+            <div class="incluso-item-title">Analytics e rastreamento</div>
+            <p class="incluso-item-text">Google Analytics 4 configurado, rastreamento de eventos (cliques em WhatsApp, formulários enviados), painel simples para acompanhar resultados.</p>
+          </div>
+        </div>
+        <div class="incluso-item reveal reveal-delay-2">
+          <div class="incluso-icon">🔒</div>
+          <div>
+            <div class="incluso-item-title">SSL, hospedagem e domínio</div>
+            <p class="incluso-item-text">Certificado de segurança, hospedagem de alto desempenho e suporte técnico inclusos no primeiro ano. Sem surpresa na renovação.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Antes / Depois -->
+  <section class="section-antes">
+    <div class="container">
+      <div class="antes-header reveal">
+        <div class="section-tag">Antes e depois</div>
+        <h2 class="antes-h2">O que muda quando sua clínica tem o site certo</h2>
+      </div>
+      <div class="antes-grid">
+        <div class="antes-col sem reveal reveal-delay-1">
+          <div class="antes-col-header">
+            <span class="antes-col-badge">Sem SuperDental</span>
+          </div>
+          <ul class="antes-list">
+            <li>Site lento que afasta visitantes</li>
+            <li>Invisível no Google para buscas locais</li>
+            <li>Design desatualizado passa insegurança</li>
+            <li>Sem páginas por tratamento</li>
+            <li>Botão de contato difícil de encontrar</li>
+            <li>Sem depoimentos ou provas sociais</li>
+            <li>Não integra com WhatsApp</li>
+            <li>Difícil de atualizar</li>
+          </ul>
+        </div>
+        <div class="antes-col com reveal reveal-delay-2">
+          <div class="antes-col-header">
+            <span class="antes-col-badge">Com SuperDental</span>
+          </div>
+          <ul class="antes-list">
+            <li>Carregamento abaixo de 2 segundos</li>
+            <li>Aparece no topo do Google para sua cidade</li>
+            <li>Design que transmite credibilidade e confiança</li>
+            <li>Uma página otimizada por tratamento</li>
+            <li>CTA claro em todos os dispositivos</li>
+            <li>Seção de depoimentos e cases reais</li>
+            <li>WhatsApp integrado em todo o site</li>
+            <li>Painel de gerenciamento simples</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prova / Depoimentos -->
+  <section class="section-prova">
+    <div class="container">
+      <div class="prova-header reveal">
+        <div class="section-tag">Resultados reais</div>
+        <h2 class="prova-h2">Clínicas que transformaram sua presença online</h2>
+      </div>
+      <div class="prova-grid">
+        <div class="test-card reveal reveal-delay-1">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Em dois meses após o novo site, o volume de contatos pelo Google dobrou. O site antigo nem aparecia para buscas na minha cidade. Agora estou na primeira página para cinco tratamentos."</p>
+          <div class="test-author">
+            <div class="test-avatar">MS</div>
+            <div>
+              <div class="test-name">Dra. Marina Silva</div>
+              <div class="test-role">Odontologia estética · Florianópolis, SC</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-2">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"A qualidade do design superou as minhas expectativas. Pacientes novos sempre comentam que escolheram minha clínica por causa do site — diz que passa confiança antes mesmo da consulta."</p>
+          <div class="test-author">
+            <div class="test-avatar">FO</div>
+            <div>
+              <div class="test-name">Dr. Felipe Oliveira</div>
+              <div class="test-role">Implantodontia · Porto Alegre, RS</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-3">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-text">"Antes eu dependia 100% de indicação. O novo site me trouxe independência — hoje tenho pacientes chegando pelo Google toda semana sem precisar pagar por anúncio."</p>
+          <div class="test-author">
+            <div class="test-avatar">PL</div>
+            <div>
+              <div class="test-name">Dra. Patrícia Lima</div>
+              <div class="test-role">Clínica geral · Recife, PE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-tag">Perguntas frequentes</div>
+        <h2 class="faq-h2">Dúvidas sobre o site</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva para ficar pronto?<span class="faq-icon">+</span></div>
+          <div class="faq-a">O prazo padrão é de 21 dias úteis após aprovação do briefing e recebimento dos materiais (fotos, textos, logo). Projetos com escopo maior podem ter prazo estendido — definido em proposta.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-q" onclick="toggleFaq(this)">Preciso ter fotos profissionais da clínica?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Recomendamos muito. Fotos reais da clínica, equipe e sorrisos tratados geram muito mais confiança do que banco de imagens. Podemos orientar um ensaio fotográfico simples que você pode fazer com um celular moderno.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-q" onclick="toggleFaq(this)">O site fica no meu nome ou da SuperDental?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Tudo fica no seu nome. Domínio, hospedagem e código-fonte pertencem a você. A SuperDental é responsável pelo desenvolvimento — ao final, você tem controle total.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-q" onclick="toggleFaq(this)">Posso manter meu domínio atual?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Sim. Se você já tem um domínio registrado, usamos ele. Se ainda não tem, ajudamos a registrar o domínio ideal para sua clínica.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-q" onclick="toggleFaq(this)">O site funciona junto com Google Ads e redes sociais?<span class="faq-icon">+</span></div>
+          <div class="faq-a">Sim, e é justamente esse o ponto forte. O site é a base de toda a estratégia digital. Com rastreamento correto, cada campanha de anúncio alimenta dados reais de conversão — e os resultados são muito melhores.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Form -->
+  <section class="section-cta" id="form">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-tag" style="justify-content:center; margin-bottom:1.25rem;">Orçamento gratuito</div>
+        <h2 class="cta-h2 reveal">Sua clínica merece um site<br><em>que trabalha por você</em></h2>
+        <p class="cta-sub reveal reveal-delay-1">Preencha o formulário e receba uma proposta personalizada para o site da sua clínica. Sem custo e sem compromisso.</p>
+        <div class="form-wrap reveal reveal-delay-2">
+          <div class="form-title">Quero um site profissional para minha clínica</div>
+          <div class="form-sub">Retornamos em até 24 horas úteis</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Seu nome</label>
+                <input type="text" placeholder="Dr(a). Nome Sobrenome" required>
+              </div>
+              <div class="form-field">
+                <label>WhatsApp</label>
+                <input type="tel" placeholder="(11) 99999-9999" required>
+              </div>
+              <div class="form-field">
+                <label>Nome da clínica</label>
+                <input type="text" placeholder="Clínica Odontológica..." required>
+              </div>
+              <div class="form-field">
+                <label>Cidade / UF</label>
+                <input type="text" placeholder="São Paulo, SP" required>
+              </div>
+              <div class="form-field full">
+                <label>Principal objetivo com o site</label>
+                <select required>
+                  <option value="" disabled selected>Selecione...</option>
+                  <option>Aparecer no Google e atrair pacientes</option>
+                  <option>Substituir site antigo e desatualizado</option>
+                  <option>Complementar campanhas de anúncios</option>
+                  <option>Transmitir mais credibilidade</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Quero meu orçamento gratuito →</button>
+            <p class="form-disclaimer">Seus dados estão protegidos. Não fazemos spam.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="container">
+      <div class="lp-footer-logo"><img src="../Logo-SuperDental-rodape.png" alt="SuperDental"></div>
+      <p class="lp-footer-text">© 2026 SuperDental · Todos os direitos reservados · <a href="https://superdental.com.br" style="color:var(--teal)">superdental.com.br</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20site%20para%20minha%20clínica" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('lpHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Recebido! Entraremos em contato em breve.';
+      btn.style.background = '#12897C';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
