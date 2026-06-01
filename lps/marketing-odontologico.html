@@ -1843,5 +1843,25 @@
       obs.observe(stage);
     })();
   </script>
+  <script src="https://plugin.sellbot.tech/assets/js/sellbot_plugin.min.js"></script>
+  <script>
+    document.querySelectorAll('.whatsapp-float').forEach(function(el) {
+      el.classList.add('sellbot-wpp-open');
+    });
+
+    document.addEventListener("click", function(e) {
+      const whatsappIcon = e.target.closest('.elementor-social-icon-whatsapp');
+
+      if (whatsappIcon) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const botButton = document.querySelector('.sellbot-wpp-open');
+        if (botButton) {
+          botButton.click();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
