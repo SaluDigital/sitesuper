@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/app.png">
+  <meta name="theme-color" content="#060E11">
   <title>Site para Dentistas | SuperDental</title>
   <meta name="description" content="Um site que não é só bonito — é uma máquina de converter visitantes em pacientes. A SuperDental cria sites exclusivos para clínicas odontológicas que geram resultado real.">
 
@@ -2085,6 +2091,8 @@
     </svg>
   </a>
 
+  <a href="https://wa.me/5511999999999?text=OlÃ¡,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20site%20para%20minha%20clÃ­nica" class="sellbot-wpp-open sellbot-wpp-proxy" target="_blank" rel="noopener" aria-hidden="true" hidden tabindex="-1"></a>
+
   <script>
     const header = document.getElementById('lpHeader');
     window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
@@ -2282,6 +2290,26 @@
         counterObs.observe(statsEl);
       }
     })();
+  </script>
+  <script src="https://plugin.sellbot.tech/assets/js/sellbot_plugin.min.js"></script>
+  <script>
+    function openSellbotProxy() {
+      const botButton = document.querySelector('.sellbot-wpp-proxy');
+      if (botButton) {
+        botButton.click();
+      }
+    }
+
+    document.addEventListener("click", function(e) {
+      const whatsappFloat = e.target.closest('.whatsapp-float');
+      const whatsappIcon = e.target.closest('.elementor-social-icon-whatsapp');
+
+      if (whatsappFloat || whatsappIcon) {
+        e.preventDefault();
+        e.stopPropagation();
+        openSellbotProxy();
+      }
+    });
   </script>
 </body>
 </html>
