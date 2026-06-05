@@ -2121,7 +2121,16 @@
       gap: 3rem; margin-bottom: 4rem;
     }
 
-    .footer-brand img { height: 34px; margin-bottom: 1.25rem; opacity: 1; }
+    .footer-brand img {
+      display: block;
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1024 / 250;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      opacity: 1;
+    }
     .footer-brand p { font-size: .85rem; color: var(--cream-3); line-height: 1.7; max-width: 220px; margin-bottom: 1.5rem; }
     .footer-socials { display: flex; gap: .65rem; }
     .fs-link {
@@ -3598,7 +3607,7 @@
     <div class="footer-top">
 
       <div class="footer-brand">
-        <img src="Logo-SuperDental-rodape.png?v=2" alt="SuperDental">
+        <img src="Logo-SuperDental-rodape.png?v=2" alt="SuperDental" width="1024" height="250" loading="lazy" decoding="async">
         <p>Metodologia de crescimento para clínicas e consultórios odontológicos. Mais do que divulgar - estruturamos crescimento.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/superdentalbr" class="fs-link" aria-label="Instagram">

@@ -2121,7 +2121,16 @@
       gap: 3rem; margin-bottom: 4rem;
     }
 
-    .footer-brand img { height: 34px; margin-bottom: 1.25rem; opacity: 1; }
+    .footer-brand img {
+      display: block;
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1024 / 250;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      opacity: 1;
+    }
     .footer-brand p { font-size: .85rem; color: var(--cream-3); line-height: 1.7; max-width: 220px; margin-bottom: 1.5rem; }
     .footer-socials { display: flex; gap: .65rem; }
     .fs-link {
@@ -2533,7 +2542,6 @@
         <a href="#metodologia">Metodologia</a>
         <a href="#solucoes">Soluções</a>
         <a href="#cases">Depoimentos</a>
-        <a href="https://blog.superdental.com.br/" target="_blank" rel="noopener noreferrer">Blog</a>
         <a href="https://wa.me/5541998569438" target="_blank" rel="noopener noreferrer" class="btn btn-gold sellbot-wpp-open" style="padding:.5rem 1.2rem;font-size:.82rem;background:var(--teal);color:#fff">Falar com especialista</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -2622,7 +2630,7 @@
         </p>
 
         <div class="hero-ctas">
-          <a href="https://wa.me/5541998569438" target="_blank" rel="noopener noreferrer" class="btn-pill sellbot-wpp-open">
+          <a href="#metodologia" class="btn-pill">
             Quero um diagnóstico da minha clínica
             <span class="btn-pill-arrow">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -2888,7 +2896,7 @@
     </div>
 
     <!-- CTA da metodologia -->
-      <a href="https://wa.me/5541998569438" target="_blank" rel="noopener noreferrer" class="btn btn-gold sellbot-wpp-open" style="color:#ffffff;margin:0 auto;width:fit-content;">
+      <a href="https://wa.me/5541998569438" target="_blank" rel="noopener noreferrer" class="btn btn-gold sellbot-wpp-open" style="color:#ffffff">
         Quero entender como a metodologia se aplica à minha clínica
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -3574,7 +3582,7 @@
       </p>
 
       <div class="cta-btn-wrap">
-        <a href="https://wa.me/5541998569438" target="_blank" rel="noopener noreferrer" class="btn-cta-main sellbot-wpp-open">
+        <a href="#" class="btn-cta-main">
           Quero uma análise da minha clínica
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -3599,16 +3607,16 @@
     <div class="footer-top">
 
       <div class="footer-brand">
-        <img src="Logo-SuperDental-rodape.png?v=2" alt="SuperDental">
+        <img src="Logo-SuperDental-rodape.png?v=2" alt="SuperDental" width="1024" height="250" loading="lazy" decoding="async">
         <p>Metodologia de crescimento para clínicas e consultórios odontológicos. Mais do que divulgar - estruturamos crescimento.</p>
         <div class="footer-socials">
-          <a href="https://www.instagram.com/superdentalbr" target="_blank" rel="noopener noreferrer" class="fs-link" aria-label="Instagram">
+          <a href="https://www.instagram.com/superdentalbr" class="fs-link" aria-label="Instagram">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,234,224,0.45)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="https://www.facebook.com/superdentalbr" target="_blank" rel="noopener noreferrer" class="fs-link" aria-label="Facebook">
+          <a href="https://www.facebook.com/superdentalbr" class="fs-link" aria-label="Facebook">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,234,224,0.45)" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <a href="https://www.linkedin.com/company/super-dental/" target="_blank" rel="noopener noreferrer" class="fs-link" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/super-dental/" class="fs-link" aria-label="LinkedIn">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,234,224,0.45)" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
