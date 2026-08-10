@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"CGhJue2SS1y7HTSP2DuYm3",debug:true});</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SuperDental | Metodologia de Crescimento para Clínicas Odontológicas</title>
@@ -4180,8 +4181,25 @@
 
   <script src="https://plugin.sellbot.tech/assets/js/sellbot_plugin.min.js"></script>
   <script>
+    function measureWhatsappLead() {
+      try {
+        if (typeof window.oaiq === 'function') {
+          window.oaiq(
+            "measure",
+            "lead_created",
+            { type: "customer_action" }
+          );
+        }
+      } catch (error) {}
+    }
+
     document.addEventListener("click", function(e) {
+      const whatsappLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
       const whatsappIcon = e.target.closest('.elementor-social-icon-whatsapp');
+
+      if (whatsappLink) {
+        measureWhatsappLead();
+      }
 
       if (whatsappIcon) {
         e.preventDefault();
