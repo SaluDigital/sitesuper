@@ -7,12 +7,7 @@
   <title>SuperDental | Metodologia de Crescimento para Clínicas Odontológicas</title>
   <meta name="description" content="Marketing odontológico para atrair mais pacientes, fortalecer sua presença digital e transformar investimento em crescimento previsível para sua clínica.">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="app.png">
   <meta name="theme-color" content="#060E11">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="SuperDental">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -2422,105 +2417,6 @@
     .msm-title { font-weight: 700; color: var(--cream); margin-bottom: .3rem; font-size: .92rem; }
     .msm-desc { font-size: .8rem; color: var(--cream-2); line-height: 1.55; }
 
-    .install-banner {
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      z-index: 1200;
-      display: none;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      background: rgba(6,14,17,0.94);
-      border: 1px solid rgba(27,181,164,0.22);
-      border-radius: 18px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      backdrop-filter: blur(18px);
-    }
-    .install-banner.is-visible { display: flex; }
-    .install-banner-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      flex-shrink: 0;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .install-banner-copy { min-width: 0; flex: 1; }
-    .install-banner-title {
-      color: var(--white);
-      font-family: var(--font-disp);
-      font-size: .98rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: .25rem;
-    }
-    .install-banner-text {
-      color: var(--cream-2);
-      font-size: .82rem;
-      line-height: 1.45;
-    }
-    .install-banner-actions {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      flex-shrink: 0;
-    }
-    .install-banner-btn,
-    .install-banner-close {
-      border: none;
-      cursor: pointer;
-      transition: transform .2s ease, opacity .2s ease, background .2s ease;
-    }
-    .install-banner-btn:hover,
-    .install-banner-close:hover { transform: translateY(-1px); }
-    .install-banner-btn {
-      background: var(--teal);
-      color: var(--white);
-      border-radius: 999px;
-      padding: .78rem 1rem;
-      font-size: .8rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .install-banner-close {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      color: var(--cream-2);
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-    @media (min-width: 769px) {
-      .install-banner { display: none !important; }
-    }
-    @media (max-width: 560px) {
-      .install-banner {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        padding: 12px;
-        align-items: flex-start;
-      }
-      .install-banner-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-      }
-      .install-banner-actions {
-        width: 100%;
-        margin-top: .85rem;
-        justify-content: space-between;
-      }
-      .install-banner {
-        flex-wrap: wrap;
-      }
-      .install-banner-copy {
-        width: calc(100% - 58px);
-      }
-    }
   </style>
 
   <!-- ============================================================
@@ -2887,9 +2783,6 @@
       .theme-sbn26 :is(.btn-gold, .btn-pill, .btn-cta-main).sellbot-wpp-open:not(:hover) { animation: none; }
     }
 
-    /* ---------- AVISO DE INSTALAÇÃO (mobile) ---------- */
-    .theme-sbn26 .install-banner { background: rgba(8,8,8,0.94); border-color: rgba(255,121,0,0.3); }
-    .theme-sbn26 .install-banner-btn { background: var(--sbn-orange); color: var(--sbn-black); }
   </style>
 </head>
 <body class="theme-sbn26">
@@ -2899,18 +2792,6 @@
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=830129303991343&ev=PageView&noscript=1"/>
   </noscript>
-  <div class="install-banner" id="installBanner" hidden>
-    <img src="app.png" alt="SuperDental" class="install-banner-icon">
-    <div class="install-banner-copy">
-      <div class="install-banner-title">Salvar ícone da SuperDental</div>
-      <div class="install-banner-text" id="installBannerText">Adicione este site à tela inicial para abrir a SuperDental direto pelo ícone no celular.</div>
-    </div>
-    <div class="install-banner-actions">
-      <button type="button" class="install-banner-btn" id="installBannerAction">Salvar ícone</button>
-      <button type="button" class="install-banner-close" id="installBannerClose" aria-label="Fechar aviso">×</button>
-    </div>
-  </div>
-
 <!-- Custom cursor -->
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="cursor-dot"  id="cursorDot"></div>
@@ -4608,89 +4489,6 @@
         }
       }
     });
-  </script>
-  <script>
-    (function() {
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('sw.js').catch(function() {});
-        });
-      }
-
-      var banner = document.getElementById('installBanner');
-      var bannerText = document.getElementById('installBannerText');
-      var bannerAction = document.getElementById('installBannerAction');
-      var bannerClose = document.getElementById('installBannerClose');
-      var deferredPrompt = null;
-      var dismissKey = 'sd_install_banner_dismissed';
-      var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-      var isMobile = window.matchMedia('(max-width: 768px)').matches;
-      var isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
-
-      function showBanner() {
-        if (!banner || !isMobile || isStandalone || localStorage.getItem(dismissKey) === '1') return;
-        banner.hidden = false;
-        banner.classList.add('is-visible');
-      }
-
-      function hideBanner(persist) {
-        if (!banner) return;
-        banner.classList.remove('is-visible');
-        banner.hidden = true;
-        if (persist) localStorage.setItem(dismissKey, '1');
-      }
-
-      if (bannerClose) {
-        bannerClose.addEventListener('click', function() {
-          hideBanner(true);
-        });
-      }
-
-      window.addEventListener('beforeinstallprompt', function(e) {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (bannerAction) bannerAction.textContent = 'Salvar ícone';
-        if (bannerText) bannerText.textContent = 'Adicione este site à tela inicial para abrir a SuperDental direto pelo ícone no celular.';
-        showBanner();
-      });
-
-      if (bannerAction) {
-        bannerAction.addEventListener('click', async function() {
-          if (deferredPrompt) {
-            deferredPrompt.prompt();
-            try {
-              await deferredPrompt.userChoice;
-            } catch (err) {}
-            deferredPrompt = null;
-            hideBanner(true);
-            return;
-          }
-
-          if (isIos) {
-            if (bannerText) {
-              bannerText.textContent = 'No iPhone, toque em compartilhar e depois em "Adicionar à Tela de Início" para salvar o ícone da SuperDental.';
-            }
-            bannerAction.textContent = 'Entendi';
-            bannerAction.addEventListener('click', function closeAfterIosHint() {
-              hideBanner(true);
-              bannerAction.removeEventListener('click', closeAfterIosHint);
-            }, { once: true });
-          }
-        });
-      }
-
-      window.addEventListener('appinstalled', function() {
-        hideBanner(true);
-      });
-
-      if (isIos && !isStandalone) {
-        if (bannerAction) bannerAction.textContent = 'Como salvar';
-        if (bannerText) {
-          bannerText.textContent = 'Adicione este site à tela inicial para abrir a SuperDental direto pelo ícone no celular.';
-        }
-        showBanner();
-      }
-    })();
   </script>
 </body>
 </html>
