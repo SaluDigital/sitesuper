@@ -1,0 +1,32 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "SuperDental",
+    "identifier": "superdental.com.br"
+  },
+  "entries": [
+    {
+      "identifier": "urn:ai:superdental.com.br:knowledge:llms-txt",
+      "displayName": "SuperDental llms.txt",
+      "type": "text/plain",
+      "url": "https://superdental.com.br/llms.txt",
+      "description": "Índice em texto das principais páginas e serviços de marketing odontológico da SuperDental.",
+      "representativeQueries": [
+        "agência de marketing para dentistas",
+        "como atrair mais pacientes para minha clínica odontológica",
+        "google ads para dentistas"
+      ]
+    },
+    {
+      "identifier": "urn:ai:superdental.com.br:site:blog",
+      "displayName": "Blog SuperDental",
+      "type": "text/html",
+      "url": "https://blog.superdental.com.br/",
+      "description": "Artigos sobre marketing e crescimento para clínicas e consultórios odontológicos.",
+      "representativeQueries": [
+        "dicas de marketing odontológico",
+        "como crescer uma clínica odontológica"
+      ]
+    }
+  ]
+}
